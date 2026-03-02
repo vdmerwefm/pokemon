@@ -1,18 +1,19 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
-///
-Dio pokeDio() {
-  try {
+import 'package:pokemon_core/pokemon_core.dart';
+
+class PokeDio {
+  PokeDio() {
     final options = BaseOptions(
-      baseUrl: 'https://pokeapi.co/api/v2/',
+      baseUrl: appConfigSl<AppConfig>().pokeBaseUrl,
       connectTimeout: const Duration(seconds: 5),
       receiveTimeout: const Duration(seconds: 5),
+      headers: {
+        'Accept': 'application/json',
+      },
     );
-
-    final basePokeDio = Dio(options);
-    return basePokeDio;
-  } on DioException catch (exception) {
-    FlutterErrorDetails(exception: exception);
-    return Dio();
+    _dio = Dio(options);
   }
+
+  late final Dio _dio;
+  Dio get dio => _dio;
 }

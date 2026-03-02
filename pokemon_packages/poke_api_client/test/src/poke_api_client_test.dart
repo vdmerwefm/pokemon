@@ -7,7 +7,7 @@ import 'package:poke_api_client/poke_api_client.dart';
 void main() {
   group('PokeApiClient', () {
     test('can be instantiated', () {
-      expect(PokeApiClient(), isNotNull);
+      expect(PokeApiClient(PokeDio()), isNotNull);
     });
   });
 }

@@ -2,3 +2,5 @@
 library;
 
 export 'src/poke_api_client.dart';
+export 'src/poke_dio/poke_dio.dart';
+

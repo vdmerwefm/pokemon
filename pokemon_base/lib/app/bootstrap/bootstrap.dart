@@ -27,7 +27,9 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   Bloc.observer = const AppBlocObserver();
 
-  // Add cross-flavor configuration here
+  AppConfig.instance.isConfigInitialized
+      ? log('AppConfig is initialized with pokeBaseUrl: ${AppConfig.instance.pokeBaseUrl}')
+      : log('AppConfig is not initialized. Using default pokeBaseUrl: ${AppConfig.instance.pokeBaseUrl}');
 
   runApp(await builder());
 }

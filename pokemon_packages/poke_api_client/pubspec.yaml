@@ -8,12 +8,21 @@ environment:
   flutter: ^3.32.0
 
 dependencies:
+  auto_mappr_annotation: ^1.0.0
   dio: ^5.9.2
   flutter:
     sdk: flutter
+  json_annotation: ^4.8.1
+  pokemon_models:
+    path: ../pokemon_models
+  pokemon_core:
+    path: ../pokemon_core
 
 dev_dependencies:
+  auto_mappr: ^1.0.0
+  build_runner: ^2.4.6
   flutter_test:
     sdk: flutter
+  json_serializable: ^6.7.1
   mocktail: ^1.0.4
   very_good_analysis: ^9.0.0
