@@ -2,12 +2,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pokemon_navigation/pokemon_navigation.dart';
+import 'package:pokemon_features/pokemon_features.dart';
 
 void main() {
-  group('PokemonNavigation', () {
+  group('PokemonFeatures', () {
     test('can be instantiated', () {
-      expect(PokemonNavigation(), isNotNull);
+      expect(PokemonFeatures(), isNotNull);
     });
   });
 }

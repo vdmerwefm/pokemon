@@ -1,6 +1,4 @@
-/// {@template poke_api_client}
-/// A Very Good Project created by Very Good CLI.
-/// {@endtemplate}
+/// Api client for retrieving pokemon data from pokeapi.com
 class PokeApiClient {
   /// {@macro poke_api_client}
   const PokeApiClient();

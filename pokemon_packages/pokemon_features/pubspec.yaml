@@ -1,4 +1,4 @@
-name: poke_api_client
+name: pokemon_features
 description: A Very Good Project created by Very Good CLI.
 version: 0.1.0+1
 publish_to: none
@@ -8,7 +8,6 @@ environment:
   flutter: ^3.32.0
 
 dependencies:
-  dio: ^5.9.2
   flutter:
     sdk: flutter
 
