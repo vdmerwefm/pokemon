@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
+import 'package:pokemon_core/pokemon_core.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -27,9 +28,17 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   Bloc.observer = const AppBlocObserver();
 
-  AppConfig.instance.isConfigInitialized
-      ? log('AppConfig is initialized with pokeBaseUrl: ${AppConfig.instance.pokeBaseUrl}')
-      : log('AppConfig is not initialized. Using default pokeBaseUrl: ${AppConfig.instance.pokeBaseUrl}');
+  final baseUrl = appConfigSl<AppConfig>().pokeBaseUrl;
+  if (baseUrl.isNotEmpty) {
+    debugPrint('base url loaded successfully: $baseUrl');
+  } else {
+    debugPrint(
+      'base url is empty, reverting to default: https://pokeapi.co/api/v2',
+    );
+    debugPrint(
+      'base url is empty, please check your poke_config.json file',
+    );
+  }
 
   runApp(await builder());
 }
