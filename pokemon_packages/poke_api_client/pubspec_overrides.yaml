@@ -1,6 +1,4 @@
-# melos_managed_dependency_overrides: pokemon_models,pokemon_core
+# melos_managed_dependency_overrides: pokemon_core
 dependency_overrides:
   pokemon_core:
     path: ..\\pokemon_core
-  pokemon_models:
-    path: ..\\pokemon_models

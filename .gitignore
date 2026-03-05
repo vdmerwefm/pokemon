@@ -113,3 +113,7 @@ app.*.map.json
 
 # Generated l10n files
 lib/l10n/gen/
+
+# "JSON to Dart Model" generator tracker files locations.
+/.json_models/
+models.jsonc

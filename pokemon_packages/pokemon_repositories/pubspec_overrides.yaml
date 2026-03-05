@@ -1,4 +1,4 @@
-# melos_managed_dependency_overrides: poke_api_client,pokemon_models,pokemon_core
+# melos_managed_dependency_overrides: poke_api_client,pokemon_core,pokemon_models
 dependency_overrides:
   poke_api_client:
     path: ..\\poke_api_client

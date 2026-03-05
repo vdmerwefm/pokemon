@@ -3,7 +3,6 @@ import 'package:pokemon_repositories/pokemon_repositories.dart';
 
 void main() {
   group('PokemonRepositories', () {
-    test('can be instantiated', () {
-    });
+    test('can be instantiated', () {});
   });
 }
