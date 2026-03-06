@@ -1,21 +1,35 @@
+import 'package:fpdart/fpdart.dart';
 import 'package:poke_api_client/poke_api_client.dart';
+import 'package:pokemon_core/pokemon_core.dart';
+import 'package:pokemon_models/pokemon_models.dart';
 import 'package:pokemon_repositories/pokemon_repositories.dart';
+import 'package:pokemon_repositories/src/mappers/pokemon_details_mapper/pokemon_details_mapper.dart';
+import 'package:pokemon_repositories/src/mappers/pokemon_list_mapper/pokemon_list_mapper.dart';
 
 class PokemonRepository implements IPokemonRepository {
   PokemonRepository(this._pokeApiClient);
   final PokeApiClient _pokeApiClient;
 
   @override
-  Future<List<dynamic>> getPokemonList() {
-    final reponse = _pokeApiClient.fetchRawPokemonList();
-    throw UnimplementedError();
+  TaskEither<Failure, List<PokemonListModel>> getPokemonList() {
+    return _pokeApiClient
+        .fetchRawPokemonList()
+        .map((rawPokemonListDto) => rawPokemonListDto.toPokemonList());
+       
   }
 
   @override
-  Future<dynamic> getPokemonDetails(String name) async {
-    final response = _pokeApiClient.getPokemonDetails(name);
-    throw UnimplementedError();
+  TaskEither<Failure, PokemonDetailsModel> getPokemonDetails(String id) {
+    return _pokeApiClient
+        .getPokemonDetails(id)
+        .flatMap(
+          (rawPokemonDetails) => _pokeApiClient
+              .getPokemonSpeciesDetails(id)
+              .map(
+                (rawSpeciesDetailsDto) =>
+                    rawPokemonDetails.toPokemonDetails(rawSpeciesDetailsDto),
+              )
+           
+        );
   }
-
-  // ...
 }

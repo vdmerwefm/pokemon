@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:poke_api_client/src/dtos/raw_pokemon_details_dto/other.dart';
 import 'package:poke_api_client/src/dtos/raw_pokemon_details_dto/versions.dart';
 
 part 'sprites.freezed.dart';
@@ -16,10 +15,21 @@ class Sprites with _$Sprites {
     @JsonKey(name: 'front_female') dynamic frontFemale,
     @JsonKey(name: 'front_shiny') String? frontShiny,
     @JsonKey(name: 'front_shiny_female') dynamic frontShinyFemale,
-    Other? other,
     Versions? versions,
   }) = _Sprites;
 
   factory Sprites.fromJson(Map<String, dynamic> json) =>
       _$SpritesFromJson(json);
+
+  factory Sprites.empty() => Sprites(
+    backDefault: null,
+    backFemale: null,
+    backShiny: null,
+    backShinyFemale: null,
+    frontDefault: null,
+    frontFemale: null,
+    frontShiny: null,
+    frontShinyFemale: null,
+    versions: null,
+  );
 }

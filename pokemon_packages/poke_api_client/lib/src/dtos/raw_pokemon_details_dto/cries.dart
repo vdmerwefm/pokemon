@@ -11,4 +11,9 @@ class Cries with _$Cries {
   }) = _Cries;
 
   factory Cries.fromJson(Map<String, dynamic> json) => _$CriesFromJson(json);
+
+  factory Cries.empty() => Cries(
+    latest: '',
+    legacy: '',
+  );
 }

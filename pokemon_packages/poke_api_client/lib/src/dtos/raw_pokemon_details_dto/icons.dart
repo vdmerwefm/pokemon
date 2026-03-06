@@ -11,4 +11,9 @@ class Icons with _$Icons {
   }) = _Icons;
 
   factory Icons.fromJson(Map<String, dynamic> json) => _$IconsFromJson(json);
+
+  factory Icons.empty() => Icons(
+    frontDefault: null,
+    frontFemale: null,
+  );
 }

@@ -1,6 +1,6 @@
 /// Barrel file for pokemon_core package, exposing core functionalities
-/// pokemon core is generally accessible to all other packages as it contains 
-/// core functionalities such as app config, failure handling, 
+/// pokemon core is generally accessible to all other packages as it contains
+/// core functionalities such as app config, failure handling,
 /// and service locators
 library;
 

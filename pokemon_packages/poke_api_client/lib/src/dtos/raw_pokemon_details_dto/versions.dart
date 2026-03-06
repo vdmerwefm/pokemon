@@ -2,7 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:poke_api_client/src/dtos/raw_pokemon_details_dto/generation_v.dart';
 import 'package:poke_api_client/src/dtos/raw_pokemon_details_dto/generation_vii.dart';
 
-
 part 'versions.freezed.dart';
 part 'versions.g.dart';
 
@@ -15,4 +14,9 @@ class Versions with _$Versions {
 
   factory Versions.fromJson(Map<String, dynamic> json) =>
       _$VersionsFromJson(json);
+
+  factory Versions.empty() => Versions(
+    generationV: null,
+    generationVii: null,
+  );
 }

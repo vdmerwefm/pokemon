@@ -18,4 +18,15 @@ class Animated with _$Animated {
 
   factory Animated.fromJson(Map<String, dynamic> json) =>
       _$AnimatedFromJson(json);
+
+  factory Animated.empty() => Animated(
+    backDefault: null,
+    backFemale: null,
+    backShiny: null,
+    backShinyFemale: null,
+    frontDefault: null,
+    frontFemale: null,
+    frontShiny: null,
+    frontShinyFemale: null,
+  );
 }

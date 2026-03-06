@@ -3,3 +3,4 @@ analyzer:
   errors:
     public_member_api_docs: ignore
     invalid_annotation_target: ignore
+    avoid_redundant_argument_values: ignore

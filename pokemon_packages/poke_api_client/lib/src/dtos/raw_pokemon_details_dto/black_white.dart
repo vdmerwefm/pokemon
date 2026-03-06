@@ -12,4 +12,8 @@ class BlackWhite with _$BlackWhite {
 
   factory BlackWhite.fromJson(Map<String, dynamic> json) =>
       _$BlackWhiteFromJson(json);
+
+  factory BlackWhite.empty() => BlackWhite(
+    animated: null,
+  );
 }

@@ -7,8 +7,13 @@ part 'type.g.dart';
 class Type with _$Type {
   factory Type({
     int? slot,
-    Type? type,
+    Map<String, dynamic>? type,
   }) = _Type;
 
   factory Type.fromJson(Map<String, dynamic> json) => _$TypeFromJson(json);
+
+  factory Type.empty() => Type(
+    slot: 0,
+    type: null,
+  );
 }

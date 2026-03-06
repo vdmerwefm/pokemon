@@ -12,4 +12,9 @@ class Species with _$Species {
 
   factory Species.fromJson(Map<String, dynamic> json) =>
       _$SpeciesFromJson(json);
+
+  factory Species.empty() => Species(
+    name: '',
+    url: '',
+  );
 }
