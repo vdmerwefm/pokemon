@@ -9,5 +9,18 @@ scripts:
   bootstrap: melos exec -- flutter pub get
   analyze: melos exec -- flutter analyze
   test: melos exec -- flutter test
-  build: flutter pub run build_runner build --delete-conflicting-outputs
+  build:
+    exec: dart run build_runner build --delete-conflicting-outputs
+    description: Run code generation in watch mode across all packages
+    packageFilters:
+      dependsOn: build_runner
+
+  auto-build:
+    exec: dart run build_runner watch --delete-conflicting-outputs
+    description: Run code generation in watch mode across all packages
+    packageFilters:
+      dependsOn: build_runner
+
+
   clean-build: melos exec -- melos clean && melos bootstrap && melos build
+  clean-auto-build: melos exec -- melos clean && melos bootstrap && melos auto-build
