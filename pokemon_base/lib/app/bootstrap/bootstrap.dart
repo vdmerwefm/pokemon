@@ -28,6 +28,8 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   Bloc.observer = const AppBlocObserver();
 
+  setUpAppConfig();
+
   final baseUrl = appConfigSl<AppConfig>().pokeBaseUrl;
   if (baseUrl.isNotEmpty) {
     debugPrint('base url loaded successfully: $baseUrl');
