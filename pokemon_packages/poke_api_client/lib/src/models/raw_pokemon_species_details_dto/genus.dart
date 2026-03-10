@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:poke_api_client/src/dtos/raw_pokemon_species_details_dto/language.dart';
+import 'package:poke_api_client/src/models/raw_pokemon_species_details_dto/language.dart';
 
 part 'genus.freezed.dart';
 part 'genus.g.dart';

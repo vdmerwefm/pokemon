@@ -23,7 +23,7 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.factory<_i107.PokemonRepository>(
-      () => _i107.PokemonRepository(gh<_i120.PokeApiClient>()),
+      () => _i107.PokemonRepository(pokeApiClient: gh<_i120.PokeApiClient>()),
     );
     return this;
   }

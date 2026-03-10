@@ -9,7 +9,7 @@ import 'package:pokemon_repositories/src/mappers/pokemon_list_mapper/pokemon_lis
 
 @injectable
 class PokemonRepository implements IPokemonRepository {
-  PokemonRepository(this._pokeApiClient);
+  PokemonRepository({ required PokeApiClient pokeApiClient}) : _pokeApiClient = pokeApiClient;
   final PokeApiClient _pokeApiClient;
 
   @override

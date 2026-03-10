@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:poke_api_client/src/dtos/raw_pokemon_details_dto/generation_v.dart';
-import 'package:poke_api_client/src/dtos/raw_pokemon_details_dto/generation_vii.dart';
+import 'package:poke_api_client/src/models/raw_pokemon_details_dto/generation_v.dart';
+import 'package:poke_api_client/src/models/raw_pokemon_details_dto/generation_vii.dart';
 
 part 'versions.freezed.dart';
 part 'versions.g.dart';

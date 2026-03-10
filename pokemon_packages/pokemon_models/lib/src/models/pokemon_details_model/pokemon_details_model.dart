@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:pokemon_models/src/pokemon_details_model/pokemon_stats_model.dart';
-import 'package:pokemon_models/src/pokemon_details_model/pokemon_type_model.dart';
+import 'package:pokemon_models/src/models/pokemon_details_model/pokemon_stats_model.dart';
+import 'package:pokemon_models/src/models/pokemon_details_model/pokemon_type_model.dart';
 
 class PokemonDetailsModel extends Equatable {
   const PokemonDetailsModel({

@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:poke_api_client/src/dtos/raw_pokemon_species_details_dto/flavor_text_entry.dart';
-import 'package:poke_api_client/src/dtos/raw_pokemon_species_details_dto/genus.dart';
+import 'package:poke_api_client/src/models/raw_pokemon_species_details_dto/flavor_text_entry.dart';
+import 'package:poke_api_client/src/models/raw_pokemon_species_details_dto/genus.dart';
 
 part 'raw_pokemon_species_details_dto.freezed.dart';
 part 'raw_pokemon_species_details_dto.g.dart';

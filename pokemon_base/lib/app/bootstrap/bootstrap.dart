@@ -34,18 +34,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   ensureRepoInitialized();
   ensureFeatureInitialized();
 
-
-  final baseUrl = coreSl<AppConfig>().pokeBaseUrl;
-  if (baseUrl.isNotEmpty) {
-    debugPrint('base url loaded successfully: $baseUrl');
-  } else {
-    debugPrint(
-      'base url is empty, reverting to default: https://pokeapi.co/api/v2',
-    );
-    debugPrint(
-      'base url is empty, please check your poke_config.json file',
-    );
-  }
+  BaseUrlCheckUtil.baseUrlCheck(coreSl<AppConfig>().pokeBaseUrl);
 
   runApp(await builder());
 }
