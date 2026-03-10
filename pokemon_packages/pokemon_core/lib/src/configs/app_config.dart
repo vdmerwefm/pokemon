@@ -1,12 +1,14 @@
-class AppConfig {
-  AppConfig._();
+import 'package:injectable/injectable.dart';
 
-  static final AppConfig instance = AppConfig._();
+@Singleton()
+class AppConfig {
+  AppConfig();
+
+  static final AppConfig instance = AppConfig();
   static const bool _isConfigInitialized = bool.hasEnvironment('poke_base_url');
 
   final String pokeBaseUrl = const String.fromEnvironment(
     'poke_base_url',
-    defaultValue: 'https://pokeapi.co/api/v2',
   );
 
   bool get isConfigInitialized => _isConfigInitialized;

@@ -12,6 +12,8 @@
       "args": [
         "--flavor",
         "development",
+        "--dart-define-from-file",
+        "poke_config.json"
       ],
       "cwd": "${workspaceFolder}/pokemon_base"
     },
@@ -23,6 +25,8 @@
       "args": [
         "--flavor",
         "staging",
+        "--dart-define-from-file",
+        "poke_config.json"
       ],
       "cwd": "${workspaceFolder}/pokemon_base"
     },
@@ -34,6 +38,8 @@
       "args": [
         "--flavor",
         "production",
+        "--dart-define-from-file",
+        "poke_config.json"
       ],
       "cwd": "${workspaceFolder}/pokemon_base"
     }

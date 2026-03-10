@@ -4,6 +4,8 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pokemon_core/pokemon_core.dart';
+import 'package:pokemon_features/pokemon_features.dart';
+import 'package:pokemon_repositories/pokemon_repositories.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -28,9 +30,12 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   Bloc.observer = const AppBlocObserver();
 
-  setUpAppConfig();
+  ensureCoreInitialized();
+  ensureRepoInitialized();
+  ensureFeatureInitialized();
 
-  final baseUrl = appConfigSl<AppConfig>().pokeBaseUrl;
+
+  final baseUrl = coreSl<AppConfig>().pokeBaseUrl;
   if (baseUrl.isNotEmpty) {
     debugPrint('base url loaded successfully: $baseUrl');
   } else {

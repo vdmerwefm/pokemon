@@ -3,8 +3,10 @@ import 'package:pokemon_core/pokemon_core.dart';
 
 class PokeDio {
   PokeDio() {
+    final baseUrl = coreSl<AppConfig>().pokeBaseUrl;
+
     final options = BaseOptions(
-      baseUrl: appConfigSl<AppConfig>().pokeBaseUrl,
+      baseUrl: baseUrl,
       connectTimeout: const Duration(seconds: 5),
       receiveTimeout: const Duration(seconds: 5),
       headers: {

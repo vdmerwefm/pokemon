@@ -12,6 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
   fpdart: ^1.2.0
+  get_it: ^9.2.1
+  injectable: ^2.7.1
   poke_api_client: 
     path: ../poke_api_client
   pokemon_core:
@@ -20,7 +22,9 @@ dependencies:
     path: ../pokemon_models
 
 dev_dependencies:
+  build_runner: ^2.5.4
   flutter_test:
     sdk: flutter
+  injectable_generator: ^2.9.1
   mocktail: ^1.0.4
   very_good_analysis: ^9.0.0

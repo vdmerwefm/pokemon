@@ -3,3 +3,4 @@ library;
 
 export 'src/implementations/pokemon_repositories.dart';
 export 'src/interfaces/i_pokemon_repository.dart';
+export 'src/services/repo_sl.dart';
