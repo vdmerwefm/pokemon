@@ -21,12 +21,12 @@ class PokemonRepository implements IPokemonRepository {
   }
 
   @override
-  TaskEither<Failure, PokemonDetailsModel> getPokemonDetails(String id) {
+  TaskEither<Failure, PokemonDetailsModel> getPokemonDetails(String name) {
     return _pokeApiClient
-        .getPokemonDetails(id)
+        .getPokemonDetails(name)
         .flatMap(
           (rawPokemonDetails) => _pokeApiClient
-              .getPokemonSpeciesDetails(id)
+              .getPokemonSpeciesDetails(name)
               .map(
                 (rawSpeciesDetailsDto) =>
                     rawPokemonDetails.toPokemonDetails(rawSpeciesDetailsDto),

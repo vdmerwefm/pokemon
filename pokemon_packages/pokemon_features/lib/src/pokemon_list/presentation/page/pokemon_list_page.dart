@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_core/pokemon_core.dart';
-import 'package:pokemon_features/src/pokemon_list/presentation/pokemon_list_bloc/pokemon_list_bloc.dart';
+import 'package:pokemon_features/src/pokemon_details/presentation/page/pokemon_details_page.dart';
+import 'package:pokemon_features/src/pokemon_list/presentation/bloc/pokemon_list_bloc.dart';
 
 class PokemonListPage extends StatelessWidget {
   const PokemonListPage({super.key});
@@ -47,7 +48,8 @@ class PokemonListView extends StatelessWidget {
           itemBuilder: (context, index) {
             final pokemon = pokemonList[index];
             return ListTile(
-              leading: Image.network(
+              leading: Image.network(  
+                scale: 0.1,
                 pokemon.icon,
                 errorBuilder: (context, error, stackTrace) =>
                     const Icon(Icons.catching_pokemon),
@@ -57,7 +59,13 @@ class PokemonListView extends StatelessWidget {
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               onTap: () {
-                // Navigation logic for details would go here
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<dynamic>(
+                    builder: (context) =>
+                        PokemonDetailsPage(name: pokemon.name),
+                  ),
+                );
               },
             );
           },

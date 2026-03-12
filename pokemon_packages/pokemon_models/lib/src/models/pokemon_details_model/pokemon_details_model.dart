@@ -33,6 +33,37 @@ class PokemonDetailsModel extends Equatable {
     type: [],
   );
 
+  factory PokemonDetailsModel.fromJson(Map<String, dynamic> json) =>
+      PokemonDetailsModel(
+        id: json['id'] as int,
+        name: json['name'] as String,
+        height: json['height'] as int,
+        weight: json['weight'] as int,
+        isDefault: json['isDefault'] as bool,
+        ability: json['ability'] as String,
+        cry: json['cry'] as String,
+        flavorText: json['flavorText'] as String,
+        genus: json['genus'] as String,
+        sprite: json['sprite'] as String,
+        stats: json['stats'] as List<PokemonStatsModel>,
+        type: json['type'] as List<PokemonTypeModel>,
+      );
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'name': name,
+    'height': height,
+    'weight': weight,
+    'isDefault': isDefault,
+    'ability': ability,
+    'cry': cry,
+    'flavorText': flavorText,
+    'genus': genus,
+    'sprite': sprite,
+    'stats': stats,
+    'type': type,
+  };
+
   final int? id;
   final String? name;
   final int? height;

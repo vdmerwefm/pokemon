@@ -1,4 +1,4 @@
-part of 'domain.dart';
+part of '../domain_leaf.dart';
 
 @Injectable()
 class GetPokemonListUseCase {

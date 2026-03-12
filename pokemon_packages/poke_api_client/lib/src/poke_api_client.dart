@@ -37,11 +37,11 @@ class PokeApiClient {
   }
 
   TaskEither<Failure, RawPokemonSpeciesDetailsDto> getPokemonSpeciesDetails(
-    String id,
+    String name,
   ) {
     return TaskEither.tryCatch(() async {
       final response = await pokeDio.dio.get<Map<String, dynamic>>(
-        '/pokemon-species/$id',
+        '/pokemon-species/$name',
       );
       if(response.data == null) {
         return RawPokemonSpeciesDetailsDto.empty();
