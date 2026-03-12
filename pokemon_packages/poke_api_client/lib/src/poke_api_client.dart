@@ -14,17 +14,25 @@ class PokeApiClient {
   final PokeDio pokeDio;
   TaskEither<Failure, RawPokemonListDto> fetchRawPokemonList() {
     return TaskEither.tryCatch(() async {
-      final response = await pokeDio.dio.get<RawPokemonListDto>('/pokemon');
-      return response.data ?? RawPokemonListDto.empty();
+      final response = await pokeDio.dio.get<Map<String, dynamic>>('/pokemon');
+      if (response.data == null) {
+        return RawPokemonListDto.empty();
+      } else {
+        return RawPokemonListDto.fromJson(response.data!);
+      }
     }, (error, stackTrace) => Failure.httpFailure());
   }
 
-  TaskEither<Failure, RawPokemonDetailsDto> getPokemonDetails(String id) {
+  TaskEither<Failure, RawPokemonDetailsDto> getPokemonDetails(String name) {
     return TaskEither.tryCatch(() async {
-      final response = await pokeDio.dio.get<RawPokemonDetailsDto>(
-        '/pokemon/$id',
+      final response = await pokeDio.dio.get<Map<String, dynamic>>(
+        '/pokemon/$name',
       );
-      return response.data ?? RawPokemonDetailsDto.empty();
+      if (response.data == null) {
+        return RawPokemonDetailsDto.empty();
+      } else {
+        return RawPokemonDetailsDto.fromJson(response.data!);
+      }
     }, (error, stackTrace) => Failure.httpFailure());
   }
 
@@ -32,10 +40,14 @@ class PokeApiClient {
     String id,
   ) {
     return TaskEither.tryCatch(() async {
-      final response = await pokeDio.dio.get<RawPokemonSpeciesDetailsDto>(
+      final response = await pokeDio.dio.get<Map<String, dynamic>>(
         '/pokemon-species/$id',
       );
-      return response.data ?? RawPokemonSpeciesDetailsDto.empty();
+      if(response.data == null) {
+        return RawPokemonSpeciesDetailsDto.empty();
+      } else {
+        return RawPokemonSpeciesDetailsDto.fromJson(response.data!);
+      }
     }, (error, stackTrace) => Failure.httpFailure());
   }
 }
