@@ -12,7 +12,20 @@ class PokemonListModel extends Equatable {
     icon: '',
     url: '',
   );
-  
+
+  factory PokemonListModel.fromJson(Map<String, dynamic> json) =>
+      PokemonListModel(
+        name: json['name'] as String,
+        icon: json['icon'] as String,
+        url: json['url'] as String,
+      );
+
+  Map<String, dynamic> toJson() => {
+    'name': name,
+    'icon': icon,
+    'url': url,
+  };
+
   final String name;
   final String icon;
   final String url;

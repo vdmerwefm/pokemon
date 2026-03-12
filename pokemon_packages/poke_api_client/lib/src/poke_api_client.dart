@@ -1,11 +1,13 @@
 // Reponsible for fetching data and converting to raw dto
 import 'package:fpdart/fpdart.dart';
+import 'package:injectable/injectable.dart';
 import 'package:poke_api_client/src/dio/poke_dio.dart';
 import 'package:poke_api_client/src/models/raw_pokemon_details_dto/raw_pokemon_details_dto.dart';
 import 'package:poke_api_client/src/models/raw_pokemon_list_dto/raw_pokemon_list_dto.dart';
 import 'package:poke_api_client/src/models/raw_pokemon_species_details_dto/raw_pokemon_species_details_dto.dart';
 import 'package:pokemon_core/pokemon_core.dart';
 
+@Singleton()
 class PokeApiClient {
   PokeApiClient(this.pokeDio);
 

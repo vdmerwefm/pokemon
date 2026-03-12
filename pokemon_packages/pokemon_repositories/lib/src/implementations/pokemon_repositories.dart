@@ -7,7 +7,7 @@ import 'package:pokemon_repositories/pokemon_repositories.dart';
 import 'package:pokemon_repositories/src/mappers/pokemon_details_mapper/pokemon_details_mapper.dart';
 import 'package:pokemon_repositories/src/mappers/pokemon_list_mapper/pokemon_list_mapper.dart';
 
-@injectable
+@Injectable(as: IPokemonRepository)
 class PokemonRepository implements IPokemonRepository {
   PokemonRepository({ required PokeApiClient pokeApiClient}) : _pokeApiClient = pokeApiClient;
   final PokeApiClient _pokeApiClient;

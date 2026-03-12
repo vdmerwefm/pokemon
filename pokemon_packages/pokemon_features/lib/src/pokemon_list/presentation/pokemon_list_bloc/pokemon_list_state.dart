@@ -1,3 +1,15 @@
 part of 'pokemon_list_bloc.dart';
 
-class PokemonListState {}
+@freezed
+class PokemonListState with _$PokemonListState {
+  const factory PokemonListState({
+    List<PokemonListModel>? pokemonList,
+    Failure? failure,
+    @Default(false) bool isLoading,
+  }) = _PokemonListState;
+
+  factory PokemonListState.fromJson(Map<String, dynamic> json) =>
+      _$PokemonListStateFromJson(json);
+
+  factory PokemonListState.empty() => const PokemonListState();
+}

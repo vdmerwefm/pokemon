@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon_base/counter/counter.dart';
 import 'package:pokemon_base/l10n/l10n.dart';
+import 'package:pokemon_features/pokemon_features.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -16,7 +16,7 @@ class App extends StatelessWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
+      home: const PokemonListPage(),
     );
   }
 }

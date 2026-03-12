@@ -1,5 +1,6 @@
 part of 'pokemon_list_bloc.dart';
 
-sealed class PokemonListEvents {
-  
+@freezed
+abstract class PokemonListEvents with _$PokemonListEvents {
+  const factory PokemonListEvents.onGetPokemonList() = OnGetPokemonList;
 }
