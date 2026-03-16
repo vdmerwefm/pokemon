@@ -41,6 +41,26 @@ class PokemonListBloc extends Bloc<PokemonListEvents, PokemonListState> {
         },
       );
     });
+
+    on<OnGetRandomPokemon>((event, emit) async {
+      emit(state.copyWith(isLoading: true));
+
+      final response = await _useCase.getPokemonListUseCase();
+
+      response.fold(
+        (failure) {
+          emit(state.copyWith(isLoading: false, failure: failure));
+        },
+        (pokemonList) {
+          emit(
+            state.copyWith(
+              isLoading: false,
+              randomPokemon: (pokemonList..shuffle()).first.name,
+            ),
+          );
+        },
+      );
+    });
   }
   final GetPokemonListUseCase _useCase;
 }

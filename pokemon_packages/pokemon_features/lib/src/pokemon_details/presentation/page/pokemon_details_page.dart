@@ -12,13 +12,13 @@ class PokemonDetailsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Pokemon Details'),
       ),
-      body: PokemonListView(name: name),
+      body: PokemonDetailsView(name: name),
     );
   }
 }
 
-class PokemonListView extends StatelessWidget {
-  const PokemonListView({required this.name, super.key});
+class PokemonDetailsView extends StatelessWidget {
+  const PokemonDetailsView({required this.name, super.key});
 
   final String name;
 
@@ -40,6 +40,7 @@ class PokemonListView extends StatelessWidget {
 
           final pokemon = state.pokemonDetails;
           final pokemonStats = state.pokemonDetails?.stats;
+          final pokemonTypes = state.pokemonDetails?.type;
 
           if (pokemon == null) {
             return const Center(child: Text('No details found'));
@@ -96,11 +97,27 @@ class PokemonListView extends StatelessWidget {
                 ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: pokemonStats!.length,
+                  itemCount: pokemonTypes!.length,
                   itemBuilder: (context, index) {
-                    final pokemon = pokemonStats[index];
+                    final pokemon = pokemonTypes[index];
                     return ListTile(
-                      leading: Text(pokemon.statName.toUpperCase()),
+                      title: Text(
+                        pokemon.type.toString().toUpperCase(),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    );
+                  },
+                ),
+                const SizedBox(height: 16),
+                const Divider(height: 32),
+                ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: pokemonStats?.length,
+                  itemBuilder: (context, index) {
+                    final pokemon = pokemonStats?[index];
+                    return ListTile(
+                      leading: Text(pokemon!.statName.toUpperCase()),
                       title: Text(
                         pokemon.baseStat.toString().toUpperCase(),
                         style: const TextStyle(fontWeight: FontWeight.bold),

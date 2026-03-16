@@ -3,33 +3,33 @@ import 'package:equatable/equatable.dart';
 class PokemonListModel extends Equatable {
   const PokemonListModel({
     required this.name,
-    required this.icon,
+    required this.sprite,
     required this.url,
   });
 
   factory PokemonListModel.empty() => const PokemonListModel(
     name: '',
-    icon: '',
+    sprite: '',
     url: '',
   );
 
   factory PokemonListModel.fromJson(Map<String, dynamic> json) =>
       PokemonListModel(
         name: json['name'] as String,
-        icon: json['icon'] as String,
+        sprite: json['sprite'] as String,
         url: json['url'] as String,
       );
 
   Map<String, dynamic> toJson() => {
     'name': name,
-    'icon': icon,
+    'sprite': sprite,
     'url': url,
   };
 
   final String name;
-  final String icon;
+  final String sprite;
   final String url;
 
   @override
-  List<Object?> get props => [name, icon, url];
+  List<Object?> get props => [name, sprite, url];
 }

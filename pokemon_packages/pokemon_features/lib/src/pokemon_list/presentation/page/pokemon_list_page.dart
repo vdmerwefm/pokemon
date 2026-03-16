@@ -9,68 +9,89 @@ class PokemonListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Pokedex'),
-      ),
-      body: BlocProvider(
-        create: (context) =>
-            sl<PokemonListBloc>()..add(const OnGetPokemonList()),
-        child: const PokemonListView(),
-      ),
-    );
-  }
-}
+    return BlocProvider(
+      create: (context) => sl<PokemonListBloc>()..add(const OnGetPokemonList()),
+      child: BlocBuilder<PokemonListBloc, PokemonListState>(
+        builder: (context, state) {
+          if (state.isLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
 
-class PokemonListView extends StatelessWidget {
-  const PokemonListView({super.key});
+          if (state.failure != null) {
+            return Center(child: Text(state.failure!.message));
+          }
 
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<PokemonListBloc, PokemonListState>(
-      builder: (context, state) {
-        if (state.isLoading) {
-          return const Center(child: CircularProgressIndicator());
-        }
+          final pokemonList = state.pokemonList ?? [];
 
-        if (state.failure != null) {
-          return Center(child: Text(state.failure!.message));
-        }
+          if (pokemonList.isEmpty) {
+            return const Center(child: Text('No Pokemon found'));
+          }
 
-        final pokemonList = state.pokemonList ?? [];
-
-        if (pokemonList.isEmpty) {
-          return const Center(child: Text('No Pokemon found'));
-        }
-
-        return ListView.builder(
-          itemCount: pokemonList.length,
-          itemBuilder: (context, index) {
-            final pokemon = pokemonList[index];
-            return ListTile(
-              leading: Image.network(  
-                scale: 0.1,
-                pokemon.icon,
-                errorBuilder: (context, error, stackTrace) =>
-                    const Icon(Icons.catching_pokemon),
-              ),
-              title: Text(
-                pokemon.name.toUpperCase(),
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              onTap: () {
-                Navigator.push(
+          return GridView.builder(
+            padding: const EdgeInsets.all(16),
+            shrinkWrap: true,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16,
+              mainAxisExtent: 246,
+            ),
+            itemCount: pokemonList.length,
+            itemBuilder: (context, index) {
+              final pokemon = pokemonList[index];
+              return GestureDetector(
+                onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute<dynamic>(
                     builder: (context) =>
                         PokemonDetailsPage(name: pokemon.name),
                   ),
-                );
-              },
-            );
-          },
-        );
-      },
+                ),
+                child: Card(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Stack(
+                        alignment: AlignmentDirectional.center,
+                        children: [
+                          Image.network(
+                            scale: 0.7,
+                            pokemon.sprite,
+                            errorBuilder: (context, error, stackTrace) =>
+                                const Icon(Icons.catching_pokemon),
+                          ),
+                        ],
+                      ),
+                      const Divider(height: 24),
+                      const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Types:',
+                            style: TextStyle(
+                              fontSize: 10,
+                              fontFamily: 'pokemon_font',
+                              package: 'pokemon_ui_kit',
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Divider(height: 24),
+                      Text(
+                        pokemon.name.toUpperCase(),
+                        style: const TextStyle(
+                          fontFamily: 'pokemon_font',
+                          package: 'pokemon_ui_kit',
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }

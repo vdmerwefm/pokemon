@@ -9,8 +9,11 @@ extension PokemonListMapper on RawPokemonListDto {
           (rawPokemon) => PokemonListModel(
             name: rawPokemon.name ?? '',
             url: rawPokemon.url ?? '',
-            icon:
-                '$iconUrl${rawPokemon.url!.replaceFirst(pokeUrl, blank).replaceFirst('/', '')}.png',
+            //step through the pokemon details
+            //get a list of types
+            //store the list of types for each pokemon?
+            sprite:
+                '$spriteUrl${rawPokemon.url!.replaceFirst(pokeUrl, blank).replaceFirst('/', '')}.png',
           ),
         )
         .toList();

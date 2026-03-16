@@ -12,6 +12,7 @@ _$PokemonListStateImpl _$$PokemonListStateImplFromJson(
       pokemonList: (json['pokemonList'] as List<dynamic>?)
           ?.map((e) => PokemonListModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      randomPokemon: json['randomPokemon'] as String?,
       failure: json['failure'] == null
           ? null
           : Failure.fromJson(json['failure'] as Map<String, dynamic>),
@@ -22,6 +23,7 @@ Map<String, dynamic> _$$PokemonListStateImplToJson(
         _$PokemonListStateImpl instance) =>
     <String, dynamic>{
       'pokemonList': instance.pokemonList,
+      'randomPokemon': instance.randomPokemon,
       'failure': instance.failure,
       'isLoading': instance.isLoading,
     };

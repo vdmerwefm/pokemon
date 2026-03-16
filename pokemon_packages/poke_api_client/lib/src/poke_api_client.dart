@@ -18,6 +18,13 @@ class PokeApiClient {
       if (response.data == null) {
         return RawPokemonListDto.empty();
       } else {
+        ///Currently we do not use pokemon types and other data
+        ///but we could want some more data to work with in the future
+        ///we should in the very least run this query through graphQl
+        ///for holistic overview of a pokemon, its type, its sprite etc
+        ///details is a good place to show we are able to consume standard 
+        ///api responses and its inefficiency is slight
+        ///
         return RawPokemonListDto.fromJson(response.data!);
       }
     }, (error, stackTrace) => Failure.httpFailure());
@@ -43,7 +50,7 @@ class PokeApiClient {
       final response = await pokeDio.dio.get<Map<String, dynamic>>(
         '/pokemon-species/$name',
       );
-      if(response.data == null) {
+      if (response.data == null) {
         return RawPokemonSpeciesDetailsDto.empty();
       } else {
         return RawPokemonSpeciesDetailsDto.fromJson(response.data!);

@@ -19,32 +19,38 @@ mixin _$PokemonListEvents {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() onGetPokemonList,
+    required TResult Function() onGetRandomPokemon,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? onGetPokemonList,
+    TResult? Function()? onGetRandomPokemon,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onGetPokemonList,
+    TResult Function()? onGetRandomPokemon,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(OnGetPokemonList value) onGetPokemonList,
+    required TResult Function(OnGetRandomPokemon value) onGetRandomPokemon,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(OnGetPokemonList value)? onGetPokemonList,
+    TResult? Function(OnGetRandomPokemon value)? onGetRandomPokemon,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnGetPokemonList value)? onGetPokemonList,
+    TResult Function(OnGetRandomPokemon value)? onGetRandomPokemon,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,6 +119,7 @@ class _$OnGetPokemonListImpl implements OnGetPokemonList {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() onGetPokemonList,
+    required TResult Function() onGetRandomPokemon,
   }) {
     return onGetPokemonList();
   }
@@ -121,6 +128,7 @@ class _$OnGetPokemonListImpl implements OnGetPokemonList {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? onGetPokemonList,
+    TResult? Function()? onGetRandomPokemon,
   }) {
     return onGetPokemonList?.call();
   }
@@ -129,6 +137,7 @@ class _$OnGetPokemonListImpl implements OnGetPokemonList {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onGetPokemonList,
+    TResult Function()? onGetRandomPokemon,
     required TResult orElse(),
   }) {
     if (onGetPokemonList != null) {
@@ -141,6 +150,7 @@ class _$OnGetPokemonListImpl implements OnGetPokemonList {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(OnGetPokemonList value) onGetPokemonList,
+    required TResult Function(OnGetRandomPokemon value) onGetRandomPokemon,
   }) {
     return onGetPokemonList(this);
   }
@@ -149,6 +159,7 @@ class _$OnGetPokemonListImpl implements OnGetPokemonList {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(OnGetPokemonList value)? onGetPokemonList,
+    TResult? Function(OnGetRandomPokemon value)? onGetRandomPokemon,
   }) {
     return onGetPokemonList?.call(this);
   }
@@ -157,6 +168,7 @@ class _$OnGetPokemonListImpl implements OnGetPokemonList {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnGetPokemonList value)? onGetPokemonList,
+    TResult Function(OnGetRandomPokemon value)? onGetRandomPokemon,
     required TResult orElse(),
   }) {
     if (onGetPokemonList != null) {
@@ -170,6 +182,111 @@ abstract class OnGetPokemonList implements PokemonListEvents {
   const factory OnGetPokemonList() = _$OnGetPokemonListImpl;
 }
 
+/// @nodoc
+abstract class _$$OnGetRandomPokemonImplCopyWith<$Res> {
+  factory _$$OnGetRandomPokemonImplCopyWith(_$OnGetRandomPokemonImpl value,
+          $Res Function(_$OnGetRandomPokemonImpl) then) =
+      __$$OnGetRandomPokemonImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OnGetRandomPokemonImplCopyWithImpl<$Res>
+    extends _$PokemonListEventsCopyWithImpl<$Res, _$OnGetRandomPokemonImpl>
+    implements _$$OnGetRandomPokemonImplCopyWith<$Res> {
+  __$$OnGetRandomPokemonImplCopyWithImpl(_$OnGetRandomPokemonImpl _value,
+      $Res Function(_$OnGetRandomPokemonImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of PokemonListEvents
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$OnGetRandomPokemonImpl implements OnGetRandomPokemon {
+  const _$OnGetRandomPokemonImpl();
+
+  @override
+  String toString() {
+    return 'PokemonListEvents.onGetRandomPokemon()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$OnGetRandomPokemonImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() onGetPokemonList,
+    required TResult Function() onGetRandomPokemon,
+  }) {
+    return onGetRandomPokemon();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? onGetPokemonList,
+    TResult? Function()? onGetRandomPokemon,
+  }) {
+    return onGetRandomPokemon?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? onGetPokemonList,
+    TResult Function()? onGetRandomPokemon,
+    required TResult orElse(),
+  }) {
+    if (onGetRandomPokemon != null) {
+      return onGetRandomPokemon();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OnGetPokemonList value) onGetPokemonList,
+    required TResult Function(OnGetRandomPokemon value) onGetRandomPokemon,
+  }) {
+    return onGetRandomPokemon(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OnGetPokemonList value)? onGetPokemonList,
+    TResult? Function(OnGetRandomPokemon value)? onGetRandomPokemon,
+  }) {
+    return onGetRandomPokemon?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnGetPokemonList value)? onGetPokemonList,
+    TResult Function(OnGetRandomPokemon value)? onGetRandomPokemon,
+    required TResult orElse(),
+  }) {
+    if (onGetRandomPokemon != null) {
+      return onGetRandomPokemon(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnGetRandomPokemon implements PokemonListEvents {
+  const factory OnGetRandomPokemon() = _$OnGetRandomPokemonImpl;
+}
+
 PokemonListState _$PokemonListStateFromJson(Map<String, dynamic> json) {
   return _PokemonListState.fromJson(json);
 }
@@ -177,6 +294,7 @@ PokemonListState _$PokemonListStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PokemonListState {
   List<PokemonListModel>? get pokemonList => throw _privateConstructorUsedError;
+  String? get randomPokemon => throw _privateConstructorUsedError;
   Failure? get failure => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
@@ -197,7 +315,10 @@ abstract class $PokemonListStateCopyWith<$Res> {
       _$PokemonListStateCopyWithImpl<$Res, PokemonListState>;
   @useResult
   $Res call(
-      {List<PokemonListModel>? pokemonList, Failure? failure, bool isLoading});
+      {List<PokemonListModel>? pokemonList,
+      String? randomPokemon,
+      Failure? failure,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -216,6 +337,7 @@ class _$PokemonListStateCopyWithImpl<$Res, $Val extends PokemonListState>
   @override
   $Res call({
     Object? pokemonList = freezed,
+    Object? randomPokemon = freezed,
     Object? failure = freezed,
     Object? isLoading = null,
   }) {
@@ -224,6 +346,10 @@ class _$PokemonListStateCopyWithImpl<$Res, $Val extends PokemonListState>
           ? _value.pokemonList
           : pokemonList // ignore: cast_nullable_to_non_nullable
               as List<PokemonListModel>?,
+      randomPokemon: freezed == randomPokemon
+          ? _value.randomPokemon
+          : randomPokemon // ignore: cast_nullable_to_non_nullable
+              as String?,
       failure: freezed == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -245,7 +371,10 @@ abstract class _$$PokemonListStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<PokemonListModel>? pokemonList, Failure? failure, bool isLoading});
+      {List<PokemonListModel>? pokemonList,
+      String? randomPokemon,
+      Failure? failure,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -262,6 +391,7 @@ class __$$PokemonListStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? pokemonList = freezed,
+    Object? randomPokemon = freezed,
     Object? failure = freezed,
     Object? isLoading = null,
   }) {
@@ -270,6 +400,10 @@ class __$$PokemonListStateImplCopyWithImpl<$Res>
           ? _value._pokemonList
           : pokemonList // ignore: cast_nullable_to_non_nullable
               as List<PokemonListModel>?,
+      randomPokemon: freezed == randomPokemon
+          ? _value.randomPokemon
+          : randomPokemon // ignore: cast_nullable_to_non_nullable
+              as String?,
       failure: freezed == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -287,6 +421,7 @@ class __$$PokemonListStateImplCopyWithImpl<$Res>
 class _$PokemonListStateImpl implements _PokemonListState {
   const _$PokemonListStateImpl(
       {final List<PokemonListModel>? pokemonList,
+      this.randomPokemon,
       this.failure,
       this.isLoading = false})
       : _pokemonList = pokemonList;
@@ -305,6 +440,8 @@ class _$PokemonListStateImpl implements _PokemonListState {
   }
 
   @override
+  final String? randomPokemon;
+  @override
   final Failure? failure;
   @override
   @JsonKey()
@@ -312,7 +449,7 @@ class _$PokemonListStateImpl implements _PokemonListState {
 
   @override
   String toString() {
-    return 'PokemonListState(pokemonList: $pokemonList, failure: $failure, isLoading: $isLoading)';
+    return 'PokemonListState(pokemonList: $pokemonList, randomPokemon: $randomPokemon, failure: $failure, isLoading: $isLoading)';
   }
 
   @override
@@ -322,6 +459,8 @@ class _$PokemonListStateImpl implements _PokemonListState {
             other is _$PokemonListStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._pokemonList, _pokemonList) &&
+            (identical(other.randomPokemon, randomPokemon) ||
+                other.randomPokemon == randomPokemon) &&
             (identical(other.failure, failure) || other.failure == failure) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading));
@@ -329,8 +468,12 @@ class _$PokemonListStateImpl implements _PokemonListState {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_pokemonList), failure, isLoading);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_pokemonList),
+      randomPokemon,
+      failure,
+      isLoading);
 
   /// Create a copy of PokemonListState
   /// with the given fields replaced by the non-null parameter values.
@@ -352,6 +495,7 @@ class _$PokemonListStateImpl implements _PokemonListState {
 abstract class _PokemonListState implements PokemonListState {
   const factory _PokemonListState(
       {final List<PokemonListModel>? pokemonList,
+      final String? randomPokemon,
       final Failure? failure,
       final bool isLoading}) = _$PokemonListStateImpl;
 
@@ -360,6 +504,8 @@ abstract class _PokemonListState implements PokemonListState {
 
   @override
   List<PokemonListModel>? get pokemonList;
+  @override
+  String? get randomPokemon;
   @override
   Failure? get failure;
   @override
