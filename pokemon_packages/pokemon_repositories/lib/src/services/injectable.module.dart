@@ -14,12 +14,14 @@ import 'package:pokemon_repositories/src/implementations/pokemon_repositories.da
     as _i4;
 
 class PokemonRepositoriesPackageModule extends _i1.MicroPackageModule {
-// initializes the registration of main-scope dependencies inside of GetIt
+  // initializes the registration of main-scope dependencies inside of GetIt
   @override
   _i2.FutureOr<void> init(_i1.GetItHelper gh) {
-    gh.factory<_i3.IPokemonRepository>(() => _i4.PokemonRepository(
-          pokeApiClient: gh<_i5.PokeApiClient>(),
-          pokeGqlClient: gh<_i6.PokeGqlClient>(),
-        ));
+    gh.factory<_i3.IPokemonRepository>(
+      () => _i4.PokemonRepository(
+        pokeApiClient: gh<_i5.PokeApiClient>(),
+        pokeGqlClient: gh<_i6.PokeGqlClient>(),
+      ),
+    );
   }
 }

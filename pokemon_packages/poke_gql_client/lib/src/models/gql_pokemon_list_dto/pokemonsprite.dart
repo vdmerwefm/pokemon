@@ -6,7 +6,7 @@ part 'pokemonsprite.g.dart';
 @freezed
 class Pokemonsprite with _$Pokemonsprite {
   factory Pokemonsprite({
-    Map<String, dynamic>? sprites,
+    Map<String,dynamic>? sprites,
   }) = _Pokemonsprite;
 
   factory Pokemonsprite.fromJson(Map<String, dynamic> json) =>

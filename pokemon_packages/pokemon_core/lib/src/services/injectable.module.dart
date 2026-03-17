@@ -10,7 +10,7 @@ import 'package:injectable/injectable.dart' as _i1;
 import 'package:pokemon_core/src/configs/app_config.dart' as _i3;
 
 class PokemonCorePackageModule extends _i1.MicroPackageModule {
-// initializes the registration of main-scope dependencies inside of GetIt
+  // initializes the registration of main-scope dependencies inside of GetIt
   @override
   _i2.FutureOr<void> init(_i1.GetItHelper gh) {
     gh.factory<_i3.AppConfig>(() => _i3.AppConfig());

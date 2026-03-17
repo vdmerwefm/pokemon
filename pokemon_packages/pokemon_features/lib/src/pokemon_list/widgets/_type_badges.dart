@@ -11,9 +11,9 @@ class TypeBadges extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      runSpacing: 8,
+      runSpacing: 12,
       direction: Axis.vertical,
-      spacing: 8,
+      spacing: 12,
       children: types.map((type) {
         return Image.asset(
           getTypeBadges(type),

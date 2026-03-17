@@ -16,22 +16,42 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 8),
+            child: Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 4),
+                  child: Text('Trainer profile',
+                  style: TextStyle(
+                        color:  Color(0xFFE93F6E),
+                        fontFamily: 'pokemon_font',
+                        fontWeight: FontWeight.w900,
+                        package: 'pokemon_ui_kit',
+                      ),),
+                ),
+                Icon(
+                  Icons.account_box_sharp,
+                  size: 50,
+                  
+                  color: Color(0xFFE93F6E),
+                ),
+              ],
+            ),
+          ),
+        ],
         scrolledUnderElevation: 0, // Prevents elevation-based color shift
         surfaceTintColor: Colors.transparent,
-        centerTitle: true,
-        title: const Text(
-          'Pokedex',
-          style: TextStyle(
-            color: Color(0xFFE93F6E),
-            fontSize: 28,
-            fontFamily: 'pokemon_font',
-            fontWeight: FontWeight.w800,
-            package: 'pokemon_ui_kit',
-          ),
+        title: Image.asset(
+          height: 40,
+          width: 40,
+          'lib/src/assets/images/logo.png',
+          package: 'pokemon_ui_kit',
         ),
         backgroundColor: Colors.transparent,
         bottom: PreferredSize(
-          preferredSize: Size.zero,
+          preferredSize: const Size(16, 16),
           child: CustomPaint(
             painter: AppBarBottomStroke(
               color: const Color(0xFFE93F6E),

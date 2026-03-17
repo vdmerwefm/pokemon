@@ -20,14 +20,7 @@ Sprites _$SpritesFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Sprites {
-  String? get backShiny => throw _privateConstructorUsedError;
-  dynamic get backFemale => throw _privateConstructorUsedError;
-  String? get frontShiny => throw _privateConstructorUsedError;
-  String? get backDefault => throw _privateConstructorUsedError;
-  dynamic get frontFemale => throw _privateConstructorUsedError;
-  String? get frontDefault => throw _privateConstructorUsedError;
-  dynamic get backShinyFemale => throw _privateConstructorUsedError;
-  dynamic get frontShinyFemale => throw _privateConstructorUsedError;
+  Other? get other => throw _privateConstructorUsedError;
 
   /// Serializes this Sprites to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,15 +36,9 @@ abstract class $SpritesCopyWith<$Res> {
   factory $SpritesCopyWith(Sprites value, $Res Function(Sprites) then) =
       _$SpritesCopyWithImpl<$Res, Sprites>;
   @useResult
-  $Res call(
-      {String? backShiny,
-      dynamic backFemale,
-      String? frontShiny,
-      String? backDefault,
-      dynamic frontFemale,
-      String? frontDefault,
-      dynamic backShinyFemale,
-      dynamic frontShinyFemale});
+  $Res call({Other? other});
+
+  $OtherCopyWith<$Res>? get other;
 }
 
 /// @nodoc
@@ -69,49 +56,28 @@ class _$SpritesCopyWithImpl<$Res, $Val extends Sprites>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? backShiny = freezed,
-    Object? backFemale = freezed,
-    Object? frontShiny = freezed,
-    Object? backDefault = freezed,
-    Object? frontFemale = freezed,
-    Object? frontDefault = freezed,
-    Object? backShinyFemale = freezed,
-    Object? frontShinyFemale = freezed,
+    Object? other = freezed,
   }) {
     return _then(_value.copyWith(
-      backShiny: freezed == backShiny
-          ? _value.backShiny
-          : backShiny // ignore: cast_nullable_to_non_nullable
-              as String?,
-      backFemale: freezed == backFemale
-          ? _value.backFemale
-          : backFemale // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      frontShiny: freezed == frontShiny
-          ? _value.frontShiny
-          : frontShiny // ignore: cast_nullable_to_non_nullable
-              as String?,
-      backDefault: freezed == backDefault
-          ? _value.backDefault
-          : backDefault // ignore: cast_nullable_to_non_nullable
-              as String?,
-      frontFemale: freezed == frontFemale
-          ? _value.frontFemale
-          : frontFemale // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      frontDefault: freezed == frontDefault
-          ? _value.frontDefault
-          : frontDefault // ignore: cast_nullable_to_non_nullable
-              as String?,
-      backShinyFemale: freezed == backShinyFemale
-          ? _value.backShinyFemale
-          : backShinyFemale // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      frontShinyFemale: freezed == frontShinyFemale
-          ? _value.frontShinyFemale
-          : frontShinyFemale // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+      other: freezed == other
+          ? _value.other
+          : other // ignore: cast_nullable_to_non_nullable
+              as Other?,
     ) as $Val);
+  }
+
+  /// Create a copy of Sprites
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OtherCopyWith<$Res>? get other {
+    if (_value.other == null) {
+      return null;
+    }
+
+    return $OtherCopyWith<$Res>(_value.other!, (value) {
+      return _then(_value.copyWith(other: value) as $Val);
+    });
   }
 }
 
@@ -122,15 +88,10 @@ abstract class _$$SpritesImplCopyWith<$Res> implements $SpritesCopyWith<$Res> {
       __$$SpritesImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? backShiny,
-      dynamic backFemale,
-      String? frontShiny,
-      String? backDefault,
-      dynamic frontFemale,
-      String? frontDefault,
-      dynamic backShinyFemale,
-      dynamic frontShinyFemale});
+  $Res call({Other? other});
+
+  @override
+  $OtherCopyWith<$Res>? get other;
 }
 
 /// @nodoc
@@ -146,48 +107,13 @@ class __$$SpritesImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? backShiny = freezed,
-    Object? backFemale = freezed,
-    Object? frontShiny = freezed,
-    Object? backDefault = freezed,
-    Object? frontFemale = freezed,
-    Object? frontDefault = freezed,
-    Object? backShinyFemale = freezed,
-    Object? frontShinyFemale = freezed,
+    Object? other = freezed,
   }) {
     return _then(_$SpritesImpl(
-      backShiny: freezed == backShiny
-          ? _value.backShiny
-          : backShiny // ignore: cast_nullable_to_non_nullable
-              as String?,
-      backFemale: freezed == backFemale
-          ? _value.backFemale
-          : backFemale // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      frontShiny: freezed == frontShiny
-          ? _value.frontShiny
-          : frontShiny // ignore: cast_nullable_to_non_nullable
-              as String?,
-      backDefault: freezed == backDefault
-          ? _value.backDefault
-          : backDefault // ignore: cast_nullable_to_non_nullable
-              as String?,
-      frontFemale: freezed == frontFemale
-          ? _value.frontFemale
-          : frontFemale // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      frontDefault: freezed == frontDefault
-          ? _value.frontDefault
-          : frontDefault // ignore: cast_nullable_to_non_nullable
-              as String?,
-      backShinyFemale: freezed == backShinyFemale
-          ? _value.backShinyFemale
-          : backShinyFemale // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      frontShinyFemale: freezed == frontShinyFemale
-          ? _value.frontShinyFemale
-          : frontShinyFemale // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+      other: freezed == other
+          ? _value.other
+          : other // ignore: cast_nullable_to_non_nullable
+              as Other?,
     ));
   }
 }
@@ -195,39 +121,17 @@ class __$$SpritesImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$SpritesImpl implements _Sprites {
-  _$SpritesImpl(
-      {this.backShiny,
-      this.backFemale,
-      this.frontShiny,
-      this.backDefault,
-      this.frontFemale,
-      this.frontDefault,
-      this.backShinyFemale,
-      this.frontShinyFemale});
+  _$SpritesImpl({this.other});
 
   factory _$SpritesImpl.fromJson(Map<String, dynamic> json) =>
       _$$SpritesImplFromJson(json);
 
   @override
-  final String? backShiny;
-  @override
-  final dynamic backFemale;
-  @override
-  final String? frontShiny;
-  @override
-  final String? backDefault;
-  @override
-  final dynamic frontFemale;
-  @override
-  final String? frontDefault;
-  @override
-  final dynamic backShinyFemale;
-  @override
-  final dynamic frontShinyFemale;
+  final Other? other;
 
   @override
   String toString() {
-    return 'Sprites(backShiny: $backShiny, backFemale: $backFemale, frontShiny: $frontShiny, backDefault: $backDefault, frontFemale: $frontFemale, frontDefault: $frontDefault, backShinyFemale: $backShinyFemale, frontShinyFemale: $frontShinyFemale)';
+    return 'Sprites(other: $other)';
   }
 
   @override
@@ -235,36 +139,12 @@ class _$SpritesImpl implements _Sprites {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SpritesImpl &&
-            (identical(other.backShiny, backShiny) ||
-                other.backShiny == backShiny) &&
-            const DeepCollectionEquality()
-                .equals(other.backFemale, backFemale) &&
-            (identical(other.frontShiny, frontShiny) ||
-                other.frontShiny == frontShiny) &&
-            (identical(other.backDefault, backDefault) ||
-                other.backDefault == backDefault) &&
-            const DeepCollectionEquality()
-                .equals(other.frontFemale, frontFemale) &&
-            (identical(other.frontDefault, frontDefault) ||
-                other.frontDefault == frontDefault) &&
-            const DeepCollectionEquality()
-                .equals(other.backShinyFemale, backShinyFemale) &&
-            const DeepCollectionEquality()
-                .equals(other.frontShinyFemale, frontShinyFemale));
+            (identical(other.other, this.other) || other.other == this.other));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      backShiny,
-      const DeepCollectionEquality().hash(backFemale),
-      frontShiny,
-      backDefault,
-      const DeepCollectionEquality().hash(frontFemale),
-      frontDefault,
-      const DeepCollectionEquality().hash(backShinyFemale),
-      const DeepCollectionEquality().hash(frontShinyFemale));
+  int get hashCode => Object.hash(runtimeType, other);
 
   /// Create a copy of Sprites
   /// with the given fields replaced by the non-null parameter values.
@@ -283,34 +163,12 @@ class _$SpritesImpl implements _Sprites {
 }
 
 abstract class _Sprites implements Sprites {
-  factory _Sprites(
-      {final String? backShiny,
-      final dynamic backFemale,
-      final String? frontShiny,
-      final String? backDefault,
-      final dynamic frontFemale,
-      final String? frontDefault,
-      final dynamic backShinyFemale,
-      final dynamic frontShinyFemale}) = _$SpritesImpl;
+  factory _Sprites({final Other? other}) = _$SpritesImpl;
 
   factory _Sprites.fromJson(Map<String, dynamic> json) = _$SpritesImpl.fromJson;
 
   @override
-  String? get backShiny;
-  @override
-  dynamic get backFemale;
-  @override
-  String? get frontShiny;
-  @override
-  String? get backDefault;
-  @override
-  dynamic get frontFemale;
-  @override
-  String? get frontDefault;
-  @override
-  dynamic get backShinyFemale;
-  @override
-  dynamic get frontShinyFemale;
+  Other? get other;
 
   /// Create a copy of Sprites
   /// with the given fields replaced by the non-null parameter values.

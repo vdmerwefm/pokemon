@@ -12,7 +12,7 @@ import 'package:poke_gql_client/src/poke_gql_client.dart' as _i5;
 import 'package:pokemon_core/pokemon_core.dart' as _i4;
 
 class PokeGqlClientPackageModule extends _i1.MicroPackageModule {
-// initializes the registration of main-scope dependencies inside of GetIt
+  // initializes the registration of main-scope dependencies inside of GetIt
   @override
   _i2.FutureOr<void> init(_i1.GetItHelper gh) {
     gh.singleton<_i3.GqlDio>(() => _i3.GqlDio(gh<_i4.AppConfig>()));

@@ -17,7 +17,7 @@ class PokemonListModel extends Equatable {
 
   factory PokemonListModel.fromJson(Map<String, dynamic> json) =>
       PokemonListModel(
-        id:json['id'] as int,
+        id: json['id'] as int,
         name: json['name'] as String,
         sprite: json['sprite'] as String,
         type: json['type'] as List<String>,

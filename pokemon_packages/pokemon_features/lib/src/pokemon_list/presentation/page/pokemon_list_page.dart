@@ -30,7 +30,7 @@ class PokemonListPage extends StatelessWidget {
             return const Center(child: Text('No Pokemon found'));
           }
           return Padding(
-            padding: const EdgeInsets.all(18),
+            padding: const EdgeInsets.only(left: 16, right: 16),
             child: ListView.builder(
               itemCount: pokemonList.length,
               itemBuilder: (context, index) {
@@ -60,48 +60,55 @@ Widget pokemonListTile({
   return GestureDetector(
     onTap: () => Navigator.push(context, route),
     child: Padding(
-      padding: const EdgeInsets.all(8),
-      child: SizedBox(
+      padding: const EdgeInsets.only(top:16),
+      child: Container(
+        color: Colors.black12,
         width: MediaQuery.sizeOf(context).width,
-        height: 75,
+        height: 96,
         child: Wrap(
           direction: Axis.horizontal,
           alignment: WrapAlignment.spaceBetween,
-          crossAxisAlignment: WrapCrossAlignment.start,
           children: [
             Wrap(
               direction: Axis.horizontal,
-              alignment: WrapAlignment.start,
               children: [
-                Image.network(
-                  pokemon.sprite,
-                  fit: BoxFit.none,
-                  width: 75,
-                  height: 100,
-
+                ColoredBox(
+                  color: getColor(pokemon.type),
+                  child: Image.network(
+                    alignment: Alignment.center,
+                    pokemon.sprite,
+                    fit: BoxFit.none,
+                    scale: 3.6,
+                    width: 75,
+                    height: 96,
+                  ),
                 ),
-                Text(
-                  '${pokemon.name.toUpperCase()}\n${idValidator(pokemon.id)}',
-                  textAlign: TextAlign.start,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'pokemon_font',
-                    fontWeight: FontWeight.w800,
-                    package: 'pokemon_ui_kit',
+                Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Text(
+                    '${pokemon.name.toUpperCase()}\n${idValidator(pokemon.id)}',
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'pokemon_font',
+                      fontWeight: FontWeight.w900,
+                      package: 'pokemon_ui_kit',
+                    ),
                   ),
                 ),
               ],
             ),
-            Wrap(
-              direction: Axis.horizontal,
-              alignment: WrapAlignment.center,
-              children: [
-                TypeBadges(types: pokemon.type),
-                const Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Icon(Icons.arrow_forward_ios),
-                ),
-              ],
+            Padding(
+              padding: _badgepadding(pokemon.type),
+              child: Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  TypeBadges(types: pokemon.type),
+                  const SizedBox(
+                    width: 12,
+                  ),
+                  const Icon(Icons.arrow_forward_ios),
+                ],
+              ),
             ),
           ],
         ),
@@ -119,6 +126,39 @@ String idValidator(int id) {
   } else {
     return '#$pokemonId';
   }
+}
+
+EdgeInsets _badgepadding(List<String> types) {
+  if (types.length == 1) {
+    return const EdgeInsets.only(top: 36, right: 12);
+  } else {
+    return const EdgeInsets.only(top: 20, right: 12);
+  }
+}
+
+Color getColor(List<String> types) {
+  final type = PokemonType.values.asNameMap()[types.first];
+  return switch (type) {
+    PokemonType.bug => const Color(0xFFC2D501),
+    PokemonType.dark => const Color(0xFF5F504D),
+    PokemonType.dragon => const Color(0xFF406CA9),
+    PokemonType.electric => const Color(0xFFFCDC00),
+    PokemonType.fairy => const Color(0xFFF3B1DB),
+    PokemonType.fighting => const Color(0xFFFCB600),
+    PokemonType.fire => const Color(0xFFFC671A),
+    PokemonType.flying => const Color(0xFF93D5E8),
+    PokemonType.ghost => const Color(0xFF805474),
+    PokemonType.grass => const Color(0xFF35D32F),
+    PokemonType.ground => const Color(0xFFC6883D),
+    PokemonType.ice => const Color(0xFF1DC1DD),
+    PokemonType.normal => const Color(0xFFC3BEB5),
+    PokemonType.poison => const Color(0xFFB04EC4),
+    PokemonType.psychic => const Color(0xFFF16177),
+    PokemonType.rock => const Color(0xFFCBC594),
+    PokemonType.steel => const Color(0xFF72C3D5),
+    PokemonType.water => const Color(0xFF0083C2),
+    _ => const Color(0xFFE93F6E)
+  };
 }
 
 ///already_dead
