@@ -24,6 +24,7 @@ mixin _$Pokemon {
   String? get name => throw _privateConstructorUsedError;
   List<Pokemontype>? get pokemontypes => throw _privateConstructorUsedError;
   List<Pokemonsprite>? get pokemonsprites => throw _privateConstructorUsedError;
+  Pokemonspecy? get pokemonspecy => throw _privateConstructorUsedError;
 
   /// Serializes this Pokemon to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,7 +44,10 @@ abstract class $PokemonCopyWith<$Res> {
       {int? id,
       String? name,
       List<Pokemontype>? pokemontypes,
-      List<Pokemonsprite>? pokemonsprites});
+      List<Pokemonsprite>? pokemonsprites,
+      Pokemonspecy? pokemonspecy});
+
+  $PokemonspecyCopyWith<$Res>? get pokemonspecy;
 }
 
 /// @nodoc
@@ -65,6 +69,7 @@ class _$PokemonCopyWithImpl<$Res, $Val extends Pokemon>
     Object? name = freezed,
     Object? pokemontypes = freezed,
     Object? pokemonsprites = freezed,
+    Object? pokemonspecy = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -83,7 +88,25 @@ class _$PokemonCopyWithImpl<$Res, $Val extends Pokemon>
           ? _value.pokemonsprites
           : pokemonsprites // ignore: cast_nullable_to_non_nullable
               as List<Pokemonsprite>?,
+      pokemonspecy: freezed == pokemonspecy
+          ? _value.pokemonspecy
+          : pokemonspecy // ignore: cast_nullable_to_non_nullable
+              as Pokemonspecy?,
     ) as $Val);
+  }
+
+  /// Create a copy of Pokemon
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PokemonspecyCopyWith<$Res>? get pokemonspecy {
+    if (_value.pokemonspecy == null) {
+      return null;
+    }
+
+    return $PokemonspecyCopyWith<$Res>(_value.pokemonspecy!, (value) {
+      return _then(_value.copyWith(pokemonspecy: value) as $Val);
+    });
   }
 }
 
@@ -98,7 +121,11 @@ abstract class _$$PokemonImplCopyWith<$Res> implements $PokemonCopyWith<$Res> {
       {int? id,
       String? name,
       List<Pokemontype>? pokemontypes,
-      List<Pokemonsprite>? pokemonsprites});
+      List<Pokemonsprite>? pokemonsprites,
+      Pokemonspecy? pokemonspecy});
+
+  @override
+  $PokemonspecyCopyWith<$Res>? get pokemonspecy;
 }
 
 /// @nodoc
@@ -118,6 +145,7 @@ class __$$PokemonImplCopyWithImpl<$Res>
     Object? name = freezed,
     Object? pokemontypes = freezed,
     Object? pokemonsprites = freezed,
+    Object? pokemonspecy = freezed,
   }) {
     return _then(_$PokemonImpl(
       id: freezed == id
@@ -136,6 +164,10 @@ class __$$PokemonImplCopyWithImpl<$Res>
           ? _value._pokemonsprites
           : pokemonsprites // ignore: cast_nullable_to_non_nullable
               as List<Pokemonsprite>?,
+      pokemonspecy: freezed == pokemonspecy
+          ? _value.pokemonspecy
+          : pokemonspecy // ignore: cast_nullable_to_non_nullable
+              as Pokemonspecy?,
     ));
   }
 }
@@ -147,7 +179,8 @@ class _$PokemonImpl implements _Pokemon {
       {this.id,
       this.name,
       final List<Pokemontype>? pokemontypes,
-      final List<Pokemonsprite>? pokemonsprites})
+      final List<Pokemonsprite>? pokemonsprites,
+      this.pokemonspecy})
       : _pokemontypes = pokemontypes,
         _pokemonsprites = pokemonsprites;
 
@@ -179,8 +212,11 @@ class _$PokemonImpl implements _Pokemon {
   }
 
   @override
+  final Pokemonspecy? pokemonspecy;
+
+  @override
   String toString() {
-    return 'Pokemon(id: $id, name: $name, pokemontypes: $pokemontypes, pokemonsprites: $pokemonsprites)';
+    return 'Pokemon(id: $id, name: $name, pokemontypes: $pokemontypes, pokemonsprites: $pokemonsprites, pokemonspecy: $pokemonspecy)';
   }
 
   @override
@@ -193,7 +229,9 @@ class _$PokemonImpl implements _Pokemon {
             const DeepCollectionEquality()
                 .equals(other._pokemontypes, _pokemontypes) &&
             const DeepCollectionEquality()
-                .equals(other._pokemonsprites, _pokemonsprites));
+                .equals(other._pokemonsprites, _pokemonsprites) &&
+            (identical(other.pokemonspecy, pokemonspecy) ||
+                other.pokemonspecy == pokemonspecy));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -203,7 +241,8 @@ class _$PokemonImpl implements _Pokemon {
       id,
       name,
       const DeepCollectionEquality().hash(_pokemontypes),
-      const DeepCollectionEquality().hash(_pokemonsprites));
+      const DeepCollectionEquality().hash(_pokemonsprites),
+      pokemonspecy);
 
   /// Create a copy of Pokemon
   /// with the given fields replaced by the non-null parameter values.
@@ -226,7 +265,8 @@ abstract class _Pokemon implements Pokemon {
       {final int? id,
       final String? name,
       final List<Pokemontype>? pokemontypes,
-      final List<Pokemonsprite>? pokemonsprites}) = _$PokemonImpl;
+      final List<Pokemonsprite>? pokemonsprites,
+      final Pokemonspecy? pokemonspecy}) = _$PokemonImpl;
 
   factory _Pokemon.fromJson(Map<String, dynamic> json) = _$PokemonImpl.fromJson;
 
@@ -238,6 +278,8 @@ abstract class _Pokemon implements Pokemon {
   List<Pokemontype>? get pokemontypes;
   @override
   List<Pokemonsprite>? get pokemonsprites;
+  @override
+  Pokemonspecy? get pokemonspecy;
 
   /// Create a copy of Pokemon
   /// with the given fields replaced by the non-null parameter values.

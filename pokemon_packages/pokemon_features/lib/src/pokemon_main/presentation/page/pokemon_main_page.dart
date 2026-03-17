@@ -23,18 +23,20 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
               children: [
                 Padding(
                   padding: EdgeInsets.only(top: 4),
-                  child: Text('Trainer profile',
-                  style: TextStyle(
-                        color:  Color(0xFFE93F6E),
-                        fontFamily: 'pokemon_font',
-                        fontWeight: FontWeight.w900,
-                        package: 'pokemon_ui_kit',
-                      ),),
+                  child: Text(
+                    'Trainer profile',
+                    style: TextStyle(
+                      color: Color(0xFFE93F6E),
+                      fontFamily: 'pokemon_font',
+                      fontWeight: FontWeight.w900,
+                      package: 'pokemon_ui_kit',
+                    ),
+                  ),
                 ),
                 Icon(
                   Icons.account_box_sharp,
                   size: 50,
-                  
+
                   color: Color(0xFFE93F6E),
                 ),
               ],

@@ -27,7 +27,18 @@
               }
             }
           }
-        ]
+        ],
+        "pokemonspecy": {
+          "pokemonspecies": [
+            {
+              "pokemonspeciesnames": [
+                {
+                  "genus": "Seed Pokémon"
+                }
+              ]
+            }
+          ]
+        }
       }
     ]
   }

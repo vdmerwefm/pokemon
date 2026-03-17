@@ -58,9 +58,9 @@ Widget pokemonListTile({
   required Route<dynamic> route,
 }) {
   return GestureDetector(
-    onTap: () => Navigator.push(context, route),
+    onTap: () => {},//Navigator.push(context, route),
     child: Padding(
-      padding: const EdgeInsets.only(top:16),
+      padding: const EdgeInsets.only(top: 16),
       child: Container(
         color: Colors.black12,
         width: MediaQuery.sizeOf(context).width,
@@ -79,20 +79,35 @@ Widget pokemonListTile({
                     pokemon.sprite,
                     fit: BoxFit.none,
                     scale: 3.6,
-                    width: 75,
+                    width: 100,
                     height: 96,
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Text(
-                    '${pokemon.name.toUpperCase()}\n${idValidator(pokemon.id)}',
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'pokemon_font',
-                      fontWeight: FontWeight.w900,
-                      package: 'pokemon_ui_kit',
-                    ),
+                  padding: const EdgeInsets.only(left:12, top: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        pokemon.name.toUpperCase(),
+                        style: pokemonStyle(
+                          Colors.black,
+                        ),
+                      ),
+                      Text(
+                        idValidator(pokemon.id),
+                        style: pokemonStyle(
+                          Colors.black45,
+                        ),
+                      ),
+                      Text(
+                        pokemon.genus.toUpperCase().replaceAll('É', 'E'),
+                        style: pokemonStyle(
+                          Colors.black26,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -157,8 +172,17 @@ Color getColor(List<String> types) {
     PokemonType.rock => const Color(0xFFCBC594),
     PokemonType.steel => const Color(0xFF72C3D5),
     PokemonType.water => const Color(0xFF0083C2),
-    _ => const Color(0xFFE93F6E)
+    _ => const Color(0xFFE93F6E),
   };
+}
+
+TextStyle pokemonStyle(Color color) {
+  return const TextStyle(
+    fontSize: 20,
+    fontFamily: 'pokemon_font',
+    fontWeight: FontWeight.w900,
+    package: 'pokemon_ui_kit',
+  );
 }
 
 ///already_dead

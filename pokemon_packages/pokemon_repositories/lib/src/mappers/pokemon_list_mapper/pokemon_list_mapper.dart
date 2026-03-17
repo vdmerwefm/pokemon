@@ -14,17 +14,23 @@ extension PokemonListMapper on GqlPokemonListDto {
         for (final sprite in rawPokemon.pokemonsprites!) {
           if (sprite.sprites != null) {
             final other = sprite.sprites?['other'] as Map<String, dynamic>;
-            final officialArtwork = other['official-artwork'] as Map<String, dynamic>;
+            final officialArtwork =
+                other['official-artwork'] as Map<String, dynamic>;
             frontDefault = officialArtwork['front_default'] as String?;
           } else {
             frontDefault = '';
           }
         }
+
+        final genus = rawPokemon.pokemonspecy?.pokemonspecies?.firstOrNull
+            ?.pokemonspeciesnames?.firstOrNull?.genus;
+
         return PokemonListModel(
           name: rawPokemon.name ?? '',
           sprite: frontDefault ?? '',
           id: rawPokemon.id ?? 0,
           type: typeList,
+          genus: genus ?? '',
         );
       },
     ).toList();
