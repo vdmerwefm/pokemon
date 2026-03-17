@@ -1,3 +1,4 @@
 {
-    "poke_base_url":"https://pokeapi.co/api/v2"
+    "poke_base_url":"https://pokeapi.co/api/v2",
+    "gql_base_url": "https://graphql.pokeapi.co/v1beta2"
 }

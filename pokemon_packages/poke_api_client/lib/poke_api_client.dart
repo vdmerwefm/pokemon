@@ -3,7 +3,7 @@
 /// creates separation of the raw data layer and the domain layer,
 /// allowing for better maintainability and scalability
 library;
-export 'src/configs/app_config.dart';
+
 export 'src/dio/poke_dio.dart';
 export 'src/models/raw_pokemon_details_dto/ability.dart';
 export 'src/models/raw_pokemon_details_dto/raw_pokemon_details_dto.dart';

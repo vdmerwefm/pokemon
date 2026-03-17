@@ -4,7 +4,10 @@
 /// and service locators
 library;
 
-export 'src/constants/failure_constants.dart';
+export 'src/configs/app_config.dart';
 export 'src/constants/global_di_constant.dart';
+export 'src/constants/string_constants.dart';
 export 'src/error/failures.dart';
+export 'src/services/injectable.dart';
+export 'src/services/injectable.module.dart';
 export 'src/utils/base_url_check_util/base_url_check_util.dart';

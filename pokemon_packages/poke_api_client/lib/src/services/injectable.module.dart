@@ -7,17 +7,15 @@
 import 'dart:async' as _i2;
 
 import 'package:injectable/injectable.dart' as _i1;
-import 'package:poke_api_client/poke_api_client.dart' as _i5;
-import 'package:poke_api_client/src/configs/app_config.dart' as _i3;
-import 'package:poke_api_client/src/dio/poke_dio.dart' as _i4;
-import 'package:poke_api_client/src/poke_api_client.dart' as _i6;
+import 'package:poke_api_client/src/dio/poke_dio.dart' as _i3;
+import 'package:poke_api_client/src/poke_api_client.dart' as _i5;
+import 'package:pokemon_core/pokemon_core.dart' as _i4;
 
 class PokeApiClientPackageModule extends _i1.MicroPackageModule {
-// initializes the registration of main-scope dependencies inside of GetIt
+  // initializes the registration of main-scope dependencies inside of GetIt
   @override
   _i2.FutureOr<void> init(_i1.GetItHelper gh) {
-    gh.singleton<_i3.AppConfig>(() => _i3.AppConfig());
-    gh.singleton<_i4.PokeDio>(() => _i4.PokeDio(gh<_i5.AppConfig>()));
-    gh.singleton<_i6.PokeApiClient>(() => _i6.PokeApiClient(gh<_i4.PokeDio>()));
+    gh.singleton<_i3.PokeDio>(() => _i3.PokeDio(gh<_i4.AppConfig>()));
+    gh.singleton<_i5.PokeApiClient>(() => _i5.PokeApiClient(gh<_i3.PokeDio>()));
   }
 }

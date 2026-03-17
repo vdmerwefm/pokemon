@@ -21,7 +21,7 @@ class RawPokemonSpeciesDetailsDto with _$RawPokemonSpeciesDetailsDto {
 
   factory RawPokemonSpeciesDetailsDto.empty() => RawPokemonSpeciesDetailsDto(
     flavorTextEntries: null,
-    genera: null, 
+    genera: null,
     isBaby: false,
     isLegendary: false,
     isMythical: false,

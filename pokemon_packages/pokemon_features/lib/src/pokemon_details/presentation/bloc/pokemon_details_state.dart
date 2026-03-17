@@ -10,6 +10,6 @@ class PokemonDetailsState with _$PokemonDetailsState {
 
   factory PokemonDetailsState.fromJson(Map<String, dynamic> json) =>
       _$PokemonDetailsStateFromJson(json);
-  
+
   factory PokemonDetailsState.empty() => const PokemonDetailsState();
 }

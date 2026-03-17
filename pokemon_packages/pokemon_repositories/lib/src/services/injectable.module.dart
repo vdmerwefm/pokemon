@@ -8,6 +8,7 @@ import 'dart:async' as _i2;
 
 import 'package:injectable/injectable.dart' as _i1;
 import 'package:poke_api_client/poke_api_client.dart' as _i5;
+import 'package:poke_gql_client/poke_gql_client.dart' as _i6;
 import 'package:pokemon_repositories/pokemon_repositories.dart' as _i3;
 import 'package:pokemon_repositories/src/implementations/pokemon_repositories.dart'
     as _i4;
@@ -16,7 +17,9 @@ class PokemonRepositoriesPackageModule extends _i1.MicroPackageModule {
 // initializes the registration of main-scope dependencies inside of GetIt
   @override
   _i2.FutureOr<void> init(_i1.GetItHelper gh) {
-    gh.factory<_i3.IPokemonRepository>(
-        () => _i4.PokemonRepository(pokeApiClient: gh<_i5.PokeApiClient>()));
+    gh.factory<_i3.IPokemonRepository>(() => _i4.PokemonRepository(
+          pokeApiClient: gh<_i5.PokeApiClient>(),
+          pokeGqlClient: gh<_i6.PokeGqlClient>(),
+        ));
   }
 }

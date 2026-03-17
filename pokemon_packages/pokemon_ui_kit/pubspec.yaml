@@ -26,3 +26,5 @@ flutter:
     - family: pokemon_font
       fonts:
         - asset: lib\src\assets\fonts\pokemon_font.ttf
+  assets:
+    - lib/src/assets/images/

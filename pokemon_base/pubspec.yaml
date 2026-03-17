@@ -18,6 +18,8 @@ dependencies:
   intl: ^0.20.2
   poke_api_client:
     path: ../pokemon_packages/poke_api_client
+  poke_gql_client:
+    path: ../pokemon_packages/poke_gql_client
   pokemon_core:
     path: ../pokemon_packages/pokemon_core
   pokemon_features:

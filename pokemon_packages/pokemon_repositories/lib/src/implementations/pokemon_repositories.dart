@@ -1,6 +1,7 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:poke_api_client/poke_api_client.dart';
+import 'package:poke_gql_client/poke_gql_client.dart';
 import 'package:pokemon_core/pokemon_core.dart';
 import 'package:pokemon_models/pokemon_models.dart';
 import 'package:pokemon_repositories/pokemon_repositories.dart';
@@ -9,15 +10,20 @@ import 'package:pokemon_repositories/src/mappers/pokemon_list_mapper/pokemon_lis
 
 @Injectable(as: IPokemonRepository)
 class PokemonRepository implements IPokemonRepository {
-  PokemonRepository({ required PokeApiClient pokeApiClient}) : _pokeApiClient = pokeApiClient;
+  PokemonRepository({
+    required PokeApiClient pokeApiClient,
+    required PokeGqlClient pokeGqlClient,
+  }) : _pokeApiClient = pokeApiClient,
+       _pokeGqlClient = pokeGqlClient;
+
   final PokeApiClient _pokeApiClient;
+  final PokeGqlClient _pokeGqlClient;
 
   @override
   TaskEither<Failure, List<PokemonListModel>> getPokemonList() {
-    return _pokeApiClient
-        .fetchRawPokemonList()
-        .map((rawPokemonListDto) => rawPokemonListDto.toPokemonList());
-       
+    return _pokeGqlClient.fetchRawPokemonList().map(
+      (rawPokemonListDto) => rawPokemonListDto.toPokemonList(),
+    );
   }
 
   @override
@@ -30,8 +36,7 @@ class PokemonRepository implements IPokemonRepository {
               .map(
                 (rawSpeciesDetailsDto) =>
                     rawPokemonDetails.toPokemonDetails(rawSpeciesDetailsDto),
-              )
-           
+              ),
         );
   }
 }

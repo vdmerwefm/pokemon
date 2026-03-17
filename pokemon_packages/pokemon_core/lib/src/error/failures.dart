@@ -9,13 +9,11 @@ class Failure {
       Failure(json['message'] as String);
 
   Map<String, dynamic> toJson() => {
-        'message': message,
-      };
+    'message': message,
+  };
 
   final String message;
 }
-
-
 
 @override
 final class HttpFailure extends Failure {

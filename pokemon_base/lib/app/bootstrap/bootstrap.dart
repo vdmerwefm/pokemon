@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
-import 'package:poke_api_client/poke_api_client.dart';
 import 'package:pokemon_base/app/bootstrap/injectable.dart';
 import 'package:pokemon_core/pokemon_core.dart';
 
