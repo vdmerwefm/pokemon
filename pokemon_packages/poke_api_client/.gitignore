@@ -3,6 +3,7 @@
 *.log
 *.pyc
 *.swp
+*.lock
 .DS_Store
 .atom/
 .buildlog/
@@ -44,3 +45,8 @@ app.*.map.json
 
 # Test related
 coverage
+
+#generated_files:
+**/src/services/injectable.module.dart
+*.freezed.dart
+*.g.dart

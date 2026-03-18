@@ -6,6 +6,7 @@ import 'package:pokemon_features/src/pokemon_list/presentation/bloc/pokemon_list
 import 'package:pokemon_models/pokemon_models.dart';
 
 part '../../widgets/_type_badges.dart';
+part '../../widgets/_type_text.dart';
 
 class PokemonListPage extends StatelessWidget {
   const PokemonListPage({super.key});
@@ -58,72 +59,77 @@ Widget pokemonListTile({
   required Route<dynamic> route,
 }) {
   return GestureDetector(
-    onTap: () => {},//Navigator.push(context, route),
+    onTap: () => {}, //Navigator.push(context, route),
     child: Padding(
       padding: const EdgeInsets.only(top: 16),
       child: Container(
         color: Colors.black12,
         width: MediaQuery.sizeOf(context).width,
         height: 96,
-        child: Wrap(
-          direction: Axis.horizontal,
-          alignment: WrapAlignment.spaceBetween,
+        child: Row(
           children: [
-            Wrap(
-              direction: Axis.horizontal,
-              children: [
-                ColoredBox(
-                  color: getColor(pokemon.type),
-                  child: Image.network(
-                    alignment: Alignment.center,
-                    pokemon.sprite,
-                    fit: BoxFit.none,
-                    scale: 3.6,
-                    width: 100,
-                    height: 96,
-                  ),
+            ColoredBox(
+              color: getColor(pokemon.type),
+              child: Image.network(
+                alignment: Alignment.center,
+                pokemon.sprite,
+                fit: BoxFit.none,
+                scale: 3.6,
+                width: 100,
+                height: 96,
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 12, top: 8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      pokemon.name.toUpperCase(),
+                      style: pokemonInfoStyle(
+                        Colors.black,
+                      ),
+                    ),
+                    Text(
+                      idValidator(pokemon.id),
+                      style: pokemonInfoStyle(
+                        Colors.black.withValues(alpha: 75),
+                      ),
+                    ),
+                    Text(
+                      pokemon.genus.toUpperCase().replaceAll('É', 'E'),
+                      style: pokemonInfoStyle(
+                        Colors.black.withValues(alpha: 50),
+                      ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left:12, top: 8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        pokemon.name.toUpperCase(),
-                        style: pokemonStyle(
-                          Colors.black,
-                        ),
-                      ),
-                      Text(
-                        idValidator(pokemon.id),
-                        style: pokemonStyle(
-                          Colors.black45,
-                        ),
-                      ),
-                      Text(
-                        pokemon.genus.toUpperCase().replaceAll('É', 'E'),
-                        style: pokemonStyle(
-                          Colors.black26,
-                        ),
-                      ),
-                    ],
+              ),
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TypeText(types: pokemon.type),
+                    TypeBadges(types: pokemon.type),
+                  ],
+                ),
+                const Expanded(child: SizedBox()),
+                Container(
+                  width: 36,
+                  color: const Color(0xFFE93F6E),
+                  child: const Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.white,
                   ),
                 ),
               ],
-            ),
-            Padding(
-              padding: _badgepadding(pokemon.type),
-              child: Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  TypeBadges(types: pokemon.type),
-                  const SizedBox(
-                    width: 12,
-                  ),
-                  const Icon(Icons.arrow_forward_ios),
-                ],
-              ),
             ),
           ],
         ),
@@ -140,14 +146,6 @@ String idValidator(int id) {
     return '#0$pokemonId';
   } else {
     return '#$pokemonId';
-  }
-}
-
-EdgeInsets _badgepadding(List<String> types) {
-  if (types.length == 1) {
-    return const EdgeInsets.only(top: 36, right: 12);
-  } else {
-    return const EdgeInsets.only(top: 20, right: 12);
   }
 }
 
@@ -176,9 +174,18 @@ Color getColor(List<String> types) {
   };
 }
 
-TextStyle pokemonStyle(Color color) {
+TextStyle pokemonInfoStyle(Color color) {
   return const TextStyle(
-    fontSize: 20,
+    fontSize: 18,
+    fontFamily: 'pokemon_font',
+    fontWeight: FontWeight.w900,
+    package: 'pokemon_ui_kit',
+  );
+}
+
+TextStyle pokemonBadgeTextStyle(Color color) {
+  return const TextStyle(
+    fontSize: 14,
     fontFamily: 'pokemon_font',
     fontWeight: FontWeight.w900,
     package: 'pokemon_ui_kit',

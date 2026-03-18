@@ -10,16 +10,18 @@ class TypeBadges extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      runSpacing: 12,
-      direction: Axis.vertical,
-      spacing: 12,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: types.map((type) {
-        return Image.asset(
-          getTypeBadges(type),
-          package: 'pokemon_ui_kit',
-          height: 24,
-          width: 24,
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 8),
+          child: Image.asset(
+            getTypeBadges(type),
+            package: 'pokemon_ui_kit',
+            height: 24,
+            width: 24,
+          ),
         );
       }).toList(),
     );

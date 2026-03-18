@@ -1,5 +1,5 @@
 String gqlPokemonListQuery = r''' 
-query GetPokemonWithTypes($limit: Int = 1025) {
+query GetPokemonWithTypes($limit: Int = 10) {
   pokemon(limit: $limit) {
     id
     name
