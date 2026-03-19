@@ -29,6 +29,8 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   Bloc.observer = const AppBlocObserver();
 
+  WidgetsFlutterBinding.ensureInitialized();
+
   await configureDependencies();
 
   BaseUrlCheckUtil.baseUrlCheck(sl<AppConfig>().pokeBaseUrl);

@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:pokemon_core/pokemon_core.dart';
 import 'package:pokemon_features/src/pokemon_details/presentation/page/pokemon_details_page.dart';
 import 'package:pokemon_features/src/pokemon_list/presentation/bloc/pokemon_list_bloc.dart';
@@ -7,10 +9,16 @@ import 'package:pokemon_models/pokemon_models.dart';
 
 part '../../widgets/_type_badges.dart';
 part '../../widgets/_type_text.dart';
+part '../../widgets/_load_more_button.dart';
 
-class PokemonListPage extends StatelessWidget {
+class PokemonListPage extends StatefulWidget {
   const PokemonListPage({super.key});
 
+  @override
+  State<PokemonListPage> createState() => _PokemonListPageState();
+}
+
+class _PokemonListPageState extends State<PokemonListPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -30,21 +38,31 @@ class PokemonListPage extends StatelessWidget {
           if (pokemonList.isEmpty) {
             return const Center(child: Text('No Pokemon found'));
           }
-          return Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16),
-            child: ListView.builder(
-              itemCount: pokemonList.length,
-              itemBuilder: (context, index) {
-                final pokemon = pokemonList[index];
-                return pokemonListTile(
-                  pokemon: pokemon,
-                  context: context,
-                  route: MaterialPageRoute<dynamic>(
-                    builder: (context) =>
-                        PokemonDetailsPage(name: pokemon.name),
+          return SingleChildScrollView(
+            padding: const EdgeInsets.only(bottom: 24),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 16, right: 16),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: pokemonList.length,
+                    itemBuilder: (context, index) {
+                      final pokemon = pokemonList[index];
+                      return pokemonListTile(
+                        pokemon: pokemon,
+                        context: context,
+                        route: MaterialPageRoute<dynamic>(
+                          builder: (context) =>
+                              PokemonDetailsPage(name: pokemon.name),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
+                ),
+                const LoadMoreButton()
+              ],
             ),
           );
         },
@@ -63,20 +81,31 @@ Widget pokemonListTile({
     child: Padding(
       padding: const EdgeInsets.only(top: 16),
       child: Container(
-        color: Colors.black12,
+        color: const Color(0xFF1A1A1A),
         width: MediaQuery.sizeOf(context).width,
         height: 96,
         child: Row(
           children: [
             ColoredBox(
-              color: getColor(pokemon.type),
-              child: Image.network(
-                alignment: Alignment.center,
-                pokemon.sprite,
-                fit: BoxFit.none,
-                scale: 3.6,
-                width: 100,
-                height: 96,
+              color: const Color(0xFF5F504D),
+              child: CachedNetworkImage(
+                cacheManager: MyImageCacheManager.customCacheManager,
+                imageUrl: pokemon.sprite,
+                imageBuilder: (context, imageProvider) {
+                  return Transform.scale(
+                    scale: 1.4,
+                    child: Image(
+                      image: imageProvider,
+                      alignment: Alignment.center,
+                      fit: BoxFit.contain,
+                      width: 100,
+                      height: 96,
+                    ),
+                  );
+                },
+                // Optional: add a loader so it's not a blank box while caching
+                placeholder: (context, url) =>
+                    const SizedBox(width: 100, height: 96),
               ),
             ),
             Expanded(
@@ -89,20 +118,21 @@ Widget pokemonListTile({
                     Text(
                       pokemon.name.toUpperCase(),
                       style: pokemonInfoStyle(
-                        Colors.black,
+                        Colors.white,
                       ),
                     ),
                     Text(
                       idValidator(pokemon.id),
                       style: pokemonInfoStyle(
-                        Colors.black.withValues(alpha: 75),
+                        Colors.white.withValues(alpha: 50),
                       ),
                     ),
                     Text(
                       pokemon.genus.toUpperCase().replaceAll('É', 'E'),
                       style: pokemonInfoStyle(
-                        Colors.black.withValues(alpha: 50),
+                        Colors.white.withValues(alpha: 75),
                       ),
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),
@@ -175,8 +205,9 @@ Color getColor(List<String> types) {
 }
 
 TextStyle pokemonInfoStyle(Color color) {
-  return const TextStyle(
-    fontSize: 18,
+  return TextStyle(
+    color: color,
+    fontSize: 17,
     fontFamily: 'pokemon_font',
     fontWeight: FontWeight.w900,
     package: 'pokemon_ui_kit',
@@ -184,11 +215,22 @@ TextStyle pokemonInfoStyle(Color color) {
 }
 
 TextStyle pokemonBadgeTextStyle(Color color) {
-  return const TextStyle(
+  return TextStyle(
+    color: color,
     fontSize: 14,
     fontFamily: 'pokemon_font',
     fontWeight: FontWeight.w900,
     package: 'pokemon_ui_kit',
+  );
+}
+
+class MyImageCacheManager {
+  static final customCacheManager = CacheManager(
+    Config(
+      'my_unique_key',
+      stalePeriod: const Duration(days: 30), // Forces data to stay for 30 days
+      maxNrOfCacheObjects: 500, // Keeps up to 500 images
+    ),
   );
 }
 

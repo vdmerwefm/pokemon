@@ -12,11 +12,14 @@ class PokeGqlClient {
 
   final GqlDio gqlDio;
 
-  TaskEither<Failure, GqlPokemonListDto> fetchRawPokemonList() {
+  TaskEither<Failure, GqlPokemonListDto> fetchRawPokemonList({
+    required int limit,
+    required int offset,
+  }) {
     return TaskEither.tryCatch(() async {
       final options = QueryOptions(
         document: gql(gqlPokemonListQuery),
-        variables: const {'limit': 1300},
+        variables: {'limit':limit, 'offset':offset},
       );
 
       final response = await gqlDioLink.query(options);

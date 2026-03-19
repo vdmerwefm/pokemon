@@ -1,20 +1,38 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:gql_dio_link/gql_dio_link.dart';
 import 'package:graphql/client.dart';
+import 'package:http_cache_hive_store/http_cache_hive_store.dart';
 import 'package:injectable/injectable.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:pokemon_core/pokemon_core.dart';
 
-@Singleton()
+part 'cache/gql_cache.dart';
+
+@singleton
 class GqlDio {
-  GqlDio(AppConfig appConfig) {
+  GqlDio(AppConfig appConfig, GqlCache gqlCache) {
     final options = BaseOptions(
       baseUrl: appConfig.gqlBaseUrl,
       headers: {
         'Accept': 'application/json',
       },
     );
-    _dio = Dio(options);
 
+    final cacheOptions = CacheOptions(
+      store: HiveCacheStore(
+        gqlCache.cacheDirectory.path,
+        hiveBoxName: 'pokmeon_cache',
+      ),
+      maxStale: const Duration(days: 7),
+      policy: CachePolicy.forceCache,
+      allowPostMethod: true,
+    );
+
+    _dio = Dio(options)
+      ..interceptors.add(DioCacheInterceptor(options: cacheOptions));
     final Link link = DioLink('', client: _dio);
 
     _gqlDioLink = GraphQLClient(

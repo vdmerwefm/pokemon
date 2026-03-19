@@ -4,8 +4,9 @@ part of 'pokemon_list_bloc.dart';
 class PokemonListState with _$PokemonListState {
   const factory PokemonListState({
     List<PokemonListModel>? pokemonList,
-    String? randomPokemon,
     Failure? failure,
+    @Default(9)int limit,
+    @Default(0)int offset,
     @Default(false) bool isLoading,
   }) = _PokemonListState;
 

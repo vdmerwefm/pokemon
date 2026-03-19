@@ -19,7 +19,7 @@ class TypeText extends StatelessWidget {
           child: Text(
             type.toUpperCase(),
             style: pokemonBadgeTextStyle(
-              Colors.black45,
+              Colors.white,
             ),
           ),
         );

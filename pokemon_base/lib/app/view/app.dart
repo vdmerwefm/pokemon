@@ -9,8 +9,12 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        appBarTheme: AppBarTheme(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        scaffoldBackgroundColor: const Color(0xFF141414),
+        appBarTheme: const AppBarTheme(
+          color: Color(0xFF141414),
+        ),
+        bottomAppBarTheme: const BottomAppBarTheme(
+          color: Color(0xFF141414),
         ),
         useMaterial3: true,
       ),

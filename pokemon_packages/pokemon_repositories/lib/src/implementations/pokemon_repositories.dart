@@ -20,10 +20,18 @@ class PokemonRepository implements IPokemonRepository {
   final PokeGqlClient _pokeGqlClient;
 
   @override
-  TaskEither<Failure, List<PokemonListModel>> getPokemonList() {
-    return _pokeGqlClient.fetchRawPokemonList().map(
-      (rawPokemonListDto) => rawPokemonListDto.toPokemonList(),
-    );
+  TaskEither<Failure, List<PokemonListModel>> getPokemonList({
+    required int limit,
+    required int offset,
+  }) {
+    return _pokeGqlClient
+        .fetchRawPokemonList(
+          limit: limit,
+          offset: offset,
+        )
+        .map(
+          (rawPokemonListDto) => rawPokemonListDto.toPokemonList(),
+        );
   }
 
   @override

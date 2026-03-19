@@ -13,8 +13,8 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:poke_api_client/poke_api_client.dart' as _i4;
 import 'package:poke_gql_client/poke_gql_client.dart' as _i5;
 import 'package:pokemon_core/pokemon_core.dart' as _i3;
-import 'package:pokemon_features/pokemon_features.dart' as _i6;
-import 'package:pokemon_repositories/pokemon_repositories.dart' as _i7;
+import 'package:pokemon_features/pokemon_features.dart' as _i7;
+import 'package:pokemon_repositories/pokemon_repositories.dart' as _i6;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -30,8 +30,8 @@ extension GetItInjectableX on _i1.GetIt {
     await _i3.PokemonCorePackageModule().init(gh);
     await _i4.PokeApiClientPackageModule().init(gh);
     await _i5.PokeGqlClientPackageModule().init(gh);
-    await _i6.PokemonFeaturesPackageModule().init(gh);
-    await _i7.PokemonRepositoriesPackageModule().init(gh);
+    await _i6.PokemonRepositoriesPackageModule().init(gh);
+    await _i7.PokemonFeaturesPackageModule().init(gh);
     return this;
   }
 }

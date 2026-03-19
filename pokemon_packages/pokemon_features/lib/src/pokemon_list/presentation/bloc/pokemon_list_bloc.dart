@@ -20,7 +20,10 @@ class PokemonListBloc extends Bloc<PokemonListEvents, PokemonListState> {
         ),
       );
 
-      final response = await _useCase.getPokemonListUseCase();
+      final response = await _useCase.getPokemonListUseCase(
+        limit: state.limit,
+        offset: state.offset,
+      );
 
       response.fold(
         (failure) {
@@ -42,20 +45,31 @@ class PokemonListBloc extends Bloc<PokemonListEvents, PokemonListState> {
       );
     });
 
-    on<OnGetRandomPokemon>((event, emit) async {
-      emit(state.copyWith(isLoading: true));
+    on<OnLoadMorePokemon>((event, emit) async {
+      emit(
+        state.copyWith(
+          isLoading: true,
+          offset: state.offset + 9,
+          limit: state.limit + 9,
+        ),
+      );
 
-      final response = await _useCase.getPokemonListUseCase();
+      final response = await _useCase.getPokemonListUseCase(
+        limit: state.limit,
+        offset: state.offset,
+      );
 
       response.fold(
         (failure) {
-          emit(state.copyWith(isLoading: false, failure: failure));
+          emit(state.copyWith(failure: failure, isLoading: false));
         },
-        (pokemonList) {
+        (pokemon) {
           emit(
             state.copyWith(
               isLoading: false,
-              randomPokemon: (pokemonList..shuffle()).first.name,
+              pokemonList: pokemon,
+              limit: state.limit,
+              offset: state.offset,
             ),
           );
         },

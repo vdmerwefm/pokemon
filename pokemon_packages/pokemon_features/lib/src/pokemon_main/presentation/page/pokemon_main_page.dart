@@ -16,13 +16,13 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: const [
+        actions: [
           Padding(
-            padding: EdgeInsets.only(right: 8),
+            padding: const EdgeInsets.only(right: 8),
             child: Row(
               children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 4),
+                const Padding(
+                  padding: EdgeInsets.only(top: 4, right: 4),
                   child: Text(
                     'Trainer profile',
                     style: TextStyle(
@@ -33,25 +33,33 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
                     ),
                   ),
                 ),
-                Icon(
-                  Icons.account_box_sharp,
-                  size: 50,
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      height: 36,
+                      width: 36,
+                      color: Colors.white,
+                    ),
+                    const Icon(
+                      Icons.account_box_sharp,
+                      size: 50,
 
-                  color: Color(0xFFE93F6E),
+                      color: Color(0xFFE93F6E),
+                    ),
+                  ],
                 ),
               ],
             ),
           ),
         ],
         scrolledUnderElevation: 0, // Prevents elevation-based color shift
-        surfaceTintColor: Colors.transparent,
         title: Image.asset(
           height: 40,
           width: 40,
           'lib/src/assets/images/logo.png',
           package: 'pokemon_ui_kit',
         ),
-        backgroundColor: Colors.transparent,
         bottom: PreferredSize(
           preferredSize: const Size(16, 16),
           child: CustomPaint(
@@ -84,7 +92,6 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
         ),
         child: const BottomAppBar(
           shape: CircularNotchedRectangle(),
-          color: Colors.white,
           notchMargin: 12,
         ),
       ),

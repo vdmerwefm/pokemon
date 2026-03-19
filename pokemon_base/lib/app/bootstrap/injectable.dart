@@ -13,8 +13,8 @@ import 'package:pokemon_repositories/pokemon_repositories.dart';
     ExternalModule(PokemonCorePackageModule),
     ExternalModule(PokeApiClientPackageModule),
     ExternalModule(PokeGqlClientPackageModule),
-    ExternalModule(PokemonFeaturesPackageModule),
     ExternalModule(PokemonRepositoriesPackageModule),
+    ExternalModule(PokemonFeaturesPackageModule),
   ],
 )
 Future<GetIt> configureDependencies() => sl.init();
