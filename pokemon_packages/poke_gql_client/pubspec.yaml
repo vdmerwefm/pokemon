@@ -9,7 +9,6 @@ environment:
 
 dependencies:
   dio: ^5.9.2
-  dio_cache_interceptor: ^4.0.5
   flutter:
     sdk: flutter
   fpdart: ^1.2.0
@@ -17,10 +16,8 @@ dependencies:
   get_it: ^9.2.1
   gql_dio_link: ^2.0.0
   graphql: ^5.2.4
-  http_cache_hive_store: ^5.0.2
   injectable: 2.7.1
   json_annotation: ^4.8.0
-  path_provider: ^2.1.0
   pokemon_core:
     path: ../pokemon_core
   

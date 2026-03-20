@@ -8,7 +8,9 @@ class LoadMoreButton extends StatelessWidget {
     return BlocProvider(
       create: (context) => sl<PokemonListBloc>(),
       child: GestureDetector(
-        onTap: () => {sl<PokemonListBloc>()..add(const OnLoadMorePokemon())},
+        onTap: () => context.read<PokemonListBloc>().add(
+              const PokemonListEvents.onLoadMorePokemon(),
+            ),
         child: Container(
           margin: const EdgeInsets.all(16),
           color: const Color(0xFFE93F6E),

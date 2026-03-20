@@ -14,12 +14,6 @@ part 'pokemon_list_bloc.g.dart';
 class PokemonListBloc extends Bloc<PokemonListEvents, PokemonListState> {
   PokemonListBloc(this._useCase) : super(PokemonListState.empty()) {
     on<OnGetPokemonList>((event, emit) async {
-      emit(
-        state.copyWith(
-          isLoading: true,
-        ),
-      );
-
       final response = await _useCase.getPokemonListUseCase(
         limit: state.limit,
         offset: state.offset,
@@ -46,30 +40,32 @@ class PokemonListBloc extends Bloc<PokemonListEvents, PokemonListState> {
     });
 
     on<OnLoadMorePokemon>((event, emit) async {
-      emit(
-        state.copyWith(
-          isLoading: true,
-          offset: state.offset + 9,
-          limit: state.limit + 9,
-        ),
-      );
+      final offset = state.offset + 9;
+      const limit = 9;
 
       final response = await _useCase.getPokemonListUseCase(
-        limit: state.limit,
-        offset: state.offset,
+        limit: limit,
+        offset: offset,
       );
 
       response.fold(
         (failure) {
           emit(state.copyWith(failure: failure, isLoading: false));
         },
-        (pokemon) {
+        (morePokemon) {
+          final pokemonList = List<PokemonListModel>.from(
+            state.pokemonList!,
+          );
+
           emit(
             state.copyWith(
               isLoading: false,
-              pokemonList: pokemon,
-              limit: state.limit,
-              offset: state.offset,
+              pokemonList: [
+                ...pokemonList,
+                ...morePokemon,
+              ],
+              limit: limit,
+              offset: offset,
             ),
           );
         },
