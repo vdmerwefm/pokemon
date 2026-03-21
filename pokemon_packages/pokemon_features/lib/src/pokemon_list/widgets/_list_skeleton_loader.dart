@@ -7,7 +7,7 @@ class ListSkeletonLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final skeletonList = ['listItem1', 'listItem2'];
+    final skeletonList = ['Item1', 'Item2'];
 
     return Skeletonizer(
       enabled: true,
