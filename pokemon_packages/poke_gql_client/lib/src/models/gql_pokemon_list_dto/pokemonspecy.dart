@@ -7,7 +7,6 @@ part 'pokemonspecy.g.dart';
 @freezed
 class Pokemonspecy with _$Pokemonspecy {
   factory Pokemonspecy({
-    List<Pokemonspecy>? pokemonspecy,
     List<PokemonSpecies>? pokemonspecies,
   }) = _Pokemonspecy;
 

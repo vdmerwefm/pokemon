@@ -1,5 +1,5 @@
 String gqlPokemonListQuery = r''' 
-query GetPokemonWithTypes($limit: Int = 9, $offset: Int = 0) {
+query GetPokemonWithTypes($limit: Int = 9, $offset: Int = 4) {
   pokemon(limit: $limit, offset: $offset) {
     id
     name
@@ -8,14 +8,12 @@ query GetPokemonWithTypes($limit: Int = 9, $offset: Int = 0) {
         name
       }
     }
-    pokemonsprites {
+    pokemonsprites{
       sprites
     }
     pokemonspecy{
-      pokemonspecies{
-        pokemonspeciesnames(where: {language: {name: {_eq: "en"}}}) {
+      pokemonspecies: pokemonspeciesnames(where: {language: {name: {_eq: "en"}}}) {
           genus
-        }
       }
     }
   }

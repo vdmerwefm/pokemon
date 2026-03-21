@@ -31,11 +31,7 @@
         "pokemonspecy": {
           "pokemonspecies": [
             {
-              "pokemonspeciesnames": [
-                {
-                  "genus": "Seed Pokémon"
-                }
-              ]
+              "genus": "Seed Pokémon"
             }
           ]
         }

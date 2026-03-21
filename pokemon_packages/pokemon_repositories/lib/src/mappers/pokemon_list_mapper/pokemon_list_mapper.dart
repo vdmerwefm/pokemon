@@ -23,7 +23,7 @@ extension PokemonListMapper on GqlPokemonListDto {
         }
 
         final genus = rawPokemon.pokemonspecy?.pokemonspecies?.firstOrNull
-            ?.pokemonspeciesnames?.firstOrNull?.genus;
+            ?.genus;
 
         return PokemonListModel(
           name: rawPokemon.name ?? '',

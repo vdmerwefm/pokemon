@@ -6,10 +6,11 @@ import 'package:pokemon_core/pokemon_core.dart';
 import 'package:pokemon_features/src/pokemon_details/presentation/page/pokemon_details_page.dart';
 import 'package:pokemon_features/src/pokemon_list/presentation/bloc/pokemon_list_bloc.dart';
 import 'package:pokemon_models/pokemon_models.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 part '../../widgets/_type_badges.dart';
-part '../../widgets/_type_text.dart';
 part '../../widgets/_load_more_button.dart';
+part '../../widgets/_list_skeleton_loader.dart';
 
 class PokemonListPage extends StatefulWidget {
   const PokemonListPage({super.key});
@@ -25,18 +26,22 @@ class _PokemonListPageState extends State<PokemonListPage> {
       create: (context) => sl<PokemonListBloc>()..add(const OnGetPokemonList()),
       child: BlocBuilder<PokemonListBloc, PokemonListState>(
         builder: (context, state) {
-          if (state.isLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
-
           if (state.failure != null) {
-            return Center(child: Text(state.failure!.message));
+            return Center(
+              child: Text(
+                state.failure!.message,
+                style: pokemonInfoStyle(
+                  Colors.white,
+                ),
+              ),
+            );
           }
 
           final pokemonList = state.pokemonList ?? [];
+          final loadingOrEmpty = state.isLoading || pokemonList.isEmpty;
 
-          if (pokemonList.isEmpty) {
-            return const Center(child: Text('No Pokemon found'));
+          if (loadingOrEmpty) {
+            return ListSkeletonLoader(pokemonListIsEmpty: loadingOrEmpty);
           }
           return SingleChildScrollView(
             padding: const EdgeInsets.only(bottom: 24),
@@ -61,7 +66,7 @@ class _PokemonListPageState extends State<PokemonListPage> {
                     },
                   ),
                 ),
-                const LoadMoreButton()
+                const LoadMoreButton(),
               ],
             ),
           );
@@ -125,12 +130,14 @@ Widget pokemonListTile({
                       idValidator(pokemon.id),
                       style: pokemonInfoStyle(
                         Colors.white.withValues(alpha: 50),
+                        fontSize: 16,
                       ),
                     ),
                     Text(
                       pokemon.genus.toUpperCase().replaceAll('É', 'E'),
                       style: pokemonInfoStyle(
                         Colors.white.withValues(alpha: 75),
+                        fontSize: 10,
                       ),
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -146,7 +153,6 @@ Widget pokemonListTile({
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    TypeText(types: pokemon.type),
                     TypeBadges(types: pokemon.type),
                   ],
                 ),
@@ -204,10 +210,10 @@ Color getColor(List<String> types) {
   };
 }
 
-TextStyle pokemonInfoStyle(Color color) {
+TextStyle pokemonInfoStyle(Color color, {double? fontSize}) {
   return TextStyle(
     color: color,
-    fontSize: 17,
+    fontSize: fontSize ?? 18,
     fontFamily: 'pokemon_font',
     fontWeight: FontWeight.w900,
     package: 'pokemon_ui_kit',
@@ -217,7 +223,7 @@ TextStyle pokemonInfoStyle(Color color) {
 TextStyle pokemonBadgeTextStyle(Color color) {
   return TextStyle(
     color: color,
-    fontSize: 14,
+    fontSize: 10,
     fontFamily: 'pokemon_font',
     fontWeight: FontWeight.w900,
     package: 'pokemon_ui_kit',

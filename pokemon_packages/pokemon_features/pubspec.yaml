@@ -27,6 +27,7 @@ dependencies:
     path: ../pokemon_repositories
   pokemon_ui_kit: 
     path: ../pokemon_ui_kit
+  skeletonizer: ^2.1.3
 
 
 dev_dependencies:

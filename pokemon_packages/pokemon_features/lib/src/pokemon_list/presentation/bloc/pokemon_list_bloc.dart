@@ -14,6 +14,7 @@ part 'pokemon_list_bloc.g.dart';
 class PokemonListBloc extends Bloc<PokemonListEvents, PokemonListState> {
   PokemonListBloc(this._useCase) : super(PokemonListState.empty()) {
     on<OnGetPokemonList>((event, emit) async {
+      emit(state.copyWith(isLoading: true));
       final response = await _useCase.getPokemonListUseCase(
         limit: state.limit,
         offset: state.offset,
