@@ -82,7 +82,9 @@ Widget pokemonListTile({
   required Route<dynamic> route,
 }) {
   return GestureDetector(
-    onTap: () => {}, //Navigator.push(context, route),
+   // onTap: () async => {
+   //   Navigator.maybeOf(context)?.push(route)
+   // }, //Navigator.push(context, route),
     child: Padding(
       padding: const EdgeInsets.only(top: 16),
       child: Container(

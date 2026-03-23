@@ -1,0 +1,174 @@
+{
+  "data": {
+    "pokemon": [
+      {
+        "id": 3,
+        "name": "venusaur",
+        "height": 20,
+        "weight": 1000,
+        "is_default": true,
+        "pokemonabilities": [
+          {
+            "ability": {
+              "name": "overgrow"
+            }
+          },
+          {
+            "ability": {
+              "name": "chlorophyll"
+            }
+          }
+        ],
+        "pokemon_genus": {
+          "pokemonspecies": [
+            {
+              "genus": "Seed Pokémon"
+            }
+          ]
+        },
+        "pokemon_flavor_text": {
+          "pokemonspecies": [
+            {
+              "flavor_text": "There is a large flower on VENUSAUR’s\nback. The flower is said to take on vivid\ncolors if it gets plenty of nutrition\fand sunlight. The flower’s aroma\nsoothes the emotions of people."
+            }
+          ]
+        },
+        "pokemon_evolutions": {
+          "pokemonspeciesnames": {
+            "pokemonspecies": [
+              {
+                "name": "bulbasaur"
+              },
+              {
+                "name": "venusaur"
+              },
+              {
+                "name": "ivysaur"
+              }
+            ]
+          }
+        },
+        "pokemoncries": [
+          {
+            "cries": {
+              "latest": "https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/3.ogg",
+              "legacy": "https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/legacy/3.ogg"
+            }
+          }
+        ],
+        "pokemonmoves": [
+          {
+            "move": {
+              "name": "vine-whip"
+            },
+            "movelearnmethod": {
+              "name": "level-up"
+            }
+          },
+          {
+            "move": {
+              "name": "tackle"
+            },
+            "movelearnmethod": {
+              "name": "level-up"
+            }
+          },
+          {
+            "move": {
+              "name": "growl"
+            },
+            "movelearnmethod": {
+              "name": "level-up"
+            }
+          },
+          {
+            "move": {
+              "name": "leech-seed"
+            },
+            "movelearnmethod": {
+              "name": "level-up"
+            }
+          }
+        ],
+        "pokemonsprites": [
+          {
+            "sprites": {
+              "other": {
+                "official-artwork": {
+                  "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/3.png",
+                  "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
+                }
+              },
+              "versions": {
+                "generation-v": {
+                  "black-white": {
+                    "animated": {
+                      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/shiny/3.gif",
+                      "back_female": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/female/3.gif",
+                      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/3.gif",
+                      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/3.gif",
+                      "front_female": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/female/3.gif",
+                      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/3.gif",
+                      "back_shiny_female": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/shiny/female/3.gif",
+                      "front_shiny_female": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/female/3.gif"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "pokemontypes": [
+          {
+            "type": {
+              "name": "grass"
+            }
+          },
+          {
+            "type": {
+              "name": "poison"
+            }
+          }
+        ]
+      }
+    ],
+    "pokemonstat": [
+      {
+        "stat": {
+          "name": "hp"
+        },
+        "base_stat": 80
+      },
+      {
+        "stat": {
+          "name": "attack"
+        },
+        "base_stat": 82
+      },
+      {
+        "stat": {
+          "name": "defense"
+        },
+        "base_stat": 83
+      },
+      {
+        "stat": {
+          "name": "special-attack"
+        },
+        "base_stat": 100
+      },
+      {
+        "stat": {
+          "name": "special-defense"
+        },
+        "base_stat": 100
+      },
+      {
+        "stat": {
+          "name": "speed"
+        },
+        "base_stat": 80
+      }
+    ]
+  }
+}

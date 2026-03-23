@@ -13,7 +13,9 @@ class PokemonDetailsModel extends Equatable {
     required this.cry,
     required this.flavorText,
     required this.genus,
+    required this.evolutions,
     required this.sprite,
+    required this.moves,
     required this.stats,
     required this.type,
   });
@@ -28,7 +30,9 @@ class PokemonDetailsModel extends Equatable {
     cry: '',
     flavorText: '',
     genus: '',
+    evolutions: [],
     sprite: '',
+    moves: [],
     stats: [],
     type: [],
   );
@@ -44,7 +48,9 @@ class PokemonDetailsModel extends Equatable {
         cry: json['cry'] as String,
         flavorText: json['flavorText'] as String,
         genus: json['genus'] as String,
+        evolutions: json['evolutions'] as List<String>,
         sprite: json['sprite'] as String,
+        moves: json['moves'] as List<String>,
         stats: json['stats'] as List<PokemonStatsModel>,
         type: json['type'] as List<PokemonTypeModel>,
       );
@@ -59,7 +65,9 @@ class PokemonDetailsModel extends Equatable {
     'cry': cry,
     'flavorText': flavorText,
     'genus': genus,
+    'evolutions': evolutions,
     'sprite': sprite,
+    'moves': moves,
     'stats': stats,
     'type': type,
   };
@@ -73,7 +81,9 @@ class PokemonDetailsModel extends Equatable {
   final String? cry;
   final String? flavorText;
   final String? genus;
-  final String sprite;
+  final List<String>? evolutions;
+  final String? sprite;
+  final List<String>? moves;
   final List<PokemonStatsModel>? stats;
   final List<PokemonTypeModel>? type;
 
@@ -88,7 +98,9 @@ class PokemonDetailsModel extends Equatable {
     cry,
     flavorText,
     genus,
+    evolutions,
     sprite,
+    moves,
     stats,
     type,
   ];

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_core/pokemon_core.dart';
 import 'package:pokemon_features/src/pokemon_details/presentation/bloc/pokemon_details_bloc.dart';
+import 'package:pokemon_features/src/pokemon_list/presentation/page/pokemon_list_page.dart';
 
 class PokemonDetailsPage extends StatelessWidget {
   const PokemonDetailsPage({required this.name, super.key});
@@ -10,6 +11,10 @@ class PokemonDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: GestureDetector(
+          //onTap: () => Navigator.of(context).pop(),
+          child: const Icon(Icons.arrow_back_ios_new),
+        ),
         title: const Text('Pokemon Details'),
       ),
       body: PokemonDetailsView(name: name),
@@ -53,7 +58,7 @@ class PokemonDetailsView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.network(
-                  pokemon.sprite,
+                  pokemon.sprite ?? '',
                   scale: 0.35,
                   fit: BoxFit.fitWidth,
                   errorBuilder: (context, error, stackTrace) =>

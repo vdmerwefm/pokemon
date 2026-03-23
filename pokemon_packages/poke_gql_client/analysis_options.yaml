@@ -3,3 +3,4 @@ analyzer:
   errors:
     public_member_api_docs: ignore
     leading_newlines_in_multiline_strings: ignore
+    invalid_annotation_target: ignore
