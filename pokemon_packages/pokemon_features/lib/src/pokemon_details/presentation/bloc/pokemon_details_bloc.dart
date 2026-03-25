@@ -15,7 +15,6 @@ class PokemonDetailsBloc
     extends Bloc<PokemonDetailsEvents, PokemonDetailsState> {
   PokemonDetailsBloc(this._useCase) : super(PokemonDetailsState.empty()) {
     on<OnGetPokemonDetails>((event, emit) async {
-      emit(state.copyWith(isLoading: true));
 
       final response = await _useCase.getPokemonDetailsUseCase(event.name);
 

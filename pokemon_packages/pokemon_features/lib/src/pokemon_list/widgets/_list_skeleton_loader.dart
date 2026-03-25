@@ -49,20 +49,20 @@ class ListSkeletonLoader extends StatelessWidget {
                             Text(
                               'Venusaur',
                               style: pokemonInfoStyle(
-                                Colors.white,
+                                const Color(0xFFE5E5E5),
                               ),
                             ),
                             Text(
                               '#003',
                               style: pokemonInfoStyle(
-                                Colors.white.withValues(alpha: 50),
+                                const Color(0xFFE5E5E5),
                                 fontSize: 16,
                               ),
                             ),
                             Text(
                               'Seed Pokemon',
                               style: pokemonInfoStyle(
-                                Colors.white.withValues(alpha: 75),
+                                const Color(0xFFE5E5E5),
                                 fontSize: 10,
                               ),
                             ),
@@ -96,7 +96,7 @@ class ListSkeletonLoader extends StatelessWidget {
                                           child: Text(
                                             type.toUpperCase(),
                                             style: pokemonBadgeTextStyle(
-                                              Colors.white,
+                                              const Color(0xFFE5E5E5),
                                             ),
                                           ),
                                         ),

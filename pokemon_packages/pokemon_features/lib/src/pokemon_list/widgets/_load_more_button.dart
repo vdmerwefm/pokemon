@@ -20,7 +20,7 @@ class LoadMoreButton extends StatelessWidget {
             child: Text(
               'Load More Pokemon',
               style: pokemonBadgeTextStyle(
-                Colors.white,
+                const Color(0xFFE5E5E5),
               ),
             ),
           ),

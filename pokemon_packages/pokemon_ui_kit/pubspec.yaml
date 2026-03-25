@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_soloud: ^3.5.4
+
 
 dev_dependencies:
   build_runner: ^2.3.3
@@ -28,3 +30,4 @@ flutter:
         - asset: lib\src\assets\fonts\pokemon_font.ttf
   assets:
     - lib/src/assets/images/
+    - lib/src/assets/sounds/

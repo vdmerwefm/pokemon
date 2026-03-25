@@ -33,7 +33,7 @@ class _PokemonListPageState extends State<PokemonListPage> {
               child: Text(
                 state.failure!.message,
                 style: pokemonInfoStyle(
-                  Colors.white,
+                  const Color(0xFFE5E5E5),
                 ),
               ),
             );
@@ -119,20 +119,20 @@ Widget pokemonListTile({
                     Text(
                       pokemon.name.toUpperCase(),
                       style: pokemonInfoStyle(
-                        Colors.white,
+                        const Color(0xFFE5E5E5),
                       ),
                     ),
                     Text(
                       idValidator(pokemon.id),
                       style: pokemonInfoStyle(
-                        Colors.white.withValues(alpha: 50),
+                        const Color(0xFFE5E5E5),
                         fontSize: 16,
                       ),
                     ),
                     Text(
                       pokemon.genus.toUpperCase().replaceAll('É', 'E'),
                       style: pokemonInfoStyle(
-                        Colors.white.withValues(alpha: 75),
+                        const Color(0xFFE5E5E5),
                         fontSize: 10,
                       ),
                       overflow: TextOverflow.ellipsis,

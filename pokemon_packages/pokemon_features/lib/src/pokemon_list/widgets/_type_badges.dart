@@ -28,7 +28,7 @@ class TypeBadges extends StatelessWidget {
                   child: Text(
                     type.toUpperCase(),
                     style: pokemonBadgeTextStyle(
-                      Colors.white,
+                      const Color(0xFFE5E5E5),
                     ),
                   ),
                 ),
