@@ -13,8 +13,8 @@ class ListSkeletonLoader extends StatelessWidget {
       enabled: true,
       effect: const PulseEffect(
         from: Color(0xFF1A1A1A),
-        to: Color(0xFF5F504D),
-        duration: Duration(milliseconds: 500),
+        to: Color(0xFF3A3A3A),
+        duration: Duration(seconds: 1),
       ),
       textBoneBorderRadius: const TextBoneBorderRadius(
         BorderRadiusGeometry.zero,
@@ -37,7 +37,7 @@ class ListSkeletonLoader extends StatelessWidget {
                     Container(
                       height: 96,
                       width: 100,
-                      color: const Color(0xFF5F504D),
+                      color: const Color(0xFF3A3A3A),
                     ),
                     Expanded(
                       child: Padding(
@@ -70,59 +70,60 @@ class ListSkeletonLoader extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              spacing: 8,
-                              children: [
-                                Column(
-                                  spacing: 8,
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: skeletonList.map((type) {
-                                    return Container(
-                                      padding: const EdgeInsets.only(top: 1),
-                                      height: 24,
-                                      child: Center(
-                                        child: Text(
-                                          type.toUpperCase(),
-                                          style: pokemonBadgeTextStyle(
-                                            Colors.white,
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                spacing: 8,
+                                children: [
+                                  Column(
+                                    spacing: 8,
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: skeletonList.map((type) {
+                                      return Container(
+                                        padding: const EdgeInsets.only(top: 1),
+                                        height: 24,
+                                        child: Center(
+                                          child: Text(
+                                            type.toUpperCase(),
+                                            style: pokemonBadgeTextStyle(
+                                              Colors.white,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    );
-                                  }).toList(),
-                                ),
-                                Column(
-                                  spacing: 8,
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: skeletonList.map((type) {
-                                    return Container(
-                                      color: const Color(0xFF5F504D),
-                                      height: 24,
-                                      width: 24,
-                                    );
-                                  }).toList(),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Container(
-                          height: 24,
-                          width: 36,
-                          color: const Color(0xFF5F504D),
-                        ),
-                      ],
+                                      );
+                                    }).toList(),
+                                  ),
+                                  Column(
+                                    spacing: 8,
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: skeletonList.map((type) {
+                                      return ClipRRect(
+                                        borderRadius: BorderRadius.circular(4),
+                                        child: Container(
+                                          color: const Color(0xFF3A3A3A),
+                                          height: 24,
+                                          width: 24,
+                                        ),
+                                      );
+                                    }).toList(),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),

@@ -1,29 +1,16 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_core/pokemon_core.dart';
+import 'package:pokemon_features/pokemon_features.dart';
 import 'package:pokemon_features/src/pokemon_details/presentation/bloc/pokemon_details_bloc.dart';
-import 'package:pokemon_features/src/pokemon_list/presentation/page/pokemon_list_page.dart';
+import 'package:pokemon_features/src/pokemon_details/widgets/_dotted_divider.dart';
+import 'package:pokemon_models/pokemon_models.dart';
 
+@RoutePage()
 class PokemonDetailsPage extends StatelessWidget {
   const PokemonDetailsPage({required this.name, super.key});
-  final String name;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: GestureDetector(
-          //onTap: () => Navigator.of(context).pop(),
-          child: const Icon(Icons.arrow_back_ios_new),
-        ),
-        title: const Text('Pokemon Details'),
-      ),
-      body: PokemonDetailsView(name: name),
-    );
-  }
-}
-
-class PokemonDetailsView extends StatelessWidget {
-  const PokemonDetailsView({required this.name, super.key});
 
   final String name;
 
@@ -52,85 +39,185 @@ class PokemonDetailsView extends StatelessWidget {
           }
 
           return SingleChildScrollView(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.network(
-                  pokemon.sprite ?? '',
-                  scale: 0.35,
-                  fit: BoxFit.fitWidth,
-                  errorBuilder: (context, error, stackTrace) =>
-                      const Icon(Icons.catching_pokemon, size: 100),
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  pokemon.name?.toUpperCase() ?? '',
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
+            padding: const EdgeInsets.only(bottom: 24),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 16, right: 16, top: 10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    color: const Color(0xFF1A1A1A),
+                    width: MediaQuery.sizeOf(context).width,
+                    height: 208,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        ColoredBox(
+                          color: const Color(0xFF3A3A3A),
+                          child: CachedNetworkImage(
+                            cacheManager:
+                                MyImageCacheManager.customCacheManager,
+                            imageUrl: pokemon.sprite ?? '',
+                            imageBuilder: (context, imageProvider) {
+                              return Transform.scale(
+                                alignment: AlignmentDirectional.center,
+                                scale: 1.4,
+                                child: Image(
+                                  image: imageProvider,
+                                  fit: BoxFit.contain,
+                                  width: 124,
+                                  height: 208,
+                                ),
+                              );
+                            },
+                            placeholder: (context, url) =>
+                                const SizedBox(width: 100, height: 96),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            padding: const EdgeInsets.only(bottom: 8, left: 24),
+                            child: Column(
+                              spacing: 8,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  spacing: 8,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(4),
+                                      child: Image.asset(
+                                        alignment: Alignment.topCenter,
+                                        getTypeBadges(
+                                          pokemonTypes?.first ?? '',
+                                        ),
+                                        height: 36,
+                                        width: 36,
+                                        package: 'pokemon_ui_kit',
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8),
+                                      child: Column(
+                                        spacing: 4,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            idValidator(pokemon.id!),
+                                            style: pokemonInfoStyle(
+                                              Colors.white,
+                                              fontSize: 8,
+                                            ),
+                                          ),
+                                          Text(
+                                            pokemon.name!.toUpperCase(),
+                                            style: pokemonInfoStyle(
+                                              Colors.white,
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  spacing: 12,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 8),
+                                      child: Text(
+                                        pokemon.flavorText?.replaceAll(
+                                              '\n',
+                                              ' ',
+                                            ) ??
+                                            '',
+                                        style: pokemonInfoStyle(
+                                          Colors.white,
+                                          fontSize: 6,
+                                        ),
+                                      ),
+                                    ),
+
+                                    Container(
+                                      padding: const EdgeInsets.only(right: 8),
+                                      height: 1,
+                                      width: double.infinity,
+                                      child: CustomPaint(
+                                        painter: DottedDivider(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  spacing: 8,
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.only(
+                                        top: 4,
+                                        bottom: 2,
+                                        left: 4,
+                                        right: 4,
+                                      ),
+                                      color: const Color(0xFF3A3A3A),
+                                      child: Text(
+                                        pokemon.genus!.toUpperCase().replaceAll(
+                                          'É',
+                                          'E',
+                                        ),
+                                        style: pokemonInfoStyle(
+                                          Colors.white.withValues(alpha: 75),
+                                          fontSize: 6,
+                                        ),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                    Row(
+                                      spacing: 8,
+                                      children: state.pokemonDetails!.type!.map(
+                                        (e) {
+                                          return Container(
+                                            padding: const EdgeInsets.only(
+                                              top: 4,
+                                              bottom: 2,
+                                              left: 4,
+                                              right: 4,
+                                            ),
+                                            color: getColor(e),
+                                            child: Text(
+                                              e.toUpperCase(),
+                                              style: pokemonInfoStyle(
+                                                Colors.white.withValues(
+                                                  alpha: 75,
+                                                ),
+                                                fontSize: 6,
+                                              ),
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          );
+                                        },
+                                      ).toList(),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Text(
-                  pokemon.genus ?? '',
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontStyle: FontStyle.italic,
-                    color: Colors.grey,
-                  ),
-                ),
-                Text(
-                  pokemon.flavorText ?? '',
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontStyle: FontStyle.italic,
-                    color: Colors.grey,
-                  ),
-                ),
-                const Divider(height: 32),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    _infoColumn(label: 'Height', value: '${pokemon.height}'),
-                    _infoColumn(label: 'Weight', value: '${pokemon.weight}'),
-                    _infoColumn(label: 'Ability', value: pokemon.ability ?? ''),
-                  ],
-                ),
-                const SizedBox(height: 16),
-                const Divider(height: 32),
-                ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: pokemonTypes!.length,
-                  itemBuilder: (context, index) {
-                    final pokemon = pokemonTypes[index];
-                    return ListTile(
-                      title: Text(
-                        pokemon.type.toString().toUpperCase(),
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    );
-                  },
-                ),
-                const SizedBox(height: 16),
-                const Divider(height: 32),
-                ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: pokemonStats?.length,
-                  itemBuilder: (context, index) {
-                    final pokemon = pokemonStats?[index];
-                    return ListTile(
-                      leading: Text(pokemon!.statName.toUpperCase()),
-                      title: Text(
-                        pokemon.baseStat.toString().toUpperCase(),
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    );
-                  },
-                ),
-              ],
+                  const SizedBox(height: 16),
+                ],
+              ),
             ),
           );
         },
@@ -138,22 +225,49 @@ class PokemonDetailsView extends StatelessWidget {
     );
   }
 
-  Widget _infoColumn({required String label, required String value}) {
-    return Column(
-      children: [
-        Text(
-          label,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          value,
-          style: const TextStyle(fontSize: 16),
-        ),
-      ],
-    );
+  static String getTypeBadges(String typeFromData) {
+    String? badge;
+    for (final type in PokemonType.values) {
+      if (type.name == typeFromData) {
+        badge = type.imagePath;
+      }
+    }
+    return badge ?? '';
   }
+
+  Color getColor(String types) {
+    final type = PokemonType.values.asNameMap()[types];
+    return switch (type) {
+      PokemonType.bug => const Color(0xFFC2D501),
+      PokemonType.dark => const Color(0xFF3A3A3A),
+      PokemonType.dragon => const Color(0xFF406CA9),
+      PokemonType.electric => const Color(0xFFFCDC00),
+      PokemonType.fairy => const Color(0xFFF3B1DB),
+      PokemonType.fighting => const Color(0xFFFCB600),
+      PokemonType.fire => const Color(0xFFFC671A),
+      PokemonType.flying => const Color(0xFF93D5E8),
+      PokemonType.ghost => const Color(0xFF805474),
+      PokemonType.grass => const Color(0xFF35D32F),
+      PokemonType.ground => const Color(0xFFC6883D),
+      PokemonType.ice => const Color(0xFF1DC1DD),
+      PokemonType.normal => const Color(0xFFC3BEB5),
+      PokemonType.poison => const Color(0xFFB04EC4),
+      PokemonType.psychic => const Color(0xFFF16177),
+      PokemonType.rock => const Color(0xFFCBC594),
+      PokemonType.steel => const Color(0xFF72C3D5),
+      PokemonType.water => const Color(0xFF0083C2),
+      _ => const Color(0xFFE93F6E),
+    };
+  }
+
+  String idValidator(int id) {
+  final pokemonId = id.toString();
+  if (pokemonId.length == 1) {
+    return '#00$pokemonId';
+  } else if (pokemonId.length == 2) {
+    return '#0$pokemonId';
+  } else {
+    return '#$pokemonId';
+  }
+}
 }

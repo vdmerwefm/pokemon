@@ -6,9 +6,9 @@ part 'pokemonspecy.g.dart';
 @freezed
 class Pokemonspecy with _$Pokemonspecy {
   factory Pokemonspecy({
-    String? flavorText,
+    String? flavor_text,
     String? genus,
-    List<String>? evolutions
+    String? name,
 
   }) = _Pokemonspecy;
 

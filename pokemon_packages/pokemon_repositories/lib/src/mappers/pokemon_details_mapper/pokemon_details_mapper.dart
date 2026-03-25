@@ -9,8 +9,8 @@ extension PokemonDetailsMapper on GqlPokemonDetailsDto {
     final pokemonFlavorText = rawPokemonDetails
         ?.pokemonFlavorText
         ?.pokemonspecies
-        ?.map((e) => e.flavorText)
-        .first;
+        ?.firstOrNull
+        ?.flavor_text;
     final pokemonGenus = rawPokemonDetails?.pokemonGenus?.pokemonspecies
         ?.map((e) => e.genus)
         .first;
@@ -18,8 +18,10 @@ extension PokemonDetailsMapper on GqlPokemonDetailsDto {
         ?.pokemonEvolutions
         ?.pokemonspeciesnames
         ?.pokemonspecies
-        ?.map((e) => e.evolutions)
-        .first;
+        ?.map((e) => e.name)
+        .whereType<String>()
+        .toList();
+
     final pokemonSprite =
         (rawPokemonDetails
                     ?.pokemonsprites
@@ -48,12 +50,12 @@ extension PokemonDetailsMapper on GqlPokemonDetailsDto {
               .map((moves) => moves.move?.name ?? '')
               .toList() ??
           [],
-      stats: toPokemonStatsModel(data?.pokemonstat),
-      type: toPokemonTypesModel(data?.pokemon?.firstOrNull?.pokemontypes),
+      stats: convertToStatsModel(data?.pokemonstat),
+      type: rawPokemonDetails?.pokemontypes?.map((e) => e.type?.name ?? '').toList()
     );
   }
 
-  List<PokemonStatsModel>? toPokemonStatsModel(List<Pokemonstat>? statData) {
+  List<PokemonStatsModel>? convertToStatsModel(List<Pokemonstat>? statData) {
     final pokemonStatsList = <PokemonStatsModel>[];
     for (final stat in statData!) {
       pokemonStatsList.add(
@@ -66,11 +68,4 @@ extension PokemonDetailsMapper on GqlPokemonDetailsDto {
     return pokemonStatsList;
   }
 
-  List<PokemonTypeModel>? toPokemonTypesModel(List<Pokemontype>? typeData) {
-    final pokemonTypesList = <PokemonTypeModel>[];
-    for (final type in typeData!) {
-      pokemonTypesList.add(PokemonTypeModel(type: type.type?.name ?? ''));
-    }
-    return pokemonTypesList;
-  }
 }

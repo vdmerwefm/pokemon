@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:pokemon_models/src/models/pokemon_details_model/pokemon_stats_model.dart';
-import 'package:pokemon_models/src/models/pokemon_details_model/pokemon_type_model.dart';
 
 class PokemonDetailsModel extends Equatable {
   const PokemonDetailsModel({
@@ -52,7 +51,7 @@ class PokemonDetailsModel extends Equatable {
         sprite: json['sprite'] as String,
         moves: json['moves'] as List<String>,
         stats: json['stats'] as List<PokemonStatsModel>,
-        type: json['type'] as List<PokemonTypeModel>,
+        type: json['type'] as List<String>,
       );
 
   Map<String, dynamic> toJson() => {
@@ -85,7 +84,7 @@ class PokemonDetailsModel extends Equatable {
   final String? sprite;
   final List<String>? moves;
   final List<PokemonStatsModel>? stats;
-  final List<PokemonTypeModel>? type;
+  final List<String>? type;
 
   @override
   List<Object?> get props => [

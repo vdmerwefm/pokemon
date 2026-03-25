@@ -1,9 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:pokemon_core/pokemon_core.dart';
-import 'package:pokemon_features/src/pokemon_details/presentation/page/pokemon_details_page.dart';
+import 'package:pokemon_features/pokemon_features.dart';
 import 'package:pokemon_features/src/pokemon_list/presentation/bloc/pokemon_list_bloc.dart';
 import 'package:pokemon_models/pokemon_models.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -12,6 +13,7 @@ part '../../widgets/_type_badges.dart';
 part '../../widgets/_load_more_button.dart';
 part '../../widgets/_list_skeleton_loader.dart';
 
+@RoutePage()
 class PokemonListPage extends StatefulWidget {
   const PokemonListPage({super.key});
 
@@ -58,10 +60,6 @@ class _PokemonListPageState extends State<PokemonListPage> {
                       return pokemonListTile(
                         pokemon: pokemon,
                         context: context,
-                        route: MaterialPageRoute<dynamic>(
-                          builder: (context) =>
-                              PokemonDetailsPage(name: pokemon.name),
-                        ),
                       );
                     },
                   ),
@@ -79,12 +77,9 @@ class _PokemonListPageState extends State<PokemonListPage> {
 Widget pokemonListTile({
   required PokemonListModel pokemon,
   required BuildContext context,
-  required Route<dynamic> route,
 }) {
   return GestureDetector(
-   // onTap: () async => {
-   //   Navigator.maybeOf(context)?.push(route)
-   // }, //Navigator.push(context, route),
+    onTap: () => context.router.push(PokemonDetailsRoute(name: pokemon.name)),
     child: Padding(
       padding: const EdgeInsets.only(top: 16),
       child: Container(
@@ -94,7 +89,7 @@ Widget pokemonListTile({
         child: Row(
           children: [
             ColoredBox(
-              color: const Color(0xFF5F504D),
+              color: const Color(0xFF3A3A3A),
               child: CachedNetworkImage(
                 cacheManager: MyImageCacheManager.customCacheManager,
                 imageUrl: pokemon.sprite,
@@ -110,7 +105,6 @@ Widget pokemonListTile({
                     ),
                   );
                 },
-                // Optional: add a loader so it's not a blank box while caching
                 placeholder: (context, url) =>
                     const SizedBox(width: 100, height: 96),
               ),
@@ -148,7 +142,7 @@ Widget pokemonListTile({
               ),
             ),
             Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Row(
@@ -158,15 +152,7 @@ Widget pokemonListTile({
                     TypeBadges(types: pokemon.type),
                   ],
                 ),
-                const Expanded(child: SizedBox()),
-                Container(
-                  width: 36,
-                  color: const Color(0xFFE93F6E),
-                  child: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: Colors.white,
-                  ),
-                ),
+                
               ],
             ),
           ],
@@ -191,7 +177,7 @@ Color getColor(List<String> types) {
   final type = PokemonType.values.asNameMap()[types.first];
   return switch (type) {
     PokemonType.bug => const Color(0xFFC2D501),
-    PokemonType.dark => const Color(0xFF5F504D),
+    PokemonType.dark => const Color(0xFF3A3A3A),
     PokemonType.dragon => const Color(0xFF406CA9),
     PokemonType.electric => const Color(0xFFFCDC00),
     PokemonType.fairy => const Color(0xFFF3B1DB),
