@@ -31,7 +31,7 @@ class PokemonDetailsPage extends StatelessWidget {
           }
 
           final pokemon = state.pokemonDetails;
-          final pokemonStats = state.pokemonDetails?.stats;
+         // final pokemonStats = state.pokemonDetails?.stats;
           final pokemonTypes = state.pokemonDetails?.type;
 
           if (pokemon == null) {

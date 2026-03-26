@@ -6,7 +6,7 @@ part 'pokemonspecy.g.dart';
 @freezed
 class Pokemonspecy with _$Pokemonspecy {
   factory Pokemonspecy({
-    String? flavor_text,
+    @JsonKey(name: 'flavor_text') String? flavorText,
     String? genus,
     String? name,
 

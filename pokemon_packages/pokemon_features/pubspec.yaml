@@ -21,6 +21,8 @@ dependencies:
   get_it: ^9.2.1
   injectable: ^2.7.1
   json_annotation: ^4.8.0
+  pokemon_audio_kit: 
+    path: ../pokemon_audio_kit
   pokemon_core: 
     path: ../pokemon_core
   pokemon_models: 

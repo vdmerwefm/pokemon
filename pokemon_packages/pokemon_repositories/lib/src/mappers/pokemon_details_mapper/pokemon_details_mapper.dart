@@ -10,7 +10,7 @@ extension PokemonDetailsMapper on GqlPokemonDetailsDto {
         ?.pokemonFlavorText
         ?.pokemonspecies
         ?.firstOrNull
-        ?.flavor_text;
+        ?.flavorText;
     final pokemonGenus = rawPokemonDetails?.pokemonGenus?.pokemonspecies
         ?.map((e) => e.genus)
         .first;

@@ -1,10 +1,12 @@
-# melos_managed_dependency_overrides: poke_gql_client
+# melos_managed_dependency_overrides: poke_gql_client,pokemon_audio_kit
 # melos_managed_dependency_overrides: poke_api_client,pokemon_core,pokemon_models,pokemon_repositories,pokemon_ui_kit
 dependency_overrides:
   poke_api_client:
     path: ..\\poke_api_client
   poke_gql_client:
     path: ..\\poke_gql_client
+  pokemon_audio_kit:
+    path: ..\\pokemon_audio_kit
   pokemon_core:
     path: ..\\pokemon_core
   pokemon_models:

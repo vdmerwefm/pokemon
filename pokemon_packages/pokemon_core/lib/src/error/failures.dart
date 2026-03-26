@@ -5,6 +5,9 @@ class Failure {
 
   factory Failure.httpFailure() => const HttpFailure();
 
+  factory Failure.audioFailure() => const AudioFailure();
+
+
   factory Failure.fromJson(Map<String, dynamic> json) =>
       Failure(json['message'] as String);
 
@@ -18,4 +21,8 @@ class Failure {
 @override
 final class HttpFailure extends Failure {
   const HttpFailure([super.message = httpFailureMessage]);
+}
+
+final class AudioFailure extends Failure {
+  const AudioFailure([super.message = audioFailureMessage]);
 }

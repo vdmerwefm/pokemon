@@ -22,6 +22,8 @@ dependencies:
     path: ../pokemon_packages/poke_api_client
   poke_gql_client:
     path: ../pokemon_packages/poke_gql_client
+  pokemon_audio_kit:
+    path: ../pokemon_packages/pokemon_audio_kit
   pokemon_core:
     path: ../pokemon_packages/pokemon_core
   pokemon_features:

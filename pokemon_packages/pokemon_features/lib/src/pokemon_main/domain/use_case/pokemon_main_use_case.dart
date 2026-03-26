@@ -2,10 +2,10 @@ part of '../domain_leaf.dart';
 
 @Injectable()
 class GetPokemonMainUseCase {
-  GetPokemonMainUseCase(this._sounds);
-  final Sounds _sounds;
+  GetPokemonMainUseCase(this._ipokemonAudioKit);
+  final IPokemonAudioKit _ipokemonAudioKit;
 
-  Future<AudioSource> getPokemonMainThemeUseCase() async {
-    return _sounds.getPokemonMainTheme;
+  Future<Either<Failure, SoundHandle>> getPokemonMainThemeUseCase() async {
+    return _ipokemonAudioKit.getPokemonMainTheme().run();
   }
 }
