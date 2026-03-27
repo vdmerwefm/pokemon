@@ -20,8 +20,8 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
     return AutoRouter(
       builder: (context, content) => BlocProvider(
         create: (context) =>
-            sl<PokemonMainBloc>(),
-              //..add(const PokemonMainEvents.onGetPokemonMainThemeMp3()),
+            sl<PokemonMainBloc>()
+              ..add(const PokemonMainEvents.onGetPokemonMainThemeMp3()),
         child: BlocBuilder<PokemonMainBloc, PokemonMainState>(
           builder: (context, state) {
             return Scaffold(
