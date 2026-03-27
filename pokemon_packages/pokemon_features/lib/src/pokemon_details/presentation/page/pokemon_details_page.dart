@@ -1,12 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/scheduler/ticker.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_core/pokemon_core.dart';
 import 'package:pokemon_features/pokemon_features.dart';
 import 'package:pokemon_features/src/pokemon_details/presentation/bloc/pokemon_details_bloc.dart';
-import 'package:pokemon_features/src/pokemon_details/widgets/_dotted_divider.dart';
 import 'package:pokemon_models/pokemon_models.dart';
+
+part '../../widgets/_dotted_divider.dart';
+part '../../widgets/_stat_rectangle_bar_builder.dart';
 
 @RoutePage()
 class PokemonDetailsPage extends StatelessWidget {
@@ -31,11 +34,10 @@ class PokemonDetailsPage extends StatelessWidget {
           }
 
           final pokemon = state.pokemonDetails;
-         // final pokemonStats = state.pokemonDetails?.stats;
           final pokemonTypes = state.pokemonDetails?.type;
 
           if (pokemon == null) {
-            return const Center(child: Text('No details found'));
+            return const SizedBox.shrink();
           }
 
           return SingleChildScrollView(
@@ -131,16 +133,14 @@ class PokemonDetailsPage extends StatelessWidget {
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  spacing: 12,
+                                  spacing: 6,
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.only(right: 8),
                                       child: Text(
-                                        pokemon.flavorText?.replaceAll(
-                                              '\n',
-                                              ' ',
-                                            ) ??
-                                            '',
+                                        restructurePokemonFlavorText(
+                                          pokemon.flavorText ?? '',
+                                        ),
                                         style: pokemonInfoStyle(
                                           const Color(0xFFE5E5E5),
                                           fontSize: 6,
@@ -154,7 +154,7 @@ class PokemonDetailsPage extends StatelessWidget {
                                       width: double.infinity,
                                       child: CustomPaint(
                                         painter: DottedDivider(
-                                          color: const Color(0xFFE5E5E5),
+                                          color: const Color(0xFF3A3A3A),
                                         ),
                                       ),
                                     ),
@@ -186,7 +186,7 @@ class PokemonDetailsPage extends StatelessWidget {
                                     Row(
                                       spacing: 8,
                                       children: state.pokemonDetails!.type!.map(
-                                        (e) {
+                                        (type) {
                                           return Container(
                                             padding: const EdgeInsets.only(
                                               top: 4,
@@ -194,9 +194,9 @@ class PokemonDetailsPage extends StatelessWidget {
                                               left: 4,
                                               right: 4,
                                             ),
-                                            color: getColor(e),
+                                            color: getColor(type),
                                             child: Text(
-                                              e.toUpperCase(),
+                                              type.toUpperCase(),
                                               style: pokemonInfoStyle(
                                                 const Color(0xFFE5E5E5),
                                                 fontSize: 6,
@@ -218,6 +218,15 @@ class PokemonDetailsPage extends StatelessWidget {
                   ),
 
                   ///End of pokemon base info card
+                  SizedBox(
+                    width: double.infinity,
+                    child: CustomPaint(
+                      painter: DottedDivider(
+                        color: const Color(0xFF3A3A3A),
+                      ),
+                    ),
+                  ),
+
                   ///Start of Pokemon Characteristics Card
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -226,7 +235,7 @@ class PokemonDetailsPage extends StatelessWidget {
                       Expanded(
                         child: Container(
                           padding: const EdgeInsets.all(8),
-                          color: const Color(0xFFE5E5E5),
+                          color: const Color(0xFF141414),
                           child: SizedBox.fromSize(
                             size: const Size(double.infinity, 40),
                             child: Column(
@@ -245,59 +254,18 @@ class PokemonDetailsPage extends StatelessWidget {
                                     pokemon.height,
                                   ).toUpperCase(),
                                   style: pokemonInfoStyle(
-                                    const Color(0xFF141414),
+                                    const Color(0xFFE5E5E5),
                                     fontSize: 8,
                                   ),
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                                Text(
+                                const Text(
                                   '///pokedex average',
                                   style: TextStyle(
                                     fontStyle: FontStyle.italic,
-                                    color: const Color(
-                                      0xFF141414,
-                                    ).withValues(alpha: 35),
-                                    fontSize: 6,
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.all(8),
-                          color: const Color(0xFFE5E5E5),
-                          child: SizedBox.fromSize(
-                            size: const Size(double.infinity, 40),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'WEIGHT:',
-                                  style: pokemonInfoStyle(
-                                    const Color(0xFFE93F6E),
-                                    fontSize: 10,
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                Text(
-                                  '${pokemon.weight} kg'.toUpperCase(),
-                                  style: pokemonInfoStyle(
-                                    const Color(0xFF141414),
-                                    fontSize: 8,
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                Text(
-                                  '///pokedex average',
-                                  style: TextStyle(
-                                    fontStyle: FontStyle.italic,
-                                    color: const Color(
-                                      0xFF141414,
-                                    ).withValues(alpha: 35),
+                                    color: Color(
+                                      0xFFB0B0B0,
+                                    ),
                                     fontSize: 6,
                                   ),
                                   overflow: TextOverflow.ellipsis,
@@ -348,11 +316,108 @@ class PokemonDetailsPage extends StatelessWidget {
                           ),
                         ),
                       ),
+                      Expanded(
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          color: const Color(0xFF141414),
+                          child: SizedBox.fromSize(
+                            size: const Size(double.infinity, 40),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'WEIGHT:',
+                                  style: pokemonInfoStyle(
+                                    const Color(0xFFE93F6E),
+                                    fontSize: 10,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                Text(
+                                  '${pokemon.weight} kg'.toUpperCase(),
+                                  style: pokemonInfoStyle(
+                                    const Color(0xFFE5E5E5),
+                                    fontSize: 8,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                const Text(
+                                  '///pokedex average',
+                                  style: TextStyle(
+                                    fontStyle: FontStyle.italic,
+                                    color: Color(
+                                      0xFFB0B0B0,
+                                    ),
+                                    fontSize: 6,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
 
                   ///End of Pokemon Charactieristics Card
-                  const SizedBox(height: 16),
+                  SizedBox(
+                    width: double.infinity,
+                    child: CustomPaint(
+                      painter: DottedDivider(
+                        color: const Color(0xFF3A3A3A),
+                      ),
+                    ),
+                  ),
+
+                  ///
+                  Column(
+                    spacing: 8,
+                    children: pokemon.stats!.map((stat) {
+                      return Column(
+                        spacing: 8,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.only(top: 4),
+                            alignment: Alignment.center,
+                            width: double.infinity,
+                            color: const Color(0xFFE5E5E5),
+                            child: Text(
+                              '${stat.statName.toUpperCase()} : ${stat.baseStat.toString().toUpperCase()}',
+                              style: pokemonInfoStyle(
+                                const Color(0xFF1A1A1A),
+                                fontSize: 8,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                            width: double.infinity,
+                            child: ClipRect(
+                              child: CustomPaint(
+                                painter: BarPainter(
+                                  baseColor: const Color(0xFF1A1A1A),
+                                  fillColor: const Color(0xFFE5E5E5),
+                                  blockWidth: 8,
+                                  stat: stat.baseStat.toDouble(),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 8,
+                            width: double.infinity,
+                            child: CustomPaint(
+                              painter: DottedDivider(
+                                color: const Color(0xFF3A3A3A),
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    }).toList(),
+                  ),
                 ],
               ),
             ),
@@ -410,5 +475,13 @@ class PokemonDetailsPage extends StatelessWidget {
     } else {
       return '#$pokemonId';
     }
+  }
+
+  String restructurePokemonFlavorText(String flavorText) {
+    return flavorText
+        .replaceAll('\n', ' ')
+        .replaceAll('\f', ' ')
+        .replaceAll('’', "'")
+        .replaceAll('é', 'E');
   }
 }

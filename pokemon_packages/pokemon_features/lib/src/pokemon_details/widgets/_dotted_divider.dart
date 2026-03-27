@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of '../presentation/page/pokemon_details_page.dart';
 
 class DottedDivider extends CustomPainter {
 
