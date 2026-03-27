@@ -17,7 +17,7 @@ query PokemonDetails($name: String = "venusaur") {
       }
     }
     pokemon_flavor_text: pokemonspecy {
-      pokemonspecies: pokemonspeciesflavortexts(where: {version_id: {_eq: 8}}) {
+      pokemonspecies: pokemonspeciesflavortexts(where: {language_id: {_eq: 9}}) {
         flavor_text
       }
     }

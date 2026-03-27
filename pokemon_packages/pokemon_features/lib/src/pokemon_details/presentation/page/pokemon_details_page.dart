@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/scheduler/ticker.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_core/pokemon_core.dart';
 import 'package:pokemon_features/pokemon_features.dart';
@@ -150,7 +149,7 @@ class PokemonDetailsPage extends StatelessWidget {
 
                                     Container(
                                       padding: const EdgeInsets.only(right: 8),
-                                      height: 1,
+                                      height: 8,
                                       width: double.infinity,
                                       child: CustomPaint(
                                         painter: DottedDivider(
@@ -218,6 +217,48 @@ class PokemonDetailsPage extends StatelessWidget {
                   ),
 
                   ///End of pokemon base info card
+                  SizedBox(
+                    width: double.infinity,
+                    child: CustomPaint(
+                      painter: DottedDivider(
+                        color: const Color(0xFF3A3A3A),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () => context.read<PokemonDetailsBloc>()
+                      ..add(
+                        PokemonDetailsEvents.onGetPokemonCry(
+                          pokemonCry: pokemon.cry!,
+                        ),
+                      ),
+                    child: SizedBox(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        spacing: 8,
+                        children: [
+                          const ColoredBox(
+                            color: Color(0xFF141414),
+                            child: Icon(
+                              Icons.play_arrow_rounded,
+                              color: Color(0xFFE5E5E5),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 2),
+                            child: Text(
+                              'PLAY ${pokemon.name!.toUpperCase()} CRY',
+                              style: pokemonInfoStyle(
+                                const Color(0xFFE5E5E5),
+                                fontSize: 10,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                   SizedBox(
                     width: double.infinity,
                     child: CustomPaint(
@@ -406,7 +447,7 @@ class PokemonDetailsPage extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            height: 8,
+                            height: 16,
                             width: double.infinity,
                             child: CustomPaint(
                               painter: DottedDivider(

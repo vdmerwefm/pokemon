@@ -121,6 +121,7 @@ Widget pokemonListTile({
                       style: pokemonInfoStyle(
                         const Color(0xFFE5E5E5),
                       ),
+                      overflow: TextOverflow.ellipsis,
                     ),
                     Text(
                       idValidator(pokemon.id),

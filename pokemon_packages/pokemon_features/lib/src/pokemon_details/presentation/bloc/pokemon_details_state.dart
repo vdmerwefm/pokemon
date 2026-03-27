@@ -6,6 +6,7 @@ class PokemonDetailsState with _$PokemonDetailsState {
     PokemonDetailsModel? pokemonDetails,
     Failure? failure,
     @Default(false) bool isLoading,
+    @Default(false) bool isAudioLoading,
   }) = _PokemonDetailsState;
 
   factory PokemonDetailsState.fromJson(Map<String, dynamic> json) =>

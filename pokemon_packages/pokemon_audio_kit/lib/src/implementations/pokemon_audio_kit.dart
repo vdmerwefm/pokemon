@@ -21,4 +21,18 @@ class PokemonAudioKit implements IPokemonAudioKit {
       return mainThemeSoundHandle;
     }, (error, stackTrace) => Failure.audioFailure());
   }
+
+  @override
+  TaskEither<Failure, SoundHandle> getPokemonCry(String pokemonCry) {
+    return TaskEither.tryCatch(() async {
+      final response = await SoLoud.instance.loadUrl(pokemonCry);
+
+      final pokemonCrySoundHandle = await SoLoud.instance.play(
+        response,
+        volume: 0.5,
+      );
+
+      return pokemonCrySoundHandle;
+    }, (error, stacktrace) => Failure.audioFailure());
+  }
 }
