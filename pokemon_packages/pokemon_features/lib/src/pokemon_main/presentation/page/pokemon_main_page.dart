@@ -21,7 +21,7 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
       builder: (context, content) => BlocProvider(
         create: (context) =>
             sl<PokemonMainBloc>()
-              ..add(const PokemonMainEvents.onGetPokemonMainThemeMp3()),
+              ..add(const PokemonMainEvents.onPlayPokemonThemeMusic()),
         child: BlocBuilder<PokemonMainBloc, PokemonMainState>(
           builder: (context, state) {
             return Scaffold(
@@ -46,16 +46,22 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
                         Stack(
                           alignment: Alignment.center,
                           children: [
-                            Container(
-                              height: 36,
-                              width: 36,
-                              color: const Color(0xFFE5E5E5),
+                            ClipRRect(
+                              borderRadius: BorderRadiusGeometry.circular(4),
+                              child: Container(
+                                height: 36,
+                                width: 36,
+                                color: const Color(0xFFE5E5E5),
+                              ),
                             ),
-                            const Icon(
-                              Icons.account_box_sharp,
-                              size: 50,
-
-                              color: Color(0xFFE93F6E),
+                            ClipRRect(
+                              borderRadius: BorderRadiusGeometry.circular(10),
+                              child: const Icon(
+                                Icons.account_box,
+                                size: 50,
+                              
+                                color: Color(0xFFE93F6E),
+                              ),
                             ),
                           ],
                         ),
@@ -74,11 +80,19 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
                           color: Color(0xFFE93F6E),
                         ),
                       )
-                    : Image.asset(
-                        height: 40,
-                        width: 40,
-                        'lib/src/assets/images/logo.png',
-                        package: 'pokemon_ui_kit',
+                    : GestureDetector(
+                        onTap: () => context.read<PokemonMainBloc>().add(
+                          const PokemonMainEvents.onTogglePokemonThemeMusic(),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(4),
+                          child: Image.asset(
+                            height: 40,
+                            width: 40,
+                            'lib/src/assets/images/logo.png',
+                            package: 'pokemon_ui_kit',
+                          ),
+                        ),
                       ),
                 bottom: PreferredSize(
                   preferredSize: const Size(16, 16),

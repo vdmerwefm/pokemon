@@ -40,7 +40,7 @@ class PokemonDetailsBloc
     on<OnGetPokemonCry>((event, emit) async {
       emit(state.copyWith(isAudioLoading: true));
       if (state.pokemonDetails != null) {
-        final response = await _useCase.getPokemonCryUseCase(
+        final response = await _useCase.playPokemonCryUseCase(
           state.pokemonDetails!.cry!,
         );
 

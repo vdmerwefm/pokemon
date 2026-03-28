@@ -1,4 +1,3 @@
-import 'package:flutter_soloud/flutter_soloud.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokemon_audio_kit/pokemon_audio_kit.dart';

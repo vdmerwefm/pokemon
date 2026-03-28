@@ -13,7 +13,7 @@ class GetPokemonDetailsUseCase {
     return _repo.getPokemonDetails(name).run();
   }
   
-  Future<Either<Failure, SoundHandle>> getPokemonCryUseCase(String pokemonCry) {
-    return _audioKit.getPokemonCry(pokemonCry).run();
+  Future<Either<Failure, void>> playPokemonCryUseCase(String pokemonCry) {
+    return _audioKit.playPokemonCry(pokemonCry).run();
   } 
 }
