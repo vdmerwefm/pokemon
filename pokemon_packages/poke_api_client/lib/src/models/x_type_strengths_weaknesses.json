@@ -1,0 +1,32 @@
+{
+    "damage_relations": {
+        "double_damage_from": [
+            {
+                "name": "flying"
+            },
+            {
+                "name": "poison"
+            },
+            {
+                "name": "bug"
+            },
+            {
+                "name": "fire"
+            },
+            {
+                "name": "ice"
+            }
+        ],
+        "double_damage_to": [
+            {
+                "name": "ground"
+            },
+            {
+                "name": "rock"
+            },
+            {
+                "name": "water"
+            }
+        ]
+    }
+}

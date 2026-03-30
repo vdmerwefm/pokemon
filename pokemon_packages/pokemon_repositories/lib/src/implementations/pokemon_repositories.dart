@@ -1,19 +1,24 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
+import 'package:poke_api_client/poke_api_client.dart';
 import 'package:poke_gql_client/poke_gql_client.dart';
 import 'package:pokemon_core/pokemon_core.dart';
 import 'package:pokemon_models/pokemon_models.dart';
 import 'package:pokemon_repositories/pokemon_repositories.dart';
 import 'package:pokemon_repositories/src/mappers/pokemon_details_mapper/pokemon_details_mapper.dart';
 import 'package:pokemon_repositories/src/mappers/pokemon_list_mapper/pokemon_list_mapper.dart';
+import 'package:pokemon_repositories/src/mappers/type_details_mapper/type_details_mapper.dart';
 
 @Injectable(as: IPokemonRepository)
 class PokemonRepository implements IPokemonRepository {
   PokemonRepository({
     required PokeGqlClient pokeGqlClient,
-  }) : _pokeGqlClient = pokeGqlClient;
+    required PokeApiClient pokeApiClient,
+  }) : _pokeGqlClient = pokeGqlClient,
+       _pokeApiClient = pokeApiClient;
 
   final PokeGqlClient _pokeGqlClient;
+  final PokeApiClient _pokeApiClient;
 
   @override
   TaskEither<Failure, List<PokemonListModel>> getPokemonList({
@@ -35,5 +40,12 @@ class PokemonRepository implements IPokemonRepository {
     return _pokeGqlClient
         .fetchRawPokemonDetails(name: name)
         .map((rawPokemonDetailsDto) => rawPokemonDetailsDto.toPokemonDetails());
+  }
+
+  @override
+  TaskEither<Failure, TypeDetailsModel> getTypeDetails(String typeName) {
+    return _pokeApiClient
+        .fetchTypeDetails(typeName: typeName)
+        .map((typeDetailsModel) => typeDetailsModel.toTypeDetailsModel());
   }
 }

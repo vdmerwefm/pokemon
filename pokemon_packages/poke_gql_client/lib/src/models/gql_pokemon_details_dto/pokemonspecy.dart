@@ -9,7 +9,6 @@ class Pokemonspecy with _$Pokemonspecy {
     @JsonKey(name: 'flavor_text') String? flavorText,
     String? genus,
     String? name,
-
   }) = _Pokemonspecy;
 
   factory Pokemonspecy.fromJson(Map<String, dynamic> json) =>

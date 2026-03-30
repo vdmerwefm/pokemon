@@ -7,7 +7,6 @@ class Failure {
 
   factory Failure.audioFailure() => const AudioFailure();
 
-
   factory Failure.fromJson(Map<String, dynamic> json) =>
       Failure(json['message'] as String);
 
