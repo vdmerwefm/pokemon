@@ -16,4 +16,13 @@ class GetPokemonDetailsUseCase {
   Future<Either<Failure, void>> playPokemonCryUseCase(String pokemonCry) {
     return _audioKit.playPokemonCry(pokemonCry).run();
   }
+
+  Future<Either<Failure, List<TypeDetailsModel>>>
+  getPokemonDamageIndeciesUseCase({
+    required List<String> types,
+  }) {
+    return _repo
+        .getPokemonDamageIndecies(types: types)
+        .run();
+  }
 }

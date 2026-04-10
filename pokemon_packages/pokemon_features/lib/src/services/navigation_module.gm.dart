@@ -25,7 +25,8 @@ abstract class $NavigationModule extends _i4.AutoRouterModule {
       return _i4.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i1.PokemonDetailsPage(
-          name: args.name,
+          pokemonName: args.pokemonName,
+          pokemonTypes: args.pokemonTypes,
           key: args.key,
         ),
       );
@@ -49,17 +50,19 @@ abstract class $NavigationModule extends _i4.AutoRouterModule {
 /// [_i1.PokemonDetailsPage]
 class PokemonDetailsRoute extends _i4.PageRouteInfo<PokemonDetailsRouteArgs> {
   PokemonDetailsRoute({
-    required String name,
+    required String pokemonName,
+    required List<String> pokemonTypes,
     _i5.Key? key,
     List<_i4.PageRouteInfo>? children,
   }) : super(
-         PokemonDetailsRoute.name,
-         args: PokemonDetailsRouteArgs(
-           name: name,
-           key: key,
-         ),
-         initialChildren: children,
-       );
+          PokemonDetailsRoute.name,
+          args: PokemonDetailsRouteArgs(
+            pokemonName: pokemonName,
+            pokemonTypes: pokemonTypes,
+            key: key,
+          ),
+          initialChildren: children,
+        );
 
   static const String name = 'PokemonDetailsRoute';
 
@@ -69,17 +72,20 @@ class PokemonDetailsRoute extends _i4.PageRouteInfo<PokemonDetailsRouteArgs> {
 
 class PokemonDetailsRouteArgs {
   const PokemonDetailsRouteArgs({
-    required this.name,
+    required this.pokemonName,
+    required this.pokemonTypes,
     this.key,
   });
 
-  final String name;
+  final String pokemonName;
+
+  final List<String> pokemonTypes;
 
   final _i5.Key? key;
 
   @override
   String toString() {
-    return 'PokemonDetailsRouteArgs{name: $name, key: $key}';
+    return 'PokemonDetailsRouteArgs{pokemonName: $pokemonName, pokemonTypes: $pokemonTypes, key: $key}';
   }
 }
 
@@ -87,10 +93,10 @@ class PokemonDetailsRouteArgs {
 /// [_i2.PokemonListPage]
 class PokemonListRoute extends _i4.PageRouteInfo<void> {
   const PokemonListRoute({List<_i4.PageRouteInfo>? children})
-    : super(
-        PokemonListRoute.name,
-        initialChildren: children,
-      );
+      : super(
+          PokemonListRoute.name,
+          initialChildren: children,
+        );
 
   static const String name = 'PokemonListRoute';
 
@@ -101,10 +107,10 @@ class PokemonListRoute extends _i4.PageRouteInfo<void> {
 /// [_i3.PokemonMainPage]
 class PokemonMainRoute extends _i4.PageRouteInfo<void> {
   const PokemonMainRoute({List<_i4.PageRouteInfo>? children})
-    : super(
-        PokemonMainRoute.name,
-        initialChildren: children,
-      );
+      : super(
+          PokemonMainRoute.name,
+          initialChildren: children,
+        );
 
   static const String name = 'PokemonMainRoute';
 

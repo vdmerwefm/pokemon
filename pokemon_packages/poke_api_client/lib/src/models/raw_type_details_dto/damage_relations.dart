@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import 'double_damage_from.dart';
-import 'double_damage_to.dart';
+import 'package:poke_api_client/src/models/raw_type_details_dto/double_damage_from.dart';
+import 'package:poke_api_client/src/models/raw_type_details_dto/double_damage_to.dart';
 
 part 'damage_relations.freezed.dart';
 part 'damage_relations.g.dart';

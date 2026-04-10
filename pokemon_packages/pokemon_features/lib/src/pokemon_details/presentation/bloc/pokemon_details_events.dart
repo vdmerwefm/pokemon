@@ -8,4 +8,7 @@ abstract class PokemonDetailsEvents with _$PokemonDetailsEvents {
   const factory PokemonDetailsEvents.onGetPokemonCry({
     required String pokemonCry,
   }) = OnGetPokemonCry;
+  const factory PokemonDetailsEvents.onGetPokemonDamageIndecies({
+    required List<String> types,
+  }) = OnGetPokemonDamageIndecies;
 }

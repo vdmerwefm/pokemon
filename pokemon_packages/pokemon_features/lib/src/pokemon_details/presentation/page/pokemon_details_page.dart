@@ -6,22 +6,31 @@ import 'package:pokemon_core/pokemon_core.dart';
 import 'package:pokemon_features/pokemon_features.dart';
 import 'package:pokemon_features/src/pokemon_details/presentation/bloc/pokemon_details_bloc.dart';
 import 'package:pokemon_models/pokemon_models.dart';
+import 'package:pokemon_ui_kit/pokemon_ui_kit.dart';
 
-part '../../widgets/_dotted_divider.dart';
-part '../../widgets/_stat_rectangle_bar_builder.dart';
+part '../../widgets/_details_type_badges.dart';
+part '../../widgets/_dotted_divider_painter.dart';
+part '../../widgets/_stat_rectangle_bar_painter.dart';
+part '../../widgets/_strong_against_widget.dart';
+part '../../widgets/_weak_against_widget.dart';
 
 @RoutePage()
 class PokemonDetailsPage extends StatelessWidget {
-  const PokemonDetailsPage({required this.name, super.key});
+  const PokemonDetailsPage({
+    required this.pokemonName,
+    required this.pokemonTypes,
+    super.key,
+  });
 
-  final String name;
+  final String pokemonName;
+  final List<String> pokemonTypes;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
           sl<PokemonDetailsBloc>()
-            ..add(PokemonDetailsEvents.onGetPokemonDetails(name: name)),
+            ..add(PokemonDetailsEvents.onGetPokemonDetails(name: pokemonName)),
       child: BlocBuilder<PokemonDetailsBloc, PokemonDetailsState>(
         builder: (context, state) {
           if (state.isLoading) {
@@ -33,7 +42,6 @@ class PokemonDetailsPage extends StatelessWidget {
           }
 
           final pokemon = state.pokemonDetails;
-          final pokemonTypes = state.pokemonDetails?.type;
 
           if (pokemon == null) {
             return const SizedBox.shrink();
@@ -95,7 +103,7 @@ class PokemonDetailsPage extends StatelessWidget {
                                       child: Image.asset(
                                         alignment: Alignment.topCenter,
                                         getTypeBadges(
-                                          pokemonTypes?.first ?? '',
+                                          pokemonTypes.first,
                                         ),
                                         height: 36,
                                         width: 36,
@@ -147,15 +155,9 @@ class PokemonDetailsPage extends StatelessWidget {
                                       ),
                                     ),
 
-                                    Container(
-                                      padding: const EdgeInsets.only(right: 8),
+                                    const PokemonDividerAlt(
                                       height: 8,
-                                      width: double.infinity,
-                                      child: CustomPaint(
-                                        painter: DottedDivider(
-                                          color: const Color(0xFF3A3A3A),
-                                        ),
-                                      ),
+                                      padding: 8,
                                     ),
                                   ],
                                 ),
@@ -193,7 +195,9 @@ class PokemonDetailsPage extends StatelessWidget {
                                               left: 4,
                                               right: 4,
                                             ),
-                                            color: getColor(type),
+                                            color: GetTypeBadgeUtil.getColor(
+                                              type,
+                                            ),
                                             child: Text(
                                               type.toUpperCase(),
                                               style: pokemonInfoStyle(
@@ -217,14 +221,7 @@ class PokemonDetailsPage extends StatelessWidget {
                   ),
 
                   ///End of pokemon base info card
-                  SizedBox(
-                    width: double.infinity,
-                    child: CustomPaint(
-                      painter: DottedDivider(
-                        color: const Color(0xFF3A3A3A),
-                      ),
-                    ),
-                  ),
+                  const PokemonDivider(),
                   GestureDetector(
                     onTap: () => context.read<PokemonDetailsBloc>()
                       ..add(
@@ -259,14 +256,7 @@ class PokemonDetailsPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: CustomPaint(
-                      painter: DottedDivider(
-                        color: const Color(0xFF3A3A3A),
-                      ),
-                    ),
-                  ),
+                  const PokemonDivider(),
 
                   ///Start of Pokemon Characteristics Card
                   Row(
@@ -402,14 +392,10 @@ class PokemonDetailsPage extends StatelessWidget {
                   ),
 
                   ///End of Pokemon Charactieristics Card
-                  SizedBox(
-                    width: double.infinity,
-                    child: CustomPaint(
-                      painter: DottedDivider(
-                        color: const Color(0xFF3A3A3A),
-                      ),
-                    ),
-                  ),
+                  StrongAgainstWidget(pokemonTypes: pokemonTypes),
+                  WeakAgainstWidget(pokemonTypes: pokemonTypes),
+
+                  const PokemonDivider(),
 
                   ///
                   Column(
@@ -446,14 +432,8 @@ class PokemonDetailsPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const PokemonDivider(
                             height: 16,
-                            width: double.infinity,
-                            child: CustomPaint(
-                              painter: DottedDivider(
-                                color: const Color(0xFF3A3A3A),
-                              ),
-                            ),
                           ),
                         ],
                       );
@@ -482,7 +462,7 @@ class PokemonDetailsPage extends StatelessWidget {
     return '${height! * 10} cm';
   }
 
-  Color getColor(String types) {
+  static Color getColor(String types) {
     final type = PokemonType.values.asNameMap()[types];
     return switch (type) {
       PokemonType.bug => const Color(0xFFC2D501),

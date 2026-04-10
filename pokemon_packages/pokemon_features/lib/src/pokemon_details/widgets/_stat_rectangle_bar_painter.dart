@@ -1,7 +1,7 @@
 part of '../presentation/page/pokemon_details_page.dart';
 
-class StatRectangleBar extends StatefulWidget {
-  const StatRectangleBar({
+class StatRectangleBarPainter extends StatefulWidget {
+  const StatRectangleBarPainter({
     required this.statValue,
     required this.color,
     required this.blockSize,
@@ -13,7 +13,8 @@ class StatRectangleBar extends StatefulWidget {
   final Size blockSize;
 
   @override
-  State<StatRectangleBar> createState() => _StatRectangleBarState();
+  State<StatRectangleBarPainter> createState() =>
+      _StatRectangleBarPainterState();
 }
 
 ///https://medium.com/@amitsingh506142/creating-stunning-animations-with-custompainter-in-flutter-60bc7f880b2b
@@ -22,7 +23,7 @@ class StatRectangleBar extends StatefulWidget {
 ///We want to create a bar of rectangles that will fill up based on statValue/255
 ///255 being the highest base stat available
 ///we will have a rating in a separate widget deeming the pokemone weak -
-class _StatRectangleBarState extends State<StatRectangleBar>
+class _StatRectangleBarPainterState extends State<StatRectangleBarPainter>
     with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {

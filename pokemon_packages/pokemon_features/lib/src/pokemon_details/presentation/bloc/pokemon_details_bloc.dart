@@ -56,6 +56,34 @@ class PokemonDetailsBloc
         );
       }
     });
+
+    on<OnGetPokemonDamageIndecies>(
+      (event, emit) async {
+        final response = await _useCase.getPokemonDamageIndeciesUseCase(
+          types: event.types,
+        );
+
+        response.fold(
+          (failure) {
+            emit(state.copyWith(failure: failure));
+          },
+          (pokemonDamageIndecies) {
+            final strengthsList = pokemonDamageIndecies
+                .map((damageIndex) => damageIndex.strongAgainst)
+                .first;
+            final weaknessesList = pokemonDamageIndecies
+                .map((damageIndex) => damageIndex.weakAgainst)
+                .first;
+            emit(
+              state.copyWith(
+                strongAgainst: strengthsList,
+                weakAgainst: weaknessesList,
+              ),
+            );
+          },
+        );
+      },
+    );
   }
   final GetPokemonDetailsUseCase _useCase;
 }

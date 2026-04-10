@@ -44,7 +44,7 @@ class TypeBadges extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4),
                 child: Image.asset(
                   fit: BoxFit.cover,
-                  getTypeBadges(type),
+                  GetTypeBadgeUtil.getTypeBadges(type),
                   package: 'pokemon_ui_kit',
                   height: 24,
                   width: 24,
@@ -55,16 +55,5 @@ class TypeBadges extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  static String getTypeBadges(String typeFromData) {
-    String? badge;
-    for (final type in PokemonType.values) {
-      if (type.name == typeFromData) {
-        badge = type.imagePath;
-      }
-    }
-
-    return badge ?? '';
   }
 }

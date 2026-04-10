@@ -8,5 +8,7 @@ abstract interface class IPokemonRepository {
     required int offset,
   });
   TaskEither<Failure, PokemonDetailsModel> getPokemonDetails(String name);
-  TaskEither<Failure, TypeDetailsModel> getTypeDetails(String typeName);
+  TaskEither<Failure, List<TypeDetailsModel>> getPokemonDamageIndecies({
+    required List<String> types,
+  });
 }

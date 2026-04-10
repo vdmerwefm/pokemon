@@ -1,19 +1,18 @@
 # melos_managed_dependency_overrides: poke_gql_client,pokemon_audio_kit
-# melos_managed_dependency_overrides: poke_api_client,pokemon_core,pokemon_features,pokemon_models,pokemon_repositories,pokemon_ui_kit
 dependency_overrides:
   poke_api_client:
-    path: ..\\pokemon_packages\\poke_api_client
+    path: ../pokemon_packages/poke_api_client
   poke_gql_client:
-    path: ..\\pokemon_packages\\poke_gql_client
+    path: ../pokemon_packages/poke_gql_client
   pokemon_audio_kit:
-    path: ..\\pokemon_packages\\pokemon_audio_kit
+    path: ../pokemon_packages/pokemon_audio_kit
   pokemon_core:
-    path: ..\\pokemon_packages\\pokemon_core
+    path: ../pokemon_packages/pokemon_core
   pokemon_features:
-    path: ..\\pokemon_packages\\pokemon_features
+    path: ../pokemon_packages/pokemon_features
   pokemon_models:
-    path: ..\\pokemon_packages\\pokemon_models
+    path: ../pokemon_packages/pokemon_models
   pokemon_repositories:
-    path: ..\\pokemon_packages\\pokemon_repositories
+    path: ../pokemon_packages/pokemon_repositories
   pokemon_ui_kit:
-    path: ..\\pokemon_packages\\pokemon_ui_kit
+    path: ../pokemon_packages/pokemon_ui_kit

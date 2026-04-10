@@ -4,6 +4,8 @@ part of 'pokemon_details_bloc.dart';
 class PokemonDetailsState with _$PokemonDetailsState {
   const factory PokemonDetailsState({
     PokemonDetailsModel? pokemonDetails,
+    List<String>? strongAgainst,
+    List<String>? weakAgainst,
     Failure? failure,
     @Default(false) bool isLoading,
     @Default(false) bool isAudioLoading,

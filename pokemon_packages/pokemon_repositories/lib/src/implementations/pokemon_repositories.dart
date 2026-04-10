@@ -43,9 +43,14 @@ class PokemonRepository implements IPokemonRepository {
   }
 
   @override
-  TaskEither<Failure, TypeDetailsModel> getTypeDetails(String typeName) {
-    return _pokeApiClient
-        .fetchTypeDetails(typeName: typeName)
-        .map((typeDetailsModel) => typeDetailsModel.toTypeDetailsModel());
+  TaskEither<Failure, List<TypeDetailsModel>> getPokemonDamageIndecies({
+    required List<String> types,
+  }) {
+    return TaskEither.traverseList<Failure, String, TypeDetailsModel>(
+      types,
+      (e) => _pokeApiClient
+          .fetchTypeDetails(typeName: e)
+          .map((f) => f.toTypeDetailsModel()),
+    );
   }
 }

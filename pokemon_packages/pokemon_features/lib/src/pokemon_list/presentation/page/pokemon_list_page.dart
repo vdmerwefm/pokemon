@@ -7,6 +7,7 @@ import 'package:pokemon_core/pokemon_core.dart';
 import 'package:pokemon_features/pokemon_features.dart';
 import 'package:pokemon_features/src/pokemon_list/presentation/bloc/pokemon_list_bloc.dart';
 import 'package:pokemon_models/pokemon_models.dart';
+import 'package:pokemon_ui_kit/pokemon_ui_kit.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 part '../../widgets/_type_badges.dart';
@@ -79,7 +80,12 @@ Widget pokemonListTile({
   required BuildContext context,
 }) {
   return GestureDetector(
-    onTap: () => context.router.push(PokemonDetailsRoute(name: pokemon.name)),
+    onTap: () => context.router.push(
+      PokemonDetailsRoute(
+        pokemonName: pokemon.name,
+        pokemonTypes: pokemon.type,
+      ),
+    ),
     child: Padding(
       padding: const EdgeInsets.only(top: 16),
       child: Container(
@@ -153,7 +159,6 @@ Widget pokemonListTile({
                     TypeBadges(types: pokemon.type),
                   ],
                 ),
-                
               ],
             ),
           ],
@@ -172,31 +177,6 @@ String idValidator(int id) {
   } else {
     return '#$pokemonId';
   }
-}
-
-Color getColor(List<String> types) {
-  final type = PokemonType.values.asNameMap()[types.first];
-  return switch (type) {
-    PokemonType.bug => const Color(0xFFC2D501),
-    PokemonType.dark => const Color(0xFF3A3A3A),
-    PokemonType.dragon => const Color(0xFF406CA9),
-    PokemonType.electric => const Color(0xFFFCDC00),
-    PokemonType.fairy => const Color(0xFFF3B1DB),
-    PokemonType.fighting => const Color(0xFFFCB600),
-    PokemonType.fire => const Color(0xFFFC671A),
-    PokemonType.flying => const Color(0xFF93D5E8),
-    PokemonType.ghost => const Color(0xFF805474),
-    PokemonType.grass => const Color(0xFF35D32F),
-    PokemonType.ground => const Color(0xFFC6883D),
-    PokemonType.ice => const Color(0xFF1DC1DD),
-    PokemonType.normal => const Color(0xFFC3BEB5),
-    PokemonType.poison => const Color(0xFFB04EC4),
-    PokemonType.psychic => const Color(0xFFF16177),
-    PokemonType.rock => const Color(0xFFCBC594),
-    PokemonType.steel => const Color(0xFF72C3D5),
-    PokemonType.water => const Color(0xFF0083C2),
-    _ => const Color(0xFFE93F6E),
-  };
 }
 
 TextStyle pokemonInfoStyle(Color color, {double? fontSize}) {

@@ -26,6 +26,7 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
           builder: (context, state) {
             return Scaffold(
               appBar: AppBar(
+                centerTitle: false,
                 actions: [
                   Padding(
                     padding: const EdgeInsets.only(right: 8),
