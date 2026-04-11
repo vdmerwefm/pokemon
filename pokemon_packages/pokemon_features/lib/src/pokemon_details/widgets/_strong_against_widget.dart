@@ -20,9 +20,12 @@ class StrongAgainstWidget extends StatelessWidget {
       selector: (state) => state.strongAgainst,
       builder: (context, state) {
         if (state != null) {
-          return DetailsTypeBadges(
-            pokemonTypes: state,
-            text: 'Strong Against',
+          return Padding(
+            padding: const EdgeInsets.only(bottom:16),
+            child: DetailsTypeBadges(
+              pokemonTypes: state,
+              text: 'Strong Against',
+            ),
           );
         } else {
           return const SizedBox.shrink();

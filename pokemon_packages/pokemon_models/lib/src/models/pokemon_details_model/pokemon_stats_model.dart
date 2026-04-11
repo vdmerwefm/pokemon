@@ -6,6 +6,11 @@ class PokemonStatsModel extends Equatable {
     required this.statName,
   });
 
+  factory PokemonStatsModel.empty() => const PokemonStatsModel(
+    baseStat: 0,
+    statName: '',
+  );
+
   final int baseStat;
   final String statName;
 

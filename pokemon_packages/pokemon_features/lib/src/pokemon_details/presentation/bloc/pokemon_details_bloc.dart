@@ -68,16 +68,26 @@ class PokemonDetailsBloc
             emit(state.copyWith(failure: failure));
           },
           (pokemonDamageIndecies) {
-            final strengthsList = pokemonDamageIndecies
-                .map((damageIndex) => damageIndex.strongAgainst)
-                .first;
-            final weaknessesList = pokemonDamageIndecies
-                .map((damageIndex) => damageIndex.weakAgainst)
-                .first;
+            final strengthsList = [
+              ...pokemonDamageIndecies
+                  .map((damageIndex) => damageIndex.strongAgainst)
+                  .first,
+              ...pokemonDamageIndecies
+                  .map((damageIndex) => damageIndex.strongAgainst)
+                  .last,
+            ];
+            final weaknessesList = [
+              ...pokemonDamageIndecies
+                  .map((damageIndex) => damageIndex.weakAgainst)
+                  .first,
+              ...pokemonDamageIndecies
+                  .map((damageIndex) => damageIndex.weakAgainst)
+                  .last,
+            ];
             emit(
               state.copyWith(
-                strongAgainst: strengthsList,
-                weakAgainst: weaknessesList,
+                strongAgainst: strengthsList.toSet().toList(),
+                weakAgainst: weaknessesList.toSet().toList(),
               ),
             );
           },

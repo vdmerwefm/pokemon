@@ -13,38 +13,48 @@ class DetailsTypeBadges extends StatelessWidget {
   @override
   Widget build(BuildContext build) {
     return Row(
-      spacing: 8,
+      spacing: pokemonTypes.isNotEmpty ? 8 : 0,
       children: [
-        Container(
-          alignment: Alignment.center,
-          width: 108,
-          padding: const EdgeInsets.only(
-            top: 8,
-            bottom: 4,
-            left: 8,
-            right: 8,
-          ),
-          color: const Color(0xFF3A3A3A),
-          child: Text(
-            text.toUpperCase(),
-            style: pokemonInfoStyle(
-              const Color(0xFFE5E5E5),
-              fontSize: 12,
+        if (pokemonTypes.isNotEmpty)
+          Container(
+            alignment: Alignment.center,
+            width: 108,
+            padding: Platform.isAndroid
+                ? const EdgeInsets.only(
+                    top: 8,
+                    bottom: 4,
+                    left: 8,
+                    right: 8,
+                  )
+                : const EdgeInsets.only(
+                    top: 8,
+                    bottom: 8,
+                    left: 8,
+                    right: 8,
+                  ),
+            color: const Color(0xFF3A3A3A),
+            child: Text(
+              text.toUpperCase(),
+              style: pokemonInfoStyle(
+                const Color(0xFFE5E5E5),
+                fontSize: 8,
+              ),
+              overflow: TextOverflow.ellipsis,
             ),
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
+          )
+        else
+          const SizedBox.shrink(),
         Row(
           spacing: 8,
           children: pokemonTypes.map((type) {
-              return Image.asset(
-                fit: BoxFit.cover,
-                GetTypeBadgeUtil.getTypeBadges(type),
-                package: 'pokemon_ui_kit',
-                height: 28,
-                width: 28,
-              );
-            }).toList(),
+            return Image.asset(
+              fit: BoxFit.cover,
+              GetTypeBadgeUtil.getTypeBadges(type),
+              package: 'pokemon_ui_kit',
+              height: 27,
+              width: 27,
+            );
+          }).toList(),
         ),
       ],
     );
