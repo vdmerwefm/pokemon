@@ -1,7 +1,7 @@
-part of '../presentation/page/pokemon_details_page.dart';
+import 'package:pokemon_features/src/pokemon_details/widgets/_barrel_pokemon_details.dart';
 
-class DottedDividerPainter extends CustomPainter {
-  DottedDividerPainter({
+class DottedDividerPainterWidget extends CustomPainter {
+  DottedDividerPainterWidget({
     required this.color,
     this.ellipseWidth = 2.0,
     this.ellipseHeight = 2.0,
@@ -38,7 +38,7 @@ class DottedDividerPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant DottedDividerPainter oldDelegate) {
+  bool shouldRepaint(covariant DottedDividerPainterWidget oldDelegate) {
     return oldDelegate.color != color ||
         oldDelegate.ellipseWidth != ellipseWidth ||
         oldDelegate.ellipseHeight != ellipseHeight ||
@@ -46,8 +46,8 @@ class DottedDividerPainter extends CustomPainter {
   }
 }
 
-class PokemonDivider extends StatelessWidget {
-  const PokemonDivider({this.height, super.key});
+class PokemonDividerWidget extends StatelessWidget {
+  const PokemonDividerWidget({this.height, super.key});
 
   final double? height;
 
@@ -57,7 +57,7 @@ class PokemonDivider extends StatelessWidget {
       height: height ?? 0,
       width: double.infinity,
       child: CustomPaint(
-        painter: DottedDividerPainter(
+        painter: DottedDividerPainterWidget(
           color: const Color(0xFF3A3A3A),
         ),
       ),
@@ -65,8 +65,8 @@ class PokemonDivider extends StatelessWidget {
   }
 }
 
-class PokemonDividerAlt extends StatelessWidget {
-  const PokemonDividerAlt({this.height, this.padding, super.key});
+class PokemonDividerAltWidget extends StatelessWidget {
+  const PokemonDividerAltWidget({this.height, this.padding, super.key});
 
   final double? height;
   final double? padding;
@@ -78,7 +78,7 @@ class PokemonDividerAlt extends StatelessWidget {
       height: height ?? 0,
       width: double.infinity,
       child: CustomPaint(
-        painter: DottedDividerPainter(
+        painter: DottedDividerPainterWidget(
           color: const Color(0xFF3A3A3A),
         ),
       ),

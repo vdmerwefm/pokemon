@@ -1,7 +1,7 @@
-part of '../presentation/page/pokemon_details_page.dart';
+import 'package:pokemon_features/src/pokemon_details/widgets/_barrel_pokemon_details.dart';
 
-class StatRectangleBarPainter extends StatefulWidget {
-  const StatRectangleBarPainter({
+class StatRectangleBarPainterWidget extends StatefulWidget {
+  const StatRectangleBarPainterWidget({
     required this.statValue,
     required this.color,
     required this.blockSize,
@@ -13,7 +13,7 @@ class StatRectangleBarPainter extends StatefulWidget {
   final Size blockSize;
 
   @override
-  State<StatRectangleBarPainter> createState() =>
+  State<StatRectangleBarPainterWidget> createState() =>
       _StatRectangleBarPainterState();
 }
 
@@ -23,7 +23,7 @@ class StatRectangleBarPainter extends StatefulWidget {
 ///We want to create a bar of rectangles that will fill up based on statValue/255
 ///255 being the highest base stat available
 ///we will have a rating in a separate widget deeming the pokemone weak -
-class _StatRectangleBarPainterState extends State<StatRectangleBarPainter>
+class _StatRectangleBarPainterState extends State<StatRectangleBarPainterWidget>
     with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
@@ -58,7 +58,9 @@ class BarPainter extends CustomPainter {
           ..addRect(Rect.fromLTWH(padding, 0, blockWidth, size.height))
           ..close(),
         Paint()
-          ..color = const Color(0xFFE5E5E5)
+          ..color = i == statCount.floorToDouble()
+              ? StatRectanglePainterUtil.getStatColor(stat)
+              : const Color(0xFFE5E5E5)
           ..style = PaintingStyle.fill,
       );
 

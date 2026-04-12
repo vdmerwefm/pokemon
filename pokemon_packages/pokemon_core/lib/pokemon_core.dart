@@ -6,6 +6,7 @@ library;
 
 export 'src/configs/app_config.dart';
 export 'src/constants/global_di_constant.dart';
+export 'src/constants/sizing_constants.dart';
 export 'src/constants/string_constants.dart';
 export 'src/error/failures.dart';
 export 'src/services/injectable.dart';

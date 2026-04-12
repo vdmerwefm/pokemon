@@ -1,7 +1,7 @@
-part of '../presentation/page/pokemon_details_page.dart';
+import 'package:pokemon_features/src/pokemon_details/widgets/_barrel_pokemon_details.dart';
 
-class PokemonInfoTile extends StatelessWidget {
-  const PokemonInfoTile({
+class PokemonInfoTileWidget extends StatelessWidget {
+  const PokemonInfoTileWidget({
     required this.infoTitle,
     required this.infoTitleColor,
     required this.infoValue,
@@ -26,11 +26,12 @@ class PokemonInfoTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(4),
         color: tileColor,
         child: SizedBox.fromSize(
-          size: const Size(double.infinity, 40),
+          size: const Size(double.infinity, 45),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
@@ -41,6 +42,7 @@ class PokemonInfoTile extends StatelessWidget {
                 ),
                 overflow: TextOverflow.ellipsis,
               ),
+              height4,
               Text(
                 infoValue.toUpperCase(),
                 style: pokemonInfoStyle(
@@ -49,6 +51,7 @@ class PokemonInfoTile extends StatelessWidget {
                 ),
                 overflow: TextOverflow.ellipsis,
               ),
+              height4,
               Text(
                 infoFlavor,
                 style: TextStyle(

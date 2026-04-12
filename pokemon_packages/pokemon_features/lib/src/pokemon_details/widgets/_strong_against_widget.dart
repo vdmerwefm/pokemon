@@ -1,4 +1,4 @@
-part of '../presentation/page/pokemon_details_page.dart';
+import 'package:pokemon_features/src/pokemon_details/widgets/_barrel_pokemon_details.dart';
 
 class StrongAgainstWidget extends StatelessWidget {
   const StrongAgainstWidget({
@@ -21,8 +21,10 @@ class StrongAgainstWidget extends StatelessWidget {
       builder: (context, state) {
         if (state != null) {
           return Padding(
-            padding: const EdgeInsets.only(bottom:16),
-            child: DetailsTypeBadges(
+            padding: state.isNotEmpty
+                ? const EdgeInsets.only(bottom: 16)
+                : EdgeInsets.zero,
+            child: DetailsTypeBadgesWidget(
               pokemonTypes: state,
               text: 'Strong Against',
             ),

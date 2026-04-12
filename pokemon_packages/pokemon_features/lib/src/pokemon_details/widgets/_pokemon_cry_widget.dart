@@ -1,4 +1,4 @@
-part of '../presentation/page/pokemon_details_page.dart';
+import 'package:pokemon_features/src/pokemon_details/widgets/_barrel_pokemon_details.dart';
 
 class PokemonCryWidget extends StatelessWidget {
   const PokemonCryWidget({

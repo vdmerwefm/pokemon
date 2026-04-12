@@ -1,7 +1,7 @@
-part of '../presentation/page/pokemon_details_page.dart';
+import 'package:pokemon_features/src/pokemon_details/widgets/_barrel_pokemon_details.dart';
 
-class DetailsTypeBadges extends StatelessWidget {
-  const DetailsTypeBadges({
+class DetailsTypeBadgesWidget extends StatelessWidget {
+  const DetailsTypeBadgesWidget({
     required this.pokemonTypes,
     required this.text,
     super.key,
@@ -26,12 +26,7 @@ class DetailsTypeBadges extends StatelessWidget {
                     left: 8,
                     right: 8,
                   )
-                : const EdgeInsets.only(
-                    top: 8,
-                    bottom: 8,
-                    left: 8,
-                    right: 8,
-                  ),
+                : const EdgeInsets.all(8),
             color: const Color(0xFF3A3A3A),
             child: Text(
               text.toUpperCase(),

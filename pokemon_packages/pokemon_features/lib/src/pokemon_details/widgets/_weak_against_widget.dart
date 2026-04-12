@@ -1,4 +1,4 @@
-part of '../presentation/page/pokemon_details_page.dart';
+import 'package:pokemon_features/src/pokemon_details/widgets/_barrel_pokemon_details.dart';
 
 class WeakAgainstWidget extends StatelessWidget {
   const WeakAgainstWidget({
@@ -20,7 +20,7 @@ class WeakAgainstWidget extends StatelessWidget {
       selector: (state) => state.weakAgainst,
       builder: (context, state) {
         if (state != null) {
-          return DetailsTypeBadges(
+          return DetailsTypeBadgesWidget(
             pokemonTypes: state,
             text: 'Weak Against',
           );

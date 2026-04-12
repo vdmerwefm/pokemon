@@ -1,24 +1,4 @@
-import 'dart:io';
-import 'package:auto_route/auto_route.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokemon_core/pokemon_core.dart';
-import 'package:pokemon_features/pokemon_features.dart';
-import 'package:pokemon_features/src/pokemon_details/presentation/bloc/pokemon_details_bloc.dart';
-import 'package:pokemon_features/src/pokemon_details/widgets/_headers.dart';
-import 'package:pokemon_models/pokemon_models.dart';
-import 'package:pokemon_ui_kit/pokemon_ui_kit.dart';
-
-part '../../widgets/_details_type_badges.dart';
-part '../../widgets/_dotted_divider_painter.dart';
-part '../../widgets/_stat_rectangle_bar_painter.dart';
-part '../../widgets/_strong_against_widget.dart';
-part '../../widgets/_weak_against_widget.dart';
-part '../../widgets/_pokemon_cry_widget.dart';
-part '../../widgets/_pokemon_info_tile.dart';
-part '../../widgets/_pokemon_stats_list_widget.dart';
-part '../../widgets/_pokemon_details_card.dart';
+import 'package:pokemon_features/src/pokemon_details/widgets/_barrel_pokemon_details.dart';
 
 @RoutePage()
 class PokemonDetailsPage extends StatelessWidget {
@@ -62,7 +42,7 @@ class PokemonDetailsPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  PokemonDetailsCard(
+                  PokemonDetailsCardWidget(
                     pokemonSprite: pokemon.sprite ?? '',
                     pokemonTypes: pokemon.type ?? [],
                     pokemonId: pokemon.id ?? 0,
@@ -70,20 +50,21 @@ class PokemonDetailsPage extends StatelessWidget {
                     pokemonFlavorText: pokemon.flavorText ?? '',
                     pokemonGenus: pokemon.genus ?? '',
                   ),
-                  const PokemonDivider(),
+
+                  const PokemonDividerWidget(),
 
                   PokemonCryWidget(
                     pokemonName: pokemon.name ?? '',
                     pokemonCry: pokemon.cry ?? '',
                   ),
 
-                  const PokemonDivider(),
+                  const PokemonDividerWidget(),
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     spacing: 4,
                     children: [
-                      PokemonInfoTile(
+                      PokemonInfoTileWidget(
                         infoTitle: 'height:',
                         infoTitleColor: const Color(0xFFE93F6E),
                         infoValue: StringUtils.convertPokemonHeight(
@@ -97,7 +78,7 @@ class PokemonDetailsPage extends StatelessWidget {
                         tileColor: const Color(0xFF141414),
                       ),
 
-                      PokemonInfoTile(
+                      PokemonInfoTileWidget(
                         infoTitle: 'ability:',
                         infoTitleColor: const Color(0xFFE93F6E),
                         infoValue: pokemon.ability ?? '',
@@ -109,7 +90,7 @@ class PokemonDetailsPage extends StatelessWidget {
                         tileColor: const Color(0xFFE5E5E5),
                       ),
 
-                      PokemonInfoTile(
+                      PokemonInfoTileWidget(
                         infoTitle: 'weight:',
                         infoTitleColor: const Color(0xFFE93F6E),
                         infoValue: StringUtils.convertPokemonWeight(
@@ -125,15 +106,19 @@ class PokemonDetailsPage extends StatelessWidget {
                     ],
                   ),
 
-                  const Header(headerText: 'Pokemon Strengths and Weaknesses'),
+                  const HeaderWidget(
+                    headerText: 'Pokemon Strengths and Weaknesses',
+                  ),
+
                   Column(
                     children: [
                       StrongAgainstWidget(pokemonTypes: pokemonTypes),
+                      
                       WeakAgainstWidget(pokemonTypes: pokemonTypes),
                     ],
                   ),
 
-                  const Header(headerText: 'Pokemon Stats'),
+                  const HeaderWidget(headerText: 'Pokemon Stats'),
 
                   PokemonStatsListWidget(pokemonStats: pokemon.stats ?? []),
                 ],
