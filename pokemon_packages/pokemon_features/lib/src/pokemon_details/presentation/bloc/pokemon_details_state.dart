@@ -6,6 +6,7 @@ class PokemonDetailsState with _$PokemonDetailsState {
     PokemonDetailsModel? pokemonDetails,
     List<String>? strongAgainst,
     List<String>? weakAgainst,
+    @Default(false) bool damageIndeciesLoading,
     Failure? failure,
     @Default(false) bool isLoading,
     @Default(false) bool isAudioLoading,

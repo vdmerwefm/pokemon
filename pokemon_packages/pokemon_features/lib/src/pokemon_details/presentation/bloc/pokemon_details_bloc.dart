@@ -59,13 +59,14 @@ class PokemonDetailsBloc
 
     on<OnGetPokemonDamageIndecies>(
       (event, emit) async {
+        emit(state.copyWith(damageIndeciesLoading: true));
         final response = await _useCase.getPokemonDamageIndeciesUseCase(
           types: event.types,
         );
 
         response.fold(
           (failure) {
-            emit(state.copyWith(failure: failure));
+            emit(state.copyWith(failure: failure, damageIndeciesLoading: false));
           },
           (pokemonDamageIndecies) {
             final strengthsList = [
@@ -86,6 +87,7 @@ class PokemonDetailsBloc
             ];
             emit(
               state.copyWith(
+                damageIndeciesLoading: false,
                 strongAgainst: strengthsList.toSet().toList(),
                 weakAgainst: weaknessesList.toSet().toList(),
               ),

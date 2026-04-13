@@ -14,9 +14,13 @@ class PokemonDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          sl<PokemonDetailsBloc>()
-            ..add(PokemonDetailsEvents.onGetPokemonDetails(name: pokemonName)),
+      create: (context) => sl<PokemonDetailsBloc>()
+        ..add(PokemonDetailsEvents.onGetPokemonDetails(name: pokemonName))
+        ..add(
+          PokemonDetailsEvents.onGetPokemonDamageIndecies(
+            types: pokemonTypes,
+          ),
+        ),
       child: BlocBuilder<PokemonDetailsBloc, PokemonDetailsState>(
         builder: (context, state) {
           if (state.isLoading) {
@@ -112,9 +116,11 @@ class PokemonDetailsPage extends StatelessWidget {
 
                   Column(
                     children: [
-                      StrongAgainstWidget(pokemonTypes: pokemonTypes),
-                      
-                      WeakAgainstWidget(pokemonTypes: pokemonTypes),
+                      StrongAgainstWidget(
+                        strongAgainst: state.strongAgainst ?? [],
+                      ),
+
+                      WeakAgainstWidget(weakAgainst: state.weakAgainst ?? []),
                     ],
                   ),
 

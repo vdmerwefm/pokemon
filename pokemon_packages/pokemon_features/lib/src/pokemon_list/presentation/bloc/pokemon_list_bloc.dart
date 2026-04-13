@@ -53,7 +53,7 @@ class PokemonListBloc extends Bloc<PokemonListEvents, PokemonListState> {
 
       response.fold(
         (failure) {
-          emit(state.copyWith(failure: failure));
+          emit(state.copyWith(failure: failure, isLoadingMorePokemon: false));
         },
         (morePokemon) {
           final pokemonList = List<PokemonListModel>.from(

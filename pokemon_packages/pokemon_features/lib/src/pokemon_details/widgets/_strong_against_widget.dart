@@ -2,30 +2,25 @@ import 'package:pokemon_features/src/pokemon_details/widgets/_barrel_pokemon_det
 
 class StrongAgainstWidget extends StatelessWidget {
   const StrongAgainstWidget({
-    required this.pokemonTypes,
+    required this.strongAgainst,
     super.key,
   });
 
-  final List<String> pokemonTypes;
+  final List<String>? strongAgainst;
+
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<PokemonDetailsBloc, PokemonDetailsState, List<String>?>(
-      bloc: context.read<PokemonDetailsBloc>()
-        ..add(
-          PokemonDetailsEvents.onGetPokemonDamageIndecies(
-            types: pokemonTypes,
-          ),
-        ),
-      selector: (state) => state.strongAgainst,
+    return BlocSelector<PokemonDetailsBloc, PokemonDetailsState, bool>(
+      selector: (state) => state.damageIndeciesLoading,
       builder: (context, state) {
-        if (state != null) {
+        if (!state) {
           return Padding(
-            padding: state.isNotEmpty
+            padding: (strongAgainst ?? []).isNotEmpty
                 ? const EdgeInsets.only(bottom: 16)
                 : EdgeInsets.zero,
             child: DetailsTypeBadgesWidget(
-              pokemonTypes: state,
+              pokemonTypes: strongAgainst ?? [],
               text: 'Strong Against',
             ),
           );
