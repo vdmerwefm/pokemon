@@ -9,9 +9,10 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i4;
-import 'package:flutter/material.dart' as _i5;
 import 'package:pokemon_features/src/pokemon_details/presentation/page/pokemon_details_page.dart'
     as _i1;
+import 'package:pokemon_features/src/pokemon_details/widgets/_barrel_pokemon_details.dart'
+    as _i5;
 import 'package:pokemon_features/src/pokemon_list/presentation/page/pokemon_list_page.dart'
     as _i2;
 import 'package:pokemon_features/src/pokemon_main/presentation/page/pokemon_main_page.dart'

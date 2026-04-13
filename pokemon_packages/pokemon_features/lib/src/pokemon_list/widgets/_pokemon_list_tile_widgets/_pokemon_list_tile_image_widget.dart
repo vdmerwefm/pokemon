@@ -1,10 +1,7 @@
-import 'package:pokemon_features/src/pokemon_details/widgets/_barrel_pokemon_details.dart';
+import 'package:pokemon_features/src/pokemon_list/widgets/_barrel_pokemon_list.dart';
 
-class PokemonDetailsCardImageWidget extends StatelessWidget {
-  const PokemonDetailsCardImageWidget({
-    required this.pokemonSprite,
-    super.key,
-  });
+class PokemonListTileImageWidget extends StatelessWidget {
+  const PokemonListTileImageWidget({required this.pokemonSprite, super.key});
 
   final String? pokemonSprite;
 
@@ -17,13 +14,13 @@ class PokemonDetailsCardImageWidget extends StatelessWidget {
         imageUrl: pokemonSprite ?? '',
         imageBuilder: (context, imageProvider) {
           return Transform.scale(
-            alignment: AlignmentDirectional.center,
             scale: 1.4,
             child: Image(
               image: imageProvider,
+              alignment: Alignment.center,
               fit: BoxFit.contain,
-              width: 124,
-              height: 208,
+              width: 100,
+              height: 96,
             ),
           );
         },

@@ -1,4 +1,5 @@
-part of '../presentation/page/pokemon_list_page.dart';
+import 'package:pokemon_features/src/pokemon_list/widgets/_barrel_pokemon_list.dart';
+
 
 class TypeBadges extends StatelessWidget {
   const TypeBadges({

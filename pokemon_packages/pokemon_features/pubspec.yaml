@@ -14,7 +14,6 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
-  flutter_cache_manager: ^3.4.1
   flutter_soloud: ^3.5.4
   fpdart: ^1.2.0
   freezed_annotation: 2.4.4

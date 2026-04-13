@@ -8,6 +8,7 @@ class PokemonListState with _$PokemonListState {
     @Default(9) int limit,
     @Default(0) int offset,
     @Default(false) bool isLoading,
+    @Default(false) bool isLoadingMorePokemon,
   }) = _PokemonListState;
 
   factory PokemonListState.fromJson(Map<String, dynamic> json) =>

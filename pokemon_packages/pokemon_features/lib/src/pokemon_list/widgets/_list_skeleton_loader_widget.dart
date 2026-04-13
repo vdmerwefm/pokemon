@@ -1,9 +1,7 @@
-part of '../presentation/page/pokemon_list_page.dart';
+import 'package:pokemon_features/src/pokemon_list/widgets/_barrel_pokemon_list.dart';
 
-class ListSkeletonLoader extends StatelessWidget {
-  const ListSkeletonLoader({required this.pokemonListIsEmpty, super.key});
-
-  final bool pokemonListIsEmpty;
+class ListSkeletonLoaderWidget extends StatelessWidget {
+  const ListSkeletonLoaderWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -44,6 +44,8 @@ class PokemonListBloc extends Bloc<PokemonListEvents, PokemonListState> {
       final offset = state.offset + 9;
       const limit = 9;
 
+      emit(state.copyWith(isLoadingMorePokemon: true));
+
       final response = await _useCase.getPokemonListUseCase(
         limit: limit,
         offset: offset,
@@ -51,7 +53,7 @@ class PokemonListBloc extends Bloc<PokemonListEvents, PokemonListState> {
 
       response.fold(
         (failure) {
-          emit(state.copyWith(failure: failure, isLoading: false));
+          emit(state.copyWith(failure: failure));
         },
         (morePokemon) {
           final pokemonList = List<PokemonListModel>.from(
@@ -60,7 +62,7 @@ class PokemonListBloc extends Bloc<PokemonListEvents, PokemonListState> {
 
           emit(
             state.copyWith(
-              isLoading: false,
+              isLoadingMorePokemon: false,
               pokemonList: [
                 ...pokemonList,
                 ...morePokemon,
