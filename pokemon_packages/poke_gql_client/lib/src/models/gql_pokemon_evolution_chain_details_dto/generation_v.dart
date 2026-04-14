@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:poke_gql_client/src/models/gql_pokemon_details_dto/black_white.dart';
+import 'package:poke_gql_client/src/models/gql_pokemon_evolution_chain_details_dto/black_white.dart';
 
 part 'generation_v.freezed.dart';
 part 'generation_v.g.dart';

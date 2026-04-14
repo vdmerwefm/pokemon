@@ -3,7 +3,7 @@ part of 'pokemon_list_bloc.dart';
 @freezed
 class PokemonListState with _$PokemonListState {
   const factory PokemonListState({
-    List<PokemonListModel>? pokemonList,
+    List<PokemonListTileModel>? pokemonList,
     Failure? failure,
     @Default(9) int limit,
     @Default(0) int offset,

@@ -1,6 +1,5 @@
 import 'package:pokemon_features/src/pokemon_list/widgets/_barrel_pokemon_list.dart';
 
-
 class TypeBadges extends StatelessWidget {
   const TypeBadges({
     required this.types,

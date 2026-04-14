@@ -11,7 +11,7 @@ class PokemonDetailsCardFalvorTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top:2),
+      padding: const EdgeInsets.only(top: 2),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 8,
@@ -28,7 +28,7 @@ class PokemonDetailsCardFalvorTextWidget extends StatelessWidget {
               ),
             ),
           ),
-      
+
           const PokemonDividerAltWidget(
             height: 8,
             padding: 8,

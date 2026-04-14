@@ -83,9 +83,10 @@ class PokemonDetailsPage extends StatelessWidget {
                       ),
 
                       PokemonInfoTileWidget(
+                        abilities: pokemon.ability ?? [],
                         infoTitle: 'ability:',
                         infoTitleColor: const Color(0xFFE93F6E),
-                        infoValue: pokemon.ability ?? '',
+                        infoValue: pokemon.ability?.first ?? '',
                         infoValueColor: const Color(0xFF141414),
                         infoFlavor: '///standard (non-hidden)',
                         infoFlavorColor: const Color(
@@ -123,6 +124,8 @@ class PokemonDetailsPage extends StatelessWidget {
                       WeakAgainstWidget(weakAgainst: state.weakAgainst ?? []),
                     ],
                   ),
+
+                  const HeaderWidget(headerText: 'Evolution Chain'),
 
                   const HeaderWidget(headerText: 'Pokemon Stats'),
 

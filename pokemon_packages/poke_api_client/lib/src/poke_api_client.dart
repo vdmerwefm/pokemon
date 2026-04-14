@@ -11,8 +11,7 @@ class PokeApiClient {
 
   final PokeDio pokeDio;
 
-  TaskEither<Failure, RawTypeDetailsDto>
-  fetchTypeDetails({
+  TaskEither<Failure, RawTypeDetailsDto> fetchTypeDetails({
     required String typeName,
   }) {
     return TaskEither.tryCatch(() async {

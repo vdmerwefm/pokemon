@@ -29,7 +29,7 @@ class PokemonInfoTileWidget extends StatelessWidget {
         padding: const EdgeInsets.all(4),
         color: tileColor,
         child: SizedBox.fromSize(
-          size: const Size(double.infinity, 45),
+          size: const Size(double.infinity, 50),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,24 +43,46 @@ class PokemonInfoTileWidget extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
               height4,
-              Text(
-                infoValue.toUpperCase(),
-                style: pokemonInfoStyle(
-                  infoValueColor,
-                  fontSize: 8,
+              if (abilities != null)
+                Column(
+                  spacing: 2,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: abilities!
+                      .map(
+                        (ability) => Text(
+                          ability.toUpperCase(),
+                          style: pokemonInfoStyle(
+                            infoValueColor,
+                            fontSize: 8,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      )
+                      .toList(),
+                )
+              else
+                Text(
+                  infoValue.toUpperCase(),
+                  style: pokemonInfoStyle(
+                    infoValueColor,
+                    fontSize: 8,
+                  ),
+                  overflow: TextOverflow.ellipsis,
                 ),
-                overflow: TextOverflow.ellipsis,
-              ),
               height4,
-              Text(
-                infoFlavor,
-                style: TextStyle(
-                  fontStyle: FontStyle.italic,
-                  color: infoFlavorColor,
-                  fontSize: 6,
+              if (abilities != null)
+                const SizedBox.shrink()
+              else
+                Text(
+                  infoFlavor,
+                  style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    color: infoFlavorColor,
+                    fontSize: 6,
+                  ),
+                  overflow: TextOverflow.ellipsis,
                 ),
-                overflow: TextOverflow.ellipsis,
-              ),
             ],
           ),
         ),

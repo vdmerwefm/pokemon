@@ -60,7 +60,7 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
                               child: const Icon(
                                 Icons.account_box,
                                 size: 50,
-                              
+
                                 color: Color(0xFFE93F6E),
                               ),
                             ),

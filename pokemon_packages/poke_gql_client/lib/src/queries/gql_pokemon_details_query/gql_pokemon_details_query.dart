@@ -23,7 +23,9 @@ query PokemonDetails($name: String = "venusaur") {
     }
     pokemon_evolutions: pokemonspecy {
       pokemonspeciesnames: evolutionchain {
-        pokemonspecies {
+        pokemonspecies(order_by: [ {
+           order: asc
+        }]) {
           name
         }
       }
@@ -34,6 +36,9 @@ query PokemonDetails($name: String = "venusaur") {
     pokemonmoves {
       move {
         name
+        type{
+          name
+        }
       }
       movelearnmethod {
         name

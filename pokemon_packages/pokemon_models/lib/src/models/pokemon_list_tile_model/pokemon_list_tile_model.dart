@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-class PokemonListModel extends Equatable {
-  const PokemonListModel({
+class PokemonListTileModel extends Equatable {
+  const PokemonListTileModel({
     required this.id,
     required this.name,
     required this.sprite,
@@ -9,7 +9,7 @@ class PokemonListModel extends Equatable {
     required this.genus,
   });
 
-  factory PokemonListModel.empty() => const PokemonListModel(
+  factory PokemonListTileModel.empty() => const PokemonListTileModel(
     id: 0,
     name: '',
     sprite: '',
@@ -17,8 +17,8 @@ class PokemonListModel extends Equatable {
     genus: '',
   );
 
-  factory PokemonListModel.fromJson(Map<String, dynamic> json) =>
-      PokemonListModel(
+  factory PokemonListTileModel.fromJson(Map<String, dynamic> json) =>
+      PokemonListTileModel(
         id: json['id'] as int,
         name: json['name'] as String,
         sprite: json['sprite'] as String,

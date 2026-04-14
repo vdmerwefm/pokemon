@@ -5,7 +5,7 @@ class GetPokemonListUseCase {
   GetPokemonListUseCase(this._repo);
   final IPokemonRepository _repo;
 
-  Future<Either<Failure, List<PokemonListModel>>> getPokemonListUseCase({
+  Future<Either<Failure, List<PokemonListTileModel>>> getPokemonListUseCase({
     required int limit,
     required int offset,
   }) {

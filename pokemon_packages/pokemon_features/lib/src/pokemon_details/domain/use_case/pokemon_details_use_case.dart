@@ -21,8 +21,6 @@ class GetPokemonDetailsUseCase {
   getPokemonDamageIndeciesUseCase({
     required List<String> types,
   }) {
-    return _repo
-        .getPokemonDamageIndecies(types: types)
-        .run();
+    return _repo.getPokemonDamageIndecies(types: types).run();
   }
 }

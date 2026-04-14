@@ -18,7 +18,7 @@ class StringUtils {
     }
   }
 
-   static String restructurePokemonFlavorText(String flavorText) {
+  static String restructurePokemonFlavorText(String flavorText) {
     return flavorText
         .replaceAll('\n', ' ')
         .replaceAll('\f', ' ')

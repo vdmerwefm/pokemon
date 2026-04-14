@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+//translates height by 2 logical pixels
+const height2 = SizedBox(height: 2);
+
 //translates height by 4 logical pixels
 const height4 = SizedBox(height: 4);
 

@@ -1,6 +1,7 @@
 ///Failures:
 ///// ignore: unused_element
 const String failureString = '';
+
 ///
 const String unknownFailureMessage = 'An unknown error occurred.';
 const String httpFailureMessage =

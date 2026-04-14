@@ -56,14 +56,14 @@ class PokemonDetailsRoute extends _i4.PageRouteInfo<PokemonDetailsRouteArgs> {
     _i5.Key? key,
     List<_i4.PageRouteInfo>? children,
   }) : super(
-          PokemonDetailsRoute.name,
-          args: PokemonDetailsRouteArgs(
-            pokemonName: pokemonName,
-            pokemonTypes: pokemonTypes,
-            key: key,
-          ),
-          initialChildren: children,
-        );
+         PokemonDetailsRoute.name,
+         args: PokemonDetailsRouteArgs(
+           pokemonName: pokemonName,
+           pokemonTypes: pokemonTypes,
+           key: key,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'PokemonDetailsRoute';
 
@@ -94,10 +94,10 @@ class PokemonDetailsRouteArgs {
 /// [_i2.PokemonListPage]
 class PokemonListRoute extends _i4.PageRouteInfo<void> {
   const PokemonListRoute({List<_i4.PageRouteInfo>? children})
-      : super(
-          PokemonListRoute.name,
-          initialChildren: children,
-        );
+    : super(
+        PokemonListRoute.name,
+        initialChildren: children,
+      );
 
   static const String name = 'PokemonListRoute';
 
@@ -108,10 +108,10 @@ class PokemonListRoute extends _i4.PageRouteInfo<void> {
 /// [_i3.PokemonMainPage]
 class PokemonMainRoute extends _i4.PageRouteInfo<void> {
   const PokemonMainRoute({List<_i4.PageRouteInfo>? children})
-      : super(
-          PokemonMainRoute.name,
-          initialChildren: children,
-        );
+    : super(
+        PokemonMainRoute.name,
+        initialChildren: children,
+      );
 
   static const String name = 'PokemonMainRoute';
 

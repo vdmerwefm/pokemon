@@ -13,6 +13,5 @@ class RawTypeDetailsDto with _$RawTypeDetailsDto {
   factory RawTypeDetailsDto.fromJson(Map<String, dynamic> json) =>
       _$RawTypeDetailsDtoFromJson(json);
 
-  factory RawTypeDetailsDto.empty() =>
-      RawTypeDetailsDto();
+  factory RawTypeDetailsDto.empty() => RawTypeDetailsDto();
 }

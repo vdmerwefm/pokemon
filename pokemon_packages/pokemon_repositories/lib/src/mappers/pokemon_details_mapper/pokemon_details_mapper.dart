@@ -6,19 +6,30 @@ extension PokemonDetailsMapper on GqlPokemonDetailsDto {
   PokemonDetailsModel toPokemonDetails() {
     final rawPokemonDetails = data?.pokemon?.firstOrNull;
 
+    final pokemonAbility = rawPokemonDetails?.pokemonabilities
+        ?.map((ability) => ability.ability?.name ?? '')
+        .toSet()
+        .toList();
+
+    final pokemonCry =
+        rawPokemonDetails?.pokemoncries?.first.cries?['latest'] as String? ??
+        rawPokemonDetails?.pokemoncries?.first.cries?['legacy'] as String?;
+
     final pokemonFlavorText = rawPokemonDetails
         ?.pokemonFlavorText
         ?.pokemonspecies
         ?.firstOrNull
         ?.flavorText;
+
     final pokemonGenus = rawPokemonDetails?.pokemonGenus?.pokemonspecies
         ?.map((e) => e.genus)
         .first;
+
     final pokemonEvolutions = rawPokemonDetails
         ?.pokemonEvolutions
         ?.pokemonspeciesnames
         ?.pokemonspecies
-        ?.map((e) => e.name)
+        ?.map((evolution) => evolution.name)
         .whereType<String>()
         .toList();
 
@@ -31,27 +42,42 @@ extension PokemonDetailsMapper on GqlPokemonDetailsDto {
                 as Map<String, dynamic>?)?['front_default']
             as String?;
 
+    final pokemonLevelUpMoves = convertToMovessModel(
+      rawPokemonDetails?.pokemonmoves ?? [],
+    )?.where((method) => method.pokemonMoveLearnMethod == 'level-up').toList();
+
+    final pokemonMachineMoves = convertToMovessModel(
+      rawPokemonDetails?.pokemonmoves ?? [],
+    )?.where((method) => method.pokemonMoveLearnMethod == 'machine').toList();
+
+    final pokemonTutorMoves = convertToMovessModel(
+      rawPokemonDetails?.pokemonmoves ?? [],
+    )?.where((method) => method.pokemonMoveLearnMethod == 'tutor').toList();
+
+    final pokemonStats = convertToStatsModel(data?.pokemonstat);
+
+    final pokemonTypes = rawPokemonDetails?.pokemontypes
+        ?.map((e) => e.type?.name ?? '')
+        .toSet()
+        .toList();
+
     return PokemonDetailsModel(
-      id: rawPokemonDetails?.id,
-      name: rawPokemonDetails?.name,
-      height: rawPokemonDetails?.height,
-      weight: rawPokemonDetails?.weight,
-      isDefault: rawPokemonDetails?.isDefault,
-      ability: rawPokemonDetails?.pokemonabilities?.first.ability?.name ?? '',
-      cry:
-          rawPokemonDetails?.pokemoncries?.first.cries?['latest'] as String? ??
-          rawPokemonDetails?.pokemoncries?.first.cries?['legacy'] as String?,
-      flavorText: pokemonFlavorText,
-      genus: pokemonGenus,
-      evolutions: pokemonEvolutions,
+      id: rawPokemonDetails?.id ?? 0,
+      name: rawPokemonDetails?.name ?? '',
+      height: rawPokemonDetails?.height ?? 0,
+      weight: rawPokemonDetails?.weight ?? 0,
+      isDefault: rawPokemonDetails?.isDefault ?? true,
+      ability: pokemonAbility ?? [],
+      cry: pokemonCry ?? '',
+      flavorText: pokemonFlavorText ?? '',
+      genus: pokemonGenus ?? '',
+      evolutions: pokemonEvolutions ?? [],
       sprite: pokemonSprite ?? '',
-      moves:
-          rawPokemonDetails?.pokemonmoves!
-              .map((moves) => moves.move?.name ?? '')
-              .toList() ??
-          [],
-      stats: convertToStatsModel(data?.pokemonstat),
-      type: rawPokemonDetails?.pokemontypes?.map((e) => e.type?.name ?? '').toList()
+      levelUpMoves: pokemonLevelUpMoves ?? [],
+      machineMoves: pokemonMachineMoves ?? [],
+      tutorMoves: pokemonTutorMoves ?? [],
+      stats: pokemonStats ?? [],
+      type: pokemonTypes ?? [],
     );
   }
 
@@ -68,4 +94,27 @@ extension PokemonDetailsMapper on GqlPokemonDetailsDto {
     return pokemonStatsList;
   }
 
+  List<PokemonMovesModel>? convertToMovessModel(List<Pokemonmove>? moveData) {
+    final pokemonMovesList = <PokemonMovesModel>[];
+    for (final move in moveData!) {
+      if (!pokemonMovesList.contains(
+        PokemonMovesModel(
+          pokemonMoveName: move.move?.name ?? '',
+          pokemonMoveType: move.move?.type?.name ?? '',
+          pokemonMoveLearnMethod: move.movelearnmethod?.name ?? '',
+        ),
+      )) {
+        pokemonMovesList
+          ..add(
+            PokemonMovesModel(
+              pokemonMoveName: move.move?.name ?? '',
+              pokemonMoveType: move.move?.type?.name ?? '',
+              pokemonMoveLearnMethod: move.movelearnmethod?.name ?? '',
+            ),
+          )
+          ..removeWhere((e) => e.pokemonMoveLearnMethod == 'egg');
+      }
+    }
+    return pokemonMovesList.toSet().toList();
+  }
 }

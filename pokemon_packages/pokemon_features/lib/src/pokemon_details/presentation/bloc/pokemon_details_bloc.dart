@@ -66,7 +66,9 @@ class PokemonDetailsBloc
 
         response.fold(
           (failure) {
-            emit(state.copyWith(failure: failure, damageIndeciesLoading: false));
+            emit(
+              state.copyWith(failure: failure, damageIndeciesLoading: false),
+            );
           },
           (pokemonDamageIndecies) {
             final strengthsList = [

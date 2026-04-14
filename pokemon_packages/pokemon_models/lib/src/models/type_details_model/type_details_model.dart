@@ -9,7 +9,6 @@ class TypeDetailsModel extends Equatable {
   factory TypeDetailsModel.empty() => const TypeDetailsModel(
     strongAgainst: [],
     weakAgainst: [],
-    
   );
 
   factory TypeDetailsModel.fromJson(Map<String, dynamic> json) =>

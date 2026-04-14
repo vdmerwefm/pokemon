@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:pokemon_models/src/models/pokemon_details_model/pokemon_moves_model.dart';
 import 'package:pokemon_models/src/models/pokemon_details_model/pokemon_stats_model.dart';
 
 class PokemonDetailsModel extends Equatable {
@@ -14,7 +15,9 @@ class PokemonDetailsModel extends Equatable {
     required this.genus,
     required this.evolutions,
     required this.sprite,
-    required this.moves,
+    required this.levelUpMoves,
+    required this.machineMoves,
+    required this.tutorMoves,
     required this.stats,
     required this.type,
   });
@@ -25,13 +28,15 @@ class PokemonDetailsModel extends Equatable {
     height: null,
     weight: null,
     isDefault: null,
-    ability: '',
+    ability: [],
     cry: '',
     flavorText: '',
     genus: '',
     evolutions: [],
     sprite: '',
-    moves: [],
+    levelUpMoves: [],
+    machineMoves: [],
+    tutorMoves: [],
     stats: [],
     type: [],
   );
@@ -43,13 +48,15 @@ class PokemonDetailsModel extends Equatable {
         height: json['height'] as int,
         weight: json['weight'] as int,
         isDefault: json['isDefault'] as bool,
-        ability: json['ability'] as String,
+        ability: json['ability'] as List<String>,
         cry: json['cry'] as String,
         flavorText: json['flavorText'] as String,
         genus: json['genus'] as String,
         evolutions: json['evolutions'] as List<String>,
         sprite: json['sprite'] as String,
-        moves: json['moves'] as List<String>,
+        levelUpMoves: json['levelUpMoves'] as List<PokemonMovesModel>,
+        machineMoves: json['machineMoves'] as List<PokemonMovesModel>,
+        tutorMoves: json['tutorMoves'] as List<PokemonMovesModel>,
         stats: json['stats'] as List<PokemonStatsModel>,
         type: json['type'] as List<String>,
       );
@@ -66,7 +73,9 @@ class PokemonDetailsModel extends Equatable {
     'genus': genus,
     'evolutions': evolutions,
     'sprite': sprite,
-    'moves': moves,
+    'levelUpMoves': levelUpMoves,
+    'machineMoves': machineMoves,
+    'tutorMoves': tutorMoves,
     'stats': stats,
     'type': type,
   };
@@ -76,13 +85,15 @@ class PokemonDetailsModel extends Equatable {
   final int? height;
   final int? weight;
   final bool? isDefault;
-  final String? ability;
+  final List<String>? ability;
   final String? cry;
   final String? flavorText;
   final String? genus;
   final List<String>? evolutions;
   final String? sprite;
-  final List<String>? moves;
+  final List<PokemonMovesModel>? levelUpMoves;
+  final List<PokemonMovesModel>? machineMoves;
+  final List<PokemonMovesModel>? tutorMoves;
   final List<PokemonStatsModel>? stats;
   final List<String>? type;
 
@@ -99,7 +110,9 @@ class PokemonDetailsModel extends Equatable {
     genus,
     evolutions,
     sprite,
-    moves,
+    levelUpMoves,
+    machineMoves,
+    tutorMoves,
     stats,
     type,
   ];

@@ -56,7 +56,7 @@ class PokemonListBloc extends Bloc<PokemonListEvents, PokemonListState> {
           emit(state.copyWith(failure: failure, isLoadingMorePokemon: false));
         },
         (morePokemon) {
-          final pokemonList = List<PokemonListModel>.from(
+          final pokemonList = List<PokemonListTileModel>.from(
             state.pokemonList!,
           );
 

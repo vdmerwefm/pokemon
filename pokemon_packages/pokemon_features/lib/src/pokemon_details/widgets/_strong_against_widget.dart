@@ -8,7 +8,6 @@ class StrongAgainstWidget extends StatelessWidget {
 
   final List<String>? strongAgainst;
 
-
   @override
   Widget build(BuildContext context) {
     return BlocSelector<PokemonDetailsBloc, PokemonDetailsState, bool>(

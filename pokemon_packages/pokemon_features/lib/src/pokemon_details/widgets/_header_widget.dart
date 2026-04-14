@@ -24,7 +24,9 @@ class HeaderWidget extends StatelessWidget {
           ),
         ),
 
-        const PokemonDividerWidget(height: 2,),
+        const PokemonDividerWidget(
+          height: 2,
+        ),
       ],
     );
   }
