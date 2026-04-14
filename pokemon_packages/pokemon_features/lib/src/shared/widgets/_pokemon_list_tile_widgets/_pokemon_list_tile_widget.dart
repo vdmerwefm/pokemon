@@ -7,6 +7,8 @@ class PokemonListTileWidget extends StatelessWidget {
     required this.pokemonTypes,
     required this.pokemonId,
     required this.pokemonGenus,
+    this.topPadding,
+    this.isActivePokemon = false,
     super.key,
   });
 
@@ -15,20 +17,26 @@ class PokemonListTileWidget extends StatelessWidget {
   final String? pokemonSprite;
   final int? pokemonId;
   final String? pokemonGenus;
+  final double? topPadding;
+  final bool isActivePokemon;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.router.push(
-        PokemonDetailsRoute(
-          pokemonName: pokemonName ?? '',
-          pokemonTypes: pokemonTypes ?? [],
-        ),
-      ),
+      onTap: isActivePokemon
+          ? () {}
+          : () => context.router.popAndPush(
+              PokemonDetailsRoute(
+                pokemonName: pokemonName ?? '',
+                pokemonTypes: pokemonTypes ?? [],
+              ),
+            ),
       child: Padding(
-        padding: const EdgeInsets.only(top: 16),
+        padding: EdgeInsets.only(top: topPadding ?? 16),
         child: Container(
-          color: const Color(0xFF1A1A1A),
+          color: isActivePokemon
+              ? const Color(0xFFE5E5E5)
+              : const Color(0xFF1A1A1A),
           width: MediaQuery.sizeOf(context).width,
           height: 96,
           child: Row(
@@ -38,12 +46,14 @@ class PokemonListTileWidget extends StatelessWidget {
                 pokemonSprite: pokemonSprite ?? '',
               ),
               PokemonListTileInfoWidget(
+                isActivePokemon: isActivePokemon,
                 key: ValueKey(pokemonName),
                 pokemonName: pokemonName ?? '',
                 pokemonId: pokemonId ?? 0,
                 pokemonGenus: pokemonGenus ?? '',
               ),
               PokemonListTileTypes(
+                isActivePokemon: isActivePokemon,
                 key: ValueKey(pokemonTypes),
                 pokemonTypes: pokemonTypes ?? [],
               ),

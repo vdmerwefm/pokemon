@@ -5,12 +5,14 @@ class PokemonListTileInfoWidget extends StatelessWidget {
     required this.pokemonName,
     required this.pokemonId,
     required this.pokemonGenus,
+    this.isActivePokemon = false,
     super.key,
   });
 
   final String? pokemonName;
   final int? pokemonId;
   final String? pokemonGenus;
+  final bool isActivePokemon;
 
   @override
   Widget build(BuildContext context) {
@@ -24,21 +26,29 @@ class PokemonListTileInfoWidget extends StatelessWidget {
             Text(
               (pokemonName ?? '').toUpperCase(),
               style: pokemonInfoStyle(
-                const Color(0xFFE5E5E5),
+                isActivePokemon
+                    ? const Color(0xFF1A1A1A)
+                    : const Color(0xFFE5E5E5),
               ),
               overflow: TextOverflow.ellipsis,
             ),
             Text(
               StringUtils.idValidator(pokemonId ?? 0),
               style: pokemonInfoStyle(
-                const Color(0xFFE5E5E5),
+                isActivePokemon
+                    ? const Color(0xFF1A1A1A)
+                    : const Color(0xFFE5E5E5),
+
                 fontSize: 16,
               ),
             ),
             Text(
               (pokemonGenus ?? '').toUpperCase().replaceAll('É', 'E'),
               style: pokemonInfoStyle(
-                const Color(0xFFE5E5E5),
+                isActivePokemon
+                    ? const Color(0xFF1A1A1A)
+                    : const Color(0xFFE5E5E5),
+
                 fontSize: 10,
               ),
               overflow: TextOverflow.ellipsis,

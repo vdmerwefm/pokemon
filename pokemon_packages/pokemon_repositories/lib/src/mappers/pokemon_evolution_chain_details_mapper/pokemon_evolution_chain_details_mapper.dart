@@ -3,36 +3,42 @@ import 'package:pokemon_models/pokemon_models.dart';
 
 extension PokemonEvolutionChainDetailsMapper
     on GqlPokemonEvolutionChainDetailsDto {
-  PokemonListTileModel toPokemonEvolutionChainDetails() {
-    final rawPokemon = data!.pokemon;
+  List<PokemonListTileModel> toPokemonEvolutionChainDetails() {
+    final pokemonList = data?.pokemon;
 
-    final pokemonName = rawPokemon?.name;
+    if (pokemonList == null || pokemonList.isEmpty) {
+      return [];
+    }
 
-    final pokemonSprite =
-        (rawPokemon
-                    ?.pokemonsprites
-                    ?.firstOrNull
-                    ?.sprites
-                    ?.other?['official-artwork']
-                as Map<String, dynamic>?)?['front_default']
-            as String?;
+    return pokemonList.map((rawPokemon) {
+      final pokemonName = rawPokemon.name;
 
-    final pokemonId = rawPokemon?.id;
+      final pokemonSprite =
+          (rawPokemon
+                      ?.pokemonsprites
+                      ?.firstOrNull
+                      ?.sprites
+                      ?.other?['official-artwork']
+                  as Map<String, dynamic>?)?['front_default']
+              as String?;
 
-    final pokemonTypes = rawPokemon?.pokemontypes
-        ?.map((type) => type.type?.name ?? '')
-        .toSet()
-        .toList();
+      final pokemonId = rawPokemon.id;
 
-    final pokemonGenus =
-        rawPokemon?.pokemonspecy?.pokemonSpecies?.firstOrNull?.genus;
+      final pokemonTypes = rawPokemon.pokemontypes
+          ?.map((type) => type.type?.name ?? '')
+          .toSet()
+          .toList();
 
-    return PokemonListTileModel(
-      name: pokemonName ?? '',
-      sprite: pokemonSprite ?? '',
-      id: pokemonId ?? 0,
-      type: pokemonTypes ?? [],
-      genus: pokemonGenus ?? '',
-    );
+      final pokemonGenus =
+          rawPokemon.pokemonspecy?.pokemonspecies?.firstOrNull?.genus;
+
+      return PokemonListTileModel(
+        name: pokemonName ?? '',
+        sprite: pokemonSprite ?? '',
+        id: pokemonId ?? 0,
+        type: pokemonTypes ?? [],
+        genus: pokemonGenus ?? '',
+      );
+    }).toList();
   }
 }

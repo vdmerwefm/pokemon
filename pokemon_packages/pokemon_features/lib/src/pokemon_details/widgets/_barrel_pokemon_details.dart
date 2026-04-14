@@ -10,6 +10,7 @@ export 'package:pokemon_features/src/pokemon_details/presentation/bloc/pokemon_d
 export 'package:pokemon_models/pokemon_models.dart';
 export 'package:pokemon_ui_kit/pokemon_ui_kit.dart';
 
+export '../../shared/widgets/_pokemon_list_tile_widgets/_pokemon_list_tile_widget.dart';
 export '_details_type_badges_widget.dart';
 export '_dotted_divider_painter_widget.dart';
 export '_header_widget.dart';
@@ -19,6 +20,7 @@ export '_pokemon_details_card_widgets/_pokemon_details_card_genus_widget.dart';
 export '_pokemon_details_card_widgets/_pokemon_details_card_image_widget.dart';
 export '_pokemon_details_card_widgets/_pokemon_details_card_info_widget.dart';
 export '_pokemon_details_card_widgets/_pokemon_details_card_widget.dart';
+export '_pokemon_evolution_chain_widget.dart';
 export '_pokemon_info_tile_widget.dart';
 export '_pokemon_stats_list_widget.dart';
 export '_stat_rectangle_bar_painter_widget.dart';

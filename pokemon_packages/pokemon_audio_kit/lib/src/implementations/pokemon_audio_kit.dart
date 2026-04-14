@@ -33,9 +33,9 @@ class PokemonAudioKit implements IPokemonAudioKit {
   }
 
   @override
-  TaskEither<Failure, void> playPokemonCry(String pokemonCry) {
+  TaskEither<Failure, void> playPokemonCry({required String cry}) {
     return TaskEither.tryCatch(() async {
-      final response = await SoLoud.instance.loadUrl(pokemonCry);
+      final response = await SoLoud.instance.loadUrl(cry);
 
       await SoLoud.instance.play(
         response,

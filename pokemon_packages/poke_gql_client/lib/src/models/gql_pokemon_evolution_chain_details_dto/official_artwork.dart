@@ -6,8 +6,8 @@ part 'official_artwork.g.dart';
 @freezed
 class OfficialArtwork with _$OfficialArtwork {
   factory OfficialArtwork({
-    @JsonKey(name: 'front_shiny') String? frontShiny,
-    @JsonKey(name: 'front_default') String? frontDefault,
+    String? frontShiny,
+    String? frontDefault,
   }) = _OfficialArtwork;
 
   factory OfficialArtwork.fromJson(Map<String, dynamic> json) =>

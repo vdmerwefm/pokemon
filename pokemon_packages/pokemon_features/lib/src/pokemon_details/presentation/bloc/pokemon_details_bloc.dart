@@ -15,9 +15,11 @@ class PokemonDetailsBloc
     extends Bloc<PokemonDetailsEvents, PokemonDetailsState> {
   PokemonDetailsBloc(this._useCase) : super(PokemonDetailsState.empty()) {
     on<OnGetPokemonDetails>((event, emit) async {
-      final response = await _useCase.getPokemonDetailsUseCase(event.name);
+      final response = await _useCase.getPokemonDetailsUseCase(
+        name: event.name,
+      );
 
-      response.fold(
+      await response.fold(
         (failure) {
           emit(
             state.copyWith(
@@ -26,7 +28,7 @@ class PokemonDetailsBloc
             ),
           );
         },
-        (pokemon) {
+        (pokemon) async {
           emit(
             state.copyWith(
               isLoading: false,
@@ -37,11 +39,30 @@ class PokemonDetailsBloc
       );
     });
 
+    on<OnGetPokemonEvolutionChain>(
+      (event, emit) async {
+        final response = await _useCase.getPokemonEvolutionChain(
+          names: state.pokemonDetails?.evolutions ?? [],
+        );
+
+        response.fold(
+          (failure) => emit(
+            state.copyWith(
+              failure: failure,
+            ),
+          ),
+          (evolutionChain) => emit(
+            state.copyWith(pokemonEvolutionChain: evolutionChain),
+          ),
+        );
+      },
+    );
+
     on<OnGetPokemonCry>((event, emit) async {
       emit(state.copyWith(isAudioLoading: true));
       if (state.pokemonDetails != null) {
         final response = await _useCase.playPokemonCryUseCase(
-          state.pokemonDetails!.cry!,
+          cry: state.pokemonDetails!.cry!,
         );
 
         response.fold(

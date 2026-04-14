@@ -11,8 +11,8 @@ class Pokemon with _$Pokemon {
   factory Pokemon({
     int? id,
     String? name,
-    List<Pokemonsprite>? pokemonsprites,
     List<Pokemontype>? pokemontypes,
+    List<Pokemonsprite>? pokemonsprites,
     Pokemonspecy? pokemonspecy,
   }) = _Pokemon;
 

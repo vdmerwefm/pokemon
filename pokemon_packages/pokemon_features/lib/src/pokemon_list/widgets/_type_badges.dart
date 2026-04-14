@@ -3,10 +3,12 @@ import 'package:pokemon_features/src/pokemon_list/widgets/_barrel_pokemon_list.d
 class TypeBadges extends StatelessWidget {
   const TypeBadges({
     required this.types,
+    this.isActivePokemon = false,
     super.key,
   });
 
   final List<String> types;
+  final bool isActivePokemon;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,9 @@ class TypeBadges extends StatelessWidget {
                   child: Text(
                     type.toUpperCase(),
                     style: pokemonBadgeTextStyle(
-                      const Color(0xFFE5E5E5),
+                      isActivePokemon
+                          ? const Color(0xFF1A1A1A)
+                          : const Color(0xFFE5E5E5),
                     ),
                   ),
                 ),

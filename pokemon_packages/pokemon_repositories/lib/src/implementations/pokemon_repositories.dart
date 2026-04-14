@@ -37,7 +37,9 @@ class PokemonRepository implements IPokemonRepository {
   }
 
   @override
-  TaskEither<Failure, PokemonDetailsModel> getPokemonDetails(String name) {
+  TaskEither<Failure, PokemonDetailsModel> getPokemonDetails({
+    required String name,
+  }) {
     return _pokeGqlClient
         .fetchRawPokemonDetails(name: name)
         .map((rawPokemonDetailsDto) => rawPokemonDetailsDto.toPokemonDetails());
@@ -45,17 +47,21 @@ class PokemonRepository implements IPokemonRepository {
 
   @override
   TaskEither<Failure, List<PokemonListTileModel>>
-  getPokemonEvolutionChainDetails(
-    List<String> names,
-  ) {
-    return TaskEither.traverseList(
+  getPokemonEvolutionChainDetails({
+    required List<String> names,
+  }) {
+    return TaskEither.traverseList<Failure, String, List<PokemonListTileModel>>(
       names,
-      (name) => _pokeGqlClient
-          .fetchRawPokemonEvolutionChainDetails(name: name)
-          .map(
-            (rawPokemonEvolutionDetails) =>
-                rawPokemonEvolutionDetails.toPokemonEvolutionChainDetails(),
-          ),
+      (name) {
+        return _pokeGqlClient
+            .fetchRawPokemonEvolutionChainDetails(name: name)
+            .map(
+              (rawPokemonEvolutionDetails) =>
+                  rawPokemonEvolutionDetails.toPokemonEvolutionChainDetails(),
+            );
+      },
+    ).map(
+      (listOfPokemon) => listOfPokemon.expand((pokemon) => pokemon).toList(),
     );
   }
 
@@ -65,9 +71,9 @@ class PokemonRepository implements IPokemonRepository {
   }) {
     return TaskEither.traverseList<Failure, String, TypeDetailsModel>(
       types,
-      (e) => _pokeApiClient
-          .fetchTypeDetails(typeName: e)
-          .map((f) => f.toTypeDetailsModel()),
+      (type) => _pokeApiClient
+          .fetchTypeDetails(typeName: type)
+          .map((damageTypes) => damageTypes.toTypeDetailsModel()),
     );
   }
 }

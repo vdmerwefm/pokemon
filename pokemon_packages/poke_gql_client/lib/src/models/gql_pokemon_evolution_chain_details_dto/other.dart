@@ -7,7 +7,7 @@ part 'other.g.dart';
 @freezed
 class Other with _$Other {
   factory Other({
-    @JsonKey(name: 'official-artwork') OfficialArtwork? officialArtwork,
+    OfficialArtwork? officialArtwork,
   }) = _Other;
 
   factory Other.fromJson(Map<String, dynamic> json) => _$OtherFromJson(json);
