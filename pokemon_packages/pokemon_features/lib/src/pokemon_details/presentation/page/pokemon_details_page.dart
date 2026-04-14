@@ -132,6 +132,63 @@ class PokemonDetailsPage extends StatelessWidget {
                         state.pokemonDetails?.evolutions ?? [],
                   ),
 
+                  const HeaderWidget(headerText: 'Pokemon Moves'),
+
+                  GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          mainAxisSpacing: 6,
+                          crossAxisSpacing: 24,
+                          crossAxisCount: 2,
+                          childAspectRatio: 3,
+                        ),
+                    itemCount: state.pokemonDetails?.levelUpMoves?.length,
+                    itemBuilder: (context, index) => Column(
+                      spacing: 8,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(8),
+                          color: const Color(0xFF1A1A1A),
+                          child: Row(
+                            spacing: 8,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                (state
+                                            .pokemonDetails
+                                            ?.levelUpMoves?[index]
+                                            .pokemonMoveName ??
+                                        '')
+                                    .toUpperCase(),
+                                style: pokemonInfoStyle(
+                                  const Color(0xFFE5E5E5),
+                                  fontSize: 10,
+                                ),
+                              ),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(4),
+                                child: Image.asset(
+                                  fit: BoxFit.cover,
+                                  GetTypeBadgeUtil.getTypeBadges(
+                                    state
+                                            .pokemonDetails
+                                            ?.levelUpMoves?[index]
+                                            .pokemonMoveType ??
+                                        '',
+                                  ),
+                                  package: 'pokemon_ui_kit',
+                                  height: 24,
+                                  width: 24,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                   const HeaderWidget(headerText: 'Pokemon Stats'),
 
                   PokemonStatsListWidget(pokemonStats: pokemon.stats ?? []),

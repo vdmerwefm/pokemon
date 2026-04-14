@@ -10,31 +10,28 @@ class PokemonDetailsCardFalvorTextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 2),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: 8,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: Text(
-              StringUtils.restructurePokemonFlavorText(
-                pokemonFlavorText ?? '',
-              ),
-              style: pokemonInfoStyle(
-                const Color(0xFFE5E5E5),
-                fontSize: 6,
-              ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 8,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(right: 8),
+          child: Text(
+            StringUtils.restructurePokemonFlavorText(
+              pokemonFlavorText ?? '',
+            ),
+            style: pokemonInfoStyle(
+              const Color(0xFFE5E5E5),
+              fontSize: 6,
             ),
           ),
-
-          const PokemonDividerAltWidget(
-            height: 8,
-            padding: 8,
-          ),
-        ],
-      ),
+        ),
+    
+        const PokemonDividerAltWidget(
+          height: 8,
+          padding: 8,
+        ),
+      ],
     );
   }
 }

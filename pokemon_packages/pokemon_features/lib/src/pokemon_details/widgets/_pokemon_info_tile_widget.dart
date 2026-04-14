@@ -38,7 +38,7 @@ class PokemonInfoTileWidget extends StatelessWidget {
                 infoTitle.toUpperCase(),
                 style: pokemonInfoStyle(
                   infoTitleColor,
-                  fontSize: 10,
+                  fontSize: 8,
                 ),
                 overflow: TextOverflow.ellipsis,
               ),
@@ -54,7 +54,7 @@ class PokemonInfoTileWidget extends StatelessWidget {
                           ability.toUpperCase(),
                           style: pokemonInfoStyle(
                             infoValueColor,
-                            fontSize: 8,
+                            fontSize: 6,
                           ),
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -66,7 +66,7 @@ class PokemonInfoTileWidget extends StatelessWidget {
                   infoValue.toUpperCase(),
                   style: pokemonInfoStyle(
                     infoValueColor,
-                    fontSize: 8,
+                    fontSize: 6,
                   ),
                   overflow: TextOverflow.ellipsis,
                 ),

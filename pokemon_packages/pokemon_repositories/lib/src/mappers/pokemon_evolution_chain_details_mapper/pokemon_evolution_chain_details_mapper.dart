@@ -15,7 +15,7 @@ extension PokemonEvolutionChainDetailsMapper
 
       final pokemonSprite =
           (rawPokemon
-                      ?.pokemonsprites
+                      .pokemonsprites
                       ?.firstOrNull
                       ?.sprites
                       ?.other?['official-artwork']
