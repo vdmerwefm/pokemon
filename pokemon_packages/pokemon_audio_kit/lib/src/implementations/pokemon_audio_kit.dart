@@ -18,7 +18,7 @@ class PokemonAudioKit implements IPokemonAudioKit {
         response,
         looping: true,
         loopingStartAt: const Duration(seconds: 1),
-        volume: 0.5,
+        volume: 0.25,
       );
     }, (error, stackTrace) => Failure.audioFailure());
   }
@@ -39,7 +39,6 @@ class PokemonAudioKit implements IPokemonAudioKit {
 
       await SoLoud.instance.play(
         response,
-        volume: 0.5,
       );
 
       await Future.delayed(const Duration(seconds: 5), () {
@@ -57,7 +56,6 @@ class PokemonAudioKit implements IPokemonAudioKit {
 
       await SoLoud.instance.play(
         response,
-        volume: 0.5,
       );
       
     }, (error, stacktrace) => Failure.audioFailure());

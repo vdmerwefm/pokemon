@@ -5,7 +5,7 @@ class PokemonListState with _$PokemonListState {
   const factory PokemonListState({
     List<PokemonListTileModel>? pokemonList,
     Failure? failure,
-    @Default(9) int limit,
+    @Default(25) int limit,
     @Default(0) int offset,
     @Default(false) bool isLoading,
     @Default(false) bool isLoadingMorePokemon,

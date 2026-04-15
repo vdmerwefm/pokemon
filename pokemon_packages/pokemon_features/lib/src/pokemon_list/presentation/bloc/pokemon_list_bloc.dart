@@ -41,8 +41,8 @@ class PokemonListBloc extends Bloc<PokemonListEvents, PokemonListState> {
     });
 
     on<OnLoadMorePokemon>((event, emit) async {
-      final offset = state.offset + 9;
-      const limit = 9;
+      final offset = state.offset + 25;
+      const limit = 25;
 
       emit(state.copyWith(isLoadingMorePokemon: true));
 

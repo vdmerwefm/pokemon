@@ -148,39 +148,58 @@ class PokemonDetailsPage extends StatelessWidget {
                     itemBuilder: (context, index) => Column(
                       spacing: 8,
                       children: [
-                        Container(
-                          padding: const EdgeInsets.all(8),
+                        ColoredBox(
                           color: const Color(0xFF1A1A1A),
                           child: Row(
                             spacing: 8,
-                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text(
-                                (state
-                                            .pokemonDetails
-                                            ?.levelUpMoves?[index]
-                                            .pokemonMoveName ??
-                                        '')
-                                    .toUpperCase(),
-                                style: pokemonInfoStyle(
-                                  const Color(0xFFE5E5E5),
-                                  fontSize: 10,
+                              Image.asset(
+                                alignment: Alignment.bottomRight,
+                                fit: BoxFit.cover,
+                                GetTypeBadgeUtil.getTypeBadges(
+                                  state
+                                          .pokemonDetails
+                                          ?.levelUpMoves?[index]
+                                          .pokemonMoveType ??
+                                      '',
                                 ),
+                                package: 'pokemon_ui_kit',
+                                height: 48,
+                                width: 48,
                               ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(4),
-                                child: Image.asset(
-                                  fit: BoxFit.cover,
-                                  GetTypeBadgeUtil.getTypeBadges(
-                                    state
-                                            .pokemonDetails
-                                            ?.levelUpMoves?[index]
-                                            .pokemonMoveType ??
-                                        '',
-                                  ),
-                                  package: 'pokemon_ui_kit',
-                                  height: 24,
-                                  width: 24,
+                              Padding(
+                                padding: const EdgeInsets.only(top:16),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  
+                                  children: [
+                                    Text(
+                                      (state
+                                                  .pokemonDetails
+                                                  ?.levelUpMoves?[index]
+                                                  .pokemonMoveType ??
+                                              '')
+                                          .toUpperCase(),
+                                      style: pokemonInfoStyle(
+                                        const Color(0xFFE5E5E5),
+                                        fontSize: 8,
+                                      ),
+                                    ),
+                                    Text(
+                                      (state
+                                                  .pokemonDetails
+                                                  ?.levelUpMoves?[index]
+                                                  .pokemonMoveName ??
+                                              '')
+                                          .toUpperCase(),
+                                      style: pokemonInfoStyle(
+                                        const Color(0xFFE5E5E5),
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],

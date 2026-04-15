@@ -21,6 +21,9 @@ class _LoadMoreButtonState extends State<LoadMoreButton> {
         onTap: isLoadingMorePokemon == true
             ? () {}
             : () {
+                context.read<PokemonAudioBloc>().add(
+                  const PokemonAudioEvents.onPlaySelectBite(),
+                );
                 context.read<PokemonListBloc>().add(
                   const PokemonListEvents.onLoadMorePokemon(),
                 );
