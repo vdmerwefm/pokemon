@@ -112,7 +112,7 @@ class PokemonDetailsSkeletonLoader extends StatelessWidget {
                                 ),
 
                                 const PokemonDividerAltWidget(
-                                  padding: 8,
+                                  padding: 6,
                                 ),
                               ],
                             ),
