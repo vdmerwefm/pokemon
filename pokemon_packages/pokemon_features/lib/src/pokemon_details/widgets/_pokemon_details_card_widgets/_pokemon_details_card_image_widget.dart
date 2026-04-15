@@ -27,7 +27,7 @@ class PokemonDetailsCardImageWidget extends StatelessWidget {
             ),
           );
         },
-        placeholder: (context, url) => const SizedBox(width: 100, height: 96),
+        placeholder: (context, url) => const SizedBox(width: 124, height: 208),
       ),
     );
   }

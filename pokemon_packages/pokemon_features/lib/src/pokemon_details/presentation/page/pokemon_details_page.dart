@@ -1,4 +1,5 @@
 import 'package:pokemon_features/src/pokemon_details/widgets/_barrel_pokemon_details.dart';
+import 'package:pokemon_features/src/pokemon_details/widgets/_pokemon_details_skeleton_loader.dart';
 
 @RoutePage()
 class PokemonDetailsPage extends StatelessWidget {
@@ -23,18 +24,12 @@ class PokemonDetailsPage extends StatelessWidget {
         ),
       child: BlocBuilder<PokemonDetailsBloc, PokemonDetailsState>(
         builder: (context, state) {
-          if (state.isLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
-
-          if (state.failure != null) {
-            return Center(child: Text(state.failure!.message));
-          }
-
           final pokemon = state.pokemonDetails;
+          final loadingEmptyOrFailure =
+              state.isLoading || pokemon == null || state.failure != null;
 
-          if (pokemon == null) {
-            return const SizedBox.shrink();
+          if (loadingEmptyOrFailure) {
+            return const PokemonDetailsSkeletonLoader();
           }
 
           return SingleChildScrollView(
@@ -169,11 +164,11 @@ class PokemonDetailsPage extends StatelessWidget {
                                 width: 48,
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(top:16),
+                                padding: const EdgeInsets.only(top: 16),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  
+
                                   children: [
                                     Text(
                                       (state

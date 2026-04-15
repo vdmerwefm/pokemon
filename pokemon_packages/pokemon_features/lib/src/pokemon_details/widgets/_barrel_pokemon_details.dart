@@ -9,6 +9,7 @@ export 'package:pokemon_features/pokemon_features.dart' hide initMicroPackage;
 export 'package:pokemon_features/src/pokemon_details/presentation/bloc/pokemon_details_bloc.dart';
 export 'package:pokemon_models/pokemon_models.dart';
 export 'package:pokemon_ui_kit/pokemon_ui_kit.dart';
+export 'package:skeletonizer/skeletonizer.dart';
 
 export '../../shared/widgets/_pokemon_list_tile_widgets/_pokemon_list_tile_widget.dart';
 export '_details_type_badges_widget.dart';

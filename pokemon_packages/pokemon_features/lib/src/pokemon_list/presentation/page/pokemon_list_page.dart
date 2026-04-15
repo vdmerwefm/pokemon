@@ -15,23 +15,15 @@ class _PokemonListPageState extends State<PokemonListPage> {
       create: (context) => sl<PokemonListBloc>()..add(const OnGetPokemonList()),
       child: BlocBuilder<PokemonListBloc, PokemonListState>(
         builder: (context, state) {
-          if (state.failure != null) {
-            return Center(
-              child: Text(
-                state.failure!.message,
-                style: pokemonInfoStyle(
-                  const Color(0xFFE5E5E5),
-                ),
-              ),
-            );
-          }
-
+        
           final pokemonList = state.pokemonList ?? [];
-          final loadingOrEmpty = state.isLoading || pokemonList.isEmpty;
+          final loadingEmptyOrFailure =
+              state.isLoading || pokemonList.isEmpty || state.failure != null;
 
-          if (loadingOrEmpty) {
+          if (loadingEmptyOrFailure) {
             return const ListSkeletonLoaderWidget();
           }
+
           return SingleChildScrollView(
             padding: const EdgeInsets.only(bottom: 24),
             child: Column(
