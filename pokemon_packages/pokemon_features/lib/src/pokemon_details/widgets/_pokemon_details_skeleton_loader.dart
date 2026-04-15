@@ -28,7 +28,6 @@ class PokemonDetailsSkeletonLoader extends StatelessWidget {
       ),
       child: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
-        padding: const EdgeInsets.only(bottom: 24),
         child: Padding(
           padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
           child: Column(
@@ -69,7 +68,6 @@ class PokemonDetailsSkeletonLoader extends StatelessWidget {
                                   ),
                                 ),
                                 Column(
-                                  spacing: 4,
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -112,36 +110,45 @@ class PokemonDetailsSkeletonLoader extends StatelessWidget {
                                 ),
 
                                 const PokemonDividerAltWidget(
-                                  padding: 6,
+                                  height: 0 ,
+                                  padding: 10,
                                 ),
                               ],
                             ),
 
-                            Row(
-                              spacing: 8,
+                            Column(
                               children: [
-                                Text(
-                                  'shadow'.toUpperCase(),
-                                  style: pokemonInfoStyle(
-                                    const Color(0xFFE5E5E5),
-                                    fontSize: 16,
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                Row(
-                                  spacing: 8,
-                                  children: ['ghost', 'dark'].map(
-                                    (type) {
-                                      return Text(
-                                        type.toUpperCase(),
+                                SizedBox(
+                                  
+                                  height: 24,
+                                  child: Row(
+                                    spacing: 8,
+                                    children: [
+                                      Text(
+                                        'sh'.toUpperCase(),
                                         style: pokemonInfoStyle(
                                           const Color(0xFFE5E5E5),
-                                          fontSize: 16,
+                                          fontSize: 22,
                                         ),
                                         overflow: TextOverflow.ellipsis,
-                                      );
-                                    },
-                                  ).toList(),
+                                      ),
+                                      Row(
+                                        spacing: 8,
+                                        children: ['gh', 'dr'].map(
+                                          (type) {
+                                            return Text(
+                                              type.toUpperCase(),
+                                              style: pokemonInfoStyle(
+                                                const Color(0xFFE5E5E5),
+                                                fontSize: 22,
+                                              ),
+                                              overflow: TextOverflow.ellipsis,
+                                            );
+                                          },
+                                        ).toList(),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
