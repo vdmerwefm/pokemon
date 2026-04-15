@@ -112,7 +112,7 @@ class PokemonDetailsPage extends StatelessWidget {
                   ),
 
                   const HeaderWidget(
-                    headerText: 'Pokemon Strengths and Weaknesses',
+                    headerText: 'Strengths and Weaknesses',
                   ),
 
                   Column(

@@ -2,19 +2,14 @@ part of '../domain_leaf.dart';
 
 @Injectable()
 class GetPokemonDetailsUseCase {
-  GetPokemonDetailsUseCase(this._repo, this._audioKit);
+  GetPokemonDetailsUseCase(this._repo);
 
   final IPokemonRepository _repo;
-  final IPokemonAudioKit _audioKit;
 
   Future<Either<Failure, PokemonDetailsModel>> getPokemonDetailsUseCase({
     required String name,
   }) {
     return _repo.getPokemonDetails(name: name).run();
-  }
-
-  Future<Either<Failure, void>> playPokemonCryUseCase({required String cry}) {
-    return _audioKit.playPokemonCry(cry: cry).run();
   }
 
   Future<Either<Failure, List<TypeDetailsModel>>>

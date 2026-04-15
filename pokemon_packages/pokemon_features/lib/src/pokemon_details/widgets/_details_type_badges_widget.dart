@@ -11,14 +11,14 @@ class DetailsTypeBadgesWidget extends StatelessWidget {
   final List<String> pokemonTypes;
 
   @override
-  Widget build(BuildContext build) {
+  Widget build(BuildContext context) {
     return Row(
       spacing: pokemonTypes.isNotEmpty ? 8 : 0,
       children: [
         if (pokemonTypes.isNotEmpty)
           Container(
             alignment: Alignment.center,
-            width: 100,
+            width: 104,
             padding: Platform.isAndroid
                 ? const EdgeInsets.only(
                     top: 8,
@@ -32,7 +32,7 @@ class DetailsTypeBadgesWidget extends StatelessWidget {
               text.toUpperCase(),
               style: pokemonInfoStyle(
                 const Color(0xFFE5E5E5),
-                fontSize: 6,
+                fontSize: 9,
               ),
               overflow: TextOverflow.ellipsis,
             ),
@@ -40,10 +40,11 @@ class DetailsTypeBadgesWidget extends StatelessWidget {
         else
           const SizedBox.shrink(),
         Row(
+          mainAxisSize: MainAxisSize.min,
           spacing: 8,
           children: pokemonTypes.map((type) {
             return Image.asset(
-              fit: BoxFit.cover,
+              fit: BoxFit.contain,
               GetTypeBadgeUtil.getTypeBadges(type),
               package: 'pokemon_ui_kit',
               height: 24,

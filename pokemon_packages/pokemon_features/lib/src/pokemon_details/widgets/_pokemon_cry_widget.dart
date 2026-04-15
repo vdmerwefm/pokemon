@@ -12,9 +12,9 @@ class PokemonCryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.read<PokemonDetailsBloc>()
+      onTap: () => context.read<PokemonAudioBloc>()
         ..add(
-          PokemonDetailsEvents.onGetPokemonCry(
+          PokemonAudioEvents.onPlayPokemonCry(
             pokemonCry: pokemonCry,
           ),
         ),

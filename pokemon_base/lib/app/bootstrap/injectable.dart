@@ -12,8 +12,8 @@ import 'package:pokemon_repositories/pokemon_repositories.dart';
   includeMicroPackages: true,
   externalPackageModulesBefore: [
     ExternalModule(PokemonCorePackageModule),
-    ExternalModule(PokeApiClientPackageModule),
     ExternalModule(PokeGqlClientPackageModule),
+    ExternalModule(PokeApiClientPackageModule),
     ExternalModule(PokemonAudioKitPackageModule),
     ExternalModule(PokemonRepositoriesPackageModule),
     ExternalModule(PokemonFeaturesPackageModule),

@@ -25,12 +25,17 @@ class PokemonListTileWidget extends StatelessWidget {
     return GestureDetector(
       onTap: isActivePokemon
           ? () {}
-          : () => context.router.popAndPush(
-              PokemonDetailsRoute(
-                pokemonName: pokemonName ?? '',
-                pokemonTypes: pokemonTypes ?? [],
-              ),
-            ),
+          : () {
+              context.read<PokemonAudioBloc>().add(
+                const PokemonAudioEvents.onPlaySelectBite(),
+              );
+              context.router.popAndPush(
+                PokemonDetailsRoute(
+                  pokemonName: pokemonName ?? '',
+                  pokemonTypes: pokemonTypes ?? [],
+                ),
+              );
+            },
       child: Padding(
         padding: EdgeInsets.only(top: topPadding ?? 16),
         child: Container(

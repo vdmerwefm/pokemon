@@ -58,26 +58,6 @@ class PokemonDetailsBloc
       },
     );
 
-    on<OnGetPokemonCry>((event, emit) async {
-      emit(state.copyWith(isAudioLoading: true));
-      if (state.pokemonDetails != null) {
-        final response = await _useCase.playPokemonCryUseCase(
-          cry: state.pokemonDetails!.cry!,
-        );
-
-        response.fold(
-          (failure) => state.copyWith(
-            failure: failure,
-            isAudioLoading: false,
-          ),
-          (pokemonCry) => state.copyWith(
-            failure: null,
-            isAudioLoading: false,
-          ),
-        );
-      }
-    });
-
     on<OnGetPokemonDamageIndecies>(
       (event, emit) async {
         emit(state.copyWith(damageIndeciesLoading: true));

@@ -9,4 +9,5 @@ abstract interface class IPokemonAudioKit {
     required bool toggleSoundHandle,
   });
   TaskEither<Failure, void> playPokemonCry({required String cry});
+  TaskEither<Failure, void> playSelectBite();
 }

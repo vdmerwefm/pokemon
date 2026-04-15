@@ -47,4 +47,19 @@ class PokemonAudioKit implements IPokemonAudioKit {
       });
     }, (error, stacktrace) => Failure.audioFailure());
   }
+
+  @override
+  TaskEither<Failure, void> playSelectBite() {
+    return TaskEither.tryCatch(() async {
+      final response = await SoLoud.instance.loadAsset(
+        'packages/pokemon_audio_kit/lib/src/assets/sounds/select.mp3',
+      );
+
+      await SoLoud.instance.play(
+        response,
+        volume: 0.5,
+      );
+      
+    }, (error, stacktrace) => Failure.audioFailure());
+  }
 }

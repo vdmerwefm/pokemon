@@ -28,8 +28,8 @@ class PokemonInfoTileWidget extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(4),
         color: tileColor,
-        child: SizedBox.fromSize(
-          size: const Size(double.infinity, 50),
+        child: SizedBox(
+          width: double.infinity,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,7 +38,7 @@ class PokemonInfoTileWidget extends StatelessWidget {
                 infoTitle.toUpperCase(),
                 style: pokemonInfoStyle(
                   infoTitleColor,
-                  fontSize: 8,
+                  fontSize: 10,
                 ),
                 overflow: TextOverflow.ellipsis,
               ),
