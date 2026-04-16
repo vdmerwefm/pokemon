@@ -18,11 +18,11 @@ class DetailsTypeBadgesWidget extends StatelessWidget {
         if (pokemonTypes.isNotEmpty)
           Container(
             alignment: Alignment.center,
-            width: 104,
+            width: 100,
             padding: Platform.isAndroid
                 ? const EdgeInsets.only(
                     top: 8,
-                    bottom: 4,
+                    bottom: 6,
                     left: 8,
                     right: 8,
                   )
@@ -32,7 +32,7 @@ class DetailsTypeBadgesWidget extends StatelessWidget {
               text.toUpperCase(),
               style: pokemonInfoStyle(
                 const Color(0xFFE5E5E5),
-                fontSize: 9,
+                fontSize: 8,
               ),
               overflow: TextOverflow.ellipsis,
             ),
@@ -47,8 +47,8 @@ class DetailsTypeBadgesWidget extends StatelessWidget {
               fit: BoxFit.contain,
               GetTypeBadgeUtil.getTypeBadges(type),
               package: 'pokemon_ui_kit',
-              height: 24,
-              width: 24,
+              height: 20,
+              width: 20,
             );
           }).toList(),
         ),

@@ -48,7 +48,7 @@ class PokemonDetailsCardInfoWidget extends StatelessWidget {
                 (pokemonName ?? '').toUpperCase(),
                 style: pokemonInfoStyle(
                   const Color(0xFFE5E5E5),
-                  fontSize: 14,
+                  fontSize: pokemonName!.length >= 19 ? 10 : 14,
                 ),
                 overflow: TextOverflow.ellipsis,
               ),

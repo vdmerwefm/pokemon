@@ -29,6 +29,11 @@ class PokemonListTileInfoWidget extends StatelessWidget {
                 isActivePokemon
                     ? const Color(0xFF1A1A1A)
                     : const Color(0xFFE5E5E5),
+                fontSize: pokemonName!.length > 19
+                    ? 12
+                    : pokemonName!.length > 14
+                    ? 14
+                    : null,
               ),
               overflow: TextOverflow.ellipsis,
             ),
