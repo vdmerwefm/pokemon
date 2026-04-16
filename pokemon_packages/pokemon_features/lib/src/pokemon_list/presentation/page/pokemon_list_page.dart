@@ -15,7 +15,6 @@ class _PokemonListPageState extends State<PokemonListPage> {
       create: (context) => sl<PokemonListBloc>()..add(const OnGetPokemonList()),
       child: BlocBuilder<PokemonListBloc, PokemonListState>(
         builder: (context, state) {
-        
           final pokemonList = state.pokemonList ?? [];
           final loadingEmptyOrFailure =
               state.isLoading || pokemonList.isEmpty || state.failure != null;
@@ -24,19 +23,18 @@ class _PokemonListPageState extends State<PokemonListPage> {
             return const ListSkeletonLoaderWidget();
           }
 
-          return SingleChildScrollView(
-            padding: const EdgeInsets.only(bottom: 24),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 16, right: 16),
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: pokemonList.length,
-                    itemBuilder: (context, index) {
-                      final pokemon = pokemonList[index];
-                      return PokemonListTileWidget(
+          return CustomScrollView(
+            slivers: [
+              SliverPadding(
+                padding: const EdgeInsets.only(left: 16, right: 16),
+                sliver: SliverList.builder(
+                  itemCount: pokemonList.length,
+                  addAutomaticKeepAlives: false,
+                  addRepaintBoundaries: true,
+                  itemBuilder: (context, index) {
+                    final pokemon = pokemonList[index];
+                    return RepaintBoundary(
+                      child: PokemonListTileWidget(
                         key: ValueKey(pokemon.id),
                         //context: context,
                         pokemonName: pokemon.name,
@@ -44,13 +42,16 @@ class _PokemonListPageState extends State<PokemonListPage> {
                         pokemonSprite: pokemon.sprite,
                         pokemonId: pokemon.id,
                         pokemonGenus: pokemon.genus,
-                      );
-                    },
-                  ),
+                      ),
+                    );
+                  },
                 ),
-                const LoadMoreButton(),
-              ],
-            ),
+              ),
+              const SliverPadding(
+                padding: EdgeInsetsGeometry.only(bottom: 24),
+                sliver: SliverToBoxAdapter(child: LoadMoreButton()),
+              ),
+            ],
           );
         },
       ),

@@ -50,6 +50,7 @@ class PokemonDetailsCardInfoWidget extends StatelessWidget {
                   const Color(0xFFE5E5E5),
                   fontSize: 14,
                 ),
+                overflow: TextOverflow.ellipsis,
               ),
             ],
           ),

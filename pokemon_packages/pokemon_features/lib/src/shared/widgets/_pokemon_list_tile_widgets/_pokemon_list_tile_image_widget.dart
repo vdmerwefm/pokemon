@@ -11,6 +11,8 @@ class PokemonListTileImageWidget extends StatelessWidget {
       color: const Color(0xFF3A3A3A),
       child: CachedNetworkImage(
         cacheManager: PokemonImageCacheManager.pokemonImageCacheManager,
+        memCacheHeight: 96,
+        memCacheWidth: 100,
         imageUrl: pokemonSprite ?? '',
         imageBuilder: (context, imageProvider) {
           return Transform.scale(

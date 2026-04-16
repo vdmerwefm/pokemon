@@ -60,17 +60,28 @@ class PokemonListBloc extends Bloc<PokemonListEvents, PokemonListState> {
             state.pokemonList!,
           );
 
-          emit(
-            state.copyWith(
-              isLoadingMorePokemon: false,
-              pokemonList: [
-                ...pokemonList,
-                ...morePokemon,
-              ],
-              limit: limit,
-              offset: offset,
-            ),
-          );
+          if (state.pokemonList!.length <= 1000) {
+            emit(
+              state.copyWith(
+                isLoadingMorePokemon: false,
+                pokemonList: [
+                  ...pokemonList,
+                  ...morePokemon,
+                ],
+                limit: limit,
+                offset: offset,
+              ),
+            );
+          }
+
+          if (state.pokemonList!.length == 1025){
+            emit(
+              state.copyWith(
+                failure: null,
+                dexLimit: true
+              ),
+            );
+          }
         },
       );
     });

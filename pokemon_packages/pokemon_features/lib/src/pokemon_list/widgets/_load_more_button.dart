@@ -14,6 +14,7 @@ class _LoadMoreButtonState extends State<LoadMoreButton> {
         .watch<PokemonListBloc>()
         .state
         .isLoadingMorePokemon;
+    final dexLimitReached = context.watch<PokemonListBloc>().state.dexLimit;
 
     return BlocProvider(
       create: (context) => sl<PokemonListBloc>(),
@@ -28,13 +29,14 @@ class _LoadMoreButtonState extends State<LoadMoreButton> {
                   const PokemonListEvents.onLoadMorePokemon(),
                 );
               },
-        child: Container(
+        child: dexLimitReached ? const SizedBox.shrink() : 
+        Container(
           margin: const EdgeInsets.all(16),
           color: const Color(0xFFE93F6E),
           width: MediaQuery.sizeOf(context).width,
           height: 50,
           child: Center(
-            child: isLoadingMorePokemon == true
+            child: isLoadingMorePokemon
                 ? Text(
                     'Loading More Pokemon...',
                     style: pokemonBadgeTextStyle(

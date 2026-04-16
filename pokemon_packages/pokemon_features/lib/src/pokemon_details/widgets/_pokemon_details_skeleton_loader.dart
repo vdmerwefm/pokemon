@@ -110,7 +110,7 @@ class PokemonDetailsSkeletonLoader extends StatelessWidget {
                                 ),
 
                                 const PokemonDividerAltWidget(
-                                  height: 0 ,
+                                  height: 0,
                                   padding: 10,
                                 ),
                               ],
@@ -119,30 +119,23 @@ class PokemonDetailsSkeletonLoader extends StatelessWidget {
                             Column(
                               children: [
                                 SizedBox(
-                                  
                                   height: 24,
                                   child: Row(
                                     spacing: 8,
                                     children: [
-                                      Text(
-                                        'sh'.toUpperCase(),
-                                        style: pokemonInfoStyle(
-                                          const Color(0xFFE5E5E5),
-                                          fontSize: 22,
-                                        ),
-                                        overflow: TextOverflow.ellipsis,
+                                      Container(
+                                        height: 16,
+                                        width: 48,
+                                        color: const Color(0xFF1A1A1A),
                                       ),
                                       Row(
                                         spacing: 8,
                                         children: ['gh', 'dr'].map(
                                           (type) {
-                                            return Text(
-                                              type.toUpperCase(),
-                                              style: pokemonInfoStyle(
-                                                const Color(0xFFE5E5E5),
-                                                fontSize: 22,
-                                              ),
-                                              overflow: TextOverflow.ellipsis,
+                                            return Container(
+                                              height: 16,
+                                              width: 40,
+                                              color: const Color(0xFF1A1A1A),
                                             );
                                           },
                                         ).toList(),
@@ -223,17 +216,12 @@ class PokemonDetailsSkeletonLoader extends StatelessWidget {
               Column(
                 children: [
                   Row(
+                    spacing: 8,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 4),
-                        child: Text(
-                          'strong',
-                          style: pokemonInfoStyle(
-                            const Color(0xFFE5E5E5),
-                            fontSize: 24,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                      Container(
+                        height: 28,
+                        width: 104,
+                        color: const Color(0xFF1A1A1A),
                       ),
                       Row(
                         spacing: 8,

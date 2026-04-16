@@ -8,6 +8,7 @@ class PokemonListState with _$PokemonListState {
     @Default(25) int limit,
     @Default(0) int offset,
     @Default(false) bool isLoading,
+    @Default(false) bool dexLimit,
     @Default(false) bool isLoadingMorePokemon,
   }) = _PokemonListState;
 
