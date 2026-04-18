@@ -1,5 +1,5 @@
 String gqlPokemonDetailsQuery = r'''
-query PokemonDetails($name: String = "venusaur") {
+query PokemonDetails($name: String = "bulbasaur") {
   pokemon(where: {name: {_eq: $name}}) {
     id
     name
@@ -17,16 +17,38 @@ query PokemonDetails($name: String = "venusaur") {
       }
     }
     pokemon_flavor_text: pokemonspecy {
-      pokemonspecies: pokemonspeciesflavortexts(where: {language_id: {_eq: 9}}) {
+      pokemonspecies: pokemonspeciesflavortexts(
+        where: {language_id: {_eq: 9}}
+        limit: 1
+      ) {
         flavor_text
       }
     }
     pokemon_evolutions: pokemonspecy {
       pokemonspeciesnames: evolutionchain {
-        pokemonspecies(order_by: [ {
-           order: asc
-        }]) {
-          name
+        pokemonspecies(order_by: [{order: asc}]) {
+          pokemons {
+            pokemonforms {
+              id
+              name
+              form_name
+              formdetails: pokemon {
+                pokemon_genus: pokemonspecy {
+                  pokemonspecies: pokemonspeciesnames(where: {language_id: {_eq: 9}}) {
+                    genus
+                  }
+                }
+                pokemontypes {
+                  type {
+                    name
+                  }
+                }
+                pokemonsprites {
+                  sprites
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -36,7 +58,7 @@ query PokemonDetails($name: String = "venusaur") {
     pokemonmoves {
       move {
         name
-        type{
+        type {
           name
         }
       }

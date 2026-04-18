@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:poke_gql_client/poke_gql_client.dart';
 import 'package:pokemon_models/pokemon_models.dart';
+import 'package:pokemon_repositories/src/mappers/pokemon_details_mapper/converters.dart';
 
 extension PokemonDetailsMapper on GqlPokemonDetailsDto {
   PokemonDetailsModel toPokemonDetails() {
@@ -25,13 +26,13 @@ extension PokemonDetailsMapper on GqlPokemonDetailsDto {
         ?.map((e) => e.genus)
         .first;
 
-    final pokemonEvolutions = rawPokemonDetails
-        ?.pokemonEvolutions
-        ?.pokemonspeciesnames
-        ?.pokemonspecies
-        ?.map((evolution) => evolution.name)
-        .whereType<String>()
-        .toList();
+    final pokemonEvolutions = Converters.convertToEvolutionsModel(
+      rawPokemonDetails?.pokemonEvolutions?.pokemonspeciesnames,
+    );
+
+    final pokemonForms = Converters.convertToFormsModel(
+      rawPokemonDetails?.pokemonEvolutions?.pokemonspeciesnames,
+    );
 
     final pokemonSprite =
         (rawPokemonDetails
@@ -72,6 +73,7 @@ extension PokemonDetailsMapper on GqlPokemonDetailsDto {
       flavorText: pokemonFlavorText ?? '',
       genus: pokemonGenus ?? '',
       evolutions: pokemonEvolutions ?? [],
+      forms: pokemonForms ?? [],
       sprite: pokemonSprite ?? '',
       levelUpMoves: pokemonLevelUpMoves ?? [],
       machineMoves: pokemonMachineMoves ?? [],

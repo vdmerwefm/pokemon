@@ -39,25 +39,6 @@ class PokemonDetailsBloc
       );
     });
 
-    on<OnGetPokemonEvolutionChain>(
-      (event, emit) async {
-        final response = await _useCase.getPokemonEvolutionChain(
-          names: state.pokemonDetails?.evolutions ?? [],
-        );
-
-        response.fold(
-          (failure) => emit(
-            state.copyWith(
-              failure: failure,
-            ),
-          ),
-          (evolutionChain) => emit(
-            state.copyWith(pokemonEvolutionChain: evolutionChain),
-          ),
-        );
-      },
-    );
-
     on<OnGetPokemonDamageIndecies>(
       (event, emit) async {
         emit(state.copyWith(damageIndeciesLoading: true));

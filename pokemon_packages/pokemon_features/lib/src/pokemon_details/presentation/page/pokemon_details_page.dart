@@ -123,8 +123,17 @@ class PokemonDetailsPage extends StatelessWidget {
                   const HeaderWidget(headerText: 'Evolution Chain'),
 
                   PokemonEvolutionChainWidget(
+                    activePokemonName: pokemon.name ?? '',
                     pokemonEvolutionChain:
                         state.pokemonDetails?.evolutions ?? [],
+                  ),
+
+                  const HeaderWidget(headerText: 'Forms and Transformations'),
+
+                  PokemonEvolutionChainWidget(
+                    activePokemonName: pokemon.name ?? '',
+                    pokemonEvolutionChain:
+                        state.pokemonDetails?.forms ?? [],
                   ),
 
                   const HeaderWidget(headerText: 'Pokemon Moves'),

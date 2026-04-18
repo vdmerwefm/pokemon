@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:pokemon_models/src/models/pokemon_details_model/pokemon_forms_model.dart';
 import 'package:pokemon_models/src/models/pokemon_details_model/pokemon_moves_model.dart';
 import 'package:pokemon_models/src/models/pokemon_details_model/pokemon_stats_model.dart';
 
@@ -14,6 +15,7 @@ class PokemonDetailsModel extends Equatable {
     required this.flavorText,
     required this.genus,
     required this.evolutions,
+    required this.forms,
     required this.sprite,
     required this.levelUpMoves,
     required this.machineMoves,
@@ -33,6 +35,7 @@ class PokemonDetailsModel extends Equatable {
     flavorText: '',
     genus: '',
     evolutions: [],
+    forms: [],
     sprite: '',
     levelUpMoves: [],
     machineMoves: [],
@@ -52,7 +55,8 @@ class PokemonDetailsModel extends Equatable {
         cry: json['cry'] as String,
         flavorText: json['flavorText'] as String,
         genus: json['genus'] as String,
-        evolutions: json['evolutions'] as List<String>,
+        evolutions: json['evolutions'] as List<PokemonFormsModel>,
+        forms: json['forms'] as List<PokemonFormsModel>,
         sprite: json['sprite'] as String,
         levelUpMoves: json['levelUpMoves'] as List<PokemonMovesModel>,
         machineMoves: json['machineMoves'] as List<PokemonMovesModel>,
@@ -72,6 +76,7 @@ class PokemonDetailsModel extends Equatable {
     'flavorText': flavorText,
     'genus': genus,
     'evolutions': evolutions,
+    'forms': forms,
     'sprite': sprite,
     'levelUpMoves': levelUpMoves,
     'machineMoves': machineMoves,
@@ -89,7 +94,8 @@ class PokemonDetailsModel extends Equatable {
   final String? cry;
   final String? flavorText;
   final String? genus;
-  final List<String>? evolutions;
+  final List<PokemonFormsModel>? evolutions;
+  final List<PokemonFormsModel>? forms;
   final String? sprite;
   final List<PokemonMovesModel>? levelUpMoves;
   final List<PokemonMovesModel>? machineMoves;
@@ -109,6 +115,7 @@ class PokemonDetailsModel extends Equatable {
     flavorText,
     genus,
     evolutions,
+    forms,
     sprite,
     levelUpMoves,
     machineMoves,

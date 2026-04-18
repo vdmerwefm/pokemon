@@ -38,19 +38,24 @@ class PokeGqlClient {
   TaskEither<Failure, GqlPokemonDetailsDto> fetchRawPokemonDetails({
     required String name,
   }) {
-    return TaskEither.tryCatch(() async {
-      final options = QueryOptions(
-        document: gql(gqlPokemonDetailsQuery),
-        variables: {'name': name},
-      );
+    return TaskEither.tryCatch(
+      () async {
+        final options = QueryOptions(
+          document: gql(gqlPokemonDetailsQuery),
+          variables: {'name': name},
+        );
 
-      final response = await gqlDioLink.query(options);
-      if (response.data == null) {
-        return GqlPokemonDetailsDto.empty();
-      } else {
-        return GqlPokemonDetailsDto.fromJson({'data': response.data});
-      }
-    }, (error, stackTrace) => Failure.httpFailure());
+        final response = await gqlDioLink.query(options);
+        if (response.data == null) {
+          return GqlPokemonDetailsDto.empty();
+        } else {
+          return GqlPokemonDetailsDto.fromJson({'data': response.data});
+        }
+      },
+      (error, stackTrace) {
+        return Failure.httpFailure();
+      },
+    );
   }
 
   TaskEither<Failure, GqlPokemonEvolutionChainDetailsDto>

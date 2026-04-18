@@ -3,6 +3,7 @@ library;
 
 export 'src/models/gql_pokemon_details_dto/gql_pokemon_details_dto.dart';
 export 'src/models/gql_pokemon_details_dto/pokemonmove.dart';
+export 'src/models/gql_pokemon_details_dto/pokemonspeciesnames.dart';
 export 'src/models/gql_pokemon_details_dto/pokemonstat.dart';
 export 'src/models/gql_pokemon_details_dto/pokemontype.dart';
 export 'src/models/gql_pokemon_evolution_chain_details_dto/gql_pokemon_evolution_chain_details_dto.dart';
