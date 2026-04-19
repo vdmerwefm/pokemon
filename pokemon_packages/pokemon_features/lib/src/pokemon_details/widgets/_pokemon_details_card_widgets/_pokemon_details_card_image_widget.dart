@@ -18,7 +18,7 @@ class PokemonDetailsCardImageWidget extends StatelessWidget {
         imageBuilder: (context, imageProvider) {
           return Transform.scale(
             alignment: AlignmentDirectional.center,
-            scale: 1.4,
+            scale: 1.3,
             child: Image(
               image: imageProvider,
               fit: BoxFit.contain,

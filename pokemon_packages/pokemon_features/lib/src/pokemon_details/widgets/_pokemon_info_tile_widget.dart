@@ -71,9 +71,6 @@ class PokemonInfoTileWidget extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
               height4,
-              if (abilities != null)
-                const SizedBox.shrink()
-              else
                 Text(
                   infoFlavor,
                   style: TextStyle(

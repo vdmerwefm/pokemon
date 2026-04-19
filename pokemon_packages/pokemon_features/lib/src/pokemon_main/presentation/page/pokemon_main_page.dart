@@ -98,7 +98,7 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
                   ),
                 ),
           bottom: PreferredSize(
-            preferredSize: const Size(16, 16),
+            preferredSize: const Size(8, 8),
             child: CustomPaint(
               painter: AppBarBottomStroke(
                 color: const Color(0xFFE93F6E),
@@ -128,6 +128,7 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
             width: 4,
           ),
           child: const BottomAppBar(
+            height: 60,
             shape: CircularNotchedRectangle(),
             notchMargin: 12,
           ),

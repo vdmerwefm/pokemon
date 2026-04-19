@@ -18,13 +18,13 @@ class AppRouter extends _$AppRouter {
           page: PokemonListRoute.page,
           initial: true,
         ),
-        CustomRoute(
+      ],
+    ),
+    CustomRoute(
           page: PokemonDetailsRoute.page,
           transitionsBuilder: TransitionsBuilders.noTransition,
           durationInMilliseconds: 0,
           reverseDurationInMilliseconds: 0,
         ),
-      ],
-    ),
   ];
 }
