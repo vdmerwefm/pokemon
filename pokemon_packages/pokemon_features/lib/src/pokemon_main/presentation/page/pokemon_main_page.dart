@@ -128,7 +128,7 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
             width: 4,
           ),
           child: const BottomAppBar(
-            height: 60,
+            height: 68,
             shape: CircularNotchedRectangle(),
             notchMargin: 12,
           ),
