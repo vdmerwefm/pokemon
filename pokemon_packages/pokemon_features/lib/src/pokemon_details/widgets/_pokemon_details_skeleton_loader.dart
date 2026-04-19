@@ -160,8 +160,6 @@ class PokemonDetailsSkeletonLoader extends StatelessWidget {
                 pokemonCry: '',
               ),
 
-              const PokemonDividerWidget(),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 spacing: 4,

@@ -251,7 +251,7 @@ class PokemonDetailsPage extends StatelessWidget {
                         movesData: pokemon.levelUpMoves,
                       ),
                     ),
-                  sliverHeight16,
+                  if (pokemon.levelUpMoves!.isNotEmpty) sliverHeight16,
                   SliverToBoxAdapter(
                     child: PokemonStatsListWidget(
                       pokemonStats: pokemon.stats ?? [],
