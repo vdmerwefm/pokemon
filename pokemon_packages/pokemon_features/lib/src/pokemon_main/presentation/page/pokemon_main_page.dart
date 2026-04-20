@@ -92,7 +92,7 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
                     child: Image.asset(
                       height: 40,
                       width: 40,
-                      'lib/src/assets/images/logo.png',
+                      'lib/src/assets/images/types/logo.png',
                       package: 'pokemon_ui_kit',
                     ),
                   ),

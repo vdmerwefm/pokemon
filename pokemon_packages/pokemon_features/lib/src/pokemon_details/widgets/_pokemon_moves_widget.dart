@@ -12,45 +12,50 @@ class PokemonMovesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const HeaderWidget(headerText: 'Pokemon Moves'),
-        height16,
-        GridView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
+    return SliverMainAxisGroup(
+      slivers: [
+        const SliverToBoxAdapter(
+          child: HeaderWidget(headerText: 'Pokemon Moves'),
+        ),
+        sliverHeight16,
+        SliverGrid.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            mainAxisSpacing: 6,
-            crossAxisSpacing: 24,
+            mainAxisSpacing: 16,
+            crossAxisSpacing: 16,
             crossAxisCount: 2,
             childAspectRatio: 3,
           ),
           itemCount: moveCount,
           itemBuilder: (context, index) => Column(
-            spacing: 8,
             children: [
               ColoredBox(
                 color: const Color(0xFF1A1A1A),
                 child: Row(
-                  spacing: 8,
                   mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset(
-                      alignment: Alignment.bottomRight,
-                      fit: BoxFit.cover,
-                      GetTypeBadgeUtil.getTypeBadges(
-                        movesData?[index].pokemonMoveType ?? '',
+                    ColoredBox(
+                      color: const Color(0xFF3A3A3A),
+                      child: Transform.scale(
+                        alignment: AlignmentDirectional.center,
+                        scale: 1.6,
+                        child: Image.asset(
+                          scale: 4,
+                          fit: BoxFit.cover,
+                          GetTypeBadgeUtil.getMoveImage(
+                            movesData?[index].pokemonMoveType ?? '',
+                          ),
+                          package: 'pokemon_ui_kit',
+                          width: 60,
+                          height: 52,
+                        ),
                       ),
-                      package: 'pokemon_ui_kit',
-                      height: 48,
-                      width: 48,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 16),
+                      padding: const EdgeInsets.only(left: 8, top: 6),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
-
                         children: [
                           Text(
                             (movesData?[index].pokemonMoveType ?? '')
@@ -77,6 +82,7 @@ class PokemonMovesWidget extends StatelessWidget {
             ],
           ),
         ),
+        sliverHeight16,
       ],
     );
   }

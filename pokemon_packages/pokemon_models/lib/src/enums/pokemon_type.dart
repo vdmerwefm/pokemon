@@ -18,6 +18,9 @@ enum PokemonType {
   steel,
   water;
 
-  String get imagePath =>
-      'lib/src/assets/images/${PokemonType.values.elementAt(index).name}_type_symbol.png';
+  String get typeImagePath =>
+      'lib/src/assets/images/types/${PokemonType.values.elementAt(index).name.toLowerCase()}_type_symbol.png';
+
+  String get moveTypeImagePath =>
+      'lib/src/assets/images/moves/${PokemonType.values.elementAt(index).name.toLowerCase()}_move.png';
 }

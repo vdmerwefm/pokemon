@@ -31,4 +31,5 @@ flutter:
       fonts:
         - asset: lib\src\assets\fonts\pokemon_font.ttf
   assets:
-    - lib/src/assets/images/
+    - lib/src/assets/images/types/
+    - lib/src/assets/images/moves/

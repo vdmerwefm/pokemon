@@ -22,6 +22,11 @@ scripts:
     packageFilters:
       build_runner: true
 
+  auto-rebuild: 
+    exec: dart run build_runner watch --delete-conflicting-outputs
+    packageFilters:
+      build_runner: true
+
   get: melos exec -- flutter pub get
 
   build:

@@ -31,10 +31,20 @@ class GetTypeBadgeUtil {
     String? badge;
     for (final type in PokemonType.values) {
       if (type.name == typeFromData) {
-        badge = type.imagePath;
+        badge = type.typeImagePath;
+      }
+    }
+    return badge ?? '';
+  }
+
+  static String getMoveImage(String typeFromData) {
+    String? moveImage;
+    for (final type in PokemonType.values) {
+      if (type.name == typeFromData) {
+        moveImage = type.moveTypeImagePath;
       }
     }
 
-    return badge ?? '';
+    return moveImage ?? '';
   }
 }

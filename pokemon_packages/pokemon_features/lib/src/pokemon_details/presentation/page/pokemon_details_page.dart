@@ -92,7 +92,7 @@ class PokemonDetailsPage extends StatelessWidget {
                   child: Image.asset(
                     height: 40,
                     width: 40,
-                    'lib/src/assets/images/logo.png',
+                    'lib/src/assets/images/types/logo.png',
                     package: 'pokemon_ui_kit',
                   ),
                 ),
@@ -218,6 +218,7 @@ class PokemonDetailsPage extends StatelessWidget {
                   ),
                   sliverHeight16,
                   SliverToBoxAdapter(
+                    key: const ValueKey('damageIndexKey'),
                     child: StrengthsAndWeaknessesWidget(
                       strongAgainst: state.strongAgainst,
                       weakAgainst: state.weakAgainst,
@@ -244,18 +245,17 @@ class PokemonDetailsPage extends StatelessWidget {
                     ),
                   sliverHeight16,
                   if (pokemon.levelUpMoves!.isNotEmpty)
-                    SliverToBoxAdapter(
-                      child: PokemonMovesWidget(
-                        moveCount: pokemon.levelUpMoves?.length,
-                        movesData: pokemon.levelUpMoves,
-                      ),
+                    PokemonMovesWidget(
+                      moveCount: pokemon.levelUpMoves?.length,
+                      movesData: pokemon.levelUpMoves,
                     ),
-                  if (pokemon.levelUpMoves!.isNotEmpty) sliverHeight16,
+                  //if (pokemon.levelUpMoves!.isNotEmpty) sliverHeight16,
                   SliverToBoxAdapter(
                     child: PokemonStatsListWidget(
                       pokemonStats: pokemon.stats ?? [],
                     ),
                   ),
+                  sliverHeight16
                 ],
               ),
             );
