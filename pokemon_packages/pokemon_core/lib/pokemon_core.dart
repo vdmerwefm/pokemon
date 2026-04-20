@@ -10,5 +10,4 @@ export 'src/error/failures.dart';
 export 'src/services/injectable.dart';
 export 'src/services/injectable.module.dart';
 export 'src/utils/base_url_check_util/base_url_check_util.dart';
-export 'src/utils/debouncer/deboucher.dart';
 export 'src/utils/string_utils.dart';

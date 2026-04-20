@@ -123,3 +123,7 @@ lib/l10n/gen/
 *.g.dart
 *.config.dart
 *.gr.dart
+
+#pubspec_files:
+pubspec_overrides.yaml
+poke_config.json

@@ -49,3 +49,6 @@ coverage
 *.freezed.dart
 *.g.dart
 *.gm.dart
+
+#pubspec_files:
+pubspec_overrides.yaml

@@ -47,3 +47,6 @@ coverage
 **/src/services/injectable.module.dart
 *.freezed.dart
 *.g.dart
+
+#pubspec_files:
+pubspec_overrides.yaml
