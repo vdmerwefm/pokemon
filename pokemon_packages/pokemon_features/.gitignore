@@ -48,3 +48,4 @@ coverage
 **/src/services/injectable.module.dart
 *.freezed.dart
 *.g.dart
+*.gm.dart

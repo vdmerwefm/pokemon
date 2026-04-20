@@ -9,7 +9,7 @@ import 'package:pokemon_features/pokemon_features.dart';
 import 'package:pokemon_repositories/pokemon_repositories.dart';
 
 @InjectableInit(
-  includeMicroPackages: true,
+  includeMicroPackages: false,
   externalPackageModulesBefore: [
     ExternalModule(PokemonCorePackageModule),
     ExternalModule(PokeGqlClientPackageModule),

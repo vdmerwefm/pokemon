@@ -1,6 +1,5 @@
 import 'package:pokemon_features/src/pokemon_details/widgets/_barrel_pokemon_details.dart';
 import 'package:pokemon_features/src/pokemon_details/widgets/_pokemon_details_skeleton_loader.dart';
-import 'package:pokemon_features/src/pokemon_details/widgets/_pokemon_moves_widget.dart';
 import 'package:pokemon_features/src/pokemon_main/widgets/app_bar_bottom_stroke.dart';
 
 @RoutePage()
