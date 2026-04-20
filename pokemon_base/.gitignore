@@ -12,7 +12,6 @@
 .svn/
 .swiftpm/
 migrate_working_dir/
-*.gr.dart
 
 # IntelliJ related
 *.iml
@@ -117,3 +116,10 @@ app.*.map.json
 
 # Generated l10n files
 lib/l10n/gen/
+
+#generated_files:
+**/src/services/injectable.module.dart
+*.freezed.dart
+*.g.dart
+*.config.dart
+*.gr.dart

@@ -9,7 +9,7 @@ packages:
 command:
     clean:
       hooks: 
-        post: melos exec --concurrency=1 -- "find . -type f \( -name '*.module.dart' -o -name '*.config.dart' -o -name '*.gm.dart' -o -name '*.freezed.dart' -o -name '*.g.dart' \) -delete" 
+        post: melos exec --concurrency=1 -- "find . -type f \( -name '*.module.dart' -o -name '*.config.dart' -o -name '*.gm.dart' -o -name '*.freezed.dart' -o -name '*.g.dart' -o -name 'pubspec_overrides.yaml' \) -delete" 
 
 scripts:
 
