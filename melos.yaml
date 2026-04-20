@@ -17,19 +17,26 @@ scripts:
 
   test: melos exec -- flutter test
 
+  rebuild: 
+    exec: dart run build_runner build --delete-conflicting-outputs
+    packageFilters:
+      build_runner: true
+
+  get: melos exec -- flutter pub get
+
   build:
     steps: 
       - melos exec --concurrency=1 --ignore="pokemon_base" -- dart run build_runner build --delete-conflicting-outputs
-      - melos exec --concurrency=1 --depends-on=build_runner --scope="pokemon_base" -- dart run build_runner build --delete-conflicting-outputs
+      - melos exec --depends-on="build_runner" --concurrency=1 --scope="pokemon_base" -- dart run build_runner build --delete-conflicting-outputs
     description: Run code generation in watch mode across all packages
 
   auto-build:
     steps: 
       - melos exec --concurrency=1 --ignore="pokemon_base" -- dart run build_runner watch --delete-conflicting-outputs
-      - melos exec --concurrency=1 --depends-on=build_runner --scope="pokemon_base" -- dart run build_runner watch --delete-conflicting-outputs
+      - melos exec --concurrency=1 --depends-on="build_runner" --scope="pokemon_base" -- dart run build_runner watch --delete-conflicting-outputs
     description: Run code generation in watch mode across all packages
 
 
-  clean-build: melos exec --concurrency=1 --depends-on=build_runner -- melos clean && melos bootstrap && melos build
+  clean-build: melos exec --concurrency=1 --depends-on="build_runner" -- melos clean && melos bootstrap && melos get && melos build
 
-  clean-auto-build: melos exec --concurrency=1 --depends-on=build_runner -- melos clean && melos bootstrap && melos auto-build
+  clean-auto-build: melos exec --concurrency=1 --depends-on="build_runner" -- melos clean && melos bootstrap && melos get && melos auto-build
