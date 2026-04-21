@@ -101,6 +101,7 @@ extension PokemonDetailsMapper on GqlPokemonDetailsDto {
     for (final move in moveData!) {
       if (!pokemonMovesList.contains(
         PokemonMovesModel(
+          pokemonMoveLevel: move.level ?? 0,
           pokemonMoveName: move.move?.name ?? '',
           pokemonMoveType: move.move?.type?.name ?? '',
           pokemonMoveLearnMethod: move.movelearnmethod?.name ?? '',
@@ -109,6 +110,7 @@ extension PokemonDetailsMapper on GqlPokemonDetailsDto {
         pokemonMovesList
           ..add(
             PokemonMovesModel(
+              pokemonMoveLevel: move.level ?? 0,
               pokemonMoveName: move.move?.name ?? '',
               pokemonMoveType: move.move?.type?.name ?? '',
               pokemonMoveLearnMethod: move.movelearnmethod?.name ?? '',

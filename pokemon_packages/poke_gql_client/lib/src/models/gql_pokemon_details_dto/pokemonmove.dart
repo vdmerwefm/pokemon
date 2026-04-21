@@ -8,6 +8,7 @@ part 'pokemonmove.g.dart';
 @freezed
 class Pokemonmove with _$Pokemonmove {
   factory Pokemonmove({
+    int? level,
     Move? move,
     Movelearnmethod? movelearnmethod,
   }) = _Pokemonmove;

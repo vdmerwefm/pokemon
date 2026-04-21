@@ -55,7 +55,8 @@ query PokemonDetails($name: String = "bulbasaur") {
     pokemoncries {
       cries
     }
-    pokemonmoves {
+    pokemonmoves(where: {versiongroup: {versions: {name: {_eq: "lets-go-pikachu"}}}})  {
+      level
       move {
         name
         type {

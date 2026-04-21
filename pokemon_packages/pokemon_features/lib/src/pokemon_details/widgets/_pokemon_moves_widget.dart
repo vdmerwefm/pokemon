@@ -73,6 +73,14 @@ class PokemonMovesWidget extends StatelessWidget {
                               fontSize: 10,
                             ),
                           ),
+                          Text(
+                            'lvl ${movesData?[index].pokemonMoveLevel ?? 0}'
+                                .toUpperCase(),
+                            style: pokemonInfoStyle(
+                              const Color(0xFFE5E5E5),
+                              fontSize: 10,
+                            ),
+                          ),
                         ],
                       ),
                     ),
