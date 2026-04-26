@@ -23,8 +23,9 @@ extension PokemonListMapper on GqlPokemonListDto {
             .toSet()
             .toList();
 
-        final pokemonGenus =
-            rawPokemon.pokemonspecy?.pokemonspecies?.firstOrNull?.genus;
+        final pokemonGenus = rawPokemon.pokemonGenus?.pokemonspecies
+            ?.map((e) => e.genus)
+            .first;
 
         return PokemonListTileModel(
           name: pokemonName ?? '',

@@ -18,10 +18,4 @@ class GetPokemonDetailsUseCase {
   }) {
     return _repo.getPokemonDamageIndecies(types: types).run();
   }
-
-  Future<Either<Failure, List<PokemonListTileModel>>> getPokemonEvolutionChain({
-    required List<String> names,
-  }) {
-    return _repo.getPokemonEvolutionChainDetails(names: names).run();
-  }
 }

@@ -6,7 +6,6 @@ import 'package:pokemon_core/pokemon_core.dart';
 import 'package:pokemon_models/pokemon_models.dart';
 import 'package:pokemon_repositories/pokemon_repositories.dart';
 import 'package:pokemon_repositories/src/mappers/pokemon_details_mapper/pokemon_details_mapper.dart';
-import 'package:pokemon_repositories/src/mappers/pokemon_evolution_chain_details_mapper/pokemon_evolution_chain_details_mapper.dart';
 import 'package:pokemon_repositories/src/mappers/pokemon_list_mapper/pokemon_list_mapper.dart';
 import 'package:pokemon_repositories/src/mappers/type_details_mapper/type_details_mapper.dart';
 
@@ -43,26 +42,6 @@ class PokemonRepository implements IPokemonRepository {
     return _pokeGqlClient
         .fetchRawPokemonDetails(name: name)
         .map((rawPokemonDetailsDto) => rawPokemonDetailsDto.toPokemonDetails());
-  }
-
-  @override
-  TaskEither<Failure, List<PokemonListTileModel>>
-  getPokemonEvolutionChainDetails({
-    required List<String> names,
-  }) {
-    return TaskEither.traverseList<Failure, String, List<PokemonListTileModel>>(
-      names,
-      (name) {
-        return _pokeGqlClient
-            .fetchRawPokemonEvolutionChainDetails(name: name)
-            .map(
-              (rawPokemonEvolutionDetails) =>
-                  rawPokemonEvolutionDetails.toPokemonEvolutionChainDetails(),
-            );
-      },
-    ).map(
-      (listOfPokemon) => listOfPokemon.expand((pokemon) => pokemon).toList(),
-    );
   }
 
   @override

@@ -32,7 +32,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   WidgetsFlutterBinding.ensureInitialized();
 
-  configureDependencies();
+  await configureDependencies();
 
   await SoLoud.instance.init();
 

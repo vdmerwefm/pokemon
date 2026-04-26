@@ -1,86 +1,32 @@
-String gqlPokemonDetailsQuery = r'''
-query PokemonDetails($name: String = "bulbasaur") {
-  pokemon(where: {name: {_eq: $name}}) {
-    id
-    name
-    height
-    weight
-    is_default
-    pokemonabilities {
-      ability {
-        name
-      }
-    }
-    pokemon_genus: pokemonspecy {
-      pokemonspecies: pokemonspeciesnames(where: {language_id: {_eq: 9}}) {
-        genus
-      }
-    }
-    pokemon_flavor_text: pokemonspecy {
-      pokemonspecies: pokemonspeciesflavortexts(
-        where: {language_id: {_eq: 9}}
-        limit: 1
-      ) {
-        flavor_text
-      }
-    }
-    pokemon_evolutions: pokemonspecy {
-      pokemonspeciesnames: evolutionchain {
-        pokemonspecies(order_by: [{order: asc}]) {
-          pokemons {
-            pokemonforms {
-              id
-              name
-              form_name
-              formdetails: pokemon {
-                pokemon_genus: pokemonspecy {
-                  pokemonspecies: pokemonspeciesnames(where: {language_id: {_eq: 9}}) {
-                    genus
-                  }
-                }
-                pokemontypes {
-                  type {
-                    name
-                  }
-                }
-                pokemonsprites {
-                  sprites
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    pokemoncries {
-      cries
-    }
-    pokemonmoves(where: {versiongroup: {versions: {name: {_eq: "lets-go-pikachu"}}}})  {
-      level
-      move {
-        name
-        type {
-          name
-        }
-      }
-      movelearnmethod {
-        name
-      }
-    }
-    pokemonsprites {
-      sprites
-    }
-    pokemontypes {
-      type {
-        name
-      }
-    }
+import 'package:poke_gql_client/src/queries/gql_pokemon_details_query/gql_pokemon_details_leaf.dart';
+
+String gqlPokemonDetailsQuery =
+    '''
+query PokemonDetails(\$name: String) {
+  pokemon(where: {name: {_eq: \$name}}) {
+    ...pokemon_info
+    ...pokemon_abilites
+    ...pokemon_genus
+    ...pokemon_flavor_text
+    ...pokemon_evolutions
+    ...pokemon_cry
+    ...pokemon_moves
+    ...pokemon_sprites
+    ...pokemon_types
   }
-  pokemonstat(where: {pokemon: {name: {_eq: $name}}}) {
-    stat {
-      name
-    }
-    base_stat
+  pokemonstat(where: {pokemon: {name: {_eq: \$name}}}) {
+    ...pokemon_stats
   }
 }
+
+$gqlPokemonSpritesFragment
+$gqlPokemonInfoFragment
+$gqlPokemonTypesFragment
+$gqlPokemonFlavorTextFragment
+$gqlPokemonGenusFragment
+$gqlPokemonCryFragment
+$gqlPokemonAbilitiesFragment
+$gqlPokemonEvolutionsFragment
+$gqlPokemonMovesFragment
+$gqlPokemonStatsFragment
 ''';

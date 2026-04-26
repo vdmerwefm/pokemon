@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:poke_gql_client/src/models/gql_pokemon_list_dto/pokemonspecy.dart';
+import 'package:poke_gql_client/src/models/gql_pokemon_list_dto/pokemon_genus.dart';
 import 'package:poke_gql_client/src/models/gql_pokemon_list_dto/pokemonsprite.dart';
 import 'package:poke_gql_client/src/models/gql_pokemon_list_dto/pokemontype.dart';
 
@@ -13,7 +13,7 @@ class Pokemon with _$Pokemon {
     String? name,
     List<Pokemontype>? pokemontypes,
     List<Pokemonsprite>? pokemonsprites,
-    Pokemonspecy? pokemonspecy,
+    @JsonKey(name: 'pokemon_genus') PokemonGenus? pokemonGenus,
   }) = _Pokemon;
 
   factory Pokemon.fromJson(Map<String, dynamic> json) =>
