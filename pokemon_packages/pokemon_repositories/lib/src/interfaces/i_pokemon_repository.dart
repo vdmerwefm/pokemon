@@ -13,4 +13,5 @@ abstract interface class IPokemonRepository {
   TaskEither<Failure, List<TypeDetailsModel>> getPokemonDamageIndecies({
     required List<String> types,
   });
+  TaskEither<Failure, List<PokemonMovesListModel>> getPokemonMovesList();
 }

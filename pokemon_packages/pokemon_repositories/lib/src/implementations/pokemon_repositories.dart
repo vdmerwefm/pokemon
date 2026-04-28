@@ -7,6 +7,7 @@ import 'package:pokemon_models/pokemon_models.dart';
 import 'package:pokemon_repositories/pokemon_repositories.dart';
 import 'package:pokemon_repositories/src/mappers/pokemon_details_mapper/pokemon_details_mapper.dart';
 import 'package:pokemon_repositories/src/mappers/pokemon_list_mapper/pokemon_list_mapper.dart';
+import 'package:pokemon_repositories/src/mappers/pokemon_moves_list_mapper/pokemon_moves_list_mapper.dart';
 import 'package:pokemon_repositories/src/mappers/type_details_mapper/type_details_mapper.dart';
 
 @Injectable(as: IPokemonRepository)
@@ -53,6 +54,13 @@ class PokemonRepository implements IPokemonRepository {
       (type) => _pokeApiClient
           .fetchTypeDetails(typeName: type)
           .map((damageTypes) => damageTypes.toTypeDetailsModel()),
+    );
+  }
+
+  @override
+  TaskEither<Failure, List<PokemonMovesListModel>> getPokemonMovesList() {
+    return _pokeGqlClient.fetchRawPokemonMovesList().map(
+      (rawPokemonMovesList) => rawPokemonMovesList.toPokemonMovesListModel(),
     );
   }
 }
