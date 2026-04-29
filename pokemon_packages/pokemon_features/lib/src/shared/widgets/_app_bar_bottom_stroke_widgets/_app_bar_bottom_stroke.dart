@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+part of '../_barrel_shared_widgets.dart';
 
-class BottomAppBarStroke extends CustomPainter {
-  BottomAppBarStroke({
+class AppBarBottomStroke extends CustomPainter {
+  AppBarBottomStroke({
     required this.color,
     required this.width,
   });
@@ -12,13 +12,12 @@ class BottomAppBarStroke extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     canvas.drawPath(
-      const CircularNotchedRectangle().getOuterPath(
-        Rect.fromLTWH(0, -1, size.width, size.height),
-        Rect.fromCircle(
-          center: Offset(size.width / 2, 0),
-          radius: 38,
-        ),
-      ),
+      Path()
+        ..moveTo(0, 0)
+        ..lineTo(size.width, 0)
+        ..lineTo(size.width, size.height)
+        ..lineTo(0, size.height)
+        ..close(),
       Paint()
         ..color = color
         ..style = PaintingStyle.stroke

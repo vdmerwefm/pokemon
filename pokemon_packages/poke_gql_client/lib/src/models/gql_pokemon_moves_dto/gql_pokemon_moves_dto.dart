@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import 'data.dart';
+import 'package:poke_gql_client/src/models/gql_pokemon_moves_dto/data.dart';
 
 part 'gql_pokemon_moves_dto.freezed.dart';
 part 'gql_pokemon_moves_dto.g.dart';

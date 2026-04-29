@@ -1,6 +1,4 @@
-import 'package:pokemon_features/src/pokemon_details/widgets/_barrel_pokemon_details.dart';
-import 'package:pokemon_features/src/pokemon_details/widgets/_pokemon_details_skeleton_loader.dart';
-import 'package:pokemon_features/src/pokemon_main/widgets/app_bar_bottom_stroke.dart';
+part of '../../widgets/_barrel_pokemon_details.dart';
 
 @RoutePage()
 class PokemonDetailsPage extends StatelessWidget {
@@ -255,7 +253,7 @@ class PokemonDetailsPage extends StatelessWidget {
                       pokemonStats: pokemon.stats ?? [],
                     ),
                   ),
-                  sliverHeight16
+                  sliverHeight16,
                 ],
               ),
             );

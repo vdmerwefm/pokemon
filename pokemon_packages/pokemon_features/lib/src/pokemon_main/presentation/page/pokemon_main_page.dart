@@ -1,9 +1,4 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokemon_features/src/pokemon_audio/bloc/pokemon_audio_bloc.dart';
-import 'package:pokemon_features/src/pokemon_main/widgets/app_bar_bottom_stroke.dart';
-import 'package:pokemon_features/src/pokemon_main/widgets/bottom_app_bar_stroke.dart';
+part of '../../widgets/_barrel_pokemon_main.dart';
 
 @RoutePage()
 class PokemonMainPage extends StatefulWidget {

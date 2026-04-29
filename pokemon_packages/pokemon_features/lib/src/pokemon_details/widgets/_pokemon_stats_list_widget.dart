@@ -1,6 +1,6 @@
 // ignore_for_file: lines_longer_than_80_chars, document_ignores
 
-import 'package:pokemon_features/src/pokemon_details/widgets/_barrel_pokemon_details.dart';
+part of '_barrel_pokemon_details.dart';
 
 class PokemonStatsListWidget extends StatelessWidget {
   const PokemonStatsListWidget({

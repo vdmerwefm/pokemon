@@ -1,4 +1,4 @@
-import 'package:pokemon_features/src/pokemon_list/widgets/_barrel_pokemon_list.dart';
+part of '../_barrel_shared_widgets.dart';
 
 class PokemonListTileWidget extends StatelessWidget {
   const PokemonListTileWidget({

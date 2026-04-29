@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+part of '_barrel_pokemon_main.dart';
 
-class AppBarBottomStroke extends CustomPainter {
-  AppBarBottomStroke({
+class BottomAppBarStroke extends CustomPainter {
+  BottomAppBarStroke({
     required this.color,
     required this.width,
   });
@@ -12,12 +12,13 @@ class AppBarBottomStroke extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     canvas.drawPath(
-      Path()
-        ..moveTo(0, 0)
-        ..lineTo(size.width, 0)
-        ..lineTo(size.width, size.height)
-        ..lineTo(0, size.height)
-        ..close(),
+      const CircularNotchedRectangle().getOuterPath(
+        Rect.fromLTWH(0, -1, size.width, size.height),
+        Rect.fromCircle(
+          center: Offset(size.width / 2, 0),
+          radius: 38,
+        ),
+      ),
       Paint()
         ..color = color
         ..style = PaintingStyle.stroke

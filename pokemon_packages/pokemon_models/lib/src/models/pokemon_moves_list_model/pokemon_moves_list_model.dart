@@ -19,6 +19,25 @@ class PokemonMovesListModel extends Equatable {
     pokemonCount: null,
   );
 
+  factory PokemonMovesListModel.fromJson(Map<String, dynamic> json) =>
+      PokemonMovesListModel(
+        name: json['name'] as String,
+        type: json['type'] as String,
+        powerPoints: json['powerPoints'] as int,
+        accuracy: json['accuracy'] as int,
+        damageClass: json['damageClass'] as String,
+        pokemonCount: json['pokemonCount'] as int,
+      );
+
+  Map<String, dynamic> toJson() => {
+    'name': name,
+    'type': type,
+    'powerPoints': powerPoints,
+    'accuracy': accuracy,
+    'damageClass': damageClass,
+    'pokemonCount': pokemonCount,
+  };
+
   final String? name;
   final String? type;
   final int? powerPoints;

@@ -1,8 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import 'movedamageclass.dart';
-import 'pokemonmove.dart';
-import 'type.dart';
+import 'package:poke_gql_client/src/models/gql_pokemon_moves_dto/movedamageclass.dart';
+import 'package:poke_gql_client/src/models/gql_pokemon_moves_dto/pokemonmove.dart';
+import 'package:poke_gql_client/src/models/gql_pokemon_moves_dto/type.dart';
 
 part 'move.freezed.dart';
 part 'move.g.dart';
