@@ -7,24 +7,38 @@ part 'app_router.gr.dart';
 class AppRouter extends _$AppRouter {
   AppRouter({super.navigatorKey});
 
-
   @override
   List<AutoRoute> get routes => [
     AutoRoute(
       page: PokemonMainRoute.page,
       initial: true,
       children: [
-        AutoRoute(
+        CustomRoute(
           page: PokemonListRoute.page,
           initial: true,
-        ),
-      ],
-    ),
-    CustomRoute(
-          page: PokemonDetailsRoute.page,
           transitionsBuilder: TransitionsBuilders.noTransition,
           durationInMilliseconds: 0,
           reverseDurationInMilliseconds: 0,
         ),
+        CustomRoute(
+          page: PokemonMovesListRoute.page,
+          transitionsBuilder: TransitionsBuilders.noTransition,
+          durationInMilliseconds: 0,
+          reverseDurationInMilliseconds: 0,
+        ),
+      ],
+    ),
+    CustomRoute(
+      page: PokemonDetailsRoute.page,
+      transitionsBuilder: TransitionsBuilders.noTransition,
+      durationInMilliseconds: 0,
+      reverseDurationInMilliseconds: 0,
+    ),
+    CustomRoute(
+      page: PokemonMovesListRoute.page,
+      transitionsBuilder: TransitionsBuilders.noTransition,
+      durationInMilliseconds: 0,
+      reverseDurationInMilliseconds: 0,
+    ),
   ];
 }

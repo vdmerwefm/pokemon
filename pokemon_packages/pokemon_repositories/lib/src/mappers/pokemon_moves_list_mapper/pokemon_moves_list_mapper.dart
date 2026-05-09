@@ -1,7 +1,7 @@
 import 'package:poke_gql_client/poke_gql_client.dart';
 import 'package:pokemon_models/pokemon_models.dart';
 
-extension PokemonMovesListMapper on GqlPokemonMovesDto {
+extension PokemonMovesListMapper on GqlPokemonMovesListDto {
   List<PokemonMovesListModel> toPokemonMovesListModel() {
     return data?.move?.map((move) {
           return PokemonMovesListModel(
@@ -10,7 +10,6 @@ extension PokemonMovesListMapper on GqlPokemonMovesDto {
             powerPoints: move.power,
             accuracy: move.accuracy,
             damageClass: move.movedamageclass?.name,
-            pokemonCount: move.pokemonmoves?.length,
           );
         }).toList() ??
         [];

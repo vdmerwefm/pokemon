@@ -9,8 +9,25 @@ class PokemonMainPage extends StatefulWidget {
 }
 
 class _PokemonMainPageState extends State<PokemonMainPage> {
+  
+  int _selectedIndex = 0;
+  List<PageRouteInfo> routes = [
+    const PokemonListRoute(),
+    const PokemonMovesListRoute(),
+    const PokemonListRoute(),
+    const PokemonMovesListRoute(),
+  ];
+
   @override
   Widget build(BuildContext context) {
+
+    void _onItemTapped(int index) {
+      setState(() {
+        _selectedIndex = index;
+        context.router.push(routes.elementAt(index));
+      });
+    }
+
     return AutoRouter(
       builder: (context, content) => Scaffold(
         appBar: AppBar(
@@ -106,26 +123,45 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
           ),
         ),
         body: content,
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: FloatingActionButton(
-          shape: const CircleBorder(),
-          backgroundColor: const Color(0xFFE93F6E),
-          onPressed: () {},
-          child: const Icon(
-            Icons.catching_pokemon_sharp,
-            color: Color(0xFFE5E5E5),
-            size: 40,
-          ),
-        ),
         bottomNavigationBar: CustomPaint(
           painter: BottomAppBarStroke(
             color: const Color(0xFFE93F6E),
-            width: 4,
+            width: 3,
           ),
-          child: const BottomAppBar(
-            height: 68,
-            shape: CircularNotchedRectangle(),
-            notchMargin: 12,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Theme(
+              data: Theme.of(
+                context,
+              ).copyWith(splashColor: const Color(0xFF141414)),
+              child: SizedBox(
+                height: 85,
+                child: BottomNavigationBar(
+                  currentIndex: _selectedIndex,
+                  onTap: _onItemTapped,
+                  type: BottomNavigationBarType.fixed,
+                  backgroundColor: const Color(0xFF141414),
+                  items: const [
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.catching_pokemon),
+                      label: 'Home',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.album_rounded),
+                      label: 'Moves',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.compost_sharp),
+                      label: 'Berries',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.auto_awesome_sharp),
+                      label: 'PGC',
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ),
         ),
       ),

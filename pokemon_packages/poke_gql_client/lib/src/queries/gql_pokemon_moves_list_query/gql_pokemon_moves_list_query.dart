@@ -10,11 +10,6 @@ query gqlPokemonMovesQuery {
     movedamageclass{
       name
     }
-    pokemonmoves(distinct_on: [pokemon_id]){
-      pokemon{
-        name
-      }
-    }
   }
 }
 ''';

@@ -12,13 +12,10 @@ class BottomAppBarStroke extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     canvas.drawPath(
-      const CircularNotchedRectangle().getOuterPath(
-        Rect.fromLTWH(0, -1, size.width, size.height),
-        Rect.fromCircle(
-          center: Offset(size.width / 2, 0),
-          radius: 38,
-        ),
-      ),
+      Path()
+        ..moveTo(0, 0)
+        ..lineTo(size.width, 0)
+        ..close(),
       Paint()
         ..color = color
         ..style = PaintingStyle.stroke

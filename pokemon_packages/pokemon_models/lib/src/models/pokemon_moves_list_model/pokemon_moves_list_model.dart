@@ -7,7 +7,6 @@ class PokemonMovesListModel extends Equatable {
     required this.powerPoints,
     required this.accuracy,
     required this.damageClass,
-    required this.pokemonCount,
   });
 
   factory PokemonMovesListModel.empty() => const PokemonMovesListModel(
@@ -16,7 +15,6 @@ class PokemonMovesListModel extends Equatable {
     powerPoints: 0,
     accuracy: 0,
     damageClass: '',
-    pokemonCount: null,
   );
 
   factory PokemonMovesListModel.fromJson(Map<String, dynamic> json) =>
@@ -26,7 +24,6 @@ class PokemonMovesListModel extends Equatable {
         powerPoints: json['powerPoints'] as int,
         accuracy: json['accuracy'] as int,
         damageClass: json['damageClass'] as String,
-        pokemonCount: json['pokemonCount'] as int,
       );
 
   Map<String, dynamic> toJson() => {
@@ -35,7 +32,6 @@ class PokemonMovesListModel extends Equatable {
     'powerPoints': powerPoints,
     'accuracy': accuracy,
     'damageClass': damageClass,
-    'pokemonCount': pokemonCount,
   };
 
   final String? name;
@@ -43,7 +39,6 @@ class PokemonMovesListModel extends Equatable {
   final int? powerPoints;
   final int? accuracy;
   final String? damageClass;
-  final int? pokemonCount;
 
   @override
   List<Object?> get props => [
@@ -52,6 +47,5 @@ class PokemonMovesListModel extends Equatable {
     powerPoints,
     accuracy,
     damageClass,
-    pokemonCount,
   ];
 }
