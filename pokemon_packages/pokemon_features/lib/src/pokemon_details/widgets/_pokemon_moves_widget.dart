@@ -42,7 +42,7 @@ class PokemonMovesWidget extends StatelessWidget {
                         child: Image.asset(
                           scale: 4,
                           fit: BoxFit.cover,
-                          GetTypeBadgeUtil.getMoveImage(
+                          GetTypeUtil.getMoveImage(
                             movesData?[index].pokemonMoveType ?? '',
                           ),
                           package: 'pokemon_ui_kit',

@@ -17,52 +17,16 @@ class PokemonDetailsCardGenusWidget extends StatelessWidget {
       child: Row(
         spacing: 8,
         children: [
-          Container(
-            padding: Platform.isAndroid
-                ? const EdgeInsets.only(
-                    top: 4,
-                    bottom: 2,
-                    left: 4,
-                    right: 4,
-                  )
-                : const EdgeInsets.all(4),
-            color: const Color(0xFF3A3A3A),
-            child: Text(
-              (pokemonGenus ?? '').toUpperCase().replaceAll(
-                'É',
-                'E',
-              ),
-              style: pokemonInfoStyle(
-                const Color(0xFFE5E5E5),
-                fontSize: 6,
-              ),
-              overflow: TextOverflow.ellipsis,
-            ),
+          PokemonInfoPill(
+            text: pokemonGenus ?? '',
           ),
           Row(
             spacing: 8,
             children: (pokemonTypes ?? []).map(
               (type) {
-                return Container(
-                  padding: Platform.isAndroid
-                      ? const EdgeInsets.only(
-                          top: 4,
-                          bottom: 2,
-                          left: 4,
-                          right: 4,
-                        )
-                      : const EdgeInsets.all(4),
-                  color: GetTypeBadgeUtil.getColor(
-                    type,
-                  ),
-                  child: Text(
-                    type.toUpperCase(),
-                    style: pokemonInfoStyle(
-                      const Color(0xFFE5E5E5),
-                      fontSize: 6,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                return PokemonInfoPill(
+                  text: type,
+                  type: type,
                 );
               },
             ).toList(),

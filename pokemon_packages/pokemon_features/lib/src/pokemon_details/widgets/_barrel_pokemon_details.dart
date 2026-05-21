@@ -14,7 +14,6 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 part '../presentation/page/pokemon_details_page.dart';
 part '_details_type_badges_widget.dart';
-part '_dotted_divider_painter_widget.dart';
 part '_header_widget.dart';
 part '_pokemon_cry_widget.dart';
 part '_pokemon_details_skeleton_loader.dart';

@@ -226,7 +226,7 @@ class PokemonDetailsSkeletonLoader extends StatelessWidget {
                         children: strengthsAndWeaknessesList.map((type) {
                           return Image.asset(
                             fit: BoxFit.contain,
-                            GetTypeBadgeUtil.getTypeBadges(type),
+                            GetTypeUtil.getTypeBadges(type),
                             package: 'pokemon_ui_kit',
                             height: 24,
                             width: 24,

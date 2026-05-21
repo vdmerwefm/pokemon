@@ -8,10 +8,9 @@ part 'move.g.dart';
 @freezed
 class Move with _$Move {
   factory Move({
+    int? id,
     String? name,
     Type? type,
-    int? power,
-    int? accuracy,
     Movedamageclass? movedamageclass,
   }) = _Move;
 

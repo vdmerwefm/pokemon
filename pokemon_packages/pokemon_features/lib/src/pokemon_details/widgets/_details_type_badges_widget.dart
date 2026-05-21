@@ -45,7 +45,7 @@ class DetailsTypeBadgesWidget extends StatelessWidget {
           children: pokemonTypes.map((type) {
             return Image.asset(
               fit: BoxFit.contain,
-              GetTypeBadgeUtil.getTypeBadges(type),
+              GetTypeUtil.getTypeBadges(type),
               package: 'pokemon_ui_kit',
               height: 20,
               width: 20,

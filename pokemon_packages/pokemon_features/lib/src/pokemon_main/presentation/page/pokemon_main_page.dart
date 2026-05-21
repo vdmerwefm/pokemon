@@ -9,7 +9,6 @@ class PokemonMainPage extends StatefulWidget {
 }
 
 class _PokemonMainPageState extends State<PokemonMainPage> {
-  
   int _selectedIndex = 0;
   List<PageRouteInfo> routes = [
     const PokemonListRoute(),
@@ -20,7 +19,6 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
 
   @override
   Widget build(BuildContext context) {
-
     void _onItemTapped(int index) {
       setState(() {
         _selectedIndex = index;
@@ -135,7 +133,6 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
                 context,
               ).copyWith(splashColor: const Color(0xFF141414)),
               child: SizedBox(
-                height: 85,
                 child: BottomNavigationBar(
                   currentIndex: _selectedIndex,
                   onTap: _onItemTapped,
@@ -151,12 +148,8 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
                       label: 'Moves',
                     ),
                     BottomNavigationBarItem(
-                      icon: Icon(Icons.compost_sharp),
-                      label: 'Berries',
-                    ),
-                    BottomNavigationBarItem(
-                      icon: Icon(Icons.auto_awesome_sharp),
-                      label: 'PGC',
+                      icon: Icon(Icons.favorite_sharp),
+                      label: 'Favorites',
                     ),
                   ],
                 ),

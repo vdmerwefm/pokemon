@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_models/pokemon_models.dart';
 
-class GetTypeBadgeUtil {
+class GetTypeUtil {
   static Color getColor(String types) {
     final type = PokemonType.values.asNameMap()[types];
     return switch (type) {
@@ -23,7 +23,7 @@ class GetTypeBadgeUtil {
       PokemonType.rock => const Color(0xFFCBC594),
       PokemonType.steel => const Color(0xFF72C3D5),
       PokemonType.water => const Color(0xFF0083C2),
-      _ => const Color(0xFFE93F6E),
+      _ => const Color(0xFF3A3A3A),
     };
   }
 
