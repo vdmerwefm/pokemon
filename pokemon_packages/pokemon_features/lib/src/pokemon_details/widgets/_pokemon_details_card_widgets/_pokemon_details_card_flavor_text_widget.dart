@@ -26,7 +26,7 @@ class PokemonDetailsCardFalvorTextWidget extends StatelessWidget {
             ),
           ),
         ),
-    
+
         const PokemonDividerAltWidget(
           height: 8,
           padding: 8,

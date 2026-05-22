@@ -1,0 +1,256 @@
+{
+  "data": {
+    "move": [
+      {
+        "id": 1,
+        "name": "pound",
+        "type": {
+          "name": "normal"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 2,
+        "name": "karate-chop",
+        "type": {
+          "name": "fighting"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 3,
+        "name": "double-slap",
+        "type": {
+          "name": "normal"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 4,
+        "name": "comet-punch",
+        "type": {
+          "name": "normal"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 5,
+        "name": "mega-punch",
+        "type": {
+          "name": "normal"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 6,
+        "name": "pay-day",
+        "type": {
+          "name": "normal"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 7,
+        "name": "fire-punch",
+        "type": {
+          "name": "fire"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 8,
+        "name": "ice-punch",
+        "type": {
+          "name": "ice"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 9,
+        "name": "thunder-punch",
+        "type": {
+          "name": "electric"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 10,
+        "name": "scratch",
+        "type": {
+          "name": "normal"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 11,
+        "name": "vice-grip",
+        "type": {
+          "name": "normal"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 12,
+        "name": "guillotine",
+        "type": {
+          "name": "normal"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 13,
+        "name": "razor-wind",
+        "type": {
+          "name": "normal"
+        },
+        "movedamageclass": {
+          "name": "special"
+        }
+      },
+      {
+        "id": 14,
+        "name": "swords-dance",
+        "type": {
+          "name": "normal"
+        },
+        "movedamageclass": {
+          "name": "status"
+        }
+      },
+      {
+        "id": 15,
+        "name": "cut",
+        "type": {
+          "name": "normal"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 16,
+        "name": "gust",
+        "type": {
+          "name": "flying"
+        },
+        "movedamageclass": {
+          "name": "special"
+        }
+      },
+      {
+        "id": 17,
+        "name": "wing-attack",
+        "type": {
+          "name": "flying"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 18,
+        "name": "whirlwind",
+        "type": {
+          "name": "normal"
+        },
+        "movedamageclass": {
+          "name": "status"
+        }
+      },
+      {
+        "id": 19,
+        "name": "fly",
+        "type": {
+          "name": "flying"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 20,
+        "name": "bind",
+        "type": {
+          "name": "normal"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 21,
+        "name": "slam",
+        "type": {
+          "name": "normal"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 22,
+        "name": "vine-whip",
+        "type": {
+          "name": "grass"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 23,
+        "name": "stomp",
+        "type": {
+          "name": "normal"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 24,
+        "name": "double-kick",
+        "type": {
+          "name": "fighting"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      },
+      {
+        "id": 25,
+        "name": "mega-kick",
+        "type": {
+          "name": "normal"
+        },
+        "movedamageclass": {
+          "name": "physical"
+        }
+      }
+    ]
+  }
+}

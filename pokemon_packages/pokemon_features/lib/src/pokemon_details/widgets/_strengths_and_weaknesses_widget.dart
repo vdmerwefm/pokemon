@@ -12,7 +12,8 @@ class StrengthsAndWeaknessesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<PokemonDetailsBloc, PokemonDetailsState, bool>(key: key,
+    return BlocSelector<PokemonDetailsBloc, PokemonDetailsState, bool>(
+      key: key,
       selector: (state) => state.damageIndeciesLoading,
       builder: (context, state) {
         if (!state) {
@@ -20,8 +21,8 @@ class StrengthsAndWeaknessesWidget extends StatelessWidget {
             key: key,
             children: [
               const HeaderWidget(
-                    headerText: 'Strengths and Weaknesses',
-                  ),
+                headerText: 'Strengths and Weaknesses',
+              ),
               height16,
               Padding(
                 padding: (strongAgainst ?? []).isNotEmpty

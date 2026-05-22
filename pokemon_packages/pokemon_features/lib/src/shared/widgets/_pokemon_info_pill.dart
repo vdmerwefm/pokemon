@@ -28,7 +28,9 @@ class PokemonInfoPill extends StatelessWidget {
           'E',
         ),
         style: pokemonInfoStyle(
-          type == null || type == 'dark' ? const Color(0xFFE5E5E5) : const Color(0xFF1A1A1A),
+          type == null || type == 'dark'
+              ? const Color(0xFFE5E5E5)
+              : const Color(0xFF1A1A1A),
           fontSize: 8,
         ),
         overflow: TextOverflow.ellipsis,

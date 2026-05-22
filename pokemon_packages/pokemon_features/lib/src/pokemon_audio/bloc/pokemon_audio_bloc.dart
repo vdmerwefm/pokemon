@@ -82,7 +82,6 @@ class PokemonAudioBloc extends Bloc<PokemonAudioEvents, PokemonAudioState> {
     });
 
     on<OnPlaySelectBite>((event, emit) async {
-
       emit(state.copyWith(isLoading: true));
 
       final response = await _useCase.playSelectUseCase();

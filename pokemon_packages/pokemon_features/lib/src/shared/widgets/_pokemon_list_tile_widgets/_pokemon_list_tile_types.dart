@@ -1,4 +1,5 @@
 part of '../_barrel_shared_widgets.dart';
+
 class PokemonListTileTypes extends StatelessWidget {
   const PokemonListTileTypes({
     required this.pokemonTypes,
@@ -19,9 +20,7 @@ class PokemonListTileTypes extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            TypeBadges(
-              isActivePokemon: isActivePokemon,
-              types: pokemonTypes),
+            TypeBadges(isActivePokemon: isActivePokemon, types: pokemonTypes),
           ],
         ),
       ],

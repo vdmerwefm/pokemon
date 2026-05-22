@@ -57,7 +57,6 @@ class PokemonAudioKit implements IPokemonAudioKit {
       await SoLoud.instance.play(
         response,
       );
-      
     }, (error, stacktrace) => Failure.audioFailure());
   }
 }

@@ -71,15 +71,15 @@ class PokemonInfoTileWidget extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
               height4,
-                Text(
-                  infoFlavor,
-                  style: TextStyle(
-                    fontStyle: FontStyle.italic,
-                    color: infoFlavorColor,
-                    fontSize: 6,
-                  ),
-                  overflow: TextOverflow.ellipsis,
+              Text(
+                infoFlavor,
+                style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                  color: infoFlavorColor,
+                  fontSize: 6,
                 ),
+                overflow: TextOverflow.ellipsis,
+              ),
             ],
           ),
         ),

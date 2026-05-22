@@ -1,4 +1,5 @@
 part of '../_barrel_shared_widgets.dart';
+
 class PokemonListTileImageWidget extends StatelessWidget {
   const PokemonListTileImageWidget({required this.pokemonSprite, super.key});
 
