@@ -38,7 +38,8 @@ class PokemonAudioBloc extends Bloc<PokemonAudioEvents, PokemonAudioState> {
       emit(state.copyWith(isLoading: true));
 
       final response = await _useCase.togglePokemonThemeMusicUseCase(
-        toggleSoundHandle: !state.toggleThemeMusic,
+        toggleSoundHandle:
+            event.pausePokemonThemeMusic ?? !state.toggleThemeMusic,
       );
 
       response.fold(
@@ -50,7 +51,8 @@ class PokemonAudioBloc extends Bloc<PokemonAudioEvents, PokemonAudioState> {
         ),
         (themeMusicToggled) => emit(
           state.copyWith(
-            toggleThemeMusic: !state.toggleThemeMusic,
+            toggleThemeMusic:
+                event.pausePokemonThemeMusic ?? !state.toggleThemeMusic,
             isLoading: false,
             failure: null,
           ),

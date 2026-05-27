@@ -26,9 +26,7 @@ class _AppState extends State<App> {
           ),
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
             backgroundColor: Color(0xFF141414),
-            selectedIconTheme: IconThemeData(
-              size: 32
-            ),
+            selectedIconTheme: IconThemeData(size: 32),
             selectedItemColor: Color(0xFFE93F6E),
             selectedLabelStyle: TextStyle(
               fontSize: 12,
@@ -36,9 +34,7 @@ class _AppState extends State<App> {
               fontWeight: FontWeight.w900,
               package: 'pokemon_ui_kit',
             ),
-            unselectedIconTheme: IconThemeData(
-              size: 32
-            ),
+            unselectedIconTheme: IconThemeData(size: 32),
             unselectedItemColor: Color(0xFFE5E5E5),
             unselectedLabelStyle: TextStyle(
               color: Color(0xFFE5E5E5),
