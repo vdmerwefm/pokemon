@@ -8,13 +8,10 @@ extension PokemonListMapper on GqlPokemonListDto {
         final pokemonName = rawPokemon.name;
 
         final pokemonSprite =
-            (rawPokemon
+            rawPokemon
                         .pokemonsprites
                         ?.firstOrNull
-                        ?.sprites
-                        ?.other?['official-artwork']
-                    as Map<String, dynamic>?)?['front_default']
-                as String?;
+                        ?.sprites;
 
         final pokemonId = rawPokemon.id;
 

@@ -35,13 +35,7 @@ extension PokemonDetailsMapper on GqlPokemonDetailsDto {
     );
 
     final pokemonSprite =
-        (rawPokemonDetails
-                    ?.pokemonsprites
-                    ?.firstOrNull
-                    ?.sprites
-                    ?.other?['official-artwork']
-                as Map<String, dynamic>?)?['front_default']
-            as String?;
+        rawPokemonDetails?.pokemonsprites?.firstOrNull?.sprites;
 
     final pokemonLevelUpMoves = convertToMovessModel(
       rawPokemonDetails?.pokemonmoves ?? [],

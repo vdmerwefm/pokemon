@@ -20,7 +20,7 @@ fragment pokemon_evolutions on pokemon {
                 }
               }
               pokemonsprites {
-                sprites
+                sprites(path: "other.official-artwork.front_default")
               }
             }
           }

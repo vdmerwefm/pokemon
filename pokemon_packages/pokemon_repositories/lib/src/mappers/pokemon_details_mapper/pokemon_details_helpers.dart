@@ -18,16 +18,7 @@ class PokemonDetailsHelpers {
               .toSet()
               .toList() ??
           [],
-      sprite:
-          (form
-                      .formdetails
-                      ?.pokemonsprites
-                      ?.firstOrNull
-                      ?.sprites
-                      ?.other?['official-artwork']
-                  as Map<String, dynamic>?)?['front_default']
-              as String? ??
-          '',
+      sprite: form.formdetails?.pokemonsprites?.firstOrNull?.sprites ?? '',
     );
   }
 }
