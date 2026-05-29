@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:poke_gql_client/poke_gql_client.dart';
 import 'package:pokemon_models/pokemon_models.dart';
-import 'package:pokemon_repositories/src/mappers/pokemon_details_mapper/converters.dart';
+import 'package:pokemon_repositories/src/mappers/pokemon_details_mapper/pokemon_details_converters.dart';
 
 extension PokemonDetailsMapper on GqlPokemonDetailsDto {
   PokemonDetailsModel toPokemonDetails() {
