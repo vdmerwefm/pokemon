@@ -38,7 +38,9 @@ class Converters {
                 (evolution) =>
                     evolution.pokemonforms?.map(
                       (form) => form.formName!.isNotEmpty
-                          ? pokemonFormList.add(PokemonDetailsHelpers.pokemonForms(form),)
+                          ? pokemonFormList.add(
+                              PokemonDetailsHelpers.pokemonForms(form),
+                            )
                           : PokemonFormsModel.empty(),
                     ) ??
                     [],

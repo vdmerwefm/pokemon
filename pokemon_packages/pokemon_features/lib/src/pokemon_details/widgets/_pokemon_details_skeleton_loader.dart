@@ -100,7 +100,9 @@ class PokemonDetailsSkeletonLoader extends StatelessWidget {
                                   ),
                                   child: Text(
                                     StringUtils.restructurePokemonFlavorText(
-                                      'this is gengar placholder, gengar is aweosme and i dont care what anyone else says about gengar',
+                                      'this is gengar placholder, gengar '
+                                      'is aweosme and i dont care what anyone '
+                                      'else says about gengar',
                                     ),
                                     style: pokemonInfoStyle(
                                       const Color(0xFFE5E5E5),

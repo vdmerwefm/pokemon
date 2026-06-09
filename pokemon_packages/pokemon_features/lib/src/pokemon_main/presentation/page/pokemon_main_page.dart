@@ -19,7 +19,6 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
 
   @override
   Widget build(BuildContext context) {
-    
     void _onItemTapped(int index) {
       setState(() {
         _selectedIndex = index;

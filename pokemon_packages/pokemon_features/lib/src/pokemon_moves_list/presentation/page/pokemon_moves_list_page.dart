@@ -24,114 +24,123 @@ class PokemonMovesListPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsetsGeometry.only(bottom: 16),
-                      child: Container(
-                        color: const Color(0xFF1A1A1A),
-                        height: 96,
-                        width: MediaQuery.sizeOf(context).width,
-                        child: Row(
-                          children: [
-                            ColoredBox(
-                              color: const Color(0xFF3A3A3A),
-                              child: Transform.scale(
-                                scale: 1.7,
-                                child: Image.asset(
-                                  scale: 4,
-                                  GetTypeUtil.getMoveImage(
-                                    moveList?[index].type ?? '',
+                      child: GestureDetector(
+                        onTap: () => context.router.popAndPush(
+                          PokemonMoveDetailsRoute(
+                            name: moveList?[index].name ?? '',
+                          ),
+                        ),
+                        child: Container(
+                          color: const Color(0xFF1A1A1A),
+                          height: 96,
+                          width: MediaQuery.sizeOf(context).width,
+                          child: Row(
+                            children: [
+                              ColoredBox(
+                                color: const Color(0xFF3A3A3A),
+                                child: Transform.scale(
+                                  scale: 1.7,
+                                  child: Image.asset(
+                                    scale: 4,
+                                    GetTypeUtil.getMoveImage(
+                                      moveList?[index].type ?? '',
+                                    ),
+                                    package: 'pokemon_ui_kit',
+                                    fit: BoxFit.contain,
+                                    width: 100,
+                                    height: 96,
                                   ),
-                                  package: 'pokemon_ui_kit',
-                                  fit: BoxFit.contain,
-                                  width: 100,
-                                  height: 96,
                                 ),
                               ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 12,
-                                  bottom: 8,
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    height8,
-                                    Row(
-                                      spacing: 8,
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius: BorderRadius.circular(
-                                            4,
-                                          ),
-                                          child: Image.asset(
-                                            alignment: Alignment.topCenter,
-                                            GetTypeUtil.getTypeBadges(
-                                              moveList?[index].type ?? '',
-                                            ),
-                                            height: 36,
-                                            width: 36,
-                                            package: 'pokemon_ui_kit',
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                            top: 10,
-                                          ),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-
-                                            children: [
-                                              Text(
-                                                StringUtils.idValidator(
-                                                  moveList?[index].id,
-                                                ).toUpperCase(),
-                                                style: pokemonInfoStyle(
-                                                  const Color(0xFFE5E5E5),
-                                                  fontSize: 10,
-                                                ),
-                                              ),
-                                              Text(
-                                                (moveList?[index].name ?? '')
-                                                    .toUpperCase(),
-                                                style: pokemonInfoStyle(
-                                                  const Color(0xFFE5E5E5),
-                                                  fontSize: 14,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    height2,
-                                    const PokemonDividerAltWidget(
-                                      padding: 12,
-                                    ),
-                                    height8,
-                                    Flexible(
-                                      child: Row(
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                    left: 12,
+                                    bottom: 8,
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      height8,
+                                      Row(
                                         spacing: 8,
                                         children: [
-                                          PokemonInfoPill(
-                                            text:
-                                                'Damage Class: ${moveList?[index].damageClass ?? ''}',
+                                          ClipRRect(
+                                            borderRadius: BorderRadius.circular(
+                                              4,
+                                            ),
+                                            child: Image.asset(
+                                              alignment: Alignment.topCenter,
+                                              GetTypeUtil.getTypeBadges(
+                                                moveList?[index].type ?? '',
+                                              ),
+                                              height: 36,
+                                              width: 36,
+                                              package: 'pokemon_ui_kit',
+                                            ),
                                           ),
-                                          PokemonInfoPill(
-                                            text: moveList?[index].type ?? '',
-                                            type: moveList?[index].type,
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                              top: 10,
+                                            ),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+
+                                              children: [
+                                                Text(
+                                                  StringUtils.idValidator(
+                                                    moveList?[index].id,
+                                                  ).toUpperCase(),
+                                                  style: pokemonInfoStyle(
+                                                    const Color(0xFFE5E5E5),
+                                                    fontSize: 10,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  (moveList?[index].name ?? '')
+                                                      .toUpperCase(),
+                                                  style: pokemonInfoStyle(
+                                                    const Color(0xFFE5E5E5),
+                                                    fontSize: 14,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),
-                                    ),
-                                  ],
+                                      height2,
+                                      const PokemonDividerAltWidget(
+                                        padding: 12,
+                                      ),
+                                      height8,
+                                      Flexible(
+                                        child: Row(
+                                          spacing: 8,
+                                          children: [
+                                            PokemonInfoPill(
+                                              text:
+                                                  'Damage Class: '
+                                                  '${moveList?[index].damageClass ?? ''}',
+                                            ),
+                                            PokemonInfoPill(
+                                              text: moveList?[index].type ?? '',
+                                              type: moveList?[index].type,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     );

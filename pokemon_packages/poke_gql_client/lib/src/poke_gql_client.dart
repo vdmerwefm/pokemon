@@ -4,9 +4,11 @@ import 'package:injectable/injectable.dart';
 import 'package:poke_gql_client/src/dio/gql_dio.dart';
 import 'package:poke_gql_client/src/models/gql_pokemon_details_dto/gql_pokemon_details_dto.dart';
 import 'package:poke_gql_client/src/models/gql_pokemon_list_dto/gql_pokemon_list_dto.dart';
+import 'package:poke_gql_client/src/models/gql_pokemon_move_details_dto/gql_pokemon_move_details_dto.dart';
 import 'package:poke_gql_client/src/models/gql_pokemon_moves_list_dto/gql_pokemon_moves_list_dto.dart';
 import 'package:poke_gql_client/src/queries/gql_pokemon_details_query/gql_pokemon_details_query.dart';
 import 'package:poke_gql_client/src/queries/gql_pokemon_list_query/gql_pokemon_list_query.dart';
+import 'package:poke_gql_client/src/queries/gql_pokemon_move_details_query/gql_pokemon_move_details_query.dart';
 import 'package:poke_gql_client/src/queries/gql_pokemon_moves_list_query/gql_pokemon_moves_list_query.dart';
 import 'package:pokemon_core/pokemon_core.dart';
 
@@ -70,6 +72,29 @@ class PokeGqlClient {
           return GqlPokemonMovesListDto.empty();
         } else {
           return GqlPokemonMovesListDto.fromJson({'data': response.data});
+        }
+      },
+      (error, stackTrace) {
+        return Failure.httpFailure();
+      },
+    );
+  }
+
+    TaskEither<Failure, GqlPokemonMoveDetailsDto> fetchRawPokemonMoveDetails({
+    required String name,
+  }) {
+    return TaskEither.tryCatch(
+      () async {
+        final options = QueryOptions(
+          document: gql(gqlPokemonMoveDetailsQuery),
+          variables: {'name': name},
+        );
+
+        final response = await gqlDioLink.query(options);
+        if (response.data == null) {
+          return GqlPokemonMoveDetailsDto.empty();
+        } else {
+          return GqlPokemonMoveDetailsDto.fromJson({'data': response.data});
         }
       },
       (error, stackTrace) {

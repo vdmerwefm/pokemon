@@ -1,8 +1,7 @@
 import 'package:poke_gql_client/src/queries/gql_shared_fragments/gql_shared_leaf.dart';
 
-String gqlPokemonMoveDetails =
-    '''
-query gqlPokemonMoveDetailsQuery(\$name: String) {
+String gqlPokemonMoveDetailsQuery ='''
+query gqlPokemonMoveDetailsQuery(\$name: String = "cut") {
   move(where: {name: {_eq: \$name}}) {
     id
     name
@@ -43,10 +42,24 @@ query gqlPokemonMoveDetailsQuery(\$name: String) {
     }
     pokemonmoves(distinct_on: [pokemon_id]) {
       pokemon {
-        ...pokemon_info
-        ...pokemon_genus
-        ...pokemon_sprites
-        ...pokemon_types
+        id
+        name
+        height
+        weight
+        is_default
+        pokemonsprites {
+          sprites(path: "other.official-artwork.front_default")
+        }
+        pokemontypes {
+          type {
+            name
+          }
+        }
+        pokemon_genus: pokemonspecy {
+          pokemonspecies: pokemonspeciesnames(where: {language_id: {_eq: 9}}) {
+            genus
+          }
+        }
       }
     }
   }

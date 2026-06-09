@@ -40,5 +40,11 @@ class AppRouter extends _$AppRouter {
       durationInMilliseconds: 0,
       reverseDurationInMilliseconds: 0,
     ),
+    CustomRoute(
+      page: PokemonMoveDetailsRoute.page,
+      transitionsBuilder: TransitionsBuilders.noTransition,
+      durationInMilliseconds: 0,
+      reverseDurationInMilliseconds: 0,
+    ),
   ];
 }

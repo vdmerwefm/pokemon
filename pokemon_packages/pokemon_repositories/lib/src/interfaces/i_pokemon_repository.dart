@@ -14,4 +14,7 @@ abstract interface class IPokemonRepository {
     required List<String> types,
   });
   TaskEither<Failure, List<PokemonMovesListModel>> getPokemonMovesList();
+  TaskEither<Failure, PokemonMoveDetailsModel> getPokemonMovesDetails({
+    required String name,
+  });
 }

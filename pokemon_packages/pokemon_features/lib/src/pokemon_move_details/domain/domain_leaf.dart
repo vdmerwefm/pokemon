@@ -1,0 +1,7 @@
+import 'package:fpdart/fpdart.dart';
+import 'package:injectable/injectable.dart';
+import 'package:pokemon_core/pokemon_core.dart';
+import 'package:pokemon_models/pokemon_models.dart';
+import 'package:pokemon_repositories/pokemon_repositories.dart';
+
+part 'use_case/pokemon_move_details_use_case.dart';
