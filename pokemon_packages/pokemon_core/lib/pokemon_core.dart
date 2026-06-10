@@ -5,7 +5,7 @@
 library;
 
 export 'src/configs/app_config.dart';
-export 'src/constants/constants_export_leaf.dart';
+export 'src/constants/_barrel_constants_export.dart';
 export 'src/error/failures.dart';
 export 'src/services/injectable.dart';
 export 'src/services/injectable.module.dart';

@@ -1,15 +1,14 @@
-export 'package:auto_route/auto_route.dart';
-export 'package:cached_network_image/cached_network_image.dart';
-export 'package:flutter/material.dart';
-export 'package:flutter_bloc/flutter_bloc.dart';
-export 'package:flutter_cache_manager/flutter_cache_manager.dart';
-export 'package:pokemon_core/pokemon_core.dart';
-export 'package:pokemon_features/pokemon_features.dart' hide initMicroPackage;
-export 'package:pokemon_features/src/pokemon_list/presentation/bloc/pokemon_list_bloc.dart';
-export 'package:pokemon_models/pokemon_models.dart';
-export 'package:pokemon_ui_kit/pokemon_ui_kit.dart';
-export 'package:skeletonizer/skeletonizer.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokemon_core/pokemon_core.dart';
+import 'package:pokemon_features/pokemon_features.dart' hide initMicroPackage;
+import 'package:pokemon_features/src/pokemon_list/presentation/bloc/pokemon_list_bloc.dart';
+import 'package:pokemon_features/src/shared/widgets/_barrel_shared_widgets.dart';
+import 'package:pokemon_ui_kit/pokemon_ui_kit.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
-export '_list_skeleton_loader_widget.dart';
-export '_load_more_button.dart';
-export '_type_badges.dart';
+part '../presentation/page/pokemon_list_page.dart';
+part '_list_skeleton_loader_widget.dart';
+part '_load_more_button.dart';
+part '_type_badges.dart';

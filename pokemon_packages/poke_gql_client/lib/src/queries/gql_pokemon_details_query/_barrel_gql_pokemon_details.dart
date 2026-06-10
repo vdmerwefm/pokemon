@@ -1,4 +1,4 @@
-export '../gql_shared_fragments/gql_shared_leaf.dart';
+export '../gql_shared_fragments/_barrel_gql_shared.dart';
 export 'gql_pokemon_details_fragments/gql_pokemon_abilities_fragment.dart';
 export 'gql_pokemon_details_fragments/gql_pokemon_cry_fragment.dart';
 export 'gql_pokemon_details_fragments/gql_pokemon_evolutions_fragment.dart';

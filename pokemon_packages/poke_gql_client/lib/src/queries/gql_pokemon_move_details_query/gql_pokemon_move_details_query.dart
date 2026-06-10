@@ -1,4 +1,4 @@
-import 'package:poke_gql_client/src/queries/gql_shared_fragments/gql_shared_leaf.dart';
+import 'package:poke_gql_client/src/queries/gql_shared_fragments/_barrel_gql_shared.dart';
 
 String gqlPokemonMoveDetailsQuery ='''
 query gqlPokemonMoveDetailsQuery(\$name: String = "cut") {

@@ -1,4 +1,4 @@
-part of '_barrel_shared_widgets.dart';
+part of '../_barrel_shared_widgets.dart';
 
 class DottedDividerPainterWidget extends CustomPainter {
   DottedDividerPainterWidget({

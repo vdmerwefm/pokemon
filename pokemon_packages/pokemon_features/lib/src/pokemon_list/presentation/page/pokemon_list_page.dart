@@ -1,5 +1,4 @@
-import 'package:pokemon_features/src/pokemon_list/widgets/_barrel_pokemon_list.dart';
-import 'package:pokemon_features/src/shared/widgets/_barrel_shared_widgets.dart';
+part of '../../widgets/_barrel_pokemon_list.dart';
 
 @RoutePage()
 class PokemonListPage extends StatefulWidget {

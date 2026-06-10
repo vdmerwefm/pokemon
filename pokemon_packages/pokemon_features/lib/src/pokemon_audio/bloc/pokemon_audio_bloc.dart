@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokemon_core/pokemon_core.dart';
-import 'package:pokemon_features/src/pokemon_audio/domain/domain_leaf.dart';
+import 'package:pokemon_features/src/pokemon_audio/domain/_barrel_domain.dart';
 
 part 'pokemon_audio_events.dart';
 part 'pokemon_audio_state.dart';

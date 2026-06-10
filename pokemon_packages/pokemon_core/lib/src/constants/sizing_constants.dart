@@ -17,3 +17,6 @@ const height12 = SizedBox(height: 12);
 
 //translates height by 16 logical pixels
 const height16 = SizedBox(height: 16);
+
+//translates height by 85 logical pixels
+const height85 = SizedBox(height: 85);

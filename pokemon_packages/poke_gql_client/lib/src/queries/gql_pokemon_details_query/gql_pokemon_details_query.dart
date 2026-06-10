@@ -1,4 +1,4 @@
-import 'package:poke_gql_client/src/queries/gql_pokemon_details_query/gql_pokemon_details_leaf.dart';
+import 'package:poke_gql_client/src/queries/gql_pokemon_details_query/_barrel_gql_pokemon_details.dart';
 
 String gqlPokemonDetailsQuery =
     '''

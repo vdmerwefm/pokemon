@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokemon_core/pokemon_core.dart';
-import 'package:pokemon_features/src/pokemon_move_details/domain/domain_leaf.dart';
+import 'package:pokemon_features/src/pokemon_move_details/domain/_barrel_domain.dart';
 import 'package:pokemon_models/pokemon_models.dart';
 
 part 'pokemon_move_details_state.dart';

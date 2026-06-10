@@ -1,4 +1,4 @@
-import 'package:pokemon_features/src/pokemon_list/widgets/_barrel_pokemon_list.dart';
+part of '_barrel_pokemon_list.dart';
 
 class ListSkeletonLoaderWidget extends StatelessWidget {
   const ListSkeletonLoaderWidget({super.key});
