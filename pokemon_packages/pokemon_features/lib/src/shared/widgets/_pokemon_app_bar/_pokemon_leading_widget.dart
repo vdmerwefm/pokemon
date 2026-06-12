@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -9,74 +11,61 @@ class PokemonLeadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (context.router.current.path != '/pokemon-details-route') {
-      return favoritesIconHelper(
-        icon: const Icon(
-          Icons.favorite_rounded,
-          color: Color(0xFFE5E5E5),
-          size: 28,
-        ),
-        text: const Text(
-          '42',
-          style: TextStyle(
-            color: Color(0xFFE5E5E5),
-            fontFamily: 'pokemon_font',
-            fontWeight: FontWeight.w900,
-            package: 'pokemon_ui_kit',
-          ),
-        ),
+      return leadingWidgetHelper(
+        icon: Icons.favorite_rounded,
+        size: 28,
+        text: '42',
       );
     } else {
       if (isFavorite != null) {
-        return favoritesIconHelper(
-          icon: const Icon(
-            Icons.add_circle_rounded,
-            color: Color(0xFFE5E5E5),
-            size: 28,
-          ),
-          text: const Text(
-            'ADD TO FAVORITES',
-            style: TextStyle(
-              color: Color(0xFFE5E5E5),
-              fontFamily: 'pokemon_font',
-              fontWeight: FontWeight.w900,
-              package: 'pokemon_ui_kit',
-            ),
-          ),
+        return leadingWidgetHelper(
+          icon: Icons.add_circle_rounded,
+          size: 28,
+          text: 'ADD TO FAVORITES',
         );
       } else {
-        return favoritesIconHelper(
-          icon: const Icon(
-            Icons.remove_circle_rounded,
-            color: Color(0xFFE5E5E5),
-            size: 28,
-          ),
-          text: const Text(
-            'REMOVE FROM FAVORITES',
-            style: TextStyle(
-              color: Color(0xFFE5E5E5),
-              fontFamily: 'pokemon_font',
-              fontWeight: FontWeight.w900,
-              package: 'pokemon_ui_kit',
-            ),
-          ),
+        return leadingWidgetHelper(
+          icon: Icons.remove_circle_rounded,
+          size: 28,
+          text: 'REMOVE FROM FAVORITES',
         );
       }
     }
   }
 
-  Widget favoritesIconHelper({required Widget icon, required Widget text}) {
+  Widget leadingWidgetHelper({
+    required IconData icon,
+    required double size,
+    required String text,
+  }) {
     return Padding(
       padding: const EdgeInsets.only(left: 14),
-      child: Center(
-        child: Row(
-          children: [
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Icon(
             icon,
-            const SizedBox(
-              width: 4,
+            color: const Color(0xFFE5E5E5),
+            size: size,
+          ),
+          const SizedBox(
+            width: 4,
+          ),
+          Padding(
+            padding: Platform.isAndroid
+                ? const EdgeInsets.only(top: 6)
+                : EdgeInsets.zero,
+            child: Text(
+              text,
+              style: const TextStyle(
+                color: Color(0xFFE5E5E5),
+                fontFamily: 'pokemon_font',
+                fontWeight: FontWeight.w900,
+                package: 'pokemon_ui_kit',
+              ),
             ),
-            text,
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

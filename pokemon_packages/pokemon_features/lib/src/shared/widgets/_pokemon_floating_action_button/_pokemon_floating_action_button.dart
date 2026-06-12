@@ -32,32 +32,28 @@ class _PokemonFloatingActionButtonState
       },
 
       child: isMute
-          ? Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                color: const Color(0xFFE93F6E),
-              ),
-              child: const Icon(
-                Icons.volume_off_rounded,
-                color: Color(0xFFE5E5E5),
-                size: 32,
-              ),
+          ? floatingActionButtonHelper(
+              icon: Icons.volume_up_rounded,
             )
-          : Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                color: const Color(0xFFE93F6E),
-              ),
-              child: const Icon(
-                Icons.volume_up_rounded,
-                color: Color(0xFFE5E5E5),
-                size: 32,
-              ),
+          : floatingActionButtonHelper(
+              icon: Icons.volume_off_rounded,
             ),
+    );
+  }
+
+  Widget floatingActionButtonHelper({required IconData icon}) {
+    return Container(
+      height: 40,
+      width: 40,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(25),
+        color: const Color(0xFFE93F6E),
+      ),
+      child: Icon(
+        icon,
+        color: const Color(0xFFE5E5E5),
+        size: 32,
+      ),
     );
   }
 }
