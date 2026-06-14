@@ -65,12 +65,12 @@ android {
         create("staging") {
             dimension = "default"
             applicationIdSuffix = ".stg"
-            manifestPlaceholders["appName"] = "[STG] Pokemon Base"
+            manifestPlaceholders["appName"] = "Pokemon [STG]"
         }
         create("development") {
             dimension = "default"
             applicationIdSuffix = ".dev"
-            manifestPlaceholders["appName"] = "[DEV] Pokemon Base"
+            manifestPlaceholders["appName"] = "Pokemon [DEV]"
         }
     }
 
