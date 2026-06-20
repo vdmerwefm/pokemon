@@ -5,61 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Pokemon Android Development",
-      "request": "launch",
-      "type": "dart",
-      "program": "lib/main_development.dart",
-      "args": [
-        "--flavor",
-        "development",
-        "--dart-define-from-file",
-        "poke_config.json"
-      ],
-      "cwd": "${workspaceFolder}/pokemon_base"
-    },
-    {
-      "name": "Pokemon iOS Development",
-      "request": "launch",
-      "type": "dart",
-      "program": "lib/main_development.dart",
-      "args": [
-        "--flavor", 
-        "development",
-        "--dart-define-from-file", 
-        "poke_config.json",
-        "--release"
-      ],
-      "cwd": "${workspaceFolder}/pokemon_base"
-    },
-    {
-      "name": "Pokemon Android Staging",
-      "request": "launch",
-      "type": "dart",
-      "program": "lib/main_staging.dart",
-      "args": [
-        "--flavor",
-        "staging",
-        "--dart-define-from-file",
-        "poke_config.json"
-      ],
-      "cwd": "${workspaceFolder}/pokemon_base"
-    },
-    {
-      "name": "Pokemon iOS Staging",
-      "request": "launch",
-      "type": "dart",
-      "program": "lib/main_staging.dart",
-      "args": [
-        "--flavor", 
-        "staging",
-        "--dart-define-from-file", 
-        "poke_config.json",
-        "--release"
-      ],
-      "cwd": "${workspaceFolder}/pokemon_base"
-    },
-    {
-      "name": "Pokemon Android Production",
+      "name": "Pokemon",
       "request": "launch",
       "type": "dart",
       "program": "lib/main_production.dart",
@@ -72,14 +18,54 @@
       "cwd": "${workspaceFolder}/pokemon_base"
     },
     {
-      "name": "Pokemon iOS Production",
+      "name": "Pokemon Staging",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_Staging.dart",
+      "args": [
+        "--flavor",
+        "Staging",
+        "--dart-define-from-file",
+        "poke_config.json",
+        "--release"
+      ],
+      "cwd": "${workspaceFolder}/pokemon_base"
+    },
+    {
+      "name": "Pokemon Development",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_development.dart",
+      "args": [
+        "--flavor",
+        "development",
+        "--dart-define-from-file",
+        "poke_config.json"
+      ],
+      "cwd": "${workspaceFolder}/pokemon_base"
+    },
+    {
+      "name": "Pokemon Android Physical",
       "request": "launch",
       "type": "dart",
       "program": "lib/main_production.dart",
       "args": [
-        "--flavor", 
+        "--flavor",
         "production",
-        "--dart-define-from-file", 
+        "--dart-define-from-file",
+        "poke_config.json"
+      ],
+      "cwd": "${workspaceFolder}/pokemon_base"
+    },
+    {
+      "name": "Pokemon iOS Physical",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_production.dart",
+      "args": [
+        "--flavor",
+        "production",
+        "--dart-define-from-file",
         "poke_config.json",
         "--release"
       ],

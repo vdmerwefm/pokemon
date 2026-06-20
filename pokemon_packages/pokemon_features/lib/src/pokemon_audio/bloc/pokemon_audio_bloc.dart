@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -38,8 +40,7 @@ class PokemonAudioBloc extends Bloc<PokemonAudioEvents, PokemonAudioState> {
       emit(state.copyWith(isLoading: true));
 
       final response = await _useCase.togglePokemonThemeMusicUseCase(
-        toggleSoundHandle:
-            event.pausePokemonThemeMusic ?? !state.toggleThemeMusic,
+        toggleSoundHandle: event.pausePokemonThemeMusic,
       );
 
       response.fold(
@@ -49,14 +50,54 @@ class PokemonAudioBloc extends Bloc<PokemonAudioEvents, PokemonAudioState> {
             isLoading: false,
           ),
         ),
-        (themeMusicToggled) => emit(
+        (themeMusicToggled) {
+          emit(
+            state.copyWith(
+              toggleThemeMusic: event.pausePokemonThemeMusic,
+              isLoading: false,
+              failure: null,
+            ),
+          );
+        },
+      );
+    });
+
+    on<OnLifecyclePokemonThemeMusic>((event, emit) async {
+      emit(state.copyWith(isLoading: true));
+
+      bool? _isSystemMute = false;
+
+      if (event.state == AppLifecycleState.inactive) {
+        _isSystemMute = true;
+      }
+
+      if (event.state == AppLifecycleState.resumed &&
+          state.toggleThemeMusic == false) {
+        _isSystemMute = false;
+      } else {
+        _isSystemMute = true;
+      }
+
+      final response = await _useCase.togglePokemonThemeMusicUseCase(
+        toggleSoundHandle: _isSystemMute,
+      );
+
+      response.fold(
+        (failure) => emit(
           state.copyWith(
-            toggleThemeMusic:
-                event.pausePokemonThemeMusic ?? !state.toggleThemeMusic,
+            failure: failure,
             isLoading: false,
-            failure: null,
           ),
         ),
+        (themeMusicToggled) {
+          emit(
+            state.copyWith(
+              systemMute: _isSystemMute ?? false,
+              isLoading: false,
+              failure: null,
+            ),
+          );
+        },
       );
     });
 

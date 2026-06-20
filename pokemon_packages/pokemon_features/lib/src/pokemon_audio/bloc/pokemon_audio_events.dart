@@ -4,10 +4,12 @@ part of 'pokemon_audio_bloc.dart';
 abstract class PokemonAudioEvents with _$PokemonAudioEvents {
   const factory PokemonAudioEvents.onPlayPokemonThemeMusic() =
       OnPlayPokemonThemeMusic;
-  // nullable to permit use during lifecycle changes
   const factory PokemonAudioEvents.onTogglePokemonThemeMusic({
-    bool? pausePokemonThemeMusic,
+    required bool pausePokemonThemeMusic,
   }) = OnTogglePokemonThemeMusic;
+  const factory PokemonAudioEvents.onLifecyclePokemonThemeMusic({
+    required AppLifecycleState state,
+  }) = OnLifecyclePokemonThemeMusic;
   const factory PokemonAudioEvents.onPlayPokemonCry({
     required String pokemonCry,
   }) = OnPlayPokemonCry;

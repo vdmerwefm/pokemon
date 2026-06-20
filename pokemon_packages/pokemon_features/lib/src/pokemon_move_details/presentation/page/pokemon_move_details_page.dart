@@ -76,23 +76,13 @@ class PokemonMoveDetailsPage extends StatelessWidget {
                   color: Color(0xFFE93F6E),
                 ),
               )
-            : GestureDetector(
-                onTap: () {
-                  context.read<PokemonAudioBloc>().add(
-                    const PokemonAudioEvents.onPlaySelectBite(),
-                  );
-                  context.read<PokemonAudioBloc>().add(
-                    const PokemonAudioEvents.onTogglePokemonThemeMusic(),
-                  );
-                },
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(4),
-                  child: Image.asset(
-                    height: 40,
-                    width: 40,
-                    'lib/src/assets/images/types/logo.png',
-                    package: 'pokemon_ui_kit',
-                  ),
+            : ClipRRect(
+                borderRadius: BorderRadius.circular(4),
+                child: Image.asset(
+                  height: 40,
+                  width: 40,
+                  'lib/src/assets/images/types/logo.png',
+                  package: 'pokemon_ui_kit',
                 ),
               ),
         bottom: PreferredSize(

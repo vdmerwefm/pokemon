@@ -5,6 +5,7 @@ class PokemonAudioState with _$PokemonAudioState {
   const factory PokemonAudioState({
     @Default(false) bool isLoading,
     @Default(false) bool toggleThemeMusic,
+    @Default(false) bool systemMute,
     Failure? failure,
   }) = _PokemonAudioState;
 

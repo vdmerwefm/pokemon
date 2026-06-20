@@ -60,7 +60,7 @@ android {
         create("production") {
             dimension = "default"
             applicationIdSuffix = ""
-            manifestPlaceholders["appName"] = "Pokemon Base"
+            manifestPlaceholders["appName"] = "Pokemon"
         }
         create("staging") {
             dimension = "default"
