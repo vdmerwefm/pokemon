@@ -4,7 +4,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_features/src/pokemon_audio/bloc/pokemon_audio_bloc.dart';
-import 'package:pokemon_models/pokemon_models.dart';
 
 class PokemonAppLifecycle extends StatefulWidget {
   const PokemonAppLifecycle({
@@ -52,7 +51,7 @@ class _PokemonAppLifecycleState extends State<PokemonAppLifecycle>
             log(_pokemonLifecycleState ?? '');
 
           case _:
-            break;
+            _getAudioEvent(AppLifecycleState.inactive);
         }
       });
     });
