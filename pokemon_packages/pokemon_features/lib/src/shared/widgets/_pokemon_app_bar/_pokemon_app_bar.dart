@@ -11,7 +11,7 @@ class PokemonAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: 0,
       centerTitle: false,
       actionsPadding: const EdgeInsets.only(right: 18),
-      actions: context.router.current.path == '/pokemon-details-route'
+      actions: context.router.current.name != 'PokemonMainRoute'
           ? []
           : const [
               Center(
@@ -38,7 +38,7 @@ class PokemonAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ],
       scrolledUnderElevation: 0, // Prevents elevation-based color shift
-      title: context.router.current.path == '/pokemon-details-route'
+      title: context.router.current.name != 'PokemonMainRoute'
           ? GestureDetector(
               onTap: () async {
                 context.read<PokemonAudioBloc>().add(

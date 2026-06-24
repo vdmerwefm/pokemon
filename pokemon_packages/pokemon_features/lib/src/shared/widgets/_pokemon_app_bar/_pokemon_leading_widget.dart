@@ -10,7 +10,7 @@ class PokemonLeadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (context.router.current.path != '/pokemon-details-route') {
+    if (context.router.current.name == 'PokemonMainRoute') {
       return leadingWidgetHelper(
         icon: Icons.favorite_rounded,
         size: 28,
