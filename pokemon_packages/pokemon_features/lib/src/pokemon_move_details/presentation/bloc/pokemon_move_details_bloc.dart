@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokemon_core/pokemon_core.dart';
+import 'package:pokemon_features/src/helpers/damage_indecies_helper.dart';
 import 'package:pokemon_features/src/pokemon_move_details/domain/_barrel_domain.dart';
 import 'package:pokemon_models/pokemon_models.dart';
 
@@ -32,6 +33,41 @@ class PokemonMoveDetailsBloc
               isLoading: false,
               failure: null,
               pokemonMoveDetails: pokemonMoveDetails,
+            ),
+          );
+        },
+      );
+    });
+    on<OnGetMoveDamageIndecies>((event, emit) async {
+      emit(state.copyWith(damageIndeciesLoading: true));
+
+      final response = await _useCase.getMoveDamageIndeciesUseCase(
+        types: event.types,
+      );
+
+      response.fold(
+        (failure) {
+          emit(
+            state.copyWith(
+              damageIndeciesLoading: false,
+              failure: failure,
+            ),
+          );
+        },
+        (pokemonDamageIndecies) {
+          final strengthsList = DamageIndeciesHelper.strongAgainstHelper(
+            pokemonDamageIndecies: pokemonDamageIndecies,
+          );
+          final weaknessesList = DamageIndeciesHelper.weakAgainstHelper(
+            pokemonDamageIndecies: pokemonDamageIndecies,
+          );
+
+          emit(
+            state.copyWith(
+              damageIndeciesLoading: false,
+              failure: null,
+              strongAgainst: strengthsList.toSet().toList(),
+              weakAgainst: weaknessesList.toSet().toList(),
             ),
           );
         },

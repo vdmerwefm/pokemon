@@ -6,6 +6,8 @@ class PokemonMovesListState with _$PokemonMovesListState {
     @Default(false) bool isLoading,
     Failure? failure,
     List<PokemonMovesListModel>? pokemonMovesList,
+    @Default(937) int limit,
+    @Default(0) int offset,
   }) = _PokemonMovesListState;
 
   factory PokemonMovesListState.fromJson(Map<String, dynamic> json) =>

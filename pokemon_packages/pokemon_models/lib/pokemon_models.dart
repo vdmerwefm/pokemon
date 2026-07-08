@@ -1,6 +1,7 @@
 /// A Very Good Project created by Very Good CLI.
 library;
 
+export 'src/enums/pokemon_ailment.dart';
 export 'src/enums/pokemon_type.dart';
 export 'src/models/pokemon_details_model/pokemon_details_model.dart';
 export 'src/models/pokemon_details_model/pokemon_forms_model.dart';

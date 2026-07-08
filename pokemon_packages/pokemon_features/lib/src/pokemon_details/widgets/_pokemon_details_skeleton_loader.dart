@@ -211,6 +211,7 @@ class PokemonDetailsSkeletonLoader extends StatelessWidget {
 
               const HeaderWidget(
                 headerText: 'Strengths and Weaknesses',
+                fontSize: 10,
               ),
 
               Column(
@@ -240,7 +241,10 @@ class PokemonDetailsSkeletonLoader extends StatelessWidget {
                 ],
               ),
 
-              const HeaderWidget(headerText: 'Evolution Chain'),
+              const HeaderWidget(
+                headerText: 'Evolution Chain',
+                fontSize: 10,
+              ),
 
               Padding(
                 padding: const EdgeInsets.only(left: 16, right: 16),
@@ -372,7 +376,10 @@ class PokemonDetailsSkeletonLoader extends StatelessWidget {
                 ),
               ),
 
-              const HeaderWidget(headerText: 'Pokemon Moves'),
+              const HeaderWidget(
+                headerText: 'Pokemon Moves',
+                fontSize: 10,
+              ),
             ],
           ),
         ),

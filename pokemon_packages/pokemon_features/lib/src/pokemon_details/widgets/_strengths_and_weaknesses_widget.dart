@@ -22,6 +22,7 @@ class StrengthsAndWeaknessesWidget extends StatelessWidget {
             children: [
               const HeaderWidget(
                 headerText: 'Strengths and Weaknesses',
+                fontSize: 10,
               ),
               height16,
               Padding(

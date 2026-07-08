@@ -23,3 +23,6 @@ part '_pokemon_info_pills/_pokemon_info_pills.dart';
 part '_pokemon_app_bar/_pokemon_app_bar.dart';
 part '_pokemon_scaffold/_pokemon_scaffold.dart';
 part '_pokemon_scaffold/_pokemon_navigation_scaffold.dart';
+part '_header_widget/_header_widget.dart';
+part '_info_tile_widget/_pokemon_info_tile_widget.dart';
+part '_details_type_badges_widget/_details_type_badges_widget.dart';

@@ -33,6 +33,7 @@ class PokemonMovesListPage extends StatelessWidget {
                         onTap: () => context.router.popAndPush(
                           PokemonMoveDetailsRoute(
                             name: moveList?[index].name ?? '',
+                            type: moveList?[index].type ?? ''
                           ),
                         ),
                         child: Container(
@@ -129,13 +130,13 @@ class PokemonMovesListPage extends StatelessWidget {
                                           spacing: 8,
                                           children: [
                                             PokemonInfoPill(
+                                              text: moveList?[index].type ?? '',
+                                              type: moveList?[index].type,
+                                            ),
+                                            PokemonInfoPill(
                                               text:
                                                   'Damage Class: '
                                                   '${moveList?[index].damageClass ?? ''}',
-                                            ),
-                                            PokemonInfoPill(
-                                              text: moveList?[index].type ?? '',
-                                              type: moveList?[index].type,
                                             ),
                                           ],
                                         ),

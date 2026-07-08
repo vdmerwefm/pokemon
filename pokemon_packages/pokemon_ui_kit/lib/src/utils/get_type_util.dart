@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokemon_models/pokemon_models.dart';
 
 class GetTypeUtil {
-  static Color getColor(String types) {
+  static Color getTypeColor(String types) {
     final type = PokemonType.values.asNameMap()[types];
     return switch (type) {
       PokemonType.bug => const Color(0xFFC2D501),
@@ -27,6 +27,18 @@ class GetTypeUtil {
     };
   }
 
+  static Color getAilmentColor(String types) {
+    final type = PokemonAilment.values.asNameMap()[types];
+    return switch (type) {
+      PokemonAilment.burn => const Color(0xFFE99532),
+      PokemonAilment.freeze => const Color(0xFF82EFE9),
+      PokemonAilment.paralysis => const Color(0xFFF4CC2E),
+      PokemonAilment.poison=> const Color(0xFFF3B1DB),
+      PokemonAilment.sleep => const Color(0xFFB18DFB),
+      _ => const Color(0xFF3A3A3A),
+    };
+  }
+
   static String getTypeBadges(String typeFromData) {
     String? badge;
     for (final type in PokemonType.values) {
@@ -46,5 +58,16 @@ class GetTypeUtil {
     }
 
     return moveImage ?? '';
+  }
+
+  static String getAilmentImage(String ailmentFromData) {
+    String? ailmentImage;
+    for (final type in PokemonAilment.values) {
+      if (type.name == ailmentFromData) {
+        ailmentImage = type.ailmentImagePath;
+      }
+    }
+
+    return ailmentImage ?? '';
   }
 }

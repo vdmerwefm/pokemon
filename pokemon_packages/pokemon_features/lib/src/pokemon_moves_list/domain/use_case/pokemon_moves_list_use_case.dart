@@ -6,7 +6,10 @@ class GetPokemonMovesListUseCase {
   final IPokemonRepository _repo;
 
   Future<Either<Failure, List<PokemonMovesListModel>>>
-  getPokemonMovesListUseCase() {
-    return _repo.getPokemonMovesList().run();
+  getPokemonMovesListUseCase({
+    required int limit,
+    required int offset,
+  }) {
+    return _repo.getPokemonMovesList(limit: limit, offset: offset).run();
   }
 }

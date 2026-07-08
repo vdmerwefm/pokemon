@@ -10,11 +10,11 @@ class PokemonMoveDetailsModel extends Equatable {
     required this.power,
     required this.accuracy,
     required this.pp,
-    required this.moveDamageClass,
+    required this.damageClass,
+    required this.damageClassDescription,
     required this.ailment,
     required this.effect,
     required this.machines,
-    required this.versionGroup,
     required this.pokemon,
   });
 
@@ -26,11 +26,11 @@ class PokemonMoveDetailsModel extends Equatable {
     power: 0,
     accuracy: 0,
     pp: 0,
-    moveDamageClass: '',
+    damageClass: '',
+    damageClassDescription: '',
     ailment: '',
     effect: '',
     machines: '',
-    versionGroup: [],
     pokemon: [],
   );
 
@@ -43,11 +43,11 @@ class PokemonMoveDetailsModel extends Equatable {
         power: json['power'] as int,
         accuracy: json['accuracy'] as int,
         pp: json['pp'] as int,
-        moveDamageClass: json['moveDamageClass'] as String,
+        damageClass: json['damageClass'] as String,
+        damageClassDescription: json['damageClassDescription'] as String,
         ailment: json['ailment'] as String,
         effect: json['effect'] as String,
         machines: json['machines'] as String,
-        versionGroup: json['versionGroup'] as List<String>,
         pokemon: json['pokemon'] as List<PokemonListTileModel>,
       );
 
@@ -59,11 +59,11 @@ class PokemonMoveDetailsModel extends Equatable {
     'power': power,
     'accuracy': accuracy,
     'pp': pp,
-    'moveDamageClass': moveDamageClass,
+    'damageClass': damageClass,
+    'damageClassDescription': damageClassDescription,
     'ailment': ailment,
     'effect': effect,
     'machines': machines,
-    'versionGroup': versionGroup,
     'pokemon': pokemon,
   };
 
@@ -74,11 +74,11 @@ class PokemonMoveDetailsModel extends Equatable {
   final int? power;
   final int? accuracy;
   final int? pp;
-  final String? moveDamageClass;
+  final String? damageClass;
+  final String? damageClassDescription;
   final String? ailment;
   final String? effect;
   final String? machines;
-  final List<String>? versionGroup;
   final List<PokemonListTileModel>? pokemon;
 
   @override
@@ -90,11 +90,11 @@ class PokemonMoveDetailsModel extends Equatable {
     power,
     accuracy,
     pp,
-    moveDamageClass,
+    damageClass,
+    damageClassDescription,
     ailment,
     effect,
     machines,
-    versionGroup,
     pokemon,
   ];
 }

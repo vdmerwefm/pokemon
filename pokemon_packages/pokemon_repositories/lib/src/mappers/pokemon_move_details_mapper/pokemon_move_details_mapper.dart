@@ -14,7 +14,8 @@ extension PokemonMoveDetailsMapper on GqlPokemonMoveDetailsDto {
       power: rawMoveDetails?.power,
       accuracy: rawMoveDetails?.accuracy,
       pp: rawMoveDetails?.pp,
-      moveDamageClass: rawMoveDetails
+      damageClass: rawMoveDetails?.movedamageclass?.name,
+      damageClassDescription: rawMoveDetails
           ?.movedamageclass
           ?.movedamageclassdescriptions
           ?.firstOrNull
@@ -28,9 +29,6 @@ extension PokemonMoveDetailsMapper on GqlPokemonMoveDetailsDto {
       machines: rawMoveDetails?.machines
           ?.map((e) => e.item?.name ?? '')
           .firstOrNull,
-      versionGroup: rawMoveDetails?.machines
-          ?.map((e) => e.versiongroup?.name ?? '')
-          .toList(),
       pokemon: convertToPokemonListTileModel(rawMoveDetails?.pokemonmoves ?? []),
     );
   }
@@ -41,7 +39,8 @@ extension PokemonMoveDetailsMapper on GqlPokemonMoveDetailsDto {
     final pokemonList = <PokemonListTileModel>[];
 
     for (final pokemon in pokemonMove) {
-      pokemonList.add(
+      if(pokemon.pokemon!.id! <= 1025){
+        pokemonList.add(
         PokemonListTileModel(
           id: pokemon.pokemon?.id ?? 0,
           name: pokemon.pokemon?.name ?? '',
@@ -62,6 +61,7 @@ extension PokemonMoveDetailsMapper on GqlPokemonMoveDetailsDto {
               '',
         ),
       );
+      }
     }
     return pokemonList;
   }

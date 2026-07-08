@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokemon_core/pokemon_core.dart';
+import 'package:pokemon_features/src/helpers/damage_indecies_helper.dart';
 import 'package:pokemon_features/src/pokemon_details/domain/_barrel_domain.dart';
 import 'package:pokemon_models/pokemon_models.dart';
 
@@ -53,22 +54,12 @@ class PokemonDetailsBloc
             );
           },
           (pokemonDamageIndecies) {
-            final strengthsList = [
-              ...pokemonDamageIndecies
-                  .map((damageIndex) => damageIndex.strongAgainst)
-                  .first,
-              ...pokemonDamageIndecies
-                  .map((damageIndex) => damageIndex.strongAgainst)
-                  .last,
-            ];
-            final weaknessesList = [
-              ...pokemonDamageIndecies
-                  .map((damageIndex) => damageIndex.weakAgainst)
-                  .first,
-              ...pokemonDamageIndecies
-                  .map((damageIndex) => damageIndex.weakAgainst)
-                  .last,
-            ];
+            final strengthsList = DamageIndeciesHelper.strongAgainstHelper(
+              pokemonDamageIndecies: pokemonDamageIndecies,
+            );
+            final weaknessesList = DamageIndeciesHelper.weakAgainstHelper(
+              pokemonDamageIndecies: pokemonDamageIndecies,
+            );
             emit(
               state.copyWith(
                 damageIndeciesLoading: false,

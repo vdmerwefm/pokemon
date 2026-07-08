@@ -17,7 +17,10 @@ class PokemonMovesListBloc
     on<OnGetPokemonMovesList>((event, emit) async {
       emit(state.copyWith(isLoading: true));
 
-      final response = await _useCase.getPokemonMovesListUseCase();
+      final response = await _useCase.getPokemonMovesListUseCase(
+        limit: state.limit,
+        offset: state.offset,
+      );
 
       response.fold(
         (failure) => emit(

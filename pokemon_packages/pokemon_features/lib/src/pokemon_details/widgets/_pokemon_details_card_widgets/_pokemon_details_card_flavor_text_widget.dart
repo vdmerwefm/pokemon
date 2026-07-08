@@ -22,7 +22,7 @@ class PokemonDetailsCardFalvorTextWidget extends StatelessWidget {
             ),
             style: pokemonInfoStyle(
               const Color(0xFFE5E5E5),
-              fontSize: 6,
+              fontSize: 8,
             ),
           ),
         ),

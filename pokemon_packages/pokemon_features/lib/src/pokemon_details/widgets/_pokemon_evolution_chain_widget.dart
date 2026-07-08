@@ -16,7 +16,10 @@ class PokemonEvolutionChainWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        HeaderWidget(headerText: chainHeader ?? ''),
+        HeaderWidget(
+          headerText: chainHeader ?? '',
+          fontSize: 10,
+        ),
         height16,
         Column(
           spacing: 16,

@@ -6,6 +6,10 @@ class PokemonMoveDetailsState with _$PokemonMoveDetailsState {
     @Default(false) bool isLoading,
     Failure? failure,
     PokemonMoveDetailsModel? pokemonMoveDetails,
+    List<String>? strongAgainst,
+    List<String>? weakAgainst,
+    @Default(false) bool damageIndeciesLoading,
+    
   }) = _PokemonMoveDetailsState;
 
   factory PokemonMoveDetailsState.empty() => const PokemonMoveDetailsState();

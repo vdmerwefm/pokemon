@@ -1,4 +1,4 @@
-part of '_barrel_pokemon_details.dart';
+part of '../_barrel_shared_widgets.dart';
 
 class PokemonInfoTileWidget extends StatelessWidget {
   const PokemonInfoTileWidget({
