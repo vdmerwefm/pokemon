@@ -14,7 +14,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.20.2
-  melos: ^6.3.3
+  melos: ^8.2.2
 
 dev_dependencies:
   bloc_test: ^10.0.0
