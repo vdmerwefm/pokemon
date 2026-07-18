@@ -26,3 +26,4 @@ part '_pokemon_scaffold/_pokemon_navigation_scaffold.dart';
 part '_header_widget/_header_widget.dart';
 part '_info_tile_widget/_pokemon_info_tile_widget.dart';
 part '_details_type_badges_widget/_details_type_badges_widget.dart';
+part '_load_more_button_widget/_load_more_button_widget.dart';

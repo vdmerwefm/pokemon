@@ -19,46 +19,55 @@ class PokemonMovesListPage extends StatelessWidget {
             ..add(const PokemonMovesListEvents.onGetPokemonMovesList()),
       child: BlocBuilder<PokemonMovesListBloc, PokemonMovesListState>(
         builder: (context, state) {
-          final moveList = state.pokemonMovesList;
+          final moveList = state.paginatedPokemonMovesList;
           return CustomScrollView(
             slivers: [
               SliverPadding(
-                padding: const EdgeInsetsGeometry.all(16),
+                padding: const EdgeInsetsGeometry.only(
+                  left: 16,
+                  right: 16,
+                ),
                 sliver: SliverList.builder(
                   itemCount: moveList?.length ?? 0,
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsetsGeometry.only(bottom: 16),
-                      child: GestureDetector(
-                        onTap: () => context.router.popAndPush(
+                    return GestureDetector(
+                      onTap: () {
+                        context.read<PokemonAudioBloc>().add(
+                          const PokemonAudioEvents.onPlaySelectBite(),
+                        );
+
+                        context.router.popAndPush(
                           PokemonMoveDetailsRoute(
                             name: moveList?[index].name ?? '',
-                            type: moveList?[index].type ?? ''
+                            type: moveList?[index].type ?? '',
                           ),
-                        ),
-                        child: Container(
-                          color: const Color(0xFF1A1A1A),
-                          height: 96,
-                          width: MediaQuery.sizeOf(context).width,
-                          child: Row(
-                            children: [
-                              ColoredBox(
-                                color: const Color(0xFF3A3A3A),
-                                child: Transform.scale(
-                                  scale: 1.7,
-                                  child: Image.asset(
-                                    scale: 4,
-                                    GetTypeUtil.getMoveImage(
-                                      moveList?[index].type ?? '',
-                                    ),
-                                    package: 'pokemon_ui_kit',
-                                    fit: BoxFit.contain,
-                                    width: 100,
-                                    height: 96,
+                        );
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.only(top: 16),
+                        height: 112,
+                        width: MediaQuery.sizeOf(context).width,
+                        child: Row(
+                          children: [
+                            ColoredBox(
+                              color: const Color(0xFF3A3A3A),
+                              child: Transform.scale(
+                                scale: 1.7,
+                                child: Image.asset(
+                                  GetTypeUtil.getMoveImage(
+                                    moveList?[index].type ?? '',
                                   ),
+                                  alignment: Alignment.center,
+                                  package: 'pokemon_ui_kit',
+                                  fit: BoxFit.contain,
+                                  width: 100,
+                                  height: 96,
                                 ),
                               ),
-                              Expanded(
+                            ),
+                            Expanded(
+                              child: ColoredBox(
+                                color: const Color(0xFF1A1A1A),
                                 child: Padding(
                                   padding: const EdgeInsets.only(
                                     left: 12,
@@ -145,12 +154,32 @@ class PokemonMovesListPage extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     );
                   },
+                ),
+              ),
+              SliverPadding(
+                padding: const EdgeInsetsGeometry.only(bottom: 24),
+                sliver: SliverToBoxAdapter(
+                  child: LoadMoreButtonWidget(
+                    isLoadingMore: context
+                        .watch<PokemonMovesListBloc>()
+                        .state
+                        .isLoadingMoreMoves,
+                    limitReached: context
+                        .watch<PokemonMovesListBloc>()
+                        .state
+                        .dexLimit,
+                    text: 'Load More Moves...',
+                    loadingText: 'Loading More Moves...',
+                    onTap: () => context.read<PokemonMovesListBloc>().add(
+                      const PokemonMovesListEvents.onLoadMorePokemonMoves(),
+                    ),
+                  ),
                 ),
               ),
             ],

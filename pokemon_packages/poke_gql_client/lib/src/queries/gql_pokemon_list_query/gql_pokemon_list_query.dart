@@ -2,8 +2,8 @@ import 'package:poke_gql_client/src/queries/gql_shared_fragments/_barrel_gql_sha
 
 String gqlPokemonListQuery =
     ''' 
-query GqlPokemonListQuery(\$limit: Int = 25, \$offset: Int = 0) {
-  pokemon(limit: \$limit, offset: \$offset) {
+query GqlPokemonListQuery {
+  pokemon {
     ...pokemon_info
     ...pokemon_genus
     ...pokemon_sprites

@@ -1,32 +1,38 @@
-part of '_barrel_pokemon_list.dart';
-class LoadMoreButton extends StatefulWidget {
-  const LoadMoreButton({super.key});
+part of '../_barrel_shared_widgets.dart';
+
+class LoadMoreButtonWidget extends StatefulWidget {
+  const LoadMoreButtonWidget({
+    required this.isLoadingMore,
+    required this.limitReached,
+    required this.text,
+    required this.loadingText,
+    required this.onTap,
+    super.key,
+  });
+
+  final bool isLoadingMore;
+  final bool limitReached;
+  final String? text;
+  final String? loadingText;
+  final VoidCallback onTap;
 
   @override
-  State<LoadMoreButton> createState() => _LoadMoreButtonState();
+  State<LoadMoreButtonWidget> createState() => _LoadMoreButtonWidgetState();
 }
 
-class _LoadMoreButtonState extends State<LoadMoreButton> {
+class _LoadMoreButtonWidgetState extends State<LoadMoreButtonWidget> {
   @override
   Widget build(BuildContext context) {
-    final isLoadingMorePokemon = context
-        .watch<PokemonListBloc>()
-        .state
-        .isLoadingMorePokemon;
-    final dexLimitReached = context.watch<PokemonListBloc>().state.dexLimit;
-
     return GestureDetector(
-      onTap: isLoadingMorePokemon == true
+      onTap: widget.isLoadingMore == true
           ? () {}
           : () {
               context.read<PokemonAudioBloc>().add(
                 const PokemonAudioEvents.onPlaySelectBite(),
               );
-              context.read<PokemonListBloc>().add(
-                const PokemonListEvents.onLoadMorePokemon(),
-              );
+              widget.onTap();
             },
-      child: dexLimitReached
+      child: widget.limitReached
           ? const SizedBox.shrink()
           : Container(
               margin: const EdgeInsets.all(16),
@@ -34,15 +40,15 @@ class _LoadMoreButtonState extends State<LoadMoreButton> {
               width: MediaQuery.sizeOf(context).width,
               height: 50,
               child: Center(
-                child: isLoadingMorePokemon
+                child: widget.isLoadingMore
                     ? Text(
-                        'Loading More Pokemon...',
+                        widget.loadingText ?? 'Loading More...',
                         style: pokemonBadgeTextStyle(
                           const Color(0xFFE5E5E5),
                         ),
                       )
                     : Text(
-                        'Load More Pokemon',
+                        widget.text ?? 'Load More',
                         style: pokemonBadgeTextStyle(
                           const Color(0xFFE5E5E5),
                         ),
