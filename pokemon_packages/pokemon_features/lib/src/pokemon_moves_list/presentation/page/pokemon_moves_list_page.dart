@@ -129,7 +129,7 @@ class PokemonMovesListPage extends StatelessWidget {
                                           ),
                                         ],
                                       ),
-                                      height2,
+                                      height4,
                                       const PokemonDividerAltWidget(
                                         padding: 12,
                                       ),
