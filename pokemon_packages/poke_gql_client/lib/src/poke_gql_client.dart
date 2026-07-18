@@ -18,14 +18,10 @@ class PokeGqlClient {
 
   final GqlDio gqlDio;
 
-  TaskEither<Failure, GqlPokemonListDto> fetchRawPokemonList({
-    required int limit,
-    required int offset,
-  }) {
+  TaskEither<Failure, GqlPokemonListDto> fetchRawPokemonList() {
     return TaskEither.tryCatch(() async {
       final options = QueryOptions(
         document: gql(gqlPokemonListQuery),
-        variables: {'limit': limit, 'offset': offset},
       );
 
       final response = await gqlDioLink.query(options);
@@ -60,15 +56,11 @@ class PokeGqlClient {
     );
   }
 
-  TaskEither<Failure, GqlPokemonMovesListDto> fetchRawPokemonMovesList({
-    required int limit,
-    required int offset,
-  }) {
+  TaskEither<Failure, GqlPokemonMovesListDto> fetchRawPokemonMovesList() {
     return TaskEither.tryCatch(
       () async {
         final options = QueryOptions(
           document: gql(gqlPokemonMovesListQuery),
-          variables: {'limit': limit, 'offset': offset},
         );
 
         final response = await gqlDioLink.query(options);
