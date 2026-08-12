@@ -1,6 +1,6 @@
-String gqlPokemonMovesListQuery = r'''
-query gqlPokemonMovesQuery($limit: Int = 25, $offset: Int = 0)  {
-  move(limit: $limit, offset: $offset){
+String gqlPokemonMovesListQuery = '''
+query gqlPokemonMovesQuery  {
+  move{
     id
     name
     type{

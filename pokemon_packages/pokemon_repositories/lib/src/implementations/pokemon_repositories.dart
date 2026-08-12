@@ -23,15 +23,9 @@ class PokemonRepository implements IPokemonRepository {
   final PokeApiClient _pokeApiClient;
 
   @override
-  TaskEither<Failure, List<PokemonListTileModel>> getPokemonList({
-    required int limit,
-    required int offset,
-  }) {
+  TaskEither<Failure, List<PokemonListTileModel>> getPokemonList() {
     return _pokeGqlClient
-        .fetchRawPokemonList(
-          limit: limit,
-          offset: offset,
-        )
+        .fetchRawPokemonList()
         .map(
           (rawPokemonListDto) => rawPokemonListDto.toPokemonList(),
         );
@@ -59,15 +53,9 @@ class PokemonRepository implements IPokemonRepository {
   }
 
   @override
-  TaskEither<Failure, List<PokemonMovesListModel>> getPokemonMovesList({
-    required int limit,
-    required int offset,
-  }) {
+  TaskEither<Failure, List<PokemonMovesListModel>> getPokemonMovesList() {
     return _pokeGqlClient
-        .fetchRawPokemonMovesList(
-          limit: limit,
-          offset: offset,
-        )
+        .fetchRawPokemonMovesList()
         .map(
           (rawPokemonMovesList) =>
               rawPokemonMovesList.toPokemonMovesListModel(),

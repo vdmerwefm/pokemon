@@ -4,9 +4,9 @@ part of 'pokemon_list_bloc.dart';
 class PokemonListState with _$PokemonListState {
   const factory PokemonListState({
     List<PokemonListTileModel>? pokemonList,
+    List<PokemonListTileModel>? paginatedPokemonList,
     Failure? failure,
     @Default(25) int limit,
-    @Default(0) int offset,
     @Default(false) bool isLoading,
     @Default(false) bool dexLimit,
     @Default(false) bool isLoadingMorePokemon,
