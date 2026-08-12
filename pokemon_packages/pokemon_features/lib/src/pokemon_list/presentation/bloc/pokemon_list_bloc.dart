@@ -15,10 +15,7 @@ class PokemonListBloc extends Bloc<PokemonListEvents, PokemonListState> {
   PokemonListBloc(this._useCase) : super(PokemonListState.empty()) {
     on<OnGetPokemonList>((event, emit) async {
       emit(state.copyWith(isLoading: true));
-      final response = await _useCase.getPokemonListUseCase(
-        limit: state.limit,
-        offset: state.offset,
-      );
+      final response = await _useCase.getPokemonListUseCase();
 
       response.fold(
         (failure) {
@@ -34,54 +31,46 @@ class PokemonListBloc extends Bloc<PokemonListEvents, PokemonListState> {
             state.copyWith(
               isLoading: false,
               pokemonList: pokemonList,
+              paginatedPokemonList: pokemonList
+                  .getRange(0, state.limit)
+                  .toList(),
             ),
           );
         },
       );
     });
 
-    on<OnLoadMorePokemon>((event, emit) async {
-      final offset = state.offset + 25;
-      const limit = 25;
+    on<OnLoadMorePokemon>(
+      (event, emit) async {
+        emit(
+          state.copyWith(
+            isLoadingMorePokemon: true,
+            limit: state.limit + 25,
+          ),
+        );
 
-      emit(state.copyWith(isLoadingMorePokemon: true));
-
-      final response = await _useCase.getPokemonListUseCase(
-        limit: limit,
-        offset: offset,
-      );
-
-      response.fold(
-        (failure) {
-          emit(state.copyWith(failure: failure, isLoadingMorePokemon: false));
-        },
-        (morePokemon) {
-          final pokemonList = List<PokemonListTileModel>.from(
-            state.pokemonList!,
+        if (state.paginatedPokemonList!.length <= 1000) {
+          emit(
+            state.copyWith(
+              failure: null,
+              isLoadingMorePokemon: false,
+              paginatedPokemonList: state.pokemonList
+                  ?.getRange(0, state.limit)
+                  .toList(),
+            ),
           );
+        }
 
-          if (state.pokemonList!.length <= 1000) {
-            emit(
-              state.copyWith(
-                isLoadingMorePokemon: false,
-                pokemonList: [
-                  ...pokemonList,
-                  ...morePokemon,
-                ],
-                limit: limit,
-                offset: offset,
-              ),
-            );
-          }
-
-          if (state.pokemonList!.length == 1025) {
-            emit(
-              state.copyWith(failure: null, dexLimit: true),
-            );
-          }
-        },
-      );
-    });
+        if (state.paginatedPokemonList?.length == 1025) {
+          emit(
+            state.copyWith(
+              failure: null,
+              dexLimit: true,
+            ),
+          );
+        }
+      },
+    );
   }
   final GetPokemonListUseCase _useCase;
 }

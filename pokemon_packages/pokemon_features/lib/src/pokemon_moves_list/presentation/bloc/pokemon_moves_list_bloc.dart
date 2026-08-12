@@ -17,10 +17,7 @@ class PokemonMovesListBloc
     on<OnGetPokemonMovesList>((event, emit) async {
       emit(state.copyWith(isLoading: true));
 
-      final response = await _useCase.getPokemonMovesListUseCase(
-        limit: state.limit,
-        offset: state.offset,
-      );
+      final response = await _useCase.getPokemonMovesListUseCase();
 
       response.fold(
         (failure) => emit(
@@ -34,9 +31,42 @@ class PokemonMovesListBloc
             failure: null,
             isLoading: false,
             pokemonMovesList: pokemonMovesList,
+            paginatedPokemonMovesList: pokemonMovesList
+                .getRange(0, state.limit)
+                .toList(),
           ),
         ),
       );
+    });
+
+    on<OnLoadMorePokemonMoves>((event, emit) {
+      emit(
+        state.copyWith(
+          isLoadingMoreMoves: true,
+          limit: state.limit != 900 ? state.limit + 25 : state.limit + 19,
+        ),
+      );
+
+      if (state.paginatedPokemonMovesList!.length <= 900) {
+        emit(
+          state.copyWith(
+            failure: null,
+            isLoadingMoreMoves: false,
+            paginatedPokemonMovesList: state.pokemonMovesList
+                ?.getRange(0, state.limit)
+                .toList(),
+          ),
+        );
+
+        if (state.paginatedPokemonMovesList!.length == 919) {
+          emit(
+            state.copyWith(
+              failure: null,
+              dexLimit: true,
+            ),
+          );
+        }
+      }
     });
   }
   final GetPokemonMovesListUseCase _useCase;

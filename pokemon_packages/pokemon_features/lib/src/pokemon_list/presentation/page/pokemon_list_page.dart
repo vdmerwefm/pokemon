@@ -15,7 +15,7 @@ class _PokemonListPageState extends State<PokemonListPage> {
       create: (context) => sl<PokemonListBloc>()..add(const OnGetPokemonList()),
       child: BlocBuilder<PokemonListBloc, PokemonListState>(
         builder: (context, state) {
-          final pokemonList = state.pokemonList ?? [];
+          final pokemonList = state.paginatedPokemonList ?? [];
           final loadingEmptyOrFailure =
               state.isLoading || pokemonList.isEmpty || state.failure != null;
 
@@ -47,9 +47,25 @@ class _PokemonListPageState extends State<PokemonListPage> {
                   },
                 ),
               ),
-              const SliverPadding(
-                padding: EdgeInsetsGeometry.only(bottom: 24),
-                sliver: SliverToBoxAdapter(child: LoadMoreButton()),
+              SliverPadding(
+                padding: const EdgeInsetsGeometry.only(bottom: 24),
+                sliver: SliverToBoxAdapter(
+                  child: LoadMoreButtonWidget(
+                    isLoadingMore: context
+                        .watch<PokemonListBloc>()
+                        .state
+                        .isLoadingMorePokemon,
+                    limitReached: context
+                        .watch<PokemonListBloc>()
+                        .state
+                        .dexLimit,
+                    text: 'Load More Pokemon...',
+                    loadingText: 'Loading More Pokemon...',
+                    onTap: () => context.read<PokemonListBloc>().add(
+                      const PokemonListEvents.onLoadMorePokemon(),
+                    ),
+                  ),
+                ),
               ),
             ],
           );
