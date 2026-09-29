@@ -325,18 +325,21 @@ class PokemonMoveDetailsPage extends StatelessWidget {
                         headerText: 'can learn:',
                         fontSize: 8,
                       ),
-                      Column(
-                        children: moveData.pokemon!
-                            .map(
-                              (e) => PokemonListTileWidget(
-                                pokemonSprite: e.sprite,
-                                pokemonName: e.name,
-                                pokemonTypes: e.type,
-                                pokemonId: e.id,
-                                pokemonGenus: e.genus,
-                              ),
-                            )
-                            .toList(),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom:32),
+                        child: Column(
+                          children: moveData.pokemon!
+                              .map(
+                                (e) => PokemonListTileWidget(
+                                  pokemonSprite: e.sprite,
+                                  pokemonName: e.name,
+                                  pokemonTypes: e.type,
+                                  pokemonId: e.id,
+                                  pokemonGenus: e.genus,
+                                ),
+                              )
+                              .toList(),
+                        ),
                       ),
                       height16,
                     ],
