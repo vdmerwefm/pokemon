@@ -1,0 +1,20 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokemon_core/pokemon_core.dart';
+import 'package:pokemon_features/pokemon_features.dart';
+import 'package:pokemon_features/src/pokemon_list/widgets/_barrel_pokemon_list.dart';
+import 'package:pokemon_features/src/pokemon_move_details/presentation/bloc/pokemon_move_details_bloc.dart';
+import 'package:pokemon_features/src/shared/widgets/_barrel_shared_widgets.dart';
+import 'package:pokemon_models/pokemon_models.dart';
+import 'package:pokemon_ui_kit/pokemon_ui_kit.dart';
+
+part '../presentation/page/pokemon_move_details_page.dart';
+part '_pokemon_paging_button.dart';
+part '_pokemon_move_details_pokemon_list.dart';
+part '_pokemon_expanded_text_row_widget.dart';
+part '_pokemon_move_details_card_widgets/_pokemon_move_details_card_chips_widget.dart';
+part '_pokemon_move_details_card_widgets/_pokemon_move_details_card_flavor_text_widget.dart';
+part '_pokemon_move_details_card_widgets/_pokemon_move_details_card_image_widget.dart';
+part '_pokemon_move_details_card_widgets/_pokemon_move_details_card_info_widget.dart';
+part '_pokemon_move_details_card_widgets/_pokemon_move_details_card_widget.dart';

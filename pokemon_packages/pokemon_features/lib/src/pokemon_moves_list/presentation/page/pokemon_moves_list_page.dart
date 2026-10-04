@@ -1,11 +1,4 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokemon_core/pokemon_core.dart';
-import 'package:pokemon_features/pokemon_features.dart';
-import 'package:pokemon_features/src/pokemon_moves_list/presentation/bloc/pokemon_moves_list_bloc.dart';
-import 'package:pokemon_features/src/shared/widgets/_barrel_shared_widgets.dart';
-import 'package:pokemon_ui_kit/pokemon_ui_kit.dart';
+part of '../../widgets/_barrel_pokemon_move_list.dart';
 
 @RoutePage()
 class PokemonMovesListPage extends StatelessWidget {
@@ -19,7 +12,7 @@ class PokemonMovesListPage extends StatelessWidget {
             ..add(const PokemonMovesListEvents.onGetPokemonMovesList()),
       child: BlocBuilder<PokemonMovesListBloc, PokemonMovesListState>(
         builder: (context, state) {
-          final moveList = state.paginatedPokemonMovesList;
+          final pokemonMoveList = state.paginatedPokemonMovesList;
           if (state.pokemonMovesList == null) {
             return const SizedBox.shrink();
           } else {
@@ -31,139 +24,14 @@ class PokemonMovesListPage extends StatelessWidget {
                     right: 16,
                   ),
                   sliver: SliverList.builder(
-                    itemCount: moveList?.length ?? 0,
+                    itemCount: pokemonMoveList?.length ?? 0,
                     itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          context.read<PokemonAudioBloc>().add(
-                            const PokemonAudioEvents.onPlaySelectBite(),
-                          );
-
-                          context.router.popAndPush(
-                            PokemonMoveDetailsRoute(
-                              name: moveList?[index].name ?? '',
-                              type: moveList?[index].type ?? '',
-                            ),
-                          );
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.only(top: 16),
-                          height: 112,
-                          width: MediaQuery.sizeOf(context).width,
-                          child: Row(
-                            children: [
-                              ColoredBox(
-                                color: const Color(0xFF3A3A3A),
-                                child: Transform.scale(
-                                  scale: 1.7,
-                                  child: Image.asset(
-                                    GetTypeUtil.getMoveImage(
-                                      moveList?[index].type ?? '',
-                                    ),
-                                    alignment: Alignment.center,
-                                    package: 'pokemon_ui_kit',
-                                    fit: BoxFit.contain,
-                                    width: 100,
-                                    height: 96,
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: ColoredBox(
-                                  color: const Color(0xFF1A1A1A),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                      left: 12,
-                                      bottom: 8,
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        height8,
-                                        Row(
-                                          spacing: 8,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                    4,
-                                                  ),
-                                              child: Image.asset(
-                                                alignment: Alignment.topCenter,
-                                                GetTypeUtil.getTypeBadges(
-                                                  moveList?[index].type ?? '',
-                                                ),
-                                                height: 36,
-                                                width: 36,
-                                                package: 'pokemon_ui_kit',
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                top: 10,
-                                              ),
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-
-                                                children: [
-                                                  Text(
-                                                    StringUtils.idValidator(
-                                                      moveList?[index].id,
-                                                    ).toUpperCase(),
-                                                    style: pokemonInfoStyle(
-                                                      const Color(0xFFE5E5E5),
-                                                      fontSize: 10,
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    (moveList?[index].name ??
-                                                            '')
-                                                        .toUpperCase(),
-                                                    style: pokemonInfoStyle(
-                                                      const Color(0xFFE5E5E5),
-                                                      fontSize: 14,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        height4,
-                                        const PokemonDividerAltWidget(
-                                          padding: 12,
-                                        ),
-                                        height8,
-                                        Flexible(
-                                          child: Row(
-                                            spacing: 8,
-                                            children: [
-                                              PokemonInfoPill(
-                                                text:
-                                                    moveList?[index].type ?? '',
-                                                type: moveList?[index].type,
-                                              ),
-                                              PokemonInfoPill(
-                                                text:
-                                                    'Damage Class: '
-                                                    '${moveList?[index].damageClass ?? ''}',
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                      final pokemonMove = pokemonMoveList?[index];
+                      return PokemonMoveTileWidget(
+                        pokemonMoveName: pokemonMove?.name ?? '',
+                        pokemonMoveType: pokemonMove?.type ?? '',
+                        pokemonMoveId: pokemonMove?.id ?? 0,
+                        pokemonMoveDamageClass: pokemonMove?.damageClass ?? '',
                       );
                     },
                   ),

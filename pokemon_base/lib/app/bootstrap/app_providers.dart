@@ -14,8 +14,13 @@ class AppProviders extends StatelessWidget {
         BlocProvider(
           lazy: false,
           create: (context) =>
-            sl<PokemonAudioBloc>()
-              ..add(const PokemonAudioEvents.onPlayPokemonThemeMusic()),
+              sl<PokemonAudioBloc>()
+                ..add(const PokemonAudioEvents.onPlayPokemonThemeMusic()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              sl<PokemonListBloc>()
+                ..add(const PokemonListEvents.onGetPokemonList()),
         ),
       ],
       child: child,
