@@ -1,7 +1,7 @@
 part of '_barrel_pokemon_details.dart';
 
-class PokemonMovesWidget extends StatelessWidget {
-  const PokemonMovesWidget({
+class PokemonDetailsMovesWidget extends StatelessWidget {
+  const PokemonDetailsMovesWidget({
     required this.moveCount,
     required this.movesData,
     super.key,

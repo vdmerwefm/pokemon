@@ -157,7 +157,7 @@ class PokemonDetailsSkeletonLoader extends StatelessWidget {
 
               const PokemonDividerWidget(),
 
-              const PokemonCryWidget(
+              const PokemonDetailsCryWidget(
                 pokemonName: 'Gengar',
                 pokemonCry: '',
               ),

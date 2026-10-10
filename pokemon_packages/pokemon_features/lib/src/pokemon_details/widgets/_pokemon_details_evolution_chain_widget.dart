@@ -1,7 +1,7 @@
 part of '_barrel_pokemon_details.dart';
 
-class PokemonEvolutionChainWidget extends StatelessWidget {
-  const PokemonEvolutionChainWidget({
+class PokemonDetailsEvolutionChainWidget extends StatelessWidget {
+  const PokemonDetailsEvolutionChainWidget({
     required this.chainHeader,
     required this.activePokemonName,
     required this.pokemonEvolutionChain,

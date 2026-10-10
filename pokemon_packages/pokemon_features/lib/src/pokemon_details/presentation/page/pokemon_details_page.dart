@@ -55,7 +55,7 @@ class PokemonDetailsPage extends StatelessWidget {
                   sliverHeight12,
                   if (pokemon.cry!.isNotEmpty)
                     SliverToBoxAdapter(
-                      child: PokemonCryWidget(
+                      child: PokemonDetailsCryWidget(
                         pokemonName: pokemon.name ?? '',
                         pokemonCry: pokemon.cry ?? '',
                       ),
@@ -143,7 +143,7 @@ class PokemonDetailsPage extends StatelessWidget {
                   ),
                   sliverHeight16,
                   SliverToBoxAdapter(
-                    child: PokemonEvolutionChainWidget(
+                    child: PokemonDetailsEvolutionChainWidget(
                       chainHeader: 'Evolution Chain',
                       activePokemonName: pokemon.name ?? '',
                       pokemonEvolutionChain:
@@ -153,7 +153,7 @@ class PokemonDetailsPage extends StatelessWidget {
                   sliverHeight16,
                   if (pokemon.forms!.isNotEmpty)
                     SliverToBoxAdapter(
-                      child: PokemonEvolutionChainWidget(
+                      child: PokemonDetailsEvolutionChainWidget(
                         chainHeader: 'Forms and Transformations',
                         activePokemonName: pokemon.name ?? '',
                         pokemonEvolutionChain:
@@ -162,13 +162,13 @@ class PokemonDetailsPage extends StatelessWidget {
                     ),
                   sliverHeight16,
                   if (pokemon.levelUpMoves!.isNotEmpty)
-                    PokemonMovesWidget(
+                    PokemonDetailsMovesWidget(
                       moveCount: pokemon.levelUpMoves?.length,
                       movesData: pokemon.levelUpMoves,
                     ),
                   //if (pokemon.levelUpMoves!.isNotEmpty) sliverHeight16,
                   SliverToBoxAdapter(
-                    child: PokemonStatsListWidget(
+                    child: PokemonDetailsStatsListWidget(
                       pokemonStats: pokemon.stats ?? [],
                     ),
                   ),

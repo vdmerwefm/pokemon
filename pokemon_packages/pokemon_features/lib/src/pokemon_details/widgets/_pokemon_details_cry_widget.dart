@@ -1,7 +1,7 @@
 part of '_barrel_pokemon_details.dart';
 
-class PokemonCryWidget extends StatelessWidget {
-  const PokemonCryWidget({
+class PokemonDetailsCryWidget extends StatelessWidget {
+  const PokemonDetailsCryWidget({
     required this.pokemonName,
     required this.pokemonCry,
     super.key,

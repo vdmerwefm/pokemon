@@ -1,7 +1,7 @@
 part of '_barrel_pokemon_details.dart';
 
-class PokemonStatRectangleBarPainterWidget extends StatefulWidget {
-  const PokemonStatRectangleBarPainterWidget({
+class PokemonDetailsStatRectangleBarPainterWidget extends StatefulWidget {
+  const PokemonDetailsStatRectangleBarPainterWidget({
     required this.statValue,
     required this.color,
     required this.blockSize,
@@ -13,11 +13,11 @@ class PokemonStatRectangleBarPainterWidget extends StatefulWidget {
   final Size blockSize;
 
   @override
-  State<PokemonStatRectangleBarPainterWidget> createState() =>
+  State<PokemonDetailsStatRectangleBarPainterWidget> createState() =>
       _PokemonStatRectangleBarPainterState();
 }
 
-class _PokemonStatRectangleBarPainterState extends State<PokemonStatRectangleBarPainterWidget>
+class _PokemonStatRectangleBarPainterState extends State<PokemonDetailsStatRectangleBarPainterWidget>
     with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
@@ -25,8 +25,8 @@ class _PokemonStatRectangleBarPainterState extends State<PokemonStatRectangleBar
   }
 }
 
-class BarPainter extends CustomPainter {
-  BarPainter({
+class PokemonDetailsBarPainter extends CustomPainter {
+  PokemonDetailsBarPainter({
     required this.baseColor,
     required this.fillColor,
     required this.blockWidth,

@@ -2,8 +2,8 @@
 
 part of '_barrel_pokemon_details.dart';
 
-class PokemonStatsListWidget extends StatelessWidget {
-  const PokemonStatsListWidget({
+class PokemonDetailsStatsListWidget extends StatelessWidget {
+  const PokemonDetailsStatsListWidget({
     required this.pokemonStats,
     super.key,
   });
@@ -45,7 +45,7 @@ class PokemonStatsListWidget extends StatelessWidget {
                     width: double.infinity,
                     child: ClipRect(
                       child: CustomPaint(
-                        painter: BarPainter(
+                        painter: PokemonDetailsBarPainter(
                           baseColor: const Color(0xFF1A1A1A),
                           fillColor: const Color(0xFFE5E5E5),
                           blockWidth: 8,
