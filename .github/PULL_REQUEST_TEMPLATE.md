@@ -17,7 +17,7 @@
 
 <!-- Uncomment to add video changes
 ## Pokemon Videos:
-| Pokemon Before| Pokeon After |
+| Pokemon Before| Pokemon After |
 |------|------|
 | <video src=> | <video src=> |
 -->
