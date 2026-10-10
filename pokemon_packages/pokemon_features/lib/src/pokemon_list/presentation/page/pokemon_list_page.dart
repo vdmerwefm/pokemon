@@ -18,7 +18,7 @@ class _PokemonListPageState extends State<PokemonListPage> {
             state.isLoading || pokemonList.isEmpty || state.failure != null;
 
         if (loadingEmptyOrFailure) {
-          return const ListSkeletonLoaderWidget();
+          return const PokemonSkeletonLoaderWidget();
         }
 
         return CustomScrollView(

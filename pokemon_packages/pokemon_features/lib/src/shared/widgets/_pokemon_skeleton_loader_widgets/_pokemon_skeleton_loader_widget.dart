@@ -1,7 +1,7 @@
-part of '_barrel_pokemon_list.dart';
+part of '../_barrel_shared_widgets.dart';
 
-class ListSkeletonLoaderWidget extends StatelessWidget {
-  const ListSkeletonLoaderWidget({
+class PokemonSkeletonLoaderWidget extends StatelessWidget {
+  const PokemonSkeletonLoaderWidget({
     super.key,
     this.count = 7,
     this.isEmptyRecord = false,
@@ -22,12 +22,15 @@ class ListSkeletonLoaderWidget extends StatelessWidget {
 
     return Skeletonizer(
       enabled: true,
-      effect: isEmptyRecord ? const SolidColorEffect(color: Color(0xFF3A3A3A),) :
-      const PulseEffect(
-        from: Color(0xFF1A1A1A),
-        to: Color(0xFF3A3A3A),
-        duration: Duration(seconds: 1),
-      ),
+      effect: isEmptyRecord
+          ? const SolidColorEffect(
+              color: Color(0xFF3A3A3A),
+            )
+          : const PulseEffect(
+              from: Color(0xFF1A1A1A),
+              to: Color(0xFF3A3A3A),
+              duration: Duration(seconds: 1),
+            ),
       textBoneBorderRadius: const TextBoneBorderRadius(
         BorderRadiusGeometry.zero,
       ),
@@ -39,7 +42,7 @@ class ListSkeletonLoaderWidget extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           itemCount: count,
           itemBuilder: (context, index) {
-            return SkeletonListTile(skeletonList: skeletonList);
+            return PokemonSkeletonListTileWidget(skeletonList: skeletonList);
           },
         ),
       ),

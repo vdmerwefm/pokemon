@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:pokemon_ui_kit/pokemon_ui_kit.dart';
+part of '../_barrel_shared_widgets.dart';
 
-class SkeletonListTile extends StatelessWidget {
-  const SkeletonListTile({required this.skeletonList, super.key});
+class PokemonSkeletonListTileWidget extends StatelessWidget {
+  const PokemonSkeletonListTileWidget({required this.skeletonList, super.key});
 
   final List<String> skeletonList;
   

@@ -20,7 +20,7 @@ class PokemonListTileTypes extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            TypeBadges(isActivePokemon: isActivePokemon, types: pokemonTypes),
+            PokemonListTypeBadgesWidget(isActivePokemon: isActivePokemon, types: pokemonTypes),
           ],
         ),
       ],

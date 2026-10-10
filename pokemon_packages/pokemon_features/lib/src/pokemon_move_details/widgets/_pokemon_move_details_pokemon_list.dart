@@ -33,7 +33,7 @@ class PokemonMoveDetailsPokemonList extends StatelessWidget {
                 pokemonGenus: pokemonList[index].genus,
               );
             } else {
-              return ListSkeletonLoaderWidget(
+              return PokemonSkeletonLoaderWidget(
                 count: 1,
                 isEmptyRecord: emptyRecords != 0,
                 leftPadding: 0,
