@@ -1,7 +1,7 @@
 part of '_barrel_pokemon_move_details.dart';
 
-class PokemonPagingButtonWidget extends StatelessWidget {
-  const PokemonPagingButtonWidget({
+class PokemonMoveDetailsPagingButtonWidget extends StatelessWidget {
+  const PokemonMoveDetailsPagingButtonWidget({
     required this.hasRecords,
     required this.buttonText,
     required this.textStyle,

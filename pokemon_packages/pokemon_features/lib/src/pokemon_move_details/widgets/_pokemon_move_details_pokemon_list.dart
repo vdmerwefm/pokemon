@@ -52,7 +52,7 @@ class PokemonMoveDetailsPokemonList extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               spacing: 16,
               children: [
-                PokemonPagingButtonWidget(
+                PokemonMoveDetailsPagingButtonWidget(
                   hasRecords: hasBack,
                   buttonText: 'BACK',
                   textStyle: pokemonBadgeTextStyle(
@@ -64,7 +64,7 @@ class PokemonMoveDetailsPokemonList extends StatelessWidget {
                       ),
                 ),
 
-                PokemonPagingButtonWidget(
+                PokemonMoveDetailsPagingButtonWidget(
                   hasRecords: hasNext,
                   buttonText: 'NEXT',
                   textStyle: pokemonBadgeTextStyle(

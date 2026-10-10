@@ -1,7 +1,7 @@
 part of '_barrel_pokemon_move_details.dart';
 
-class ExpandedTextRowWidget extends StatelessWidget {
-  const ExpandedTextRowWidget({
+class PokemonMoveDetailsExpandedTextRowWidget extends StatelessWidget {
+  const PokemonMoveDetailsExpandedTextRowWidget({
     required this.text,
     required this.description,
     this.textStyle,

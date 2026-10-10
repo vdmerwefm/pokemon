@@ -45,7 +45,7 @@ class PokemonMoveDetailsPage extends StatelessWidget {
                   ),
                   sliverHeight16,
                   SliverToBoxAdapter(
-                    child: ExpandedTextRowWidget(
+                    child: PokemonMoveDetailsExpandedTextRowWidget(
                       text: 'Ailment:'.toUpperCase(),
                       description:
                           pokemonMoveDetailsData.ailment?.toUpperCase() ?? '',
@@ -53,7 +53,7 @@ class PokemonMoveDetailsPage extends StatelessWidget {
                   ),
                   sliverHeight16,
                   SliverToBoxAdapter(
-                    child: ExpandedTextRowWidget(
+                    child: PokemonMoveDetailsExpandedTextRowWidget(
                       text: 'Effect:'.toUpperCase(),
                       description:
                           pokemonMoveDetailsData.effect
@@ -68,7 +68,7 @@ class PokemonMoveDetailsPage extends StatelessWidget {
                   ),
                   sliverHeight16,
                   SliverToBoxAdapter(
-                    child: ExpandedTextRowWidget(
+                    child: PokemonMoveDetailsExpandedTextRowWidget(
                       text: 'Damage Class:'.toUpperCase(),
                       description:
                           pokemonMoveDetailsData.damageClassDescription

@@ -9,9 +9,9 @@ import 'package:pokemon_models/pokemon_models.dart';
 import 'package:pokemon_ui_kit/pokemon_ui_kit.dart';
 
 part '../presentation/page/pokemon_move_details_page.dart';
-part '_pokemon_paging_button.dart';
+part '_pokemon_move_details_paging_button_widget.dart';
 part '_pokemon_move_details_pokemon_list.dart';
-part '_pokemon_expanded_text_row_widget.dart';
+part '_pokemon_move_details_expanded_text_row_widget.dart';
 part '_pokemon_move_details_card_widgets/_pokemon_move_details_card_chips_widget.dart';
 part '_pokemon_move_details_card_widgets/_pokemon_move_details_card_flavor_text_widget.dart';
 part '_pokemon_move_details_card_widgets/_pokemon_move_details_card_image_widget.dart';
