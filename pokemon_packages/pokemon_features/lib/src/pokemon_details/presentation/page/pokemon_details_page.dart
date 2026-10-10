@@ -123,7 +123,7 @@ class PokemonDetailsPage extends StatelessWidget {
                   sliverHeight16,
                   SliverToBoxAdapter(
                     key: const ValueKey('damageIndexKey'),
-                    child: StrengthsAndWeaknessesWidget(
+                    child: PokemonStrengthsAndWeaknessesWidget(
                       strongAgainst: state.strongAgainst,
                       weakAgainst: state.weakAgainst,
                     ),

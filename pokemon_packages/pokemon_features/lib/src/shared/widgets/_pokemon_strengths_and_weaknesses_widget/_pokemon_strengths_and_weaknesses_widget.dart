@@ -1,7 +1,7 @@
-part of '_barrel_pokemon_details.dart';
+part of '../_barrel_shared_widgets.dart';
 
-class StrengthsAndWeaknessesWidget extends StatelessWidget {
-  const StrengthsAndWeaknessesWidget({
+class PokemonStrengthsAndWeaknessesWidget extends StatelessWidget {
+  const PokemonStrengthsAndWeaknessesWidget({
     required this.strongAgainst,
     required this.weakAgainst,
     super.key,

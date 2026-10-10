@@ -23,5 +23,4 @@ part '_pokemon_details_card_widgets/_pokemon_details_card_widget.dart';
 part '_pokemon_evolution_chain_widget.dart';
 part '_pokemon_moves_widget.dart';
 part '_pokemon_stats_list_widget.dart';
-part '_stat_rectangle_bar_painter_widget.dart';
-part '_strengths_and_weaknesses_widget.dart';
+part '_pokemon_stat_rectangle_bar_painter_widget.dart';
