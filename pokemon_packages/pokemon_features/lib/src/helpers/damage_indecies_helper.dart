@@ -2,7 +2,7 @@ import 'package:pokemon_models/pokemon_models.dart';
 
 class DamageIndeciesHelper {
   static List<String> strongAgainstHelper({
-    required List<TypeDetailsModel> pokemonDamageIndecies,
+    required List<PokemonTypeDetailsModel> pokemonDamageIndecies,
   }) {
     final strengthsList = [
       ...pokemonDamageIndecies
@@ -17,7 +17,7 @@ class DamageIndeciesHelper {
   }
 
   static List<String> weakAgainstHelper({
-    required List<TypeDetailsModel> pokemonDamageIndecies,
+    required List<PokemonTypeDetailsModel> pokemonDamageIndecies,
   }) {
     final weaknessesList = [
       ...pokemonDamageIndecies

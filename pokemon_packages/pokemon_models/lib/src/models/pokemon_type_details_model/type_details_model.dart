@@ -1,18 +1,18 @@
 import 'package:equatable/equatable.dart';
 
-class TypeDetailsModel extends Equatable {
-  const TypeDetailsModel({
+class PokemonTypeDetailsModel extends Equatable {
+  const PokemonTypeDetailsModel({
     required this.strongAgainst,
     required this.weakAgainst,
   });
 
-  factory TypeDetailsModel.empty() => const TypeDetailsModel(
+  factory PokemonTypeDetailsModel.empty() => const PokemonTypeDetailsModel(
     strongAgainst: [],
     weakAgainst: [],
   );
 
-  factory TypeDetailsModel.fromJson(Map<String, dynamic> json) =>
-      TypeDetailsModel(
+  factory PokemonTypeDetailsModel.fromJson(Map<String, dynamic> json) =>
+      PokemonTypeDetailsModel(
         strongAgainst: json['strongAgainst'] as List<String>,
         weakAgainst: json['weakAgainst'] as List<String>,
       );

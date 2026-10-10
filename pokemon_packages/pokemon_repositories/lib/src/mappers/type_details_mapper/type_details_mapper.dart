@@ -2,7 +2,7 @@ import 'package:poke_api_client/poke_api_client.dart';
 import 'package:pokemon_models/pokemon_models.dart';
 
 extension TypeDetailsMapper on PokeApiTypeDetailsDto {
-  TypeDetailsModel toTypeDetailsModel() {
+  PokemonTypeDetailsModel toTypeDetailsModel() {
     final strengths =
         damageRelations?.doubleDamageTo
             ?.map((strongAgainst) => strongAgainst.name ?? '')
@@ -14,7 +14,7 @@ extension TypeDetailsMapper on PokeApiTypeDetailsDto {
             .toList() ??
         [];
 
-    return TypeDetailsModel(
+    return PokemonTypeDetailsModel(
       strongAgainst: strengths,
       weakAgainst: weaknesses,
     );
