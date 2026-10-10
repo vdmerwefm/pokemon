@@ -21,7 +21,7 @@ class PokemonInfoPillWidget extends StatelessWidget {
               right: 4,
             )
           : const EdgeInsets.all(4),
-      color: GetTypeUtil.getTypeColor(type ?? ''),
+      color: PokemonGetTypeUtil.getTypeColor(type ?? ''),
       child: Text(
         (text ?? '').toUpperCase().replaceAll(
           'É',

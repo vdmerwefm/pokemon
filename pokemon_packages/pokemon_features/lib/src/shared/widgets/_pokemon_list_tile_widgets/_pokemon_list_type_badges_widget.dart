@@ -47,7 +47,7 @@ class PokemonListTypeBadgesWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4),
                 child: Image.asset(
                   fit: BoxFit.cover,
-                  GetTypeUtil.getTypeBadges(type),
+                  PokemonGetTypeUtil.getTypeBadges(type),
                   package: 'pokemon_ui_kit',
                   height: 24,
                   width: 24,

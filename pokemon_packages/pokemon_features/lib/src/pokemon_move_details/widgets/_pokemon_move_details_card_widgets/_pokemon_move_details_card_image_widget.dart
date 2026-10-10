@@ -13,7 +13,7 @@ class PokemonMoveDetailsCardImage extends StatelessWidget {
         scale: 1.7,
         child: Image.asset(
           scale: 4,
-          GetTypeUtil.getMoveImage(
+          PokemonGetTypeUtil.getMoveImage(
             type,
           ),
           package: 'pokemon_ui_kit',

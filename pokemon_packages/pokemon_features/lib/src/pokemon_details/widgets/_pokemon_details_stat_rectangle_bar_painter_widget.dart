@@ -53,7 +53,7 @@ class PokemonDetailsBarPainter extends CustomPainter {
           ..close(),
         Paint()
           ..color = i == statCount.floorToDouble()
-              ? StatRectanglePainterUtil.getStatColor(stat)
+              ? PokemonStatRectanglePainterUtil.getStatColor(stat)
               : const Color(0xFFE5E5E5)
           ..style = PaintingStyle.fill,
       );

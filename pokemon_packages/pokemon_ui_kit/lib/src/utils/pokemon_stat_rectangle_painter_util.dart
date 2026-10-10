@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class StatRectanglePainterUtil {
+class PokemonStatRectanglePainterUtil {
   static Color getStatColor(double stat) {
     if (stat <= 60) {
       return const Color(0xFFE93F6E);

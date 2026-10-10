@@ -24,7 +24,7 @@ class PokemonMoveDetailsCardInfoWidget extends StatelessWidget {
           ),
           child: Image.asset(
             alignment: Alignment.topCenter,
-            GetTypeUtil.getTypeBadges(
+            PokemonGetTypeUtil.getTypeBadges(
               pokemonMoveType,
             ),
             height: 36,

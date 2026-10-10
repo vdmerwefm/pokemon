@@ -15,7 +15,7 @@ class PokemonMoveListTileImageWidget extends StatelessWidget {
       child: Transform.scale(
         scale: 1.7,
         child: Image.asset(
-          GetTypeUtil.getMoveImage(
+          PokemonGetTypeUtil.getMoveImage(
             pokemonMoveType,
           ),
           alignment: Alignment.center,

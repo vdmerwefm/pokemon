@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_models/pokemon_models.dart';
 
-class GetTypeUtil {
+class PokemonGetTypeUtil {
   static Color getTypeColor(String types) {
     final type = PokemonType.values.asNameMap()[types];
     return switch (type) {
