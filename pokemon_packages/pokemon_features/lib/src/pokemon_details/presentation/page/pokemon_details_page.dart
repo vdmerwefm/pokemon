@@ -123,10 +123,23 @@ class PokemonDetailsPage extends StatelessWidget {
                   sliverHeight16,
                   SliverToBoxAdapter(
                     key: const ValueKey('damageIndexKey'),
-                    child: PokemonStrengthsAndWeaknessesWidget(
-                      strongAgainst: state.strongAgainst,
-                      weakAgainst: state.weakAgainst,
-                    ),
+                    child:
+                        BlocSelector<
+                          PokemonDetailsBloc,
+                          PokemonDetailsState,
+                          bool
+                        >(
+                          key: key,
+                          selector: (isDamageIndexLoading) =>
+                              state.damageIndeciesLoading,
+                          builder: (context, isDamageIndexLoading) {
+                            return PokemonStrengthsAndWeaknessesWidget(
+                              strongAgainst: state.strongAgainst,
+                              weakAgainst: state.weakAgainst,
+                              isDamageIndexLoading: isDamageIndexLoading,
+                            );
+                          },
+                        ),
                   ),
                   sliverHeight16,
                   SliverToBoxAdapter(
