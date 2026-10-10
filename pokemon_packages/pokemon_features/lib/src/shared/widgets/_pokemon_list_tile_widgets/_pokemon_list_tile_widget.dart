@@ -47,19 +47,19 @@ class PokemonListTileWidget extends StatelessWidget {
           child: Row(
             children: [
               PokemonListTileImageWidget(
-                key: ValueKey(pokemonSprite),
+                
                 pokemonSprite: pokemonSprite ?? '',
               ),
               PokemonListTileInfoWidget(
                 isActivePokemon: isActivePokemon,
-                key: ValueKey(pokemonName),
+                
                 pokemonName: pokemonName ?? '',
                 pokemonId: pokemonId ?? 0,
                 pokemonGenus: pokemonGenus ?? '',
               ),
               PokemonListTileTypes(
                 isActivePokemon: isActivePokemon,
-                key: ValueKey(pokemonTypes),
+                
                 pokemonTypes: pokemonTypes ?? [],
               ),
             ],
