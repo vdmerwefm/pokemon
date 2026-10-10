@@ -12,7 +12,7 @@ class PokemonMoveDetailsUseCase {
     return _repo.getPokemonMovesDetails(name: name).run();
   }
 
-  Future<Either<Failure, List<TypeDetailsModel>>> getMoveDamageIndeciesUseCase({
+  Future<Either<Failure, List<PokemonTypeDetailsModel>>> getMoveDamageIndeciesUseCase({
     required List<String> types,
   }) {
     return _repo.getPokemonDamageIndecies(types: types).run();

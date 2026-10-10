@@ -13,7 +13,7 @@ class PokemonMoveDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PokemonScaffold(
+    return PokemonScaffoldWidget(
       body: BlocProvider(
         create: (context) => sl<PokemonMoveDetailsBloc>()
           ..add(PokemonMoveDetailsEvents.onGetPokemonMoveDetails(name: name))
@@ -38,14 +38,14 @@ class PokemonMoveDetailsPage extends StatelessWidget {
                   ),
                   sliverHeight16,
                   const SliverToBoxAdapter(
-                    child: HeaderWidget(
+                    child: PokemonHeaderWidget(
                       headerText: 'Ailment, Effect, and Damage Class',
                       fontSize: 10,
                     ),
                   ),
                   sliverHeight16,
                   SliverToBoxAdapter(
-                    child: ExpandedTextRowWidget(
+                    child: PokemonMoveDetailsExpandedTextRowWidget(
                       text: 'Ailment:'.toUpperCase(),
                       description:
                           pokemonMoveDetailsData.ailment?.toUpperCase() ?? '',
@@ -53,7 +53,7 @@ class PokemonMoveDetailsPage extends StatelessWidget {
                   ),
                   sliverHeight16,
                   SliverToBoxAdapter(
-                    child: ExpandedTextRowWidget(
+                    child: PokemonMoveDetailsExpandedTextRowWidget(
                       text: 'Effect:'.toUpperCase(),
                       description:
                           pokemonMoveDetailsData.effect
@@ -68,7 +68,7 @@ class PokemonMoveDetailsPage extends StatelessWidget {
                   ),
                   sliverHeight16,
                   SliverToBoxAdapter(
-                    child: ExpandedTextRowWidget(
+                    child: PokemonMoveDetailsExpandedTextRowWidget(
                       text: 'Damage Class:'.toUpperCase(),
                       description:
                           pokemonMoveDetailsData.damageClassDescription
@@ -98,7 +98,8 @@ class PokemonMoveDetailsPage extends StatelessWidget {
                         PokemonInfoTileWidget(
                           infoTitle: 'Accuracy:',
                           infoTitleColor: const Color(0xFFE93F6E),
-                          infoValue: '${pokemonMoveDetailsData.accuracy} points',
+                          infoValue:
+                              '${pokemonMoveDetailsData.accuracy} points',
                           infoValueColor: const Color(0xFF141414),
                           infoFlavor: '///liklihood of landing',
                           infoFlavorColor: const Color(
@@ -122,33 +123,28 @@ class PokemonMoveDetailsPage extends StatelessWidget {
                   ),
                   sliverHeight16,
                   SliverToBoxAdapter(
-                    child: Column(
-                      key: key,
-                      children: [
-                        const HeaderWidget(
-                          headerText: 'Strengths and Weaknesses',
-                          fontSize: 10,
+                    key: const ValueKey('damageIndexKey'),
+                    child:
+                        BlocSelector<
+                          PokemonMoveDetailsBloc,
+                          PokemonMoveDetailsState,
+                          bool
+                        >(
+                          key: key,
+                          selector: (isDamageIndexLoading) =>
+                              state.damageIndeciesLoading,
+                          builder: (context, isDamageIndexLoading) {
+                            return PokemonStrengthsAndWeaknessesWidget(
+                              strongAgainst: state.strongAgainst,
+                              weakAgainst: state.weakAgainst,
+                              isDamageIndexLoading: isDamageIndexLoading,
+                            );
+                          },
                         ),
-                        height16,
-                        Padding(
-                          padding: (state.strongAgainst ?? []).isNotEmpty
-                              ? const EdgeInsets.only(bottom: 16)
-                              : EdgeInsets.zero,
-                          child: DetailsTypeBadgesWidget(
-                            pokemonTypes: state.strongAgainst ?? [],
-                            text: 'Strong Against',
-                          ),
-                        ),
-                        DetailsTypeBadgesWidget(
-                          pokemonTypes: state.weakAgainst ?? [],
-                          text: 'Weak Against',
-                        ),
-                      ],
-                    ),
                   ),
                   sliverHeight16,
                   const SliverToBoxAdapter(
-                    child: HeaderWidget(
+                    child: PokemonHeaderWidget(
                       headerText: 'pokemon list:',
                       fontSize: 10,
                     ),

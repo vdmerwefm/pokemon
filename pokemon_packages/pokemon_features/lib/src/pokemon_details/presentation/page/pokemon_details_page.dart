@@ -13,7 +13,7 @@ class PokemonDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PokemonScaffold(
+    return PokemonScaffoldWidget(
       body: BlocProvider(
         create: (context) => sl<PokemonDetailsBloc>()
           ..add(PokemonDetailsEvents.onGetPokemonDetails(name: pokemonName))
@@ -55,7 +55,7 @@ class PokemonDetailsPage extends StatelessWidget {
                   sliverHeight12,
                   if (pokemon.cry!.isNotEmpty)
                     SliverToBoxAdapter(
-                      child: PokemonCryWidget(
+                      child: PokemonDetailsCryWidget(
                         pokemonName: pokemon.name ?? '',
                         pokemonCry: pokemon.cry ?? '',
                       ),
@@ -123,14 +123,27 @@ class PokemonDetailsPage extends StatelessWidget {
                   sliverHeight16,
                   SliverToBoxAdapter(
                     key: const ValueKey('damageIndexKey'),
-                    child: StrengthsAndWeaknessesWidget(
-                      strongAgainst: state.strongAgainst,
-                      weakAgainst: state.weakAgainst,
-                    ),
+                    child:
+                        BlocSelector<
+                          PokemonDetailsBloc,
+                          PokemonDetailsState,
+                          bool
+                        >(
+                          key: key,
+                          selector: (isDamageIndexLoading) =>
+                              state.damageIndeciesLoading,
+                          builder: (context, isDamageIndexLoading) {
+                            return PokemonStrengthsAndWeaknessesWidget(
+                              strongAgainst: state.strongAgainst,
+                              weakAgainst: state.weakAgainst,
+                              isDamageIndexLoading: isDamageIndexLoading,
+                            );
+                          },
+                        ),
                   ),
                   sliverHeight16,
                   SliverToBoxAdapter(
-                    child: PokemonEvolutionChainWidget(
+                    child: PokemonDetailsEvolutionChainWidget(
                       chainHeader: 'Evolution Chain',
                       activePokemonName: pokemon.name ?? '',
                       pokemonEvolutionChain:
@@ -140,7 +153,7 @@ class PokemonDetailsPage extends StatelessWidget {
                   sliverHeight16,
                   if (pokemon.forms!.isNotEmpty)
                     SliverToBoxAdapter(
-                      child: PokemonEvolutionChainWidget(
+                      child: PokemonDetailsEvolutionChainWidget(
                         chainHeader: 'Forms and Transformations',
                         activePokemonName: pokemon.name ?? '',
                         pokemonEvolutionChain:
@@ -149,13 +162,13 @@ class PokemonDetailsPage extends StatelessWidget {
                     ),
                   sliverHeight16,
                   if (pokemon.levelUpMoves!.isNotEmpty)
-                    PokemonMovesWidget(
+                    PokemonDetailsMovesWidget(
                       moveCount: pokemon.levelUpMoves?.length,
                       movesData: pokemon.levelUpMoves,
                     ),
                   //if (pokemon.levelUpMoves!.isNotEmpty) sliverHeight16,
                   SliverToBoxAdapter(
-                    child: PokemonStatsListWidget(
+                    child: PokemonDetailsStatsListWidget(
                       pokemonStats: pokemon.stats ?? [],
                     ),
                   ),

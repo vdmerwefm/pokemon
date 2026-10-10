@@ -1,5 +1,6 @@
+import 'package:poke_gql_client/_barrel_poke_gql.dart' show Pokemonmove;
+//needs to be hidden, pokemon list is derived in the gql call
 import 'package:poke_gql_client/poke_gql_client.dart' hide Pokemonmove;
-import 'package:poke_gql_client/second_barrel.dart' show Pokemonmove;
 import 'package:pokemon_models/pokemon_models.dart';
 
 extension PokemonMoveDetailsMapper on GqlPokemonMoveDetailsDto {

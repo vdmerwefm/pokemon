@@ -22,7 +22,7 @@ class PokemonDetailsCardInfoWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(4),
           child: Image.asset(
             alignment: Alignment.topCenter,
-            GetTypeUtil.getTypeBadges(
+            PokemonGetTypeUtil.getTypeBadges(
               (pokemonTypes ?? []).first,
             ),
             height: 36,

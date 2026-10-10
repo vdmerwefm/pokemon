@@ -33,7 +33,7 @@ class PokemonMoveDetailsPokemonList extends StatelessWidget {
                 pokemonGenus: pokemonList[index].genus,
               );
             } else {
-              return ListSkeletonLoaderWidget(
+              return PokemonSkeletonLoaderWidget(
                 count: 1,
                 isEmptyRecord: emptyRecords != 0,
                 leftPadding: 0,
@@ -52,7 +52,7 @@ class PokemonMoveDetailsPokemonList extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               spacing: 16,
               children: [
-                PokemonPagingButtonWidget(
+                PokemonMoveDetailsPagingButtonWidget(
                   hasRecords: hasBack,
                   buttonText: 'BACK',
                   textStyle: pokemonBadgeTextStyle(
@@ -64,7 +64,7 @@ class PokemonMoveDetailsPokemonList extends StatelessWidget {
                       ),
                 ),
 
-                PokemonPagingButtonWidget(
+                PokemonMoveDetailsPagingButtonWidget(
                   hasRecords: hasNext,
                   buttonText: 'NEXT',
                   textStyle: pokemonBadgeTextStyle(

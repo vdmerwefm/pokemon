@@ -157,7 +157,7 @@ class PokemonDetailsSkeletonLoader extends StatelessWidget {
 
               const PokemonDividerWidget(),
 
-              const PokemonCryWidget(
+              const PokemonDetailsCryWidget(
                 pokemonName: 'Gengar',
                 pokemonCry: '',
               ),
@@ -209,7 +209,7 @@ class PokemonDetailsSkeletonLoader extends StatelessWidget {
                 ],
               ),
 
-              const HeaderWidget(
+              const PokemonHeaderWidget(
                 headerText: 'Strengths and Weaknesses',
                 fontSize: 10,
               ),
@@ -229,7 +229,7 @@ class PokemonDetailsSkeletonLoader extends StatelessWidget {
                         children: strengthsAndWeaknessesList.map((type) {
                           return Image.asset(
                             fit: BoxFit.contain,
-                            GetTypeUtil.getTypeBadges(type),
+                            PokemonGetTypeUtil.getTypeBadges(type),
                             package: 'pokemon_ui_kit',
                             height: 24,
                             width: 24,
@@ -241,7 +241,7 @@ class PokemonDetailsSkeletonLoader extends StatelessWidget {
                 ],
               ),
 
-              const HeaderWidget(
+              const PokemonHeaderWidget(
                 headerText: 'Evolution Chain',
                 fontSize: 10,
               ),
@@ -376,7 +376,7 @@ class PokemonDetailsSkeletonLoader extends StatelessWidget {
                 ),
               ),
 
-              const HeaderWidget(
+              const PokemonHeaderWidget(
                 headerText: 'Pokemon Moves',
                 fontSize: 10,
               ),
