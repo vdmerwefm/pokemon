@@ -15,12 +15,15 @@
 - [ ] 🗑️ Chore
 - [ ] 🧪 Test
 
+<!-- Uncomment to add video changes
 ## Pokemon Videos:
 | Pokemon Before| Pokeon After |
 |------|------|
 | <video src=> | <video src=> |
-
+-->
+<!-- Uncomment to add change screenshots
 ## Pokemon ScreenShots:
 | Pokemon Screenshots Before| Pokemon Screenshots After|
 |-------|------|
 | <img src=> | <img src=> |
+-->
