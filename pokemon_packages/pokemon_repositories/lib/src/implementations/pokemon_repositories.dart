@@ -9,7 +9,7 @@ import 'package:pokemon_repositories/src/mappers/pokemon_details_mapper/pokemon_
 import 'package:pokemon_repositories/src/mappers/pokemon_list_mapper/pokemon_list_mapper.dart';
 import 'package:pokemon_repositories/src/mappers/pokemon_move_details_mapper/pokemon_move_details_mapper.dart';
 import 'package:pokemon_repositories/src/mappers/pokemon_moves_list_mapper/pokemon_moves_list_mapper.dart';
-import 'package:pokemon_repositories/src/mappers/type_details_mapper/type_details_mapper.dart';
+import 'package:pokemon_repositories/src/mappers/pokemon_type_details_mapper/pokemon_type_details_mapper.dart';
 
 @Injectable(as: IPokemonRepository)
 class PokemonRepository implements IPokemonRepository {
