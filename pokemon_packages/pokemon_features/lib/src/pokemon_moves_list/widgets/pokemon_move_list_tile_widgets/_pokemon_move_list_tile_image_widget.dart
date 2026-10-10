@@ -1,7 +1,7 @@
 part of '../_barrel_pokemon_move_list.dart';
 
-class PokemonMoveTileImageWidget extends StatelessWidget {
-  const PokemonMoveTileImageWidget({
+class PokemonMoveListTileImageWidget extends StatelessWidget {
+  const PokemonMoveListTileImageWidget({
     required this.pokemonMoveType,
     super.key,
   });

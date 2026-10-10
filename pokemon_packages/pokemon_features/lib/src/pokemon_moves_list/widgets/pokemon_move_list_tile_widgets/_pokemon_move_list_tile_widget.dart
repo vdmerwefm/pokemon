@@ -34,7 +34,7 @@ class PokemonMoveTileWidget extends StatelessWidget {
         width: MediaQuery.sizeOf(context).width,
         child: Row(
           children: [
-            PokemonMoveTileImageWidget(pokemonMoveType: pokemonMoveType ?? ''),
+            PokemonMoveListTileImageWidget(pokemonMoveType: pokemonMoveType ?? ''),
             Expanded(
               child: ColoredBox(
                 color: const Color(0xFF1A1A1A),
@@ -48,7 +48,7 @@ class PokemonMoveTileWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       height8,
-                      PokemonMoveTileInfoWidget(
+                      PokemonMoveListTileInfoWidget(
                         pokemonMoveName: pokemonMoveName ?? '',
                         pokemonMoveType: pokemonMoveType ?? '',
                         pokemonMoveId: pokemonMoveId ?? 0,
@@ -58,7 +58,7 @@ class PokemonMoveTileWidget extends StatelessWidget {
                         padding: 12,
                       ),
                       height8,
-                      PokemonMoveTileTypesWidget(
+                      PokemonMoveListTileTypesWidget(
                         pokemonMoveType: pokemonMoveType ?? '',
                         pokemonMoveDamageClass: pokemonMoveDamageClass ?? '',
                       ),
