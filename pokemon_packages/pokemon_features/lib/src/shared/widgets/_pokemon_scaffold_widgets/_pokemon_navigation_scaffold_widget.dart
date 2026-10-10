@@ -1,7 +1,7 @@
 part of '../_barrel_shared_widgets.dart';
 
-class PokemonNavigationScaffold extends StatelessWidget {
-  const PokemonNavigationScaffold({
+class PokemonNavigationScaffoldWidget extends StatelessWidget {
+  const PokemonNavigationScaffoldWidget({
     required this.body,
     required this.selectedIndex,
     required this.onItemTapped,
@@ -15,10 +15,10 @@ class PokemonNavigationScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PokemonAppBar(showSearch: true,),
+      appBar: const PokemonAppBarWidget(showSearch: true,),
       body: body,
       bottomNavigationBar: CustomPaint(
-        painter: BottomAppBarStroke(
+        painter: PokemonBottomAppBarStrokeWidget(
           color: const Color(0xFFE93F6E),
           width: 3,
         ),

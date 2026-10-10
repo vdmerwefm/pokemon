@@ -13,7 +13,7 @@ class PokemonDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PokemonScaffold(
+    return PokemonScaffoldWidget(
       body: BlocProvider(
         create: (context) => sl<PokemonDetailsBloc>()
           ..add(PokemonDetailsEvents.onGetPokemonDetails(name: pokemonName))

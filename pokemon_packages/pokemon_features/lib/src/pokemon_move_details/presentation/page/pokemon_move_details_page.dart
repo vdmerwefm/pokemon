@@ -13,7 +13,7 @@ class PokemonMoveDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PokemonScaffold(
+    return PokemonScaffoldWidget(
       body: BlocProvider(
         create: (context) => sl<PokemonMoveDetailsBloc>()
           ..add(PokemonMoveDetailsEvents.onGetPokemonMoveDetails(name: name))
@@ -38,7 +38,7 @@ class PokemonMoveDetailsPage extends StatelessWidget {
                   ),
                   sliverHeight16,
                   const SliverToBoxAdapter(
-                    child: HeaderWidget(
+                    child: PokemonHeaderWidget(
                       headerText: 'Ailment, Effect, and Damage Class',
                       fontSize: 10,
                     ),
@@ -144,7 +144,7 @@ class PokemonMoveDetailsPage extends StatelessWidget {
                   ),
                   sliverHeight16,
                   const SliverToBoxAdapter(
-                    child: HeaderWidget(
+                    child: PokemonHeaderWidget(
                       headerText: 'pokemon list:',
                       fontSize: 10,
                     ),

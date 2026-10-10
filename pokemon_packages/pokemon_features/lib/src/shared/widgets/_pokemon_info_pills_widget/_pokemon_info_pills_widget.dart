@@ -1,7 +1,7 @@
 part of '../_barrel_shared_widgets.dart';
 
-class PokemonInfoPill extends StatelessWidget {
-  const PokemonInfoPill({
+class PokemonInfoPillWidget extends StatelessWidget {
+  const PokemonInfoPillWidget({
     required this.text,
     this.type,
     super.key,

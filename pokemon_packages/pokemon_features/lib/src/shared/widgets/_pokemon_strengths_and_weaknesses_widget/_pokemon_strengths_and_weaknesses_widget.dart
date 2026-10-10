@@ -18,7 +18,7 @@ class PokemonStrengthsAndWeaknessesWidget extends StatelessWidget {
       return Column(
         key: key,
         children: [
-          const HeaderWidget(
+          const PokemonHeaderWidget(
             headerText: 'Strengths and Weaknesses',
             fontSize: 10,
           ),
@@ -27,12 +27,12 @@ class PokemonStrengthsAndWeaknessesWidget extends StatelessWidget {
             padding: (strongAgainst ?? []).isNotEmpty
                 ? const EdgeInsets.only(bottom: 16)
                 : EdgeInsets.zero,
-            child: DetailsTypeBadgesWidget(
+            child: PokemonTypeBadgesWidget(
               pokemonTypes: strongAgainst ?? [],
               text: 'Strong Against',
             ),
           ),
-          DetailsTypeBadgesWidget(
+          PokemonTypeBadgesWidget(
             pokemonTypes: weakAgainst ?? [],
             text: 'Weak Against',
           ),

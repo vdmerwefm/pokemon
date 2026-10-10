@@ -57,7 +57,7 @@ class PokemonListTileWidget extends StatelessWidget {
                 pokemonId: pokemonId ?? 0,
                 pokemonGenus: pokemonGenus ?? '',
               ),
-              PokemonListTileTypes(
+              PokemonListTileTypesWidget(
                 isActivePokemon: isActivePokemon,
                 
                 pokemonTypes: pokemonTypes ?? [],

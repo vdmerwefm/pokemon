@@ -1,7 +1,7 @@
 part of '../_barrel_shared_widgets.dart';
 
-class PokemonListTileTypes extends StatelessWidget {
-  const PokemonListTileTypes({
+class PokemonListTileTypesWidget extends StatelessWidget {
+  const PokemonListTileTypesWidget({
     required this.pokemonTypes,
     this.isActivePokemon = false,
     super.key,

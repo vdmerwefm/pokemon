@@ -15,7 +15,7 @@ class PokemonDetailsMovesWidget extends StatelessWidget {
     return SliverMainAxisGroup(
       slivers: [
         const SliverToBoxAdapter(
-          child: HeaderWidget(
+          child: PokemonHeaderWidget(
             headerText: 'Pokemon Moves',
             fontSize: 10,
           ),

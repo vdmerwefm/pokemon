@@ -16,7 +16,7 @@ class PokemonDetailsEvolutionChainWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        HeaderWidget(
+        PokemonHeaderWidget(
           headerText: chainHeader ?? '',
           fontSize: 10,
         ),

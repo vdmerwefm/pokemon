@@ -1,7 +1,7 @@
 part of '../_barrel_shared_widgets.dart';
 
-class DottedDividerPainterWidget extends CustomPainter {
-  DottedDividerPainterWidget({
+class PokemonDottedDividerPainterWidget extends CustomPainter {
+  PokemonDottedDividerPainterWidget({
     required this.color,
     this.ellipseWidth = 2.0,
     this.ellipseHeight = 2.0,
@@ -38,7 +38,7 @@ class DottedDividerPainterWidget extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant DottedDividerPainterWidget oldDelegate) {
+  bool shouldRepaint(covariant PokemonDottedDividerPainterWidget oldDelegate) {
     return oldDelegate.color != color ||
         oldDelegate.ellipseWidth != ellipseWidth ||
         oldDelegate.ellipseHeight != ellipseHeight ||
@@ -57,7 +57,7 @@ class PokemonDividerWidget extends StatelessWidget {
       height: height ?? 0,
       width: double.infinity,
       child: CustomPaint(
-        painter: DottedDividerPainterWidget(
+        painter: PokemonDottedDividerPainterWidget(
           color: const Color(0xFF3A3A3A),
         ),
       ),
@@ -78,7 +78,7 @@ class PokemonDividerAltWidget extends StatelessWidget {
       height: height ?? 0,
       width: double.infinity,
       child: CustomPaint(
-        painter: DottedDividerPainterWidget(
+        painter: PokemonDottedDividerPainterWidget(
           color: const Color(0xFF3A3A3A),
         ),
       ),

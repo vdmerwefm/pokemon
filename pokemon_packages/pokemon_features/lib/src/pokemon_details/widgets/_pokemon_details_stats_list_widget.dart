@@ -15,7 +15,7 @@ class PokemonDetailsStatsListWidget extends StatelessWidget {
     if (pokemonStats != null) {
       return Column(
         children: [
-          const HeaderWidget(
+          const PokemonHeaderWidget(
             headerText: 'Pokemon Stats',
             fontSize: 10,
           ),

@@ -1,7 +1,7 @@
 part of '../_barrel_shared_widgets.dart';
 
-class PokemonAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const PokemonAppBar({required this.showSearch, super.key});
+class PokemonAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
+  const PokemonAppBarWidget({required this.showSearch, super.key});
 
   final bool showSearch;
 
@@ -67,7 +67,7 @@ class PokemonAppBar extends StatelessWidget implements PreferredSizeWidget {
         actionsPadding: const EdgeInsets.only(right: 13),
         leadingWidth: 250,
         leading: const PokemonLeadingWidget(),
-        actions: [PokemonAppBarActions(showSearch: showSearch)],
+        actions: [PokemonAppBarActionsWidget(showSearch: showSearch)],
       ),
     );
   }

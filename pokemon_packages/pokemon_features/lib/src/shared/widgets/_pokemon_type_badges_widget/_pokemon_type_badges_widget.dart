@@ -1,7 +1,7 @@
 part of '../_barrel_shared_widgets.dart';
 
-class DetailsTypeBadgesWidget extends StatelessWidget {
-  const DetailsTypeBadgesWidget({
+class PokemonTypeBadgesWidget extends StatelessWidget {
+  const PokemonTypeBadgesWidget({
     required this.pokemonTypes,
     required this.text,
     super.key,

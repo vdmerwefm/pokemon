@@ -17,14 +17,14 @@ class PokemonDetailsCardGenusWidget extends StatelessWidget {
       child: Row(
         spacing: 8,
         children: [
-          PokemonInfoPill(
+          PokemonInfoPillWidget(
             text: pokemonGenus ?? '',
           ),
           Row(
             spacing: 8,
             children: (pokemonTypes ?? []).map(
               (type) {
-                return PokemonInfoPill(
+                return PokemonInfoPillWidget(
                   text: type,
                   type: type,
                 );

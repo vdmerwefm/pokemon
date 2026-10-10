@@ -1,7 +1,7 @@
 part of '../_barrel_shared_widgets.dart';
 
-class HeaderWidget extends StatelessWidget {
-  const HeaderWidget({
+class PokemonHeaderWidget extends StatelessWidget {
+  const PokemonHeaderWidget({
     required this.headerText,
     required this.fontSize,
     super.key,

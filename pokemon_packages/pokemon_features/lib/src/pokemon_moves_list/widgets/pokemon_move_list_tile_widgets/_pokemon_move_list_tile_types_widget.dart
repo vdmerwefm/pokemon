@@ -16,11 +16,11 @@ class PokemonMoveListTileTypesWidget extends StatelessWidget {
       child: Row(
         spacing: 8,
         children: [
-          PokemonInfoPill(
+          PokemonInfoPillWidget(
             text: pokemonMoveType,
             type: pokemonMoveType,
           ),
-          PokemonInfoPill(
+          PokemonInfoPillWidget(
             text:
                 'Damage Class: '
                 '$pokemonMoveDamageClass',

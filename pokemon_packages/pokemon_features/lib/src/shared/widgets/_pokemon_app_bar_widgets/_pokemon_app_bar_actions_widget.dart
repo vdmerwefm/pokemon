@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class PokemonAppBarActions extends StatelessWidget {
-  const PokemonAppBarActions({required this.showSearch, super.key});
+class PokemonAppBarActionsWidget extends StatelessWidget {
+  const PokemonAppBarActionsWidget({required this.showSearch, super.key});
 
   final bool showSearch;
   @override

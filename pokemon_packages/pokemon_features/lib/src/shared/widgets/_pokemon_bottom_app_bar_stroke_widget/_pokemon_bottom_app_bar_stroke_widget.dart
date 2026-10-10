@@ -1,7 +1,7 @@
 part of '../_barrel_shared_widgets.dart';
 
-class BottomAppBarStroke extends CustomPainter {
-  BottomAppBarStroke({
+class PokemonBottomAppBarStrokeWidget extends CustomPainter {
+  PokemonBottomAppBarStrokeWidget({
     required this.color,
     required this.width,
   });
