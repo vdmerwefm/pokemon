@@ -9,7 +9,7 @@ class ListSkeletonLoaderWidget extends StatelessWidget {
     this.rightPadding = 16,
   });
 
-  //TODO: Move this to shared widgets and rename with pokemon tag
+  // TODO(vdmerwefm): Move this to shared widgets and rename with pokemon tag.
 
   final int count;
   final bool isEmptyRecord;

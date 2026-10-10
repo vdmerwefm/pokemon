@@ -1,7 +1,7 @@
 import 'package:poke_api_client/poke_api_client.dart';
 import 'package:pokemon_models/pokemon_models.dart';
 
-extension TypeDetailsMapper on RawTypeDetailsDto {
+extension TypeDetailsMapper on PokeApiTypeDetailsDto {
   TypeDetailsModel toTypeDetailsModel() {
     final strengths =
         damageRelations?.doubleDamageTo
