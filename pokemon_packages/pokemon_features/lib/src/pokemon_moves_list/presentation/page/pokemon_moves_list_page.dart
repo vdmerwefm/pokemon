@@ -14,7 +14,7 @@ class PokemonMovesListPage extends StatelessWidget {
         builder: (context, state) {
           final pokemonMoveList = state.paginatedPokemonMovesList;
           if (state.pokemonMovesList == null) {
-            return const SizedBox.shrink();
+            return const PokemonSkeletonLoaderWidget(isPokemonList: false);
           } else {
             return CustomScrollView(
               slivers: [

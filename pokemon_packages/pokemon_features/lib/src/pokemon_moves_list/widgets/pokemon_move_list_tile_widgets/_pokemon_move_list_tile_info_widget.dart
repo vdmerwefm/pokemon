@@ -60,6 +60,7 @@ class PokemonMoveListTileInfoWidget extends StatelessWidget {
                       : 14,
                 ),
               ),
+              height4
             ],
           ),
         ),
