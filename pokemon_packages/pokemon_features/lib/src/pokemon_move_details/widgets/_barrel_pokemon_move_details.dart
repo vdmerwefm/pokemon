@@ -7,6 +7,7 @@ import 'package:pokemon_features/src/pokemon_move_details/presentation/bloc/poke
 import 'package:pokemon_features/src/shared/widgets/_barrel_shared_widgets.dart';
 import 'package:pokemon_models/pokemon_models.dart';
 import 'package:pokemon_ui_kit/pokemon_ui_kit.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 part '../presentation/page/pokemon_move_details_page.dart';
 part '_pokemon_move_details_paging_button_widget.dart';
@@ -17,3 +18,4 @@ part '_pokemon_move_details_card_widgets/_pokemon_move_details_card_flavor_text_
 part '_pokemon_move_details_card_widgets/_pokemon_move_details_card_image_widget.dart';
 part '_pokemon_move_details_card_widgets/_pokemon_move_details_card_info_widget.dart';
 part '_pokemon_move_details_card_widgets/_pokemon_move_details_card_widget.dart';
+part '_pokemon_move_details_skeleton_loader.dart';

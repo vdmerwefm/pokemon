@@ -34,9 +34,10 @@ class PokemonMoveDetailsPokemonList extends StatelessWidget {
               );
             } else {
               return PokemonSkeletonLoaderWidget(
-                isPokemonList: false,
+                isPokemonList: true,
                 count: 1,
                 isEmptyRecord: emptyRecords != 0,
+                topPadding: 16,
                 leftPadding: 0,
                 rightPadding: 0,
               );
