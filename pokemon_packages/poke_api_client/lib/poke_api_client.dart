@@ -5,10 +5,10 @@
 library;
 
 export 'src/dio/poke_dio.dart';
-export 'src/models/raw_type_details_dto/damage_relations.dart';
-export 'src/models/raw_type_details_dto/double_damage_from.dart';
-export 'src/models/raw_type_details_dto/double_damage_to.dart';
-export 'src/models/raw_type_details_dto/raw_type_details_dto.dart';
+export 'src/models/poke_api_type_details_dto/damage_relations.dart';
+export 'src/models/poke_api_type_details_dto/double_damage_from.dart';
+export 'src/models/poke_api_type_details_dto/double_damage_to.dart';
+export 'src/models/poke_api_type_details_dto/poke_api_type_details_dto.dart';
 export 'src/poke_api_client.dart';
 export 'src/services/injectable.dart';
 export 'src/services/injectable.module.dart';

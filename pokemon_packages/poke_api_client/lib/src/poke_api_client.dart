@@ -2,7 +2,7 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:poke_api_client/src/dio/poke_dio.dart';
-import 'package:poke_api_client/src/models/raw_type_details_dto/raw_type_details_dto.dart';
+import 'package:poke_api_client/src/models/poke_api_type_details_dto/poke_api_type_details_dto.dart';
 import 'package:pokemon_core/pokemon_core.dart';
 
 @Singleton()
@@ -11,7 +11,7 @@ class PokeApiClient {
 
   final PokeDio pokeDio;
 
-  TaskEither<Failure, RawTypeDetailsDto> fetchTypeDetails({
+  TaskEither<Failure, PokeApiTypeDetailsDto> fetchTypeDetails({
     required String typeName,
   }) {
     return TaskEither.tryCatch(() async {
@@ -19,9 +19,9 @@ class PokeApiClient {
         '/type/$typeName',
       );
       if (response.data == null) {
-        return RawTypeDetailsDto.empty();
+        return PokeApiTypeDetailsDto.empty();
       } else {
-        return RawTypeDetailsDto.fromJson(response.data!);
+        return PokeApiTypeDetailsDto.fromJson(response.data!);
       }
     }, (error, stackTrace) => Failure.httpFailure());
   }

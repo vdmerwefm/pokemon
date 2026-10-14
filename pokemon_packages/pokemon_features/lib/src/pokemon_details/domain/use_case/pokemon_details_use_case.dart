@@ -12,7 +12,7 @@ class GetPokemonDetailsUseCase {
     return _repo.getPokemonDetails(name: name).run();
   }
 
-  Future<Either<Failure, List<TypeDetailsModel>>>
+  Future<Either<Failure, List<PokemonTypeDetailsModel>>>
   getPokemonDamageIndeciesUseCase({
     required List<String> types,
   }) {

@@ -53,7 +53,7 @@
         "--flavor",
         "production",
         "--dart-define-from-file",
-        "poke_config.json"
+        "poke_config.json",
       ],
       "cwd": "${workspaceFolder}/pokemon_base"
     },
