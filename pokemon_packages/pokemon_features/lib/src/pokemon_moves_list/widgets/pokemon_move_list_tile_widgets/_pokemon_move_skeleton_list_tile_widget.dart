@@ -19,7 +19,7 @@ class PokemonMoveSkeletonListTileWidget extends StatelessWidget {
           Container(
             color: const Color(0xFF3A3A3A),
             height: 100,
-            width: 96,
+            width: 100,
           ),
           Expanded(
             child: ColoredBox(
