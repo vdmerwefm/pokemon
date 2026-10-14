@@ -24,7 +24,7 @@ class PokemonMoveDetailsPage extends StatelessWidget {
           builder: (context, state) {
             final pokemonMoveDetailsData = state.pokemonMoveDetails;
             if (pokemonMoveDetailsData == null) {
-              return const SizedBox.shrink();
+              return const PokemonDetailsSkeletonLoader();
             }
             return Padding(
               padding: const EdgeInsets.all(16),

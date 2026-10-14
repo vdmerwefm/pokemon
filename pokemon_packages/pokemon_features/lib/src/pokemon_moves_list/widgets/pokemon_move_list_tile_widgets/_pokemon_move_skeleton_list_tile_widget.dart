@@ -11,8 +11,8 @@ class PokemonMoveSkeletonListTileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 16),
-      height: 112,
+      color: const Color(0xFF1A1A1A),
+      height: 96,
       width: MediaQuery.sizeOf(context).width,
       child: Row(
         children: [

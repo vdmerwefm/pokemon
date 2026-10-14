@@ -3,16 +3,18 @@ part of '../_barrel_shared_widgets.dart';
 class PokemonSkeletonLoaderWidget extends StatelessWidget {
   const PokemonSkeletonLoaderWidget({
     required this.isPokemonList,
+    required this.topPadding,
+    this.leftPadding = 16,
+    this.rightPadding = 16,
     super.key,
     this.count = 7,
     this.isEmptyRecord = false,
-    this.leftPadding = 16,
-    this.rightPadding = 16,
   });
 
   final bool isPokemonList;
   final int count;
   final bool isEmptyRecord;
+  final double topPadding;
   final double leftPadding;
   final double rightPadding;
 
@@ -35,19 +37,29 @@ class PokemonSkeletonLoaderWidget extends StatelessWidget {
         BorderRadiusGeometry.zero,
       ),
       child: Padding(
-        padding: EdgeInsets.only(left: leftPadding, right: rightPadding),
+        padding: EdgeInsets.only(
+          left: leftPadding,
+          right: rightPadding,
+        ),
         child: ListView.builder(
           padding: EdgeInsets.zero,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemCount: count,
           itemBuilder: (context, index) {
-            if(isPokemonList) {
-              return PokemonSkeletonListTileWidget(skeletonList: skeletonList);
+            if (isPokemonList) {
+              return Padding(
+                padding: EdgeInsets.only(top: topPadding),
+                child: PokemonSkeletonListTileWidget(skeletonList: skeletonList),
+              );
             } else {
-              return PokemonMoveSkeletonListTileWidget(skeletonListType: skeletonList.first,);
+              return Padding(
+                padding: EdgeInsets.only(top: topPadding),
+                child: PokemonMoveSkeletonListTileWidget(
+                  skeletonListType: skeletonList.first,
+                ),
+              );
             }
-            
           },
         ),
       ),

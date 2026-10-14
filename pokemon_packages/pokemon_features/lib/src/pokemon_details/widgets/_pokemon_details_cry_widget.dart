@@ -12,6 +12,7 @@ class PokemonDetailsCryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.max,
       children: [
         GestureDetector(
           onTap: () => context.read<PokemonAudioBloc>()
@@ -33,9 +34,8 @@ class PokemonDetailsCryWidget extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: Platform.isAndroid
-                      ? const EdgeInsets.only(top: 2)
-                      : const EdgeInsets.only(bottom: 2),
+                  padding:  const EdgeInsets.only(top: 2),
+                     
                   child: Text(
                     'PLAY ${pokemonName.toUpperCase()} CRY',
                     style: pokemonInfoStyle(
