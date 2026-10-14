@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -13,15 +11,14 @@ import 'package:pokemon_ui_kit/pokemon_ui_kit.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 part '../presentation/page/pokemon_details_page.dart';
-part '_pokemon_cry_widget.dart';
+part '_pokemon_details_cry_widget.dart';
 part '_pokemon_details_skeleton_loader.dart';
 part '_pokemon_details_card_widgets/_pokemon_details_card_flavor_text_widget.dart';
 part '_pokemon_details_card_widgets/_pokemon_details_card_genus_widget.dart';
 part '_pokemon_details_card_widgets/_pokemon_details_card_image_widget.dart';
 part '_pokemon_details_card_widgets/_pokemon_details_card_info_widget.dart';
 part '_pokemon_details_card_widgets/_pokemon_details_card_widget.dart';
-part '_pokemon_evolution_chain_widget.dart';
-part '_pokemon_moves_widget.dart';
-part '_pokemon_stats_list_widget.dart';
-part '_stat_rectangle_bar_painter_widget.dart';
-part '_strengths_and_weaknesses_widget.dart';
+part '_pokemon_details_evolution_chain_widget.dart';
+part '_pokemon_details_moves_widget.dart';
+part '_pokemon_details_stats_list_widget.dart';
+part '_pokemon_details_stat_rectangle_bar_painter_widget.dart';
