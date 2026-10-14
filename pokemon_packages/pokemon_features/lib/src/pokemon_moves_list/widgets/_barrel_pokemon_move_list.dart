@@ -12,3 +12,4 @@ part 'pokemon_move_list_tile_widgets/_pokemon_move_list_tile_image_widget.dart';
 part 'pokemon_move_list_tile_widgets/_pokemon_move_list_tile_info_widget.dart';
 part 'pokemon_move_list_tile_widgets/_pokemon_move_list_tile_types_widget.dart';
 part 'pokemon_move_list_tile_widgets/_pokemon_move_list_tile_widget.dart';
+part 'pokemon_move_list_tile_widgets/_pokemon_move_skeleton_list_tile_widget.dart';

@@ -2,6 +2,7 @@ part of '../_barrel_shared_widgets.dart';
 
 class PokemonSkeletonLoaderWidget extends StatelessWidget {
   const PokemonSkeletonLoaderWidget({
+    required this.isPokemonList,
     super.key,
     this.count = 7,
     this.isEmptyRecord = false,
@@ -9,8 +10,7 @@ class PokemonSkeletonLoaderWidget extends StatelessWidget {
     this.rightPadding = 16,
   });
 
-  // TODO(vdmerwefm): Move this to shared widgets and rename with pokemon tag.
-
+  final bool isPokemonList;
   final int count;
   final bool isEmptyRecord;
   final double leftPadding;
@@ -42,7 +42,12 @@ class PokemonSkeletonLoaderWidget extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           itemCount: count,
           itemBuilder: (context, index) {
-            return PokemonSkeletonListTileWidget(skeletonList: skeletonList);
+            if(isPokemonList) {
+              return PokemonSkeletonListTileWidget(skeletonList: skeletonList);
+            } else {
+              return PokemonMoveSkeletonListTileWidget(skeletonListType: skeletonList.first,);
+            }
+            
           },
         ),
       ),
