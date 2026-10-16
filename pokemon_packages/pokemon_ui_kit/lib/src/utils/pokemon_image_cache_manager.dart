@@ -13,7 +13,7 @@ class PokemonImageCacheManager extends CacheManager {
           stalePeriod: const Duration(
             days: 7,
           ),
-          maxNrOfCacheObjects: 25,
+          maxNrOfCacheObjects: 250,
           repo: JsonCacheInfoRepository(databaseName: 'pokemon_image_cache'),
           fileService: HttpFileService(),
         ),
