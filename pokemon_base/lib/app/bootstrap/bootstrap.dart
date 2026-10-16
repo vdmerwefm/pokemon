@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_soloud/flutter_soloud.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:pokemon_base/app/bootstrap/injectable.dart';
 import 'package:pokemon_core/pokemon_core.dart';
 
@@ -31,6 +32,8 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   Bloc.observer = const AppBlocObserver();
 
   WidgetsFlutterBinding.ensureInitialized();
+
+  await initHiveForFlutter();
 
   await configureDependencies();
 
