@@ -4,8 +4,6 @@ import 'package:graphql/client.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokemon_core/pokemon_core.dart';
 
-part 'cache/gql_hive_cache.dart';
-
 @singleton
 class GqlDio {
   GqlDio(AppConfig appConfig) {
@@ -20,7 +18,7 @@ class GqlDio {
     final Link link = DioLink('', client: _dio);
     _gqlDioLink = GraphQLClient(
       link: link,
-      cache: GraphQLCache(),
+      cache: GraphQLCache(store: HiveStore()),
     );
   }
 

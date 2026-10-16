@@ -10,7 +10,7 @@ class PokemonListTileImageWidget extends StatelessWidget {
     return ColoredBox(
       color: const Color(0xFF3A3A3A),
       child: CachedNetworkImage(
-        cacheManager: PokemonImageCacheManager.pokemonImageCacheManager,
+        cacheManager: PokemonImageCacheManager(),
         memCacheHeight: 96,
         memCacheWidth: 100,
         imageUrl: pokemonSprite ?? '',
@@ -27,6 +27,11 @@ class PokemonListTileImageWidget extends StatelessWidget {
           );
         },
         placeholder: (context, url) => const SizedBox(width: 100, height: 96),
+        errorWidget: (context, url, error) => Container(
+          color: const Color(0xFF3A3A3A),
+          width: 100,
+          height: 96,
+        ),
       ),
     );
   }
