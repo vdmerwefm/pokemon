@@ -18,12 +18,12 @@ scripts:
   test: melos exec -- flutter test
 
   rebuild: 
-    exec: dart run build_runner build --delete-conflicting-outputs
+    exec:  flutter pub get && dart run build_runner build --delete-conflicting-outputs
     packageFilters:
       build_runner: true
 
   auto-rebuild: 
-    exec: dart run build_runner watch --delete-conflicting-outputs
+    exec: flutter pub get && dart run build_runner watch --delete-conflicting-outputs
     packageFilters:
       build_runner: true
 
