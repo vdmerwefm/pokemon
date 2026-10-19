@@ -6,7 +6,7 @@ class PokemonConnectivityUseCase {
 
   final IConnectivityRepository _repo;
 
-  Stream<Either<Failure, bool>> getPokemonConnectivityStream() {
-    return _repo.getConnectivityStatus();
+  StreamSubscription<Either<Failure, bool>> getPokemonConnectivityCheck() {
+    return _repo.startConnectivityCheckService().listen((data) => data);
   }
 }

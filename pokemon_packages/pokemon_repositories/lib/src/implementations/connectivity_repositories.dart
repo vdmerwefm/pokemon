@@ -10,11 +10,11 @@ class ConnectivityRepository implements IConnectivityRepository {
   final ConnectivityService _connectivityService;
 
   @override
-  Stream<Either<Failure, bool>> getConnectivityStatus() async* {
+  Stream<Either<Failure, bool>> startConnectivityCheckService() async* {
     yield await _connectivityService.connectivityService().run();
     yield* Stream<Either<Failure, bool>>.periodic(
       const Duration(seconds: 2),
       (computationCount) => Left(Failure.connectionFailure()),
-    ).asyncMap((_) => _connectivityService.connectivityService().run());
+    ).asyncMap((_) async => _connectivityService.connectivityService().run());
   }
 }

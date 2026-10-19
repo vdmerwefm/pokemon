@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokemon_core/pokemon_core.dart';

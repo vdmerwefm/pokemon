@@ -5,5 +5,5 @@ import 'package:fpdart/fpdart.dart';
 import 'package:pokemon_core/pokemon_core.dart';
 
 abstract interface class IConnectivityRepository {
-  Stream<Either<Failure, bool>> getConnectivityStatus();
+  Stream<Either<Failure, bool>> startConnectivityCheckService();
 }
