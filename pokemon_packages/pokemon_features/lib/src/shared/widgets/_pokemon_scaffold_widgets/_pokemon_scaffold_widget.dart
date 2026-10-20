@@ -5,10 +5,22 @@ class PokemonScaffoldWidget extends StatelessWidget {
 
   final Widget body;
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const PokemonAppBarWidget(showSearch: false,),
-      body: body,
+  Widget build(BuildContext context) {    
+    final isPokemonListPageEmpty = context
+        .read<PokemonListBloc>()
+        .state
+        .pokemonList?.isEmpty;
+
+    return Stack(
+      children: [
+        Scaffold(
+          appBar: const PokemonAppBarWidget(
+            showSearch: false,
+          ),
+          body: body,
+        ),
+        PokemonConnectivityPage(isPokemonListPageEmpty: isPokemonListPageEmpty ?? true,),
+      ],
     );
   }
 }

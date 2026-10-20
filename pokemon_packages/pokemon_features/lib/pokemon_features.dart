@@ -1,4 +1,5 @@
 export 'src/pokemon_audio/bloc/pokemon_audio_bloc.dart';
+export 'src/pokemon_connectivity/presentation/bloc/pokemon_connectivity_bloc.dart';
 export 'src/pokemon_list/presentation/bloc/pokemon_list_bloc.dart';
 export 'src/services/injectable.dart';
 export 'src/services/injectable.module.dart';

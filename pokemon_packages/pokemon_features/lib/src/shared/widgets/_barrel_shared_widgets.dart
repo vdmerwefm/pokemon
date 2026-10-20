@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_core/pokemon_core.dart';
 import 'package:pokemon_features/pokemon_features.dart';
+import 'package:pokemon_features/src/pokemon_connectivity/presentation/page/pokemon_connectivity_page.dart';
 import 'package:pokemon_features/src/pokemon_moves_list/widgets/_barrel_pokemon_move_list.dart';
 import 'package:pokemon_features/src/shared/widgets/_pokemon_app_bar_widgets/_pokemon_app_bar_actions_widget.dart';
 import 'package:pokemon_features/src/shared/widgets/_pokemon_app_bar_widgets/_pokemon_leading_widget.dart';
