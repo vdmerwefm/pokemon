@@ -3,3 +3,4 @@ analyzer:
   errors:
     unnecessary_library_directive: ignore
     public_member_api_docs: ignore
+    document_ignores: ignore
