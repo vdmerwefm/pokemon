@@ -20,11 +20,17 @@ class PokeGqlClient {
 
   TaskEither<Failure, GqlPokemonListDto> fetchRawPokemonList() {
     return TaskEither.tryCatch(() async {
-      final options = QueryOptions(
+      final options = WatchQueryOptions(
         document: gql(gqlPokemonListQuery),
+        fetchPolicy: FetchPolicy.cacheAndNetwork,
+        eagerlyFetchResults: true
       );
 
-      final response = await gqlDioLink.query(options);
+      final response = await gqlDioLink
+          .watchQuery(options)
+          .stream
+          .firstWhere((result) => result.isNotLoading);
+
       if (response.data == null) {
         return GqlPokemonListDto.empty();
       } else {
