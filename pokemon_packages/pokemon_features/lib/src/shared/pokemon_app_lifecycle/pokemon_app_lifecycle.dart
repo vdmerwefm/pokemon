@@ -3,8 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokemon_features/src/pokemon_audio/bloc/pokemon_audio_bloc.dart';
-
+import 'package:pokemon_features/pokemon_features.dart';
 class PokemonAppLifecycle extends StatefulWidget {
   const PokemonAppLifecycle({
     required this.child,
@@ -40,12 +39,14 @@ class _PokemonAppLifecycleState extends State<PokemonAppLifecycle>
         switch (state) {
           case AppLifecycleState.inactive:
             _getAudioEvent(AppLifecycleState.inactive);
+            _pauseConnectivityCheck(AppLifecycleState.inactive);
 
             _pokemonLifecycleState = 'App Lifecycle State: $state';
             log(_pokemonLifecycleState ?? '');
 
           case AppLifecycleState.resumed:
             _getAudioEvent(AppLifecycleState.resumed);
+            _resumeConnectivityCheck(AppLifecycleState.resumed);
 
             _pokemonLifecycleState = 'App Lifecycle State: resumed';
             log(_pokemonLifecycleState ?? '');
@@ -67,6 +68,18 @@ class _PokemonAppLifecycleState extends State<PokemonAppLifecycle>
   @override
   Widget build(BuildContext context) {
     return widget.child;
+  }
+
+  void _pauseConnectivityCheck(AppLifecycleState state) {
+    context.read<PokemonConnectivityBloc>().add(
+      PokemonConnectivityEvents.onPausePokemonConnectivityCheck(state: state),
+    );
+  }
+
+  void _resumeConnectivityCheck(AppLifecycleState state) {
+    context.read<PokemonConnectivityBloc>().add(
+      PokemonConnectivityEvents.onResumePokemonConnectivityCheck(state: state),
+    );
   }
 
   void _getAudioEvent(AppLifecycleState state) {

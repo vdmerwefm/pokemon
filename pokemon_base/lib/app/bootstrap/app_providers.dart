@@ -22,6 +22,12 @@ class AppProviders extends StatelessWidget {
               sl<PokemonListBloc>()
                 ..add(const PokemonListEvents.onGetPokemonList()),
         ),
+        BlocProvider(
+          create: (context) => sl<PokemonConnectivityBloc>()
+            ..add(
+              PokemonConnectivityEvents.onStartPokemonConnectivityCheck(),
+            ),
+        ),
       ],
       child: child,
     );

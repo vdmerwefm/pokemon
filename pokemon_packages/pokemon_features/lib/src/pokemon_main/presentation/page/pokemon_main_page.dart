@@ -31,11 +31,13 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
 
     return PokemonAppLifecycle(
       child: AutoRouter(
-        builder: (context, body) => PokemonNavigationScaffoldWidget(
-          body: body,
-          selectedIndex: _selectedIndex,
-          onItemTapped: _onItemTapped,
-        ),
+        builder: (context, body) {
+          return PokemonNavigationScaffoldWidget(
+            body: body,
+            selectedIndex: _selectedIndex,
+            onItemTapped: _onItemTapped,
+          );
+        },
       ),
     );
   }
