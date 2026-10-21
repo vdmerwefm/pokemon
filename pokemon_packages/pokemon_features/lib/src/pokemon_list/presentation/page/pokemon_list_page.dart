@@ -25,7 +25,7 @@ class _PokemonListPageState extends State<PokemonListPage> {
         }
 
         return CustomScrollView(
-          cacheExtent: 0,
+          cacheExtent: 25,
           slivers: [
             SliverPadding(
               padding: const EdgeInsets.only(left: 16, right: 16),

@@ -38,21 +38,22 @@ class _PokemonAppLifecycleState extends State<PokemonAppLifecycle>
       setState(() {
         switch (state) {
           case AppLifecycleState.inactive:
-            _getAudioEvent(AppLifecycleState.inactive);
-            _pauseConnectivityCheck(AppLifecycleState.inactive);
+            _getAudioEvent(state);
+            _pauseConnectivityCheck(state);
 
             _pokemonLifecycleState = 'App Lifecycle State: $state';
             log(_pokemonLifecycleState ?? '');
 
           case AppLifecycleState.resumed:
-            _getAudioEvent(AppLifecycleState.resumed);
-            _resumeConnectivityCheck(AppLifecycleState.resumed);
+            _getAudioEvent(state);
+            _resumeConnectivityCheck(state);
 
             _pokemonLifecycleState = 'App Lifecycle State: resumed';
             log(_pokemonLifecycleState ?? '');
 
           case _:
-            _getAudioEvent(AppLifecycleState.inactive);
+            _getAudioEvent(state);
+            _pauseConnectivityCheck(state);
         }
       });
     });
