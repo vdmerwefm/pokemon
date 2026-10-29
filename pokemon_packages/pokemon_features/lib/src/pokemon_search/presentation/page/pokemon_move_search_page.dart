@@ -7,18 +7,29 @@ import 'package:pokemon_features/src/pokemon_search/presentation/bloc/pokemon_se
 import 'package:pokemon_features/src/shared/widgets/_barrel_shared_widgets.dart';
 
 @RoutePage()
-class PokemonMoveSearchPage extends StatelessWidget {
+class PokemonMoveSearchPage extends StatefulWidget {
   const PokemonMoveSearchPage({super.key});
+
+  @override
+  State<PokemonMoveSearchPage> createState() => _PokemonMoveSearchPageState();
+}
+
+class _PokemonMoveSearchPageState extends State<PokemonMoveSearchPage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<PokemonSearchBloc>().add(
+      const PokemonSearchEvents.onPokemonMoveSearch(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PokemonSearchBloc, PokemonSearchState>(
-      bloc: context.read<PokemonSearchBloc>()
-        ..add(const PokemonSearchEvents.onPokemonMoveSearch()),
       builder: (context, state) {
         final moveSearchList = state.pokemonMoves ?? [];
 
-        if (state.isLoading && moveSearchList.isEmpty) {
+        if (state.isPokemonMovesLoading && moveSearchList.isEmpty) {
           return const PokemonScaffoldWidget(
             body: PokemonSkeletonLoaderWidget(
               isPokemonList: false,
@@ -60,7 +71,7 @@ class PokemonMoveSearchPage extends StatelessWidget {
                   },
                 ),
               ),
-              sliverHeight64
+              sliverHeight64,
             ],
           ),
         );

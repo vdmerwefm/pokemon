@@ -3,9 +3,10 @@ part of 'pokemon_search_bloc.dart';
 @freezed
 class PokemonSearchState with _$PokemonSearchState {
   const factory PokemonSearchState({
-    @Default(true) bool isLoading,
     List<PokemonListTileModel>? pokemonList,
+    @Default(true) bool isPokemonListLoading,
     List<PokemonMovesListModel>? pokemonMoves,
+    @Default(true) bool isPokemonMovesLoading,
     Failure? failure,
   }) = _PokemonSearchState;
 

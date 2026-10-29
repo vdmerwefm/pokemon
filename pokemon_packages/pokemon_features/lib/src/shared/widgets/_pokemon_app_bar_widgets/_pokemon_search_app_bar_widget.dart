@@ -1,6 +1,8 @@
-import 'package:auto_route/auto_route.dart';
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokemon_features/src/helpers/pokemon_search_helper.dart';
 import 'package:pokemon_features/src/pokemon_audio/bloc/pokemon_audio_bloc.dart';
 import 'package:pokemon_features/src/pokemon_search/presentation/bloc/pokemon_search_bloc.dart';
 import 'package:pokemon_ui_kit/pokemon_ui_kit.dart';
@@ -13,7 +15,9 @@ class PokemonSearchAppBar extends StatefulWidget {
 }
 
 class _PokemonSearchAppBarState extends State<PokemonSearchAppBar> {
+
   late final TextEditingController _seachController;
+  Timer? _searchDebounce;
 
   @override
   void initState() {
@@ -26,8 +30,9 @@ class _PokemonSearchAppBarState extends State<PokemonSearchAppBar> {
 
   @override
   void dispose() {
-    super.dispose();
+    _searchDebounce?.cancel();
     _seachController.dispose();
+    super.dispose();
   }
 
   @override
@@ -42,19 +47,11 @@ class _PokemonSearchAppBarState extends State<PokemonSearchAppBar> {
             enableSuggestions: false,
             controller: _seachController,
             onChanged: (searchString) {
-              if (context.router.current.route.name == 'PokemonSearchRoute') {
-                context.read<PokemonSearchBloc>().add(
-                  PokemonSearchEvents.onPokemonListSearch(
-                    searchString: searchString,
-                  ),
-                );
-              } else {
-                context.read<PokemonSearchBloc>().add(
-                  PokemonSearchEvents.onPokemonMoveSearch(
-                    searchString: searchString,
-                  ),
-                );
-              }
+              _searchDebounce?.cancel();
+              _searchDebounce = Timer(
+                const Duration(milliseconds: 500),
+                () => PokemonSearchHelper.dispatchSearchHelper(context: context, searchString: searchString),
+              );
             },
             keyboardType: TextInputType.text,
             textCapitalization: TextCapitalization.characters,
@@ -82,18 +79,9 @@ class _PokemonSearchAppBarState extends State<PokemonSearchAppBar> {
               ),
               suffixIcon: GestureDetector(
                 onTap: () {
+                  _searchDebounce?.cancel();
                   _seachController.clear();
-
-                  if (context.router.current.route.name ==
-                      'PokemonSearchRoute') {
-                    context.read<PokemonSearchBloc>().add(
-                      const PokemonSearchEvents.onPokemonListSearch(),
-                    );
-                  } else {
-                    context.read<PokemonSearchBloc>().add(
-                      const PokemonSearchEvents.onPokemonMoveSearch(),
-                    );
-                  }
+                  PokemonSearchHelper.dispatchSearchHelper(context: context, searchString: '');
 
                   context.read<PokemonAudioBloc>().add(
                     const PokemonAudioEvents.onPlaySelectBite(),

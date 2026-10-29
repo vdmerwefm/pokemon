@@ -15,7 +15,7 @@ part 'pokemon_search_bloc.g.dart';
 class PokemonSearchBloc extends Bloc<PokemonSearchEvents, PokemonSearchState> {
   PokemonSearchBloc(this._useCase) : super(PokemonSearchState.empty()) {
     on<OnPokemonListSearch>((event, emit) async {
-      emit(state.copyWith(isLoading: true));
+      emit(state.copyWith(isPokemonListLoading: true));
 
       final response = await _useCase.getPokemonListSearchUseCase();
 
@@ -24,7 +24,7 @@ class PokemonSearchBloc extends Bloc<PokemonSearchEvents, PokemonSearchState> {
           emit(
             state.copyWith(
               failure: failure,
-              isLoading: false,
+              isPokemonListLoading: false,
             ),
           );
         },
@@ -37,8 +37,8 @@ class PokemonSearchBloc extends Bloc<PokemonSearchEvents, PokemonSearchState> {
           );
           emit(
             state.copyWith(
-              isLoading: false,
               pokemonList: pokemonSearchList,
+              isPokemonListLoading: false,
             ),
           );
         },
@@ -46,7 +46,7 @@ class PokemonSearchBloc extends Bloc<PokemonSearchEvents, PokemonSearchState> {
     });
 
     on<OnMoveSearchSearch>((event, emit) async {
-      emit(state.copyWith(isLoading: true));
+      emit(state.copyWith(isPokemonMovesLoading: true));
 
       final response = await _useCase.getPokemonMoveSearchUseCase();
 
@@ -55,7 +55,7 @@ class PokemonSearchBloc extends Bloc<PokemonSearchEvents, PokemonSearchState> {
           emit(
             state.copyWith(
               failure: failure,
-              isLoading: false,
+              isPokemonMovesLoading: false,
             ),
           );
         },
@@ -70,8 +70,8 @@ class PokemonSearchBloc extends Bloc<PokemonSearchEvents, PokemonSearchState> {
           );
           emit(
             state.copyWith(
-              isLoading: false,
               pokemonMoves: moveSearchList,
+              isPokemonMovesLoading: false,
             ),
           );
         },

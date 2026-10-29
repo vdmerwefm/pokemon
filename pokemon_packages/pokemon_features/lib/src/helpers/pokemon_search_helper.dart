@@ -1,6 +1,10 @@
 //these need to dynamically update to allow search
 // ignore_for_file: prefer_final_locals, omit_local_variable_types
 
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokemon_features/pokemon_features.dart';
 import 'package:pokemon_models/pokemon_models.dart';
 
 class PokemonSearchHelper {
@@ -65,6 +69,18 @@ class PokemonSearchHelper {
       return filteredList.toSet().toList();
     } else {
       return null;
+    }
+  }
+
+  static void dispatchSearchHelper({required BuildContext context, required String searchString}) {
+    if (context.router.current.route.name == 'PokemonSearchRoute') {
+      context.read<PokemonSearchBloc>().add(
+        PokemonSearchEvents.onPokemonListSearch(searchString: searchString),
+      );
+    } else {
+      context.read<PokemonSearchBloc>().add(
+        PokemonSearchEvents.onPokemonMoveSearch(searchString: searchString),
+      );
     }
   }
 }
