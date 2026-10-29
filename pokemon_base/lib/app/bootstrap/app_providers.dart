@@ -28,6 +28,8 @@ class AppProviders extends StatelessWidget {
               PokemonConnectivityEvents.onStartPokemonConnectivityCheck(),
             ),
         ),
+        BlocProvider(
+            create: (context) => sl<PokemonSearchBloc>(),)
       ],
       child: child,
     );
