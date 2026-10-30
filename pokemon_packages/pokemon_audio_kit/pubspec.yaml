@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_soloud: 3.4.8
+  flutter_soloud: ^3.5.4
   fpdart: ^1.2.0
   injectable: 2.7.1
   pokemon_core: 
