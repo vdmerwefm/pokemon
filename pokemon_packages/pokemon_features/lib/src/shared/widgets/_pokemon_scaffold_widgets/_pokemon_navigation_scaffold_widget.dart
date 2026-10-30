@@ -17,7 +17,8 @@ class PokemonNavigationScaffoldWidget extends StatelessWidget {
     final isPokemonListPageEmpty = context
         .read<PokemonListBloc>()
         .state
-        .pokemonList?.isEmpty;
+        .pokemonList
+        ?.isEmpty;
     return Stack(
       children: [
         Scaffold(
@@ -63,7 +64,9 @@ class PokemonNavigationScaffoldWidget extends StatelessWidget {
           ),
           floatingActionButton: const PokemonFloatingActionButton(),
         ),
-        PokemonConnectivityPage(isPokemonListPageEmpty: isPokemonListPageEmpty ?? true,),
+        PokemonConnectivityPage(
+          isPokemonListPageEmpty: isPokemonListPageEmpty ?? true,
+        ),
       ],
     );
   }

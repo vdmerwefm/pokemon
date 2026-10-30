@@ -14,3 +14,6 @@ const sliverHeight12 = SliverToBoxAdapter(child: SizedBox(height: 12));
 
 //translates height by 16 logical pixels
 const sliverHeight16 = SliverToBoxAdapter(child: SizedBox(height: 16));
+
+//translates height by 64 logical pixels
+const sliverHeight64 = SliverToBoxAdapter(child: SizedBox(height: 64));
