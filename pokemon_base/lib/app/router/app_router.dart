@@ -19,14 +19,20 @@ class AppRouter extends _$AppRouter {
           transitionsBuilder: TransitionsBuilders.noTransition,
           durationInMilliseconds: 0,
           reverseDurationInMilliseconds: 0,
-          path: 'pokemon-list-page'
+          path: 'pokemon-list-page',
         ),
         CustomRoute(
           page: PokemonMovesListRoute.page,
           transitionsBuilder: TransitionsBuilders.noTransition,
           durationInMilliseconds: 0,
           reverseDurationInMilliseconds: 0,
-          path: 'pokemon-move-page'
+          path: 'pokemon-move-page',
+        ),
+        CustomRoute(
+          page: PokemonFavoritesRoute.page,
+          transitionsBuilder: TransitionsBuilders.noTransition,
+          durationInMilliseconds: 0,
+          reverseDurationInMilliseconds: 0,
         ),
       ],
     ),
@@ -35,6 +41,7 @@ class AppRouter extends _$AppRouter {
       transitionsBuilder: TransitionsBuilders.noTransition,
       durationInMilliseconds: 0,
       reverseDurationInMilliseconds: 0,
+      maintainState: false,
     ),
     CustomRoute(
       page: PokemonMovesListRoute.page,
@@ -47,20 +54,21 @@ class AppRouter extends _$AppRouter {
       transitionsBuilder: TransitionsBuilders.noTransition,
       durationInMilliseconds: 0,
       reverseDurationInMilliseconds: 0,
+      maintainState: false,
     ),
     CustomRoute(
       page: PokemonSearchRoute.page,
       transitionsBuilder: TransitionsBuilders.noTransition,
       durationInMilliseconds: 0,
       reverseDurationInMilliseconds: 0,
-      maintainState: false
+      maintainState: false,
     ),
     CustomRoute(
       page: PokemonMoveSearchRoute.page,
       transitionsBuilder: TransitionsBuilders.noTransition,
       durationInMilliseconds: 0,
       reverseDurationInMilliseconds: 0,
-      maintainState: false
+      maintainState: false,
     ),
   ];
 }

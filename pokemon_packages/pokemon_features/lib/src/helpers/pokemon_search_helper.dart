@@ -15,19 +15,19 @@ class PokemonSearchHelper {
     List<PokemonListTileModel> filteredList = [];
 
     if (searchString != null || searchString != '') {
-      for (final x in pokemonSearchList) {
-        bool nameSearch = x.name.startsWith((searchString ?? '').toLowerCase());
+      for (final pokemon in pokemonSearchList) {
+        bool nameSearch = pokemon.name.startsWith((searchString ?? '').toLowerCase());
 
-        bool typeSearch = x.type
+        bool typeSearch = pokemon.type
             .map((type) => type.startsWith((searchString ?? '').toLowerCase()))
             .any((e) => e == true);
 
-        bool idSearch = x.id.toString() == searchString;
+        bool idSearch = pokemon.id.toString() == searchString;
 
         if (nameSearch || typeSearch || idSearch) {
-          filteredList.add(x);
+          filteredList.add(pokemon);
         } else {
-          filteredList.remove(x);
+          filteredList.remove(pokemon);
         }
       }
     }
@@ -46,21 +46,21 @@ class PokemonSearchHelper {
     List<PokemonMovesListModel> filteredList = [];
 
     if (searchString != null || searchString != '') {
-      for (final x in pokemonSearchList) {
-        bool nameSearch = x.name!.startsWith(
+      for (final pokemon in pokemonSearchList) {
+        bool nameSearch = pokemon.name!.startsWith(
           (searchString ?? '').toLowerCase(),
         );
 
-        bool typeSearch = x.type!.startsWith(
+        bool typeSearch = pokemon.type!.startsWith(
           (searchString ?? '').toLowerCase(),
         );
 
-        bool idSearch = x.id.toString() == searchString;
+        bool idSearch = pokemon.id.toString() == searchString;
 
         if (nameSearch || typeSearch || idSearch) {
-          filteredList.add(x);
+          filteredList.add(pokemon);
         } else {
-          filteredList.remove(x);
+          filteredList.remove(pokemon);
         }
       }
     }

@@ -12,4 +12,31 @@ class PokemonListHelper {
         PokemonListTileModel.empty(),
     ];
   }
+
+  static List<PokemonListTileModel> favortiesList(
+    List<int>? indexList,
+    List<PokemonListTileModel> pokemonFavorites,
+  ) {
+
+    List<PokemonListTileModel> filteredList = [];
+
+    if (indexList != null) {
+      for (final index in indexList) {
+        for (final pokemon in pokemonFavorites) {
+          if (index == pokemon.id) {
+            filteredList.add(pokemon);
+          }
+          if (!indexList.contains(pokemon.id)) {
+            filteredList.remove(pokemon);
+          }
+        }
+      }
+    } else {
+      filteredList = [];
+    }
+
+    filteredList.sort((pokemonA, pokemonB) => pokemonA.id.compareTo(pokemonB.id));
+
+    return filteredList;
+  }
 }
