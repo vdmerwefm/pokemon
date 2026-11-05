@@ -13,16 +13,16 @@ class PokemonDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PokemonScaffoldWidget(
-      body: BlocProvider(
-        create: (context) => sl<PokemonDetailsBloc>()
-          ..add(PokemonDetailsEvents.onGetPokemonDetails(name: pokemonName))
-          ..add(
-            PokemonDetailsEvents.onGetPokemonDamageIndecies(
-              types: pokemonTypes,
-            ),
+    return BlocProvider(
+      create: (context) => sl<PokemonDetailsBloc>()
+        ..add(PokemonDetailsEvents.onGetPokemonDetails(name: pokemonName))
+        ..add(
+          PokemonDetailsEvents.onGetPokemonDamageIndecies(
+            types: pokemonTypes,
           ),
-        child: BlocBuilder<PokemonDetailsBloc, PokemonDetailsState>(
+        ),
+      child: PokemonScaffoldWidget(
+        body: BlocBuilder<PokemonDetailsBloc, PokemonDetailsState>(
           builder: (context, state) {
             final pokemon = state.pokemonDetails;
             final loadingEmptyOrFailure =

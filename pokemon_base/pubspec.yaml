@@ -17,8 +17,10 @@ dependencies:
   flutter_soloud: ^3.5.4
   get_it: ^9.2.1
   graphql_flutter: ^5.3.0
+  hydrated_bloc: ^11.0.0
   injectable: 2.7.1
   intl: ^0.20.2
+  path_provider: ^2.1.5
   poke_api_client:
     path: ../pokemon_packages/poke_api_client
   poke_gql_client:

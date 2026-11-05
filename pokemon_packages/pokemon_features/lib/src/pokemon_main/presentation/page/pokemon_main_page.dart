@@ -13,8 +13,7 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
   List<PageRouteInfo> routes = [
     const PokemonListRoute(),
     const PokemonMovesListRoute(),
-    const PokemonListRoute(),
-    const PokemonMovesListRoute(),
+    const PokemonFavoritesRoute(),
   ];
 
   @override

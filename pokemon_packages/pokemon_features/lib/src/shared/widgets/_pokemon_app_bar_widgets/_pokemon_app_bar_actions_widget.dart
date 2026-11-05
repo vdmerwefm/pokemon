@@ -13,10 +13,10 @@ class PokemonAppBarActionsWidget extends StatelessWidget {
         if (showSearch)
           GestureDetector(
             onTap: () {
-              if (context.router.current.path == 'pokemon-list-page') {
-                context.router.push(const PokemonSearchRoute());
-              } else {
+              if (context.router.current.path == 'pokemon-move-page') {
                 context.router.push(const PokemonMoveSearchRoute());
+              } else {
+                context.router.push(const PokemonSearchRoute());
               }
               context.read<PokemonAudioBloc>()
                 .add(const PokemonAudioEvents.onPlaySelectBite());
