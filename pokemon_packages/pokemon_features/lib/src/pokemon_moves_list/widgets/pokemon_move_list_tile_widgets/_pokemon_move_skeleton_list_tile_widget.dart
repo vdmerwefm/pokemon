@@ -79,9 +79,7 @@ class PokemonMoveSkeletonListTileWidget extends StatelessWidget {
                       ],
                     ),
                     height4,
-                    const PokemonDividerAltWidget(
-                      padding: 12,
-                    ),
+                    height12,
                     height4,
                     Flexible(
                       child: Row(

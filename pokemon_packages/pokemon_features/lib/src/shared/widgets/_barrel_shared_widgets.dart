@@ -9,6 +9,7 @@ import 'package:pokemon_features/src/pokemon_connectivity/presentation/page/poke
 import 'package:pokemon_features/src/pokemon_moves_list/widgets/_barrel_pokemon_move_list.dart';
 import 'package:pokemon_features/src/shared/widgets/_pokemon_app_bar_widgets/_pokemon_app_bar_actions_widget.dart';
 import 'package:pokemon_features/src/shared/widgets/_pokemon_app_bar_widgets/_pokemon_leading_widget.dart';
+import 'package:pokemon_features/src/shared/widgets/_pokemon_app_bar_widgets/_pokemon_search_app_bar_widget.dart';
 import 'package:pokemon_features/src/shared/widgets/_pokemon_floating_action_button_widget/_pokemon_floating_action_button_widget.dart';
 import 'package:pokemon_ui_kit/pokemon_ui_kit.dart';
 import 'package:skeletonizer/skeletonizer.dart';

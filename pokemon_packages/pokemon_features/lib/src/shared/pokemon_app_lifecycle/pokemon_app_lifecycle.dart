@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_features/pokemon_features.dart';
+
 class PokemonAppLifecycle extends StatefulWidget {
   const PokemonAppLifecycle({
     required this.child,
@@ -41,18 +42,24 @@ class _PokemonAppLifecycleState extends State<PokemonAppLifecycle>
             _getAudioEvent(AppLifecycleState.inactive);
             _pauseConnectivityCheck(AppLifecycleState.inactive);
 
-            _pokemonLifecycleState = 'App Lifecycle State: $state';
+            _pokemonLifecycleState =
+                'App Lifecycle State: ${AppLifecycleState.inactive}';
             log(_pokemonLifecycleState ?? '');
 
           case AppLifecycleState.resumed:
             _getAudioEvent(AppLifecycleState.resumed);
             _resumeConnectivityCheck(AppLifecycleState.resumed);
 
-            _pokemonLifecycleState = 'App Lifecycle State: resumed';
+            _pokemonLifecycleState =
+                'App Lifecycle State: ${AppLifecycleState.resumed}';
             log(_pokemonLifecycleState ?? '');
 
           case _:
             _getAudioEvent(AppLifecycleState.inactive);
+
+            if (!context.read<PokemonConnectivityBloc>().state.isConnected) {
+              _pauseConnectivityCheck(AppLifecycleState.inactive);
+            }
         }
       });
     });

@@ -16,7 +16,9 @@ enum PokemonType {
   psychic,
   rock,
   steel,
-  water;
+  water,
+  shadow,
+  stellar;
 
   String get typeImagePath =>
       'lib/src/assets/images/types/${PokemonType.values.elementAt(index).name.toLowerCase()}_type_symbol.png';
