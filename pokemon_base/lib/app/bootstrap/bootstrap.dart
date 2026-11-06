@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_soloud/flutter_soloud.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:pokemon_base/app/bootstrap/injectable.dart';
 import 'package:pokemon_core/pokemon_core.dart';
 
@@ -34,6 +35,12 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await initHiveForFlutter();
+
+  final hydratedStore = await getApplicationDocumentsDirectory();
+
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: HydratedStorageDirectory(hydratedStore.path),
+  );
 
   await configureDependencies();
 

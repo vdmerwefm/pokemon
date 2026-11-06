@@ -27,7 +27,6 @@
         "Staging",
         "--dart-define-from-file",
         "poke_config.json",
-        "--release"
       ],
       "cwd": "${workspaceFolder}/pokemon_base"
     },
@@ -54,6 +53,7 @@
         "production",
         "--dart-define-from-file",
         "poke_config.json",
+        "--release"
       ],
       "cwd": "${workspaceFolder}/pokemon_base"
     },

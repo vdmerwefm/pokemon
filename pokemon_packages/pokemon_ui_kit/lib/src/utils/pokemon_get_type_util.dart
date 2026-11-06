@@ -23,6 +23,7 @@ class PokemonGetTypeUtil {
       PokemonType.rock => const Color(0xFFCBC594),
       PokemonType.steel => const Color(0xFF72C3D5),
       PokemonType.water => const Color(0xFF0083C2),
+      PokemonType.stellar => Colors.transparent,
       _ => const Color(0xFF3A3A3A),
     };
   }
@@ -33,7 +34,7 @@ class PokemonGetTypeUtil {
       PokemonAilment.burn => const Color(0xFFE99532),
       PokemonAilment.freeze => const Color(0xFF82EFE9),
       PokemonAilment.paralysis => const Color(0xFFF4CC2E),
-      PokemonAilment.poison=> const Color(0xFFF3B1DB),
+      PokemonAilment.poison => const Color(0xFFF3B1DB),
       PokemonAilment.sleep => const Color(0xFFB18DFB),
       _ => const Color(0xFF3A3A3A),
     };
@@ -45,6 +46,10 @@ class PokemonGetTypeUtil {
       if (type.name == typeFromData) {
         badge = type.typeImagePath;
       }
+
+      if (typeFromData == PokemonType.shadow.name) {
+        badge = PokemonType.ghost.typeImagePath;
+      }
     }
     return badge ?? '';
   }
@@ -54,6 +59,9 @@ class PokemonGetTypeUtil {
     for (final type in PokemonType.values) {
       if (type.name == typeFromData) {
         moveImage = type.moveTypeImagePath;
+      } 
+      if(typeFromData == PokemonType.shadow.name) {
+        moveImage = PokemonType.ghost.moveTypeImagePath;
       }
     }
 

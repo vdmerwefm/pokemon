@@ -26,16 +26,21 @@ class PokemonMovesListBloc
             isLoading: false,
           ),
         ),
-        (pokemonMovesList) => emit(
-          state.copyWith(
-            failure: null,
-            isLoading: false,
-            pokemonMovesList: pokemonMovesList,
-            paginatedPokemonMovesList: pokemonMovesList
-                .getRange(0, state.limit)
-                .toList(),
-          ),
-        ),
+        (pokemonMovesList) {
+          pokemonMovesList.removeWhere(
+            (moveName) => moveName.type == 'shadow',
+          );
+          emit(
+            state.copyWith(
+              failure: null,
+              isLoading: false,
+              pokemonMovesList: pokemonMovesList,
+              paginatedPokemonMovesList: pokemonMovesList
+                  .getRange(0, state.limit)
+                  .toList(),
+            ),
+          );
+        },
       );
     });
 

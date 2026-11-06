@@ -1,72 +1,67 @@
-import 'dart:io';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokemon_features/pokemon_features.dart';
+import 'package:pokemon_features/src/helpers/leading_widget_helper.dart';
 
 class PokemonLeadingWidget extends StatelessWidget {
-  const PokemonLeadingWidget({this.isFavorite, super.key});
-
-  final bool? isFavorite;
+  const PokemonLeadingWidget({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    if (context.router.current.name == 'PokemonMainRoute') {
-      return leadingWidgetHelper(
+    final pokemonId = context
+        .watch<PokemonDetailsBloc>()
+        .state
+        .pokemonDetails
+        ?.id;
+
+    final pokemonFavoritesState = context.watch<PokemonFavoritesBloc>().state;
+    if (context.router.routeData.name == 'PokemonMainRoute') {
+      return LeadingWidgetHelper.leadingWidgetHelper(
         icon: Icons.favorite_rounded,
         size: 28,
-        text: '42',
+        text: (pokemonFavoritesState.pokemonFavoriteIndexList ?? []).length
+            .toString()
+            .toUpperCase(),
       );
-    } else {
-      if (isFavorite != null) {
-        return leadingWidgetHelper(
-          icon: Icons.add_circle_rounded,
-          size: 28,
-          text: 'ADD TO FAVORITES',
-        );
-      } else {
-        return leadingWidgetHelper(
-          icon: Icons.remove_circle_rounded,
-          size: 28,
-          text: 'REMOVE FROM FAVORITES',
-        );
-      }
     }
-  }
 
-  Widget leadingWidgetHelper({
-    required IconData icon,
-    required double size,
-    required String text,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 14),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Icon(
-            icon,
-            color: const Color(0xFFE5E5E5),
-            size: size,
-          ),
-          const SizedBox(
-            width: 4,
-          ),
-          Padding(
-            padding: Platform.isAndroid
-                ? const EdgeInsets.only(top: 6)
-                : EdgeInsets.zero,
-            child: Text(
-              text,
-              style: const TextStyle(
-                color: Color(0xFFE5E5E5),
-                fontFamily: 'pokemon_font',
-                fontWeight: FontWeight.w900,
-                package: 'pokemon_ui_kit',
+    if (pokemonId == null) {
+      return const SizedBox.shrink();
+    } else {
+      return GestureDetector(
+        onTap: () {
+          context.read<PokemonFavoritesBloc>()
+            ..add(
+              PokemonFavoritesEvents.onTogglePokemonFavorites(
+                pokemonId: pokemonId,
               ),
-            ),
-          ),
-        ],
-      ),
-    );
+            )
+            ..add(
+              const PokemonFavoritesEvents.onGetPokemonFavoritesList(),
+            );
+
+          context.read<PokemonAudioBloc>().add(
+            const PokemonAudioEvents.onPlaySelectBite(),
+          );
+        },
+        child:
+            ((pokemonFavoritesState.pokemonFavoriteIndexList ?? []).contains(
+              pokemonId,
+            ))
+            ? LeadingWidgetHelper.leadingWidgetHelper(
+                icon: Icons.remove_circle_rounded,
+                size: 28,
+                text: 'REMOVE FROM FAVORITES',
+              )
+            : LeadingWidgetHelper.leadingWidgetHelper(
+                icon: Icons.add_circle_rounded,
+                size: 28,
+                text: 'ADD TO FAVORITES',
+              ),
+      );
+    }
   }
 }

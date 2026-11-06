@@ -1,6 +1,7 @@
 part of '../_barrel_shared_widgets.dart';
 
-class PokemonAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
+class PokemonAppBarWidget extends StatelessWidget
+    implements PreferredSizeWidget {
   const PokemonAppBarWidget({required this.showSearch, super.key});
 
   final bool showSearch;
@@ -61,14 +62,21 @@ class PokemonAppBarWidget extends StatelessWidget implements PreferredSizeWidget
                 package: 'pokemon_ui_kit',
               ),
             ),
-      bottom: AppBar(
-        toolbarHeight: 48,
-        backgroundColor: const Color(0xFFE93F6E),
-        actionsPadding: const EdgeInsets.only(right: 13),
-        leadingWidth: 250,
-        leading: const PokemonLeadingWidget(),
-        actions: [PokemonAppBarActionsWidget(showSearch: showSearch)],
-      ),
+      bottom:
+          context.router.current.route.name == 'PokemonSearchRoute' ||
+              context.router.current.route.name == 'PokemonMoveSearchRoute'
+          ? const PreferredSize(
+              preferredSize: Size(double.infinity, 48),
+              child: PokemonSearchAppBar(),
+            )
+          : AppBar(
+              toolbarHeight: 48,
+              backgroundColor: const Color(0xFFE93F6E),
+              actionsPadding: const EdgeInsets.only(right: 13),
+              leadingWidth: 250,
+              leading: const PokemonLeadingWidget(),
+              actions: [PokemonAppBarActionsWidget(showSearch: showSearch)],
+            ),
     );
   }
 

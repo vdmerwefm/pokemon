@@ -28,6 +28,18 @@ class AppProviders extends StatelessWidget {
               PokemonConnectivityEvents.onStartPokemonConnectivityCheck(),
             ),
         ),
+        BlocProvider(
+          create: (context) => sl<PokemonDetailsBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => sl<PokemonSearchBloc>(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              sl<PokemonFavoritesBloc>()
+                ..add(const PokemonFavoritesEvents.onGetHydratedFavorites())
+                ..add(const PokemonFavoritesEvents.onGetPokemonFavoritesList()),
+        ),
       ],
       child: child,
     );
