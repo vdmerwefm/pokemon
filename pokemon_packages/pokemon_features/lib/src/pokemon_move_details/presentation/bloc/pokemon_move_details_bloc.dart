@@ -126,7 +126,7 @@ class PokemonMoveDetailsBloc
           final strengthsList = DamageIndeciesHelper.strongAgainstHelper(
             pokemonDamageIndecies: pokemonDamageIndecies,
           );
-          final weaknessesList = DamageIndeciesHelper.weakAgainstHelper(
+          final weaknessesList = DamageIndeciesHelper.moveWeakAgainstHelper(
             pokemonDamageIndecies: pokemonDamageIndecies,
           );
 
