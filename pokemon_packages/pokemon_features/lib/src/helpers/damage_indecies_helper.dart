@@ -29,4 +29,18 @@ class DamageIndeciesHelper {
     ];
     return weaknessesList;
   }
+
+  static List<String> moveWeakAgainstHelper({
+    required List<PokemonTypeDetailsModel> pokemonDamageIndecies,
+  }) {
+    final weaknessesList = [
+      ...pokemonDamageIndecies
+          .map((damageIndex) => damageIndex.moveWeakAgainst)
+          .first,
+      ...pokemonDamageIndecies
+          .map((damageIndex) => damageIndex.moveWeakAgainst)
+          .last,
+    ];
+    return weaknessesList;
+  }
 }

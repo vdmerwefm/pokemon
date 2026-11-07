@@ -14,9 +14,28 @@ extension PokemonTypeDetailsMapper on PokeApiTypeDetailsDto {
             .toList() ??
         [];
 
+    final moveWeaknesses = _moveWeaknesses(
+      halfDamageTo: damageRelations?.halfDamageTo ?? [],
+      noDamageTo: damageRelations?.onDamageTo ?? [],
+    ) ?? [];
+
     return PokemonTypeDetailsModel(
       strongAgainst: strengths,
       weakAgainst: weaknesses,
+      moveWeakAgainst: moveWeaknesses,
     );
+  }
+
+  List<String>? _moveWeaknesses({
+    required List<HalfDamageTo>? halfDamageTo,
+    required List<NoDamageTo>? noDamageTo,
+  }) {
+    final halfDamageToList = halfDamageTo?.map(
+      (halfDamageTo) => halfDamageTo.name ?? '',
+    ) ?? [];
+    final noDamageToList = noDamageTo?.map(
+      (noDamageTo) => noDamageTo.name ?? '',
+    ) ?? [];
+    return [...noDamageToList, ...halfDamageToList];
   }
 }

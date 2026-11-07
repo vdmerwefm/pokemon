@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_core/pokemon_core.dart';
 import 'package:pokemon_features/pokemon_features.dart' hide initMicroPackage;
-import 'package:pokemon_features/src/pokemon_details/presentation/bloc/pokemon_details_bloc.dart';
 import 'package:pokemon_features/src/shared/widgets/_barrel_shared_widgets.dart';
 import 'package:pokemon_models/pokemon_models.dart';
 import 'package:pokemon_ui_kit/pokemon_ui_kit.dart';
