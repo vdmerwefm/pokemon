@@ -11,6 +11,7 @@ class PokemonListPage extends StatefulWidget {
 class _PokemonListPageState extends State<PokemonListPage> {
   @override
   Widget build(BuildContext context) {
+    
     return BlocBuilder<PokemonListBloc, PokemonListState>(
       builder: (context, state) {
         final pokemonList = state.paginatedPokemonList ?? [];

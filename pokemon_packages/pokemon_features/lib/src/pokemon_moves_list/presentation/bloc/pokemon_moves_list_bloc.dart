@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokemon_core/pokemon_core.dart';
@@ -27,7 +28,20 @@ class PokemonMovesListBloc
           ),
         ),
         (pokemonMovesList) {
-          pokemonMovesList.removeWhere(
+          final filteredList = pokemonMovesList
+              .filter((move) => move.type == event.pokmeonFilterString)
+              .where((limit) => (limit.id ?? 0) <= 919)
+              .toList();
+          
+          if(event.pokmeonFilterString != null){
+            emit(state.copyWith(
+              isLoading: false,
+              paginatedPokemonMovesList: filteredList,
+              dexLimit: true,
+            ));
+
+          } else {
+            pokemonMovesList.removeWhere(
             (moveName) => moveName.type == 'shadow',
           );
           emit(
@@ -38,8 +52,10 @@ class PokemonMovesListBloc
               paginatedPokemonMovesList: pokemonMovesList
                   .getRange(0, state.limit)
                   .toList(),
+              dexLimit: false
             ),
           );
+          }
         },
       );
     });

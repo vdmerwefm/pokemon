@@ -23,6 +23,11 @@ class AppProviders extends StatelessWidget {
                 ..add(const PokemonListEvents.onGetPokemonList()),
         ),
         BlocProvider(
+          create: (context) =>
+              sl<PokemonMovesListBloc>()
+                ..add(const PokemonMovesListEvents.onGetPokemonMovesList()),
+        ),
+        BlocProvider(
           create: (context) => sl<PokemonConnectivityBloc>()
             ..add(
               PokemonConnectivityEvents.onStartPokemonConnectivityCheck(),
@@ -36,9 +41,14 @@ class AppProviders extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) =>
-              sl<PokemonFavoritesBloc>()
-                ..add(const PokemonFavoritesEvents.onGetHydratedFavorites())
-                ..add(const PokemonFavoritesEvents.onGetPokemonFavoritesList()),
+              sl<PokemonFilterBloc>(),
+        ),
+        BlocProvider(
+          create: (context) {
+            return sl<PokemonFavoritesBloc>()
+              ..add(const PokemonFavoritesEvents.onGetHydratedFavorites())
+              ..add(const PokemonFavoritesEvents.onGetPokemonFavoritesList());
+          },
         ),
       ],
       child: child,
