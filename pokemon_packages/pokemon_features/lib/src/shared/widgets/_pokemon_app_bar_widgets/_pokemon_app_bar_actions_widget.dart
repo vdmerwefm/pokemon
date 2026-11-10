@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokemon_core/pokemon_core.dart';
 import 'package:pokemon_features/pokemon_features.dart';
 class PokemonAppBarActionsWidget extends StatelessWidget {
   const PokemonAppBarActionsWidget({required this.showSearch, super.key});
@@ -29,14 +30,6 @@ class PokemonAppBarActionsWidget extends StatelessWidget {
           )
         else
           const SizedBox.shrink(),
-        const SizedBox(
-          width: 8,
-        ),
-        const Icon(
-          Icons.account_box_rounded,
-          color: Color(0xFFE5E5E5),
-          size: 32,
-        ),
       ],
     );
   }

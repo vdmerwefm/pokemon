@@ -15,28 +15,8 @@ class PokemonAppBarWidget extends StatelessWidget
       actions: context.router.current.name != 'PokemonMainRoute'
           ? []
           : const [
-              Center(
-                child: Text(
-                  'MODE:',
-                  style: TextStyle(
-                    color: Color(0xFFE5E5E5),
-                    fontFamily: 'pokemon_font',
-                    fontWeight: FontWeight.w900,
-                    package: 'pokemon_ui_kit',
-                  ),
-                ),
-              ),
-              Center(
-                child: Text(
-                  ' ALL TYPES',
-                  style: TextStyle(
-                    color: Color(0xFFE5E5E5),
-                    fontFamily: 'pokemon_font',
-                    fontWeight: FontWeight.w900,
-                    package: 'pokemon_ui_kit',
-                  ),
-                ),
-              ),
+              height4,
+              PokemonFilterWidget(),
             ],
       scrolledUnderElevation: 0, // Prevents elevation-based color shift
       title: context.router.current.name != 'PokemonMainRoute'

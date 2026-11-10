@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokemon_core/pokemon_core.dart';
@@ -27,15 +28,35 @@ class PokemonListBloc extends Bloc<PokemonListEvents, PokemonListState> {
           );
         },
         (pokemonList) {
-          emit(
-            state.copyWith(
-              isLoading: false,
-              pokemonList: pokemonList,
-              paginatedPokemonList: pokemonList
-                  .getRange(0, state.limit)
-                  .toList(),
-            ),
-          );
+          final filteredList = pokemonList
+              .filter(
+                (pokemon) => pokemon.type
+                    .map((type) => type == event.pokmeonFilterString)
+                    .any((match) => match == true),
+              )
+              .where((limit) => limit.id <= 1025)
+              .toList();
+
+          if (event.pokmeonFilterString != null) {
+            emit(
+              state.copyWith(
+                isLoading: false,
+                paginatedPokemonList: filteredList,
+                dexLimit: true,
+              ),
+            );
+          } else {
+            emit(
+              state.copyWith(
+                isLoading: false,
+                pokemonList: pokemonList,
+                paginatedPokemonList: pokemonList
+                    .getRange(0, state.limit)
+                    .toList(),
+                dexLimit: false
+              ),
+            );
+          }
         },
       );
     });

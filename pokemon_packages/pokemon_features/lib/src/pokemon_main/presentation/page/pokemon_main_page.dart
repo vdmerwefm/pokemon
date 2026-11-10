@@ -23,6 +23,32 @@ class _PokemonMainPageState extends State<PokemonMainPage> {
         _selectedIndex = index;
         context.router.push(routes.elementAt(index));
       });
+
+      final filterState = context.read<PokemonFilterBloc>().state;
+
+      if (_selectedIndex == 0) {
+        context.read<PokemonListBloc>().add(
+          PokemonListEvents.onGetPokemonList(
+            pokmeonFilterString: filterState.filterIndex != 0
+                ? filterState.filterString
+                : null,
+          ),
+        );
+      }
+      if (_selectedIndex == 1) {
+        context.read<PokemonMovesListBloc>().add(
+          PokemonMovesListEvents.onGetPokemonMovesList(
+            pokmeonFilterString: filterState.filterIndex != 0
+                ? filterState.filterString
+                : null,
+          ),
+        );
+      }
+
+      if (_selectedIndex == 2) {
+        context.read<PokemonFilterBloc>()
+          .add(const PokemonFilterEvents.onPokemonFilterReset());
+      }
       context.read<PokemonAudioBloc>().add(
         const PokemonAudioEvents.onPlaySelectBite(),
       );

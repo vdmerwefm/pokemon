@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+///HEIGHT CONSTRAINTS
+
 //translates height by 2 logical pixels
 const height2 = SizedBox(height: 2);
 
@@ -29,3 +31,11 @@ const height24 = SizedBox(height: 24);
 
 //translates height by 85 logical pixels
 const height85 = SizedBox(height: 85);
+
+///WIDTH CONSTRAINTS
+
+//translates width by 4 logical pixels
+const width4 = SizedBox(width: 4);
+
+//translates width by 8 logical pixels
+const width8 = SizedBox(width: 8);
