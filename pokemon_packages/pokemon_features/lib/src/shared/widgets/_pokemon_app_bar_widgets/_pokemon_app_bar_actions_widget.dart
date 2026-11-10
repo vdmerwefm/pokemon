@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokemon_core/pokemon_core.dart';
 import 'package:pokemon_features/pokemon_features.dart';
+
 class PokemonAppBarActionsWidget extends StatelessWidget {
   const PokemonAppBarActionsWidget({required this.showSearch, super.key});
 
@@ -19,8 +19,13 @@ class PokemonAppBarActionsWidget extends StatelessWidget {
               } else {
                 context.router.push(const PokemonSearchRoute());
               }
-              context.read<PokemonAudioBloc>()
-                .add(const PokemonAudioEvents.onPlaySelectBite());
+              context.read<PokemonFilterBloc>().add(
+                const PokemonFilterEvents.onPokemonFilterReset(),
+              );
+
+              context.read<PokemonAudioBloc>().add(
+                const PokemonAudioEvents.onPlaySelectBite(),
+              );
             },
             child: const Icon(
               Icons.search,

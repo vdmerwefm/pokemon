@@ -15,8 +15,10 @@ class PokemonAppBarWidget extends StatelessWidget
       actions: context.router.current.name != 'PokemonMainRoute'
           ? []
           : const [
-              height4,
-              PokemonFilterWidget(),
+              Padding(
+                padding: EdgeInsets.only(top:12),
+                child: PokemonFilterWidget(),
+              ),
             ],
       scrolledUnderElevation: 0, // Prevents elevation-based color shift
       title: context.router.current.name != 'PokemonMainRoute'

@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_features/pokemon_features.dart';
-import 'package:pokemon_features/src/pokemon_moves_list/presentation/bloc/pokemon_moves_list_bloc.dart';
 
 class PokemonFilterWidget extends StatelessWidget {
   const PokemonFilterWidget({super.key});
@@ -36,6 +35,9 @@ class PokemonFilterWidget extends StatelessWidget {
             context.read<PokemonFilterBloc>().add(
               const PokemonFilterEvents.onPokemonFilterChanged(),
             );
+            context.read<PokemonAudioBloc>().add(
+            const PokemonAudioEvents.onPlaySelectBite(),
+          );
           },
           child: Row(
             children: [
